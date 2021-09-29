@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour {
     private Vector2 direction;
     private Rigidbody2D rbPlayer;
     private Animator animPlayer;
+    private float idleAnimationCooldown = 0;
+    public float idleAnimationTotalCooldown;
 
     private void Start() {
         rbPlayer = GetComponent<Rigidbody2D>();
@@ -33,5 +35,13 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Movement() {
         if (!moveLock) rbPlayer.velocity = direction * speed;
+        if (direction.x < 0.01 && direction.y < 0.01) {
+            if (idleAnimationCooldown < idleAnimationTotalCooldown) idleAnimationCooldown += Time.fixedDeltaTime;
+            else {
+                animPlayer.SetTrigger("IdleAnimation1");
+                idleAnimationCooldown = 0;
+            }
+        }
+        else idleAnimationCooldown = 0;
     }
 }
