@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void Inputs() {
-        if (Input.GetButtonDown("Fire1")) currentAtk = 1;
+        if (Input.GetMouseButtonDown(0)) currentAtk = 1;
         if (Input.GetButtonDown("Fire2")) currentAtk = 2;
         if (Input.GetButtonDown("Fire3")) currentAtk = 3;
 
@@ -77,10 +77,12 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void BasicAtk1() {
-        currentDashDirection = mousePos - new Vector2(transform.position.x, transform.position.y);
+        currentDashDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
         movementScript.moveLock = true;
         rbPlayer.velocity = Vector2.zero;
         animPlayer.SetTrigger("Atk0");
+        atk0CDown = atk0TotalCDown;
+        atkRemember = 0;
     }
 
     private void CoolDown() {
@@ -96,6 +98,7 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void RegainControl() {
+        rbPlayer.velocity = Vector2.zero;
         movementScript.moveLock = false;
     }
 

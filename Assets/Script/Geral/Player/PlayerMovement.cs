@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour {
                 idleAnimationCooldown = 0;
             }
         }
-        else idleAnimationCooldown = 0;
+        if(!animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle Tree")) idleAnimationCooldown = 0;
     }
 
     public void AtMoveEnd() {
