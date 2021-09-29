@@ -92,7 +92,7 @@ public class PlayerAttack : MonoBehaviour {
     #region AnimatorFunctions
 
     private void BasicAtk1Dash() {
-        rbPlayer.AddForce(currentDashDirection * strenghAtk0Dash);
+        rbPlayer.AddForce(currentDashDirection * strenghAtk0Dash, ForceMode2D.Force);
     }
 
     private void RegainControl() {
