@@ -33,8 +33,10 @@ public class PlayerMovement : MonoBehaviour {
 
         direction = new Vector2(x, y).normalized;
 
-        animPlayer.SetFloat("Horizontal", x);
-        animPlayer.SetFloat("Vertical", y);
+        if (!animPlayer.GetBool("Moving") || direction.magnitude > 0) {
+            animPlayer.SetFloat("Horizontal", x);
+            animPlayer.SetFloat("Vertical", y);
+        }
         if (direction.magnitude > 0) animPlayer.SetBool("Moving", true);
         animPlayer.SetFloat("LastHorizontal", lastDirection.x);
         animPlayer.SetFloat("LastVertical", lastDirection.y);
@@ -58,6 +60,6 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void AtMoveEnd() {
-        animPlayer.SetBool("Moving", false);
+        if(direction.magnitude == 0) animPlayer.SetBool("Moving", false);
     }
 }
