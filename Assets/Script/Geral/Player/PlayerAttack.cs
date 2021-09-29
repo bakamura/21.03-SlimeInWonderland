@@ -4,31 +4,83 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
 
-    private float atk0CDown;
+    private Rigidbody2D rbPlayer;
+    private Animator animPlayer;
+    private PlayerMovement movementScript;
+
+    private Vector2 mousePos;
+
+    [Header("Atk 0")]
     public float atk0TotalCDown;
-    private float atk1CDown;
+    private float atk0CDown;
+    public float damageAtk0;
+    public float strenghAtk0Dash;
+    private Vector2 currentDashDirection;
+
+    [Header("Atk 1")]
     public float atk1TotalCDown;
-    private float atk2CDown;
+    private float atk1CDown;
+
+    [Header("Atk 2")]
     public float atk2TotalCDown;
+    private float atk2CDown;
+
+    private int currentAtk = 0;
     private float atkRemember;
     public float totalAtkRemember;
+
+    private void Start() {
+        rbPlayer = GetComponent<Rigidbody2D>();
+        animPlayer = GetComponent<Animator>();
+        movementScript = GetComponent<PlayerMovement>();
+    }
 
     private void Update() {
         Inputs();
     }
 
     private void Inputs() {
-        if (Input.GetButtonDown("Fire1")) atkRemember = totalAtkRemember;
+        if (Input.GetButtonDown("Fire1")) currentAtk = 1;
+        if (Input.GetButtonDown("Fire2")) currentAtk = 2;
+        if (Input.GetButtonDown("Fire3")) currentAtk = 3;
+
+        if (currentAtk > 0) atkRemember = totalAtkRemember;
 
     }
 
     private void FixedUpdate() {
-        
+        Attack();
         CoolDown();
     }
 
     private void Attack() {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        if (atkRemember > 0) {
+            switch (currentAtk) {
+                case 1:
+                    if (atk0CDown <= 0) BasicAtk1();
+                    return;
+                case 2:
+
+                    return;
+                case 3:
+
+                    return;
+            }
+
+
+            atkRemember -= Time.fixedDeltaTime;
+        }
+        else currentAtk = 0;
+
+    }
+
+    private void BasicAtk1() {
+        currentDashDirection = mousePos - new Vector2(transform.position.x, transform.position.y);
+        movementScript.moveLock = true;
+        rbPlayer.velocity = Vector2.zero;
+        animPlayer.SetTrigger("Atk0");
     }
 
     private void CoolDown() {
@@ -36,4 +88,16 @@ public class PlayerAttack : MonoBehaviour {
         if (atk1CDown > 0) atk1CDown -= Time.fixedDeltaTime;
         if (atk2CDown > 0) atk2CDown -= Time.fixedDeltaTime;
     }
+
+    #region AnimatorFunctions
+
+    private void BasicAtk1Dash() {
+        rbPlayer.AddForce(currentDashDirection * strenghAtk0Dash);
+    }
+
+    private void RegainControl() {
+        movementScript.moveLock = false;
+    }
+
+    #endregion
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    [Header("Movement")]
     public float speed;
     [System.NonSerialized] public bool moveLock = false;
     private Vector2 direction;

@@ -12369,6 +12369,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8411343562132329178, guid: f199120732281ac40b0708f5eaadb52f,
+        type: 3}
+      propertyPath: damageAtk0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411343562132329178, guid: f199120732281ac40b0708f5eaadb52f,
+        type: 3}
+      propertyPath: strenghAtk0Dash
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8411343562132329183, guid: f199120732281ac40b0708f5eaadb52f,
         type: 3}
       propertyPath: m_RootOrder
