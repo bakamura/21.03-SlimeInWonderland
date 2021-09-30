@@ -40,11 +40,18 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void Inputs() {
-        if (Input.GetMouseButtonDown(0)) currentAtk = 1;
-        if (Input.GetButtonDown("Fire2")) currentAtk = 2;
-        if (Input.GetButtonDown("Fire3")) currentAtk = 3;
-
-        if (currentAtk > 0) atkRemember = totalAtkRemember;
+        if (Input.GetButtonDown("Fire1")) {
+            currentAtk = 1;
+            atkRemember = totalAtkRemember;
+        }
+            if (Input.GetButtonDown("Fire2")) {
+            currentAtk = 2;
+            atkRemember = totalAtkRemember;
+        }
+        if (Input.GetButtonDown("Fire3")) {
+            currentAtk = 3;
+            atkRemember = totalAtkRemember;
+        }
 
     }
 
@@ -57,7 +64,11 @@ public class PlayerAttack : MonoBehaviour {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (atkRemember > 0) {
+            atkRemember -= Time.fixedDeltaTime;
             switch (currentAtk) {
+                case 0:
+                    atkRemember = 0;
+                    return;
                 case 1:
                     if (atk0CDown <= 0) BasicAtk1();
                     return;
@@ -68,11 +79,7 @@ public class PlayerAttack : MonoBehaviour {
 
                     return;
             }
-
-
-            atkRemember -= Time.fixedDeltaTime;
         }
-        else currentAtk = 0;
 
     }
 
@@ -82,7 +89,7 @@ public class PlayerAttack : MonoBehaviour {
         rbPlayer.velocity = Vector2.zero;
         animPlayer.SetTrigger("Atk0");
         atk0CDown = atk0TotalCDown;
-        atkRemember = 0;
+        currentAtk = 0;
     }
 
     private void CoolDown() {
