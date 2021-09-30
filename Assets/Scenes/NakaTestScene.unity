@@ -12384,6 +12384,11 @@ PrefabInstance:
       propertyPath: totalAtkRemember
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8411343562132329182, guid: f199120732281ac40b0708f5eaadb52f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 937c63bbb22d7e841bfc185794b7dad3, type: 2}
     - target: {fileID: 8411343562132329183, guid: f199120732281ac40b0708f5eaadb52f,
         type: 3}
       propertyPath: m_RootOrder
