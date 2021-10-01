@@ -374,6 +374,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RatCommon
       objectReference: {fileID: 0}
+    - target: {fileID: 557232797982443202, guid: ed32581dab8f09549bbed0bccda4d66a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed32581dab8f09549bbed0bccda4d66a, type: 3}
 --- !u!114 &963142185275645093
