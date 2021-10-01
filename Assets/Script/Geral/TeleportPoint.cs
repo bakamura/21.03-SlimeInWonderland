@@ -26,6 +26,8 @@ public class TeleportPoint : MonoBehaviour {
         yield return new WaitForSeconds(transitionDuration / 2);
 
         playerTransform.position = teleportPosition;
+        playerTransform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
 
         yield return new WaitForSeconds(transitionDuration / 2);
 

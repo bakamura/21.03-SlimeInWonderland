@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour {
     private PlayerMovement movementScript;
 
     private Vector2 mousePos;
+    private bool isAtking = false;
 
     [Header("Atk 0")]
     public float atk0TotalCDown;
@@ -44,7 +45,7 @@ public class PlayerAttack : MonoBehaviour {
             currentAtk = 1;
             atkRemember = totalAtkRemember;
         }
-            if (Input.GetButtonDown("Fire2")) {
+        if (Input.GetButtonDown("Fire2")) {
             currentAtk = 2;
             atkRemember = totalAtkRemember;
         }
@@ -84,6 +85,7 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void BasicAtk1() {
+        isAtking = true;
         currentDashDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
         movementScript.moveLock = true;
         rbPlayer.velocity = Vector2.zero;
@@ -105,9 +107,14 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void RegainControl() {
+        isAtking = false;
         rbPlayer.velocity = Vector2.zero;
         movementScript.moveLock = false;
     }
 
     #endregion
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.transform.tag == "Enemy" && isAtking) collision.transform.GetComponent<EnemyBase>().TakeDamage(damageAtk0);
+    }
 }
