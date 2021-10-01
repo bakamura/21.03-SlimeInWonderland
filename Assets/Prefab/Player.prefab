@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 937c63bbb22d7e841bfc185794b7dad3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atk0TotalCDown: 2
-  damageAtk0: 0
-  strenghAtk0Dash: 0
+  damageAtk0: 2
+  strenghAtk0Dash: 400
   atk1TotalCDown: 0
   atk2TotalCDown: 0
   totalAtkRemember: 0.2
