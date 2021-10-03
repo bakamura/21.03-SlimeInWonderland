@@ -314,6 +314,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1782340690, guid: ed32581dab8f09549bbed0bccda4d66a, type: 3}
+      propertyPath: followGap
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 557232797982443200, guid: ed32581dab8f09549bbed0bccda4d66a,
         type: 3}
       propertyPath: m_RootOrder
@@ -374,10 +378,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: RatCommon
       objectReference: {fileID: 0}
-    - target: {fileID: 557232797982443202, guid: ed32581dab8f09549bbed0bccda4d66a,
+    - target: {fileID: 557232797982443211, guid: ed32581dab8f09549bbed0bccda4d66a,
         type: 3}
-      propertyPath: m_TagString
-      value: Enemy
+      propertyPath: patroling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557232797982443211, guid: ed32581dab8f09549bbed0bccda4d66a,
+        type: 3}
+      propertyPath: aggroDuration
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed32581dab8f09549bbed0bccda4d66a, type: 3}
