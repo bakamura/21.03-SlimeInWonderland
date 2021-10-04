@@ -95,6 +95,81 @@ TextureImporter:
   - first:
       213: -8171883845962210517
     second: tile map cave-Sheet_30
+  - first:
+      213: 4595294572893251125
+    second: tile map cave-Sheet_31
+  - first:
+      213: -5833055042957247727
+    second: tile map cave-Sheet_32
+  - first:
+      213: -1349030447576689664
+    second: tile map cave-Sheet_33
+  - first:
+      213: 2132063273216203738
+    second: tile map cave-Sheet_34
+  - first:
+      213: -9149657949589066744
+    second: tile map cave-Sheet_35
+  - first:
+      213: -4076084351527126420
+    second: tile map cave-Sheet_36
+  - first:
+      213: -7547469983774281246
+    second: tile map cave-Sheet_37
+  - first:
+      213: 4104261125650038979
+    second: tile map cave-Sheet_38
+  - first:
+      213: 3315922084978796069
+    second: tile map cave-Sheet_39
+  - first:
+      213: 1666699787327230155
+    second: tile map cave-Sheet_40
+  - first:
+      213: -8111480116032621039
+    second: tile map cave-Sheet_41
+  - first:
+      213: -6244434864789876149
+    second: tile map cave-Sheet_42
+  - first:
+      213: 5658284164922324589
+    second: tile map cave-Sheet_43
+  - first:
+      213: 4672831719637653044
+    second: tile map cave-Sheet_44
+  - first:
+      213: 4727560895137163694
+    second: tile map cave-Sheet_45
+  - first:
+      213: 8504151254506540864
+    second: tile map cave-Sheet_46
+  - first:
+      213: 2778209797935966772
+    second: tile map cave-Sheet_47
+  - first:
+      213: -6100691287620464474
+    second: tile map cave-Sheet_48
+  - first:
+      213: -3382302177084546245
+    second: tile map cave-Sheet_49
+  - first:
+      213: 3865087372729979966
+    second: tile map cave-Sheet_50
+  - first:
+      213: -8705381859497404262
+    second: tile map cave-Sheet_51
+  - first:
+      213: 3643390972240726066
+    second: tile map cave-Sheet_52
+  - first:
+      213: 7602128482053081004
+    second: tile map cave-Sheet_53
+  - first:
+      213: 2485049550914270765
+    second: tile map cave-Sheet_54
+  - first:
+      213: 2543329766072555762
+    second: tile map cave-Sheet_55
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -256,7 +331,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 224
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -277,7 +352,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 224
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -297,7 +372,7 @@ TextureImporter:
       name: tile map cave-Sheet_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 64
         y: 192
         width: 32
         height: 32
@@ -318,7 +393,7 @@ TextureImporter:
       name: tile map cave-Sheet_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 96
         y: 192
         width: 32
         height: 32
@@ -339,7 +414,7 @@ TextureImporter:
       name: tile map cave-Sheet_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 128
         y: 192
         width: 32
         height: 32
@@ -360,8 +435,8 @@ TextureImporter:
       name: tile map cave-Sheet_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
+        x: 160
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -381,8 +456,8 @@ TextureImporter:
       name: tile map cave-Sheet_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 160
+        x: 192
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -402,8 +477,8 @@ TextureImporter:
       name: tile map cave-Sheet_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
+        x: 224
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -423,8 +498,8 @@ TextureImporter:
       name: tile map cave-Sheet_8
       rect:
         serializedVersion: 2
-        x: 32
-        y: 128
+        x: 0
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -444,8 +519,8 @@ TextureImporter:
       name: tile map cave-Sheet_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
+        x: 32
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -465,8 +540,8 @@ TextureImporter:
       name: tile map cave-Sheet_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 64
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -486,8 +561,8 @@ TextureImporter:
       name: tile map cave-Sheet_11
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 96
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -507,8 +582,8 @@ TextureImporter:
       name: tile map cave-Sheet_12
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
+        x: 128
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -528,8 +603,8 @@ TextureImporter:
       name: tile map cave-Sheet_13
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
+        x: 160
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -549,8 +624,8 @@ TextureImporter:
       name: tile map cave-Sheet_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 192
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -570,8 +645,8 @@ TextureImporter:
       name: tile map cave-Sheet_15
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 224
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -591,8 +666,8 @@ TextureImporter:
       name: tile map cave-Sheet_16
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
+        x: 0
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -612,8 +687,8 @@ TextureImporter:
       name: tile map cave-Sheet_17
       rect:
         serializedVersion: 2
-        x: 160
-        y: 64
+        x: 32
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -633,8 +708,8 @@ TextureImporter:
       name: tile map cave-Sheet_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 64
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -654,8 +729,8 @@ TextureImporter:
       name: tile map cave-Sheet_19
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 96
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -675,8 +750,8 @@ TextureImporter:
       name: tile map cave-Sheet_20
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 128
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -696,8 +771,8 @@ TextureImporter:
       name: tile map cave-Sheet_21
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 160
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -717,8 +792,8 @@ TextureImporter:
       name: tile map cave-Sheet_22
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
+        x: 192
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -738,8 +813,8 @@ TextureImporter:
       name: tile map cave-Sheet_23
       rect:
         serializedVersion: 2
-        x: 160
-        y: 32
+        x: 224
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -760,7 +835,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -781,7 +856,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -802,7 +877,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -823,7 +898,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -844,7 +919,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -865,7 +940,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -877,6 +952,552 @@ TextureImporter:
       bones: []
       spriteID: 733ff5db9d267ee80800000000000000
       internalID: -8149436313379015881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b236ba740f2a79e80800000000000000
+      internalID: -8171883845962210517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 536259f2114c5cf30800000000000000
+      internalID: 4595294572893251125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b7b31e753dc0fa0800000000000000
+      internalID: -5833055042957247727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 004510594f7474de0800000000000000
+      internalID: -1349030447576689664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb55b6304c969d10800000000000000
+      internalID: 2132063273216203738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c2a626292e50180800000000000000
+      internalID: -9149657949589066744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a72b8d0e6de67c0800000000000000
+      internalID: -4076084351527126420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e1f538b900024790800000000000000
+      internalID: -7547469983774281246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c0c0db9fb345f830800000000000000
+      internalID: 4104261125650038979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 526a80a5195840e20800000000000000
+      internalID: 3315922084978796069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0dbd240ae412710800000000000000
+      internalID: 1666699787327230155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1163b399fcb3e6f80800000000000000
+      internalID: -8111480116032621039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b42922d239f4759a0800000000000000
+      internalID: -6244434864789876149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d66b9681873468e40800000000000000
+      internalID: 5658284164922324589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4361e28f0bb39d040800000000000000
+      internalID: 4672831719637653044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea9ada0269bab9140800000000000000
+      internalID: 4727560895137163694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f0e015280d40670800000000000000
+      internalID: 8504151254506540864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43aab75771f2e8620800000000000000
+      internalID: 2778209797935966772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a0df05c89df55ba0800000000000000
+      internalID: -6100691287620464474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3368d31716af01d0800000000000000
+      internalID: -3382302177084546245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e341b65cc7c83a530800000000000000
+      internalID: 3865087372729979966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9817866255403780800000000000000
+      internalID: -8705381859497404262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238064629ccef8230800000000000000
+      internalID: 3643390972240726066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca747ad939f208960800000000000000
+      internalID: 7602128482053081004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d263d73766bac7220800000000000000
+      internalID: 2485049550914270765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f89e6572f8bb4320800000000000000
+      internalID: 2543329766072555762
       vertices: []
       indices: 
       edges: []
