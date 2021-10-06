@@ -25,11 +25,7 @@ public class PlayerData : MonoBehaviour {
         ChangeColor();
     }
 
-<<<<<<< HEAD
     public void TakeDamage(float damage) {
-=======
-    private void TakeDamage(float damage) {
->>>>>>> main
         if (blockState) ;
         else currentHealth -= damage;
     }

@@ -124,7 +124,7 @@ public class RandomPatrol : MonoBehaviour {
                     RaycastHit2D[] obstruction = Physics2D.RaycastAll(transform.position, directionToTarget, distanceToTarget);
                     bool hitWall = false;
                     for (int i = 0; i < obstruction.Length; i++) if (obstruction[0].transform.tag == "Wall") hitWall = true;
-                    if (hitWall) aggroSpan = aggroDuration;
+                    if (!hitWall) aggroSpan = aggroDuration;
                 }
             }
         }
