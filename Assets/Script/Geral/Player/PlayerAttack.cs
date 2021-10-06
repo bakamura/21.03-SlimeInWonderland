@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public class PlayerAttack : MonoBehaviour {
     public float damageAtk0;
     public float strenghAtk0Dash;
     private Vector2 currentDashDirection;
+    public Image atk0ImageCDown;
 
     [Header("Atk 1")]
     public float atk1TotalCDown;
@@ -59,6 +61,7 @@ public class PlayerAttack : MonoBehaviour {
     private void FixedUpdate() {
         Attack();
         CoolDown();
+        UpdateUI();
     }
 
     private void Attack() {
@@ -98,8 +101,15 @@ public class PlayerAttack : MonoBehaviour {
 
     private void CoolDown() {
         if (atk0CDown > 0) atk0CDown -= Time.fixedDeltaTime;
+        if (atk0CDown < 0) atk0CDown = 0;
         if (atk1CDown > 0) atk1CDown -= Time.fixedDeltaTime;
+        if (atk1CDown < 0) atk0CDown = 0;
         if (atk2CDown > 0) atk2CDown -= Time.fixedDeltaTime;
+        if (atk2CDown < 0) atk0CDown = 0;
+    }
+
+    private void UpdateUI() {
+        atk0ImageCDown.fillAmount = (atk0TotalCDown - atk0CDown) / atk0TotalCDown;
     }
 
     #region AnimatorFunctions
