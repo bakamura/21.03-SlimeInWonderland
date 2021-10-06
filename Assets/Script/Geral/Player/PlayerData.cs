@@ -4,12 +4,30 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour {
 
+    [Header("Stats")]
+    public float maxHealth;
+    [System.NonSerialized] public float currentHealth;
+    [System.NonSerialized] public bool blockState;
+
+    [Header("Progression")]
+    public float fireXP;
+    public float waterXP;
+    public float plantXP;
+    public float electricXP;
+    public float lightXP;
+    public float darkXP;
+
     public Material[] colorMaterial;
     private int currentColor = 0;
 
 
     private void Update() {
         ChangeColor();
+    }
+
+    public void TakeDamage(float damage) {
+        if (blockState) ;
+        else currentHealth -= damage;
     }
 
     private void ChangeColor() {

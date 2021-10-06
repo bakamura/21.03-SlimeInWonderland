@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour {
 
@@ -14,19 +13,18 @@ public class PlayerAttack : MonoBehaviour {
 
     [Header("Atk 0")]
     public float atk0TotalCDown;
-    private float atk0CDown;
+    [System.NonSerialized] public float atk0CDown;
     public float damageAtk0;
     public float strenghAtk0Dash;
     private Vector2 currentDashDirection;
-    public Image atk0ImageCDown;
 
     [Header("Atk 1")]
     public float atk1TotalCDown;
-    private float atk1CDown;
+    [System.NonSerialized] public float atk1CDown;
 
     [Header("Atk 2")]
     public float atk2TotalCDown;
-    private float atk2CDown;
+    [System.NonSerialized] public float atk2CDown;
 
     private int currentAtk = 0;
     private float atkRemember;
@@ -61,7 +59,6 @@ public class PlayerAttack : MonoBehaviour {
     private void FixedUpdate() {
         Attack();
         CoolDown();
-        UpdateUI();
     }
 
     private void Attack() {
@@ -108,13 +105,10 @@ public class PlayerAttack : MonoBehaviour {
         if (atk2CDown < 0) atk0CDown = 0;
     }
 
-    private void UpdateUI() {
-        atk0ImageCDown.fillAmount = (atk0TotalCDown - atk0CDown) / atk0TotalCDown;
-    }
-
     #region AnimatorFunctions
 
     private void BasicAtk1Dash() {
+        rbPlayer.velocity = Vector2.zero;
         rbPlayer.AddForce(currentDashDirection * strenghAtk0Dash, ForceMode2D.Force);
     }
 

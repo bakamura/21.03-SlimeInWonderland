@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3667573876355629924}
   - component: {fileID: 8411343562132329180}
   - component: {fileID: 8411343562132329178}
+  - component: {fileID: 675993383}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,7 +143,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.25}
-  m_Size: {x: 0.9, y: 0.43}
+  m_Size: {x: 0.9, y: 0.45}
   m_Direction: 1
 --- !u!114 &3667573876355629924
 MonoBehaviour:
@@ -156,9 +157,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4233135a344b944ae642b5d024c3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
+  fireXP: 0
+  waterXP: 0
+  plantXP: 0
+  electricXP: 0
+  lightXP: 0
+  darkXP: 0
   colorMaterial:
   - {fileID: 2100000, guid: 937c63bbb22d7e841bfc185794b7dad3, type: 2}
   - {fileID: 2100000, guid: af21e8643321a8a49be5f5fd29770178, type: 2}
+  - {fileID: 2100000, guid: 3bf55990882f21248af1f94ea2387729, type: 2}
+  - {fileID: 2100000, guid: 1808dad6af08ac642a0f533d11a1b15b, type: 2}
+  - {fileID: 2100000, guid: 9aa8ac1a9eed78e48b20419b0bcf1022, type: 2}
+  - {fileID: 2100000, guid: ec06ffaf58948bf488ada3e545fd00a7, type: 2}
+  - {fileID: 2100000, guid: f51cb2eb8fc844940a6e224a03c63279, type: 2}
 --- !u!114 &8411343562132329180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +204,19 @@ MonoBehaviour:
   atk1TotalCDown: 0
   atk2TotalCDown: 0
   totalAtkRemember: 0.2
+--- !u!114 &675993383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411343562132329171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156b529eafd66354f9845c66d0519ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  atk0ImageCDown: {fileID: 0}
+  atk1ImageCDown: {fileID: 0}
+  atk2ImageCDown: {fileID: 0}
