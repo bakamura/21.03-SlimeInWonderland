@@ -92,6 +92,8 @@ public class PlayerAttack : MonoBehaviour {
         animPlayer.SetTrigger("Atk0");
         atk0CDown = atk0TotalCDown;
         currentAtk = 0;
+
+        movementScript.lastDirection = currentDashDirection;
     }
 
     private void CoolDown() {
@@ -106,9 +108,12 @@ public class PlayerAttack : MonoBehaviour {
         rbPlayer.AddForce(currentDashDirection * strenghAtk0Dash, ForceMode2D.Force);
     }
 
+    private void BreakMovement() {
+        rbPlayer.velocity = Vector2.zero;
+    }
+
     private void RegainControl() {
         isAtking = false;
-        rbPlayer.velocity = Vector2.zero;
         movementScript.moveLock = false;
     }
 

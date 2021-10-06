@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;
     [System.NonSerialized] public bool moveLock = false;
     private Vector2 direction;
-    private Vector2 lastDirection;
+    [System.NonSerialized] public Vector2 lastDirection;
 
     private float idleAnimationCooldown = 0;
     public float idleAnimationTotalCooldown;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
         int x = (int) Input.GetAxisRaw("Horizontal");
         int y = (int) Input.GetAxisRaw("Vertical");
 
-        if ((x == 0 && y == 0) && direction.x != 0 || direction.y != 0) lastDirection = direction;
+        if ((x == 0 && y == 0 && !animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Atk0")) && direction.x != 0 || direction.y != 0) lastDirection = direction;
 
         direction = new Vector2(x, y).normalized;
 
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour {
             animPlayer.SetFloat("Horizontal", x);
             animPlayer.SetFloat("Vertical", y);
         }
-        if (direction.magnitude > 0) animPlayer.SetBool("Moving", true);
+        if (direction.magnitude > 0 && animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")) animPlayer.SetBool("Moving", true);
         animPlayer.SetFloat("LastHorizontal", lastDirection.x);
         animPlayer.SetFloat("LastVertical", lastDirection.y);
     }
