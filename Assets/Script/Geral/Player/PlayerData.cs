@@ -6,7 +6,8 @@ public class PlayerData : MonoBehaviour {
 
     [Header("Stats")]
     public float maxHealth;
-    [System.NonSerialized] public float currentHealth;
+    //[System.NonSerialized]
+    public float currentHealth;
     [System.NonSerialized] public bool blockState;
 
     [Header("Progression")]
@@ -20,6 +21,9 @@ public class PlayerData : MonoBehaviour {
     public Material[] colorMaterial;
     private int currentColor = 0;
 
+    private void Start() {
+        currentHealth = maxHealth;
+    }
 
     private void Update() {
         ChangeColor();

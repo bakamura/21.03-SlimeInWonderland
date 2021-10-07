@@ -24,13 +24,13 @@ public class PlayerHUD : MonoBehaviour {
     }
 
     private void DataUI() {
-        
+        healthBar.fillAmount = dataScript.currentHealth/dataScript.maxHealth;   
     }
 
     private void AtkUI() {
-        atk0ImageCDown.fillAmount = (atkScript.atk0TotalCDown - atkScript.atk0CDown) / atkScript.atk0TotalCDown;
-        atk1ImageCDown.fillAmount = (atkScript.atk1TotalCDown - atkScript.atk1CDown) / atkScript.atk0TotalCDown;
-        atk2ImageCDown.fillAmount = (atkScript.atk2TotalCDown - atkScript.atk2CDown) / atkScript.atk0TotalCDown;
+        atk0ImageCDown.fillAmount = atkScript.atk0CDown / atkScript.atk0TotalCDown;
+        atk1ImageCDown.fillAmount = atkScript.atk1CDown / atkScript.atk0TotalCDown;
+        atk2ImageCDown.fillAmount = atkScript.atk2CDown / atkScript.atk0TotalCDown;
     }
 
 }
