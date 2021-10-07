@@ -316,7 +316,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1782340690, guid: ed32581dab8f09549bbed0bccda4d66a, type: 3}
       propertyPath: followGap
-      value: 1.1
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782340690, guid: ed32581dab8f09549bbed0bccda4d66a, type: 3}
+      propertyPath: ratDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782340690, guid: ed32581dab8f09549bbed0bccda4d66a, type: 3}
+      propertyPath: restingTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 557232797982443200, guid: ed32581dab8f09549bbed0bccda4d66a,
         type: 3}

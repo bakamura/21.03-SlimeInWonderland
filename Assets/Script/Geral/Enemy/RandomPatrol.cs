@@ -21,7 +21,7 @@ public class RandomPatrol : MonoBehaviour {
     public float maxRest;
     [SerializeField] private Vector2 currentTarget;
     private bool isGenerating;
-    [SerializeField] private Vector2 facing;
+    public Vector2 facing;
     private int preventCrash = 0;
     private Vector3 startPos;
 
@@ -99,14 +99,15 @@ public class RandomPatrol : MonoBehaviour {
 
         yield return new WaitForSeconds(Random.Range(0, maxRest));
 
-        GenerateTarget();
-        while ((currentTarget.x < squarePoints[0].x || currentTarget.x > squarePoints[1].x || currentTarget.y < squarePoints[0].y || currentTarget.y > squarePoints[1].y) && preventCrash < 10) {
+        if (aggroSpan <= 0) {
             GenerateTarget();
-            preventCrash++;
+            while ((currentTarget.x < squarePoints[0].x || currentTarget.x > squarePoints[1].x || currentTarget.y < squarePoints[0].y || currentTarget.y > squarePoints[1].y) && preventCrash < 10) {
+                GenerateTarget();
+                preventCrash++;
+            }
+            if (preventCrash == 10) currentTarget = startPos;
+            preventCrash = 0;
         }
-        if (preventCrash == 10) currentTarget = startPos;
-        preventCrash = 0;
-
         isGenerating = false;
     }
 
@@ -118,6 +119,7 @@ public class RandomPatrol : MonoBehaviour {
             for (int i = 0; i < rangeChecks.Length; i++) if (rangeChecks[i].tag == "Player") isInRadius = true;
             if (isInRadius) {
                 Vector2 directionToTarget = (playerPos.position - transform.position).normalized;
+
 
                 if (Vector2.Angle(facing, directionToTarget) < angle / 2) {
                     float distanceToTarget = Vector2.Distance(transform.position, playerPos.position);
@@ -140,6 +142,8 @@ public class RandomPatrol : MonoBehaviour {
         Gizmos.DrawWireCube(startPos, squareRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(facing.x, facing.y));
     }
 
 }
