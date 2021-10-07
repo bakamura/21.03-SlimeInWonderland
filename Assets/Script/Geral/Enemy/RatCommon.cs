@@ -39,7 +39,6 @@ public class RatCommon : MonoBehaviour {
             else if (angle2Player > 45 && angle2Player < 135) patrolScript.facing = new Vector2(0, 1);
             else if (angle2Player >= 135 || angle2Player < -135) patrolScript.facing = new Vector2(-1, 0);
             else if (angle2Player >= -135 && angle2Player <= -45) patrolScript.facing = new Vector2(0, -1);
-            Debug.Log(angle2Player);
 
             if (Vector2.Distance(transform.position, playerGObject.transform.position) < followGap) {
                 resting = true;
