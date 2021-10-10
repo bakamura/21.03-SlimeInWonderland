@@ -142,7 +142,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.25}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.9, y: 0.45}
   m_Direction: 1
 --- !u!114 &3667573876355629924
@@ -157,7 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4233135a344b944ae642b5d024c3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 10
+  currentHealth: 0
   fireXP: 0
   waterXP: 0
   plantXP: 0
@@ -200,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atk0TotalCDown: 2
   damageAtk0: 2
-  strenghAtk0Dash: 350
+  strenghAtk0Dash: 8
   atk1TotalCDown: 0
   atk2TotalCDown: 0
   totalAtkRemember: 0.2

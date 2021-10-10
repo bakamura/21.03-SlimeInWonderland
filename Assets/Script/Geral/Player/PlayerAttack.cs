@@ -74,7 +74,7 @@ public class PlayerAttack : MonoBehaviour {
                     if (atk0CDown <= 0) BasicAtk1();
                     return;
                 case 2:
-
+                    if (atk1CDown <= 0) ;
                     return;
                 case 3:
 
@@ -94,6 +94,45 @@ public class PlayerAttack : MonoBehaviour {
         currentAtk = 0;
 
         movementScript.lastDirection = currentDashDirection;
+        StartCoroutine(BasicAtk1DashNum());
+    }
+
+    IEnumerator BasicAtk1DashNum() {
+        yield return new WaitForSeconds(0.1f);
+
+        rbPlayer.velocity = currentDashDirection * strenghAtk0Dash;
+
+        yield return new WaitForSeconds(0.4f);
+
+        rbPlayer.velocity = Vector2.zero;
+
+        yield return new WaitForSeconds(0.3f);
+
+        isAtking = false;
+        movementScript.moveLock = false;
+    }
+
+    private void FireAtk1() {
+        isAtking = true;
+        movementScript.moveLock = true;
+        rbPlayer.velocity = Vector2.zero;
+        animPlayer.SetTrigger("AtkF1");
+        atk1CDown = atk1TotalCDown;
+        currentAtk = 1;
+
+        movementScript.lastDirection = mousePos - new Vector2(transform.position.x, transform.position.y);
+        StartCoroutine(FireAtk1Instantiate());
+    }
+
+    IEnumerator FireAtk1Instantiate() {
+        yield return new WaitForSeconds(0.4f);
+
+
+
+        yield return new WaitForSeconds(0.4f);
+
+        isAtking = false;
+        movementScript.moveLock = false;
     }
 
     private void CoolDown() {
@@ -107,19 +146,18 @@ public class PlayerAttack : MonoBehaviour {
 
     #region AnimatorFunctions
 
-    private void BasicAtk1Dash() {
-        rbPlayer.velocity = Vector2.zero;
-        rbPlayer.AddForce(currentDashDirection * strenghAtk0Dash, ForceMode2D.Force);
-    }
+    //private void BasicAtk1Dash() {
+    //    rbPlayer.velocity = currentDashDirection * strenghAtk0Dash;
+    //}
 
-    private void BreakMovement() {
-        rbPlayer.velocity = Vector2.zero;
-    }
+    //private void BreakMovement() {
+    //    rbPlayer.velocity = Vector2.zero;
+    //}
 
-    private void RegainControl() {
-        isAtking = false;
-        movementScript.moveLock = false;
-    }
+    //private void RegainControl() {
+    //    isAtking = false;
+    //    movementScript.moveLock = false;
+    //}
 
     #endregion
 
