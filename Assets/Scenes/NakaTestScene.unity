@@ -327,7 +327,11 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68431695}
   serializedVersion: 6
+<<<<<<< HEAD
   lengthInSec: 0.2
+=======
+  lengthInSec: 1
+>>>>>>> main
   simulationSpeed: 0.5
   stopAction: 0
   cullingMode: 0
@@ -947,7 +951,11 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
+<<<<<<< HEAD
     angle: 35
+=======
+    angle: 29.32
+>>>>>>> main
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -1152,7 +1160,11 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
+<<<<<<< HEAD
       scalar: 150
+=======
+      scalar: 50
+>>>>>>> main
       minScalar: 10
       maxCurve:
         serializedVersion: 2
