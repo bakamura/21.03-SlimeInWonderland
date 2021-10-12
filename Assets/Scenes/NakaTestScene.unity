@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 68431697}
   - component: {fileID: 68431696}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: BreathParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,7 +327,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68431695}
   serializedVersion: 6
-  lengthInSec: 1
+  lengthInSec: 0.2
   simulationSpeed: 0.5
   stopAction: 0
   cullingMode: 0
@@ -947,7 +947,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 29.32
+    angle: 35
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -1152,7 +1152,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 150
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1767,7 +1767,11 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -1251872907961687432, guid: d939b6089b8761d47895c562e3893e95,
+    - sprite: {fileID: 5068637980078039684, guid: 9ab9607bcbadc34468f3b903c8761b34,
+        type: 3}
+    - sprite: {fileID: -1183689665261932132, guid: 9ab9607bcbadc34468f3b903c8761b34,
+        type: 3}
+    - sprite: {fileID: 1766163434079748877, guid: 9ab9607bcbadc34468f3b903c8761b34,
         type: 3}
     flipU: 0
     flipV: 0

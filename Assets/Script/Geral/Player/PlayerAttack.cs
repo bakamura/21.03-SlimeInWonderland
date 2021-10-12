@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour {
     private Rigidbody2D rbPlayer;
     private Animator animPlayer;
     private PlayerMovement movementScript;
+    private PlayerData dataScript;
 
     private Vector2 mousePos;
     private bool isAtking = false;
@@ -100,10 +101,12 @@ public class PlayerAttack : MonoBehaviour {
     IEnumerator BasicAtk1DashNum() {
         yield return new WaitForSeconds(0.1f);
 
+        dataScript.blockState = true;
         rbPlayer.velocity = currentDashDirection * strenghAtk0Dash;
 
         yield return new WaitForSeconds(0.4f);
 
+        dataScript.blockState = false;
         rbPlayer.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(0.3f);
