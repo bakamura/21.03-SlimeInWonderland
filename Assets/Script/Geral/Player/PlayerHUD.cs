@@ -29,8 +29,8 @@ public class PlayerHUD : MonoBehaviour {
 
     private void AtkUI() {
         atk0ImageCDown.fillAmount = atkScript.atk0CDown / atkScript.atk0TotalCDown;
-        atk1ImageCDown.fillAmount = atkScript.atk1CDown / atkScript.atk0TotalCDown;
-        atk2ImageCDown.fillAmount = atkScript.atk2CDown / atkScript.atk0TotalCDown;
+        atk1ImageCDown.fillAmount = atkScript.atk1CDown / atkScript.atk1TotalCDown;
+        atk2ImageCDown.fillAmount = atkScript.atk2CDown / atkScript.atk2TotalCDown;
     }
 
 }

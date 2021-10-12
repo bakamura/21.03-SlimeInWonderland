@@ -22,6 +22,7 @@ public class PlayerAttack : MonoBehaviour {
     [Header("Atk 1")]
     public float atk1TotalCDown;
     [System.NonSerialized] public float atk1CDown;
+    public ParticleSystem atk1Particles;
 
     [Header("Atk 2")]
     public float atk2TotalCDown;
@@ -35,6 +36,7 @@ public class PlayerAttack : MonoBehaviour {
         rbPlayer = GetComponent<Rigidbody2D>();
         animPlayer = GetComponent<Animator>();
         movementScript = GetComponent<PlayerMovement>();
+        dataScript = GetComponent<PlayerData>();
     }
 
     private void Update() {
@@ -67,6 +69,7 @@ public class PlayerAttack : MonoBehaviour {
 
         if (atkRemember > 0) {
             atkRemember -= Time.fixedDeltaTime;
+            Debug.Log(currentAtk);
             switch (currentAtk) {
                 case 0:
                     atkRemember = 0;
@@ -75,7 +78,7 @@ public class PlayerAttack : MonoBehaviour {
                     if (atk0CDown <= 0) BasicAtk1();
                     return;
                 case 2:
-                    if (atk1CDown <= 0) ;
+                    if (atk1CDown <= 0) FireAtk1();
                     return;
                 case 3:
 
@@ -121,16 +124,17 @@ public class PlayerAttack : MonoBehaviour {
         rbPlayer.velocity = Vector2.zero;
         animPlayer.SetTrigger("AtkF1");
         atk1CDown = atk1TotalCDown;
-        currentAtk = 1;
+        currentAtk = 0;
 
-        movementScript.lastDirection = mousePos - new Vector2(transform.position.x, transform.position.y);
+        movementScript.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
+        atk1Particles.transform.rotation = Quaternion.Euler(movementScript.lastDirection.y * -90, movementScript.lastDirection.x * 90, 0);
         StartCoroutine(FireAtk1Instantiate());
     }
 
     IEnumerator FireAtk1Instantiate() {
         yield return new WaitForSeconds(0.4f);
 
-
+        atk1Particles.Play();
 
         yield return new WaitForSeconds(0.4f);
 
@@ -147,22 +151,6 @@ public class PlayerAttack : MonoBehaviour {
         if (atk2CDown < 0) atk0CDown = 0;
     }
 
-    #region AnimatorFunctions
-
-    //private void BasicAtk1Dash() {
-    //    rbPlayer.velocity = currentDashDirection * strenghAtk0Dash;
-    //}
-
-    //private void BreakMovement() {
-    //    rbPlayer.velocity = Vector2.zero;
-    //}
-
-    //private void RegainControl() {
-    //    isAtking = false;
-    //    movementScript.moveLock = false;
-    //}
-
-    #endregion
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.transform.tag == "Enemy" && isAtking) collision.transform.GetComponent<EnemyBase>().TakeDamage(damageAtk0);
