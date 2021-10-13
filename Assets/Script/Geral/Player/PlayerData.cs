@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour {
 
+    [Header("Components")]
+    private Animator animPlayer;
+
     [Header("Stats")]
     public float maxHealth;
     //[System.NonSerialized]
@@ -15,8 +18,8 @@ public class PlayerData : MonoBehaviour {
     public float waterXP;
     public float plantXP;
     public float electricXP;
-    public float lightXP;
-    public float darkXP;
+    public float earthXP;
+    public float poisonXP;
 
     public Material[] colorMaterial;
     private int currentColor = 0;
@@ -32,6 +35,7 @@ public class PlayerData : MonoBehaviour {
     public void TakeDamage(float damage) {
         if (blockState) ;
         else currentHealth -= damage;
+        animPlayer.SetBool("Consuming", false);
     }
 
     private void ChangeColor() {

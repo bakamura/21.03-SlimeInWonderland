@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour {
     private Vector2 mousePos;
     private bool isAtking = false;
 
-    public GameObject[] consumableEnemy;
+    public float[] xpToGet = { 0, 0, 0, 0, 0, 0 };
 
     [Header("Atk 0")]
     public float atk0TotalCDown;
@@ -60,7 +60,7 @@ public class PlayerAttack : MonoBehaviour {
                 atkRemember = totalAtkRemember;
             }
             if (Input.GetKeyDown(KeyCode.F)) {
-
+                animPlayer.SetBool("Consuming", true);
             }
         }
     }
@@ -158,35 +158,19 @@ public class PlayerAttack : MonoBehaviour {
     }
     #endregion
 
-    private void Consume() {
-        for (int i = 0; i < consumableEnemy.Length; i++) GetXp(consumableEnemy[i].xpType, consumableEnemy[i].xpAmount);
-    }
 
-    private void GetXp(int type, float amount) {
-        switch (type) {
-            case 0:
-                dataScript.fireXP += amount;
-                return;
-            case 1:
-                dataScript.waterXP += amount;
-                return;
-            case 2:
-                dataScript.plantXP += amount;
-                return;
-            case 3:
-                dataScript.electricXP += amount;
-                return;
-            case 4:
-                dataScript.earthXP += amount;
-                return;
-            case 5:
-                dataScript.poisonXP += amount;
-                return;
-            case 6:
 
-                return;
+    //Animator
+    public void GetXp() {
+        dataScript.fireXP += xpToGet[0];
+        dataScript.waterXP += xpToGet[1];
+        dataScript.plantXP += xpToGet[2];
+        dataScript.electricXP += xpToGet[3];
+        dataScript.earthXP += xpToGet[4];
+        dataScript.poisonXP += xpToGet[5];
 
-        }
+        for (int i = 0; i < xpToGet.Length; i++) xpToGet[i] = 0;
+        animPlayer.SetBool("Consuming", false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
