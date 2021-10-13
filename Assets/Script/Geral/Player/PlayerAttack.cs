@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour {
     private Vector2 mousePos;
     private bool isAtking = false;
 
+    public GameObject[] consumableEnemy;
+
     [Header("Atk 0")]
     public float atk0TotalCDown;
     [System.NonSerialized] public float atk0CDown;
@@ -44,19 +46,23 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void Inputs() {
-        if (Input.GetButtonDown("Fire1")) {
-            currentAtk = 1;
-            atkRemember = totalAtkRemember;
-        }
-        if (Input.GetButtonDown("Fire2")) {
-            currentAtk = 2;
-            atkRemember = totalAtkRemember;
-        }
-        if (Input.GetButtonDown("Fire3")) {
-            currentAtk = 3;
-            atkRemember = totalAtkRemember;
-        }
+        if (!isAtking) {
+            if (Input.GetButtonDown("Fire1")) {
+                currentAtk = 1;
+                atkRemember = totalAtkRemember;
+            }
+            if (Input.GetButtonDown("Fire2")) {
+                currentAtk = 2;
+                atkRemember = totalAtkRemember;
+            }
+            if (Input.GetButtonDown("Fire3")) {
+                currentAtk = 3;
+                atkRemember = totalAtkRemember;
+            }
+            if (Input.GetKeyDown(KeyCode.F)) {
 
+            }
+        }
     }
 
     private void FixedUpdate() {
@@ -69,7 +75,6 @@ public class PlayerAttack : MonoBehaviour {
 
         if (atkRemember > 0) {
             atkRemember -= Time.fixedDeltaTime;
-            Debug.Log(currentAtk);
             switch (currentAtk) {
                 case 0:
                     atkRemember = 0;
@@ -88,6 +93,7 @@ public class PlayerAttack : MonoBehaviour {
 
     }
 
+    #region AttackFunctions
     private void BasicAtk1() {
         isAtking = true;
         currentDashDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
@@ -146,11 +152,42 @@ public class PlayerAttack : MonoBehaviour {
         if (atk0CDown > 0) atk0CDown -= Time.fixedDeltaTime;
         if (atk0CDown < 0) atk0CDown = 0;
         if (atk1CDown > 0) atk1CDown -= Time.fixedDeltaTime;
-        if (atk1CDown < 0) atk0CDown = 0;
+        if (atk1CDown < 0) atk1CDown = 0;
         if (atk2CDown > 0) atk2CDown -= Time.fixedDeltaTime;
-        if (atk2CDown < 0) atk0CDown = 0;
+        if (atk2CDown < 0) atk2CDown = 0;
+    }
+    #endregion
+
+    private void Consume() {
+        for (int i = 0; i < consumableEnemy.Length; i++) GetXp(consumableEnemy[i].xpType, consumableEnemy[i].xpAmount);
     }
 
+    private void GetXp(int type, float amount) {
+        switch (type) {
+            case 0:
+                dataScript.fireXP += amount;
+                return;
+            case 1:
+                dataScript.waterXP += amount;
+                return;
+            case 2:
+                dataScript.plantXP += amount;
+                return;
+            case 3:
+                dataScript.electricXP += amount;
+                return;
+            case 4:
+                dataScript.earthXP += amount;
+                return;
+            case 5:
+                dataScript.poisonXP += amount;
+                return;
+            case 6:
+
+                return;
+
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.transform.tag == "Enemy" && isAtking) collision.transform.GetComponent<EnemyBase>().TakeDamage(damageAtk0);
