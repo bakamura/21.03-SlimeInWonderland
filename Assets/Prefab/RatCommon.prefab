@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 7970909259963184619, guid: 810e8a0db0318cb41872d79d9335a2eb,
+  m_Sprite: {fileID: 4019647194931882682, guid: 05c88f59f251197408241d63f57d3580,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  xpType: 0
+  xpAmount: 0
 --- !u!114 &557232797982443211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   patroling: 1
-  aggroTimer: 2
+  aggroDuration: 0
+  aggroSpan: 0
   squareRange: {x: 5, y: 5}
   maxDist: 3
   maxRest: 3
@@ -195,3 +198,4 @@ MonoBehaviour:
   followGap: 0.5
   atkRange: 2
   restingTime: 1
+  ratDamage: 0

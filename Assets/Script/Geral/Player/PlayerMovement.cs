@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
         int x = (int) Input.GetAxisRaw("Horizontal");
         int y = (int) Input.GetAxisRaw("Vertical");
 
-        if ((x == 0 && y == 0 && !animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Atk0")) && direction.x != 0 || direction.y != 0) lastDirection = direction;
+        if ((x == 0 && y == 0 && !animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Atk0") && !moveLock) && direction.x != 0 || direction.y != 0 ) lastDirection = direction;
 
         direction = new Vector2(x, y).normalized;
 
@@ -38,8 +38,8 @@ public class PlayerMovement : MonoBehaviour {
             animPlayer.SetFloat("Vertical", y);
         }
         if (direction.magnitude > 0 && animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")) animPlayer.SetBool("Moving", true);
-        animPlayer.SetFloat("LastHorizontal", lastDirection.x);
-        animPlayer.SetFloat("LastVertical", lastDirection.y);
+            animPlayer.SetFloat("LastHorizontal", lastDirection.x);
+            animPlayer.SetFloat("LastVertical", lastDirection.y);
     }
 
     private void FixedUpdate() {

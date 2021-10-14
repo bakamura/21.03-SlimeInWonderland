@@ -122,6 +122,7 @@ public class PlayerAttack : MonoBehaviour {
 
         isAtking = false;
         movementScript.moveLock = false;
+        animPlayer.SetBool("Moving", false);
     }
 
     private void FireAtk1() {
@@ -146,6 +147,7 @@ public class PlayerAttack : MonoBehaviour {
 
         isAtking = false;
         movementScript.moveLock = false;
+        animPlayer.SetBool("Moving", false);
     }
 
     private void CoolDown() {
