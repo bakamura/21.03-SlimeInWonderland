@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -1295,7 +1295,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -1303,7 +1303,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 0}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -1319,8 +1319,8 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
-        atime1: 65535
+        atime0: 9765
+        atime1: 9830
         atime2: 0
         atime3: 0
         atime4: 0
@@ -4774,6 +4774,7 @@ GameObject:
   - component: {fileID: 3667573876355629924}
   - component: {fileID: 8411343562132329180}
   - component: {fileID: 8411343562132329178}
+  - component: {fileID: 7550295575778167167}
   - component: {fileID: 675993383}
   m_Layer: 0
   m_Name: Player
@@ -4922,8 +4923,8 @@ MonoBehaviour:
   waterXP: 0
   plantXP: 0
   electricXP: 0
-  lightXP: 0
-  darkXP: 0
+  earthXP: 0
+  poisonXP: 0
   colorMaterial:
   - {fileID: 2100000, guid: 937c63bbb22d7e841bfc185794b7dad3, type: 2}
   - {fileID: 2100000, guid: af21e8643321a8a49be5f5fd29770178, type: 2}
@@ -4958,13 +4959,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05f503c08040fe45bd88574755b12e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atk0TotalCDown: 2.5
-  damageAtk0: 2
-  strenghAtk0Dash: 8
-  atk1TotalCDown: 1
-  atk1Particles: {fileID: 68431697}
-  atk2TotalCDown: 0
+  xpToGet:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   totalAtkRemember: 0.2
+  atk0TotalCDown: 2.5
+  atk1TotalCDown: 1
+  atk2TotalCDown: 0
+--- !u!114 &7550295575778167167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411343562132329171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c467f48b6f7ce24f939513d79ecd028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageBasicAtk: 2
+  strenghBasicAtkDash: 3
+  damageFireAtk1: 2
+  particlesFireAtk1: {fileID: 68431697}
+  damageFireAtk32: 3
+  rangeFireAtk32: 3
+  prefabFireAtk32: {fileID: 0}
 --- !u!114 &675993383
 MonoBehaviour:
   m_ObjectHideFlags: 0

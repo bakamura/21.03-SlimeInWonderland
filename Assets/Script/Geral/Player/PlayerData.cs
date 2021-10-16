@@ -38,7 +38,7 @@ public class PlayerData : MonoBehaviour {
         animPlayer.SetBool("Consuming", false);
     }
 
-    private void ChangeColor() {
+    public void ChangeColor() {
         if (Input.GetKeyDown(KeyCode.C)) {
             if (currentColor < colorMaterial.Length - 1) currentColor++;
             else currentColor = 0;

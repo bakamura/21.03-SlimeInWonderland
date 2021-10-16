@@ -4,41 +4,37 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
 
-    private Rigidbody2D rbPlayer;
     private Animator animPlayer;
-    private PlayerMovement movementScript;
     private PlayerData dataScript;
-
-    private Vector2 mousePos;
-    private bool isAtking = false;
+    private PlayerAtkList atkList;
 
     public float[] xpToGet = { 0, 0, 0, 0, 0, 0 };
 
-    [Header("Atk 0")]
-    public float atk0TotalCDown;
-    [System.NonSerialized] public float atk0CDown;
-    public float damageAtk0;
-    public float strenghAtk0Dash;
-    private Vector2 currentDashDirection;
-
-    [Header("Atk 1")]
-    public float atk1TotalCDown;
-    [System.NonSerialized] public float atk1CDown;
-    public ParticleSystem atk1Particles;
-
-    [Header("Atk 2")]
-    public float atk2TotalCDown;
-    [System.NonSerialized] public float atk2CDown;
-
-    private int currentAtk = 0;
+    [Header("Atk General")]
+    [System.NonSerialized] public bool isAtking = false;
+    [System.NonSerialized] public int currentAtk = 0;
     private float atkRemember;
     public float totalAtkRemember;
+    delegate void AtkMethod();
+
+    public float atk0TotalCDown;
+    [System.NonSerialized] public float atk0CDown;
+    AtkMethod atk0;
+    public float atk1TotalCDown;
+    [System.NonSerialized] public float atk1CDown;
+    AtkMethod atk1;
+    public float atk2TotalCDown;
+    [System.NonSerialized] public float atk2CDown;
+    AtkMethod atk2;
 
     private void Start() {
-        rbPlayer = GetComponent<Rigidbody2D>();
         animPlayer = GetComponent<Animator>();
-        movementScript = GetComponent<PlayerMovement>();
         dataScript = GetComponent<PlayerData>();
+
+        atkList = GetComponent<PlayerAtkList>();
+        atk0 = atkList.BasicAtk;
+        atk1 = atkList.FireAtk1;
+        atk2 = atkList.FireAtk32;
     }
 
     private void Update() {
@@ -55,7 +51,7 @@ public class PlayerAttack : MonoBehaviour {
                 currentAtk = 2;
                 atkRemember = totalAtkRemember;
             }
-            if (Input.GetButtonDown("Fire3")) {
+            if (Input.GetKeyDown(KeyCode.E)) {
                 currentAtk = 3;
                 atkRemember = totalAtkRemember;
             }
@@ -71,8 +67,6 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void Attack() {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         if (atkRemember > 0) {
             atkRemember -= Time.fixedDeltaTime;
             switch (currentAtk) {
@@ -80,74 +74,28 @@ public class PlayerAttack : MonoBehaviour {
                     atkRemember = 0;
                     return;
                 case 1:
-                    if (atk0CDown <= 0) BasicAtk1();
+                    if (atk0CDown <= 0) {
+                        isAtking = true;
+                        atk0();
+                        atk0CDown = atk0TotalCDown;
+                    }
                     return;
                 case 2:
-                    if (atk1CDown <= 0) FireAtk1();
+                    if (atk1CDown <= 0) {
+                        isAtking = true;
+                        atk1();
+                        atk1CDown = atk1TotalCDown;
+                    }
                     return;
                 case 3:
-
+                    if (atk2CDown <= 0) {
+                        isAtking = true;
+                        atk2();
+                        atk2CDown = atk2TotalCDown;
+                    }
                     return;
             }
         }
-
-    }
-
-    #region AttackFunctions
-    private void BasicAtk1() {
-        isAtking = true;
-        currentDashDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        movementScript.moveLock = true;
-        rbPlayer.velocity = Vector2.zero;
-        animPlayer.SetTrigger("Atk0");
-        atk0CDown = atk0TotalCDown;
-        currentAtk = 0;
-
-        movementScript.lastDirection = currentDashDirection;
-        StartCoroutine(BasicAtk1DashNum());
-    }
-
-    IEnumerator BasicAtk1DashNum() {
-        yield return new WaitForSeconds(0.1f);
-
-        dataScript.blockState = true;
-        rbPlayer.velocity = currentDashDirection * strenghAtk0Dash;
-
-        yield return new WaitForSeconds(0.4f);
-
-        dataScript.blockState = false;
-        rbPlayer.velocity = Vector2.zero;
-
-        yield return new WaitForSeconds(0.3f);
-
-        isAtking = false;
-        movementScript.moveLock = false;
-        animPlayer.SetBool("Moving", false);
-    }
-
-    private void FireAtk1() {
-        isAtking = true;
-        movementScript.moveLock = true;
-        rbPlayer.velocity = Vector2.zero;
-        animPlayer.SetTrigger("AtkF1");
-        atk1CDown = atk1TotalCDown;
-        currentAtk = 0;
-
-        movementScript.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        atk1Particles.transform.rotation = Quaternion.Euler(movementScript.lastDirection.y * -90, movementScript.lastDirection.x * 90, 0);
-        StartCoroutine(FireAtk1Instantiate());
-    }
-
-    IEnumerator FireAtk1Instantiate() {
-        yield return new WaitForSeconds(0.4f);
-
-        atk1Particles.Play();
-
-        yield return new WaitForSeconds(0.4f);
-
-        isAtking = false;
-        movementScript.moveLock = false;
-        animPlayer.SetBool("Moving", false);
     }
 
     private void CoolDown() {
@@ -158,7 +106,6 @@ public class PlayerAttack : MonoBehaviour {
         if (atk2CDown > 0) atk2CDown -= Time.fixedDeltaTime;
         if (atk2CDown < 0) atk2CDown = 0;
     }
-    #endregion
 
 
 
@@ -173,9 +120,5 @@ public class PlayerAttack : MonoBehaviour {
 
         for (int i = 0; i < xpToGet.Length; i++) xpToGet[i] = 0;
         animPlayer.SetBool("Consuming", false);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.transform.tag == "Enemy" && isAtking) collision.transform.GetComponent<EnemyBase>().TakeDamage(damageAtk0);
     }
 }
