@@ -4969,7 +4969,7 @@ MonoBehaviour:
   totalAtkRemember: 0.2
   atk0TotalCDown: 2.5
   atk1TotalCDown: 1
-  atk2TotalCDown: 0
+  atk2TotalCDown: 4
 --- !u!114 &7550295575778167167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4983,12 +4983,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageBasicAtk: 2
-  strenghBasicAtkDash: 3
+  strenghBasicAtkDash: 8
   damageFireAtk1: 2
   particlesFireAtk1: {fileID: 68431697}
   damageFireAtk32: 3
   rangeFireAtk32: 3
-  prefabFireAtk32: {fileID: 0}
+  prefabFireAtk32: {fileID: 6132768654907618045, guid: 9ea9375bd02a6324e9998c383f967ceb,
+    type: 3}
 --- !u!114 &675993383
 MonoBehaviour:
   m_ObjectHideFlags: 0
