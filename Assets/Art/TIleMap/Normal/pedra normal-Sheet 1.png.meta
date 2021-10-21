@@ -1,0 +1,365 @@
+fileFormatVersion: 2
+guid: cac94364fb67dc74ab51409ba05245ab
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3056674685607545194
+    second: pedra normal-Sheet 1_0
+  - first:
+      213: -7951572572502557983
+    second: pedra normal-Sheet 1_1
+  - first:
+      213: -2288331058951452708
+    second: pedra normal-Sheet 1_2
+  - first:
+      213: -587838316727543051
+    second: pedra normal-Sheet 1_3
+  - first:
+      213: 6028504220389233145
+    second: pedra normal-Sheet 1_4
+  - first:
+      213: -4872385772759592111
+    second: pedra normal-Sheet 1_5
+  - first:
+      213: -855534824873445469
+    second: pedra normal-Sheet 1_6
+  - first:
+      213: -1013475410338110688
+    second: pedra normal-Sheet 1_7
+  - first:
+      213: -1281661402251015998
+    second: pedra normal-Sheet 1_8
+  - first:
+      213: -7987512505542113980
+    second: pedra normal-Sheet 1_9
+  - first:
+      213: -526743961637312104
+    second: pedra normal-Sheet 1_10
+  - first:
+      213: 4727469873680799882
+    second: pedra normal-Sheet 1_11
+  - first:
+      213: 1939447844664490703
+    second: pedra normal-Sheet 1_12
+  - first:
+      213: -1295188795920952470
+    second: pedra normal-Sheet 1_13
+  - first:
+      213: 2369118773748305266
+    second: pedra normal-Sheet 1_14
+  - first:
+      213: 113077764013849061
+    second: pedra normal-Sheet 1_15
+  - first:
+      213: -5279936203938348712
+    second: pedra normal-Sheet 1_16
+  - first:
+      213: -603114030208560675
+    second: pedra normal-Sheet 1_17
+  - first:
+      213: 2814384677662110583
+    second: pedra normal-Sheet 1_18
+  - first:
+      213: 420111286690715504
+    second: pedra normal-Sheet 1_19
+  - first:
+      213: 3137031037268246084
+    second: pedra normal-Sheet 1_20
+  - first:
+      213: 9214213117199858297
+    second: pedra normal-Sheet 1_21
+  - first:
+      213: -6752925636797889155
+    second: pedra normal-Sheet 1_22
+  - first:
+      213: -1059744120771665001
+    second: pedra normal-Sheet 1_23
+  - first:
+      213: 1924940393198701290
+    second: pedra normal-Sheet 1_24
+  - first:
+      213: 3163668330693602371
+    second: pedra normal-Sheet 1_25
+  - first:
+      213: -626360149952924817
+    second: pedra normal-Sheet 1_26
+  - first:
+      213: -4657566552940389809
+    second: pedra normal-Sheet 1_27
+  - first:
+      213: 1627650557272352110
+    second: pedra normal-Sheet 1_28
+  - first:
+      213: 5789938827658368446
+    second: pedra normal-Sheet 1_29
+  - first:
+      213: 4859171437330545943
+    second: pedra normal-Sheet 1_30
+  - first:
+      213: -4108268072626001222
+    second: pedra normal-Sheet 1_31
+  - first:
+      213: 2880960620809959390
+    second: pedra normal-Sheet 1_32
+  - first:
+      213: -5201301854910147758
+    second: pedra normal-Sheet 1_33
+  - first:
+      213: 6586455632472600552
+    second: pedra normal-Sheet 1_34
+  - first:
+      213: -2691569825532606981
+    second: pedra normal-Sheet 1_35
+  - first:
+      213: 3121201428345840118
+    second: pedra normal-Sheet 1_36
+  - first:
+      213: 8939470369139976617
+    second: pedra normal-Sheet 1_37
+  - first:
+      213: 2324579702533893142
+    second: pedra normal-Sheet 1_38
+  - first:
+      213: -2627370335224459762
+    second: pedra normal-Sheet 1_39
+  - first:
+      213: 6080591918295844786
+    second: pedra normal-Sheet 1_40
+  - first:
+      213: -3796277977477597657
+    second: pedra normal-Sheet 1_41
+  - first:
+      213: -328770668508974884
+    second: pedra normal-Sheet 1_42
+  - first:
+      213: -3963537301698715272
+    second: pedra normal-Sheet 1_43
+  - first:
+      213: 4494704334776387109
+    second: pedra normal-Sheet 1_44
+  - first:
+      213: 833230187747280256
+    second: pedra normal-Sheet 1_45
+  - first:
+      213: -5295251021893641879
+    second: pedra normal-Sheet 1_46
+  - first:
+      213: 8037945829742684706
+    second: pedra normal-Sheet 1_47
+  - first:
+      213: 6568306469316248601
+    second: pedra normal-Sheet 1_48
+  - first:
+      213: -875813205490594821
+    second: pedra normal-Sheet 1_49
+  - first:
+      213: 3642231520845608634
+    second: pedra normal-Sheet 1_50
+  - first:
+      213: 5015402899566516742
+    second: pedra normal-Sheet 1_51
+  - first:
+      213: -1853702312139257399
+    second: pedra normal-Sheet 1_52
+  - first:
+      213: -2323459806056287387
+    second: pedra normal-Sheet 1_53
+  - first:
+      213: 6759138467927533148
+    second: pedra normal-Sheet 1_54
+  - first:
+      213: 8172416217948459162
+    second: pedra normal-Sheet 1_55
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pedra normal-Sheet 1_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0232432eb796fe1f0800000000000000
+      internalID: -1013475410338110688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
