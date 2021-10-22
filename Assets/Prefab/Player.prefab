@@ -5060,9 +5060,9 @@ MonoBehaviour:
   strenghBasicAtkDash: 8
   damageFireAtk1: 2
   particlesFireAtk1: {fileID: 68431697}
-  damageFireAtk32: 3
-  rangeFireAtk32: 3
-  prefabFireAtk32: {fileID: 6132768654907618045, guid: 9ea9375bd02a6324e9998c383f967ceb,
+  damageFireAtk5: 1
+  rangeFireAtk5: 5
+  prefabFireAtk5: {fileID: 6132768654907618045, guid: 9ea9375bd02a6324e9998c383f967ceb,
     type: 3}
 --- !u!114 &675993383
 MonoBehaviour:

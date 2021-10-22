@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour {
     private Animator animPlayer;
     private PlayerData dataScript;
     private PlayerAtkList atkList;
+    public SkillTreeCanvas treeCanvasScript;
 
     public float[] xpToGet = { 0, 0, 0, 0, 0, 0 };
 
@@ -35,12 +36,14 @@ public class PlayerAttack : MonoBehaviour {
         atkList = GetComponent<PlayerAtkList>();
         atk0 = atkList.BasicAtk;
         atk1 = atkList.FireAtk1;
-        atk2 = atkList.FireAtk32;
+        atk2 = atkList.FireAtk5;
     }
 
     private void Update() {
         Inputs();
     }
+
+
 
     private void Inputs() {
         if (canInput) {
@@ -110,6 +113,10 @@ public class PlayerAttack : MonoBehaviour {
         if (atk2CDown < 0) atk2CDown = 0;
     }
 
+    public void GetNewAtkSet() {
+        //atk0 = atkList.atkListFire[treeCanvasScript.currentSkill[0]]
+        Debug.Log(atk0.Method + " / " + atk1.Method + " / " + atk2.Method);
+    }
 
 
     //Animator
@@ -124,4 +131,5 @@ public class PlayerAttack : MonoBehaviour {
         for (int i = 0; i < xpToGet.Length; i++) xpToGet[i] = 0;
         animPlayer.SetBool("Consuming", false);
     }
+
 }

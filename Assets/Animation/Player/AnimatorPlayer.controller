@@ -169,7 +169,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: AtkF32
+    m_ConditionEvent: AtkF5
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -906443484451764678}
@@ -565,7 +565,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blend AtkF32
+  m_Name: Blend AtkF5
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -673,7 +673,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: AtkF32
+  - m_Name: AtkF5
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0

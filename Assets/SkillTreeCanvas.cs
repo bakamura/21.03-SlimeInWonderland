@@ -23,7 +23,8 @@ public class SkillTreeCanvas : MonoBehaviour {
     private int[] currentButtonSelected = { 0, 0 };
 
     public Image[] skillSlotImage; 
-    private int[] currentSkill = { 0, 0, 0 };
+    public int[] currentSkill = { 0, 0, 0 };
+    public int[] currentTree = { 0, 0, 0 };
 
     private void Start() {
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -43,10 +44,13 @@ public class SkillTreeCanvas : MonoBehaviour {
                 hudScript.atkIcon[1].sprite = skillSlotImage[1].sprite;
                 hudScript.atkIcon[2].sprite = skillSlotImage[2].sprite;
                 //Change player Skills
+                atkScript.GetNewAtkSet();
+
                 Time.timeScale = 1;
                 movementScipt.moveLock = false;
                 atkScript.canInput = true;
                 AlternateCanvas(hudCanvas, true);
+
             }
             else {
                 AlternateCanvas(treeCanvas, true);
@@ -84,6 +88,7 @@ public class SkillTreeCanvas : MonoBehaviour {
 
         if (currentButtonSelected[0] != 0 && currentSkill[slotN] != currentButtonSelected[0]) {
             currentSkill[slotN] = currentButtonSelected[0] - 1;
+            currentTree[slotN] = currentButtonSelected[1];
             skillSlotImage[slotN].sprite = skillImage[currentButtonSelected[1]].skillImage[currentButtonSelected[0] - 1].sprite;
             currentButtonSelected[0] = 0;
         }

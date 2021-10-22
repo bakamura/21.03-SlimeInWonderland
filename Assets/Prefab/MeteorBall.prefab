@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5f644b644f7544c99647ff8ec7f286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 3
+  height: 3.5
   duration: 1.2
   finalPos: {x: 2, y: 2, z: 0}
   impactRadius: 0.75

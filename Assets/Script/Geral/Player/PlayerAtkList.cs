@@ -13,6 +13,16 @@ public class PlayerAtkList : MonoBehaviour {
     private Vector2 mousePos;
     private Vector2 currentAtkDirection;
 
+    [Header("AttackList")]
+    private int aa;
+    public delegate void AtkList();
+    public AtkList[] atkListFire;
+    public AtkList[] atkListWater;
+    public AtkList[] atkListPlant;
+    public AtkList[] atkListElectric;
+    public AtkList[] atkListEarth;
+    public AtkList[] atkListPoison;
+
     [Header("Basic Atk")]
     public float damageBasicAtk;
     public float strenghBasicAtkDash;
@@ -22,15 +32,21 @@ public class PlayerAtkList : MonoBehaviour {
     public ParticleSystem particlesFireAtk1;
 
     [Header("Meteor I")]
-    public float damageFireAtk32;
-    public float rangeFireAtk32;
-    public GameObject prefabFireAtk32;
+    public float damageFireAtk5;
+    public float rangeFireAtk5;
+    public GameObject prefabFireAtk5;
 
     private void Start() {
         rbPlayer = GetComponent<Rigidbody2D>();
         animPlayer = GetComponent<Animator>();
         atkScript = GetComponent<PlayerAttack>();
         movementScript = GetComponent<PlayerMovement>();
+
+        AssignAtkList();
+    }
+
+    private void AssignAtkList() {
+        atkListFire[0] = FireAtk1;
     }
 
     private void Update() {
@@ -88,25 +104,25 @@ public class PlayerAtkList : MonoBehaviour {
         animPlayer.SetBool("Moving", false);
     }
 
-    public void FireAtk32() {
+    public void FireAtk5() {
         movementScript.moveLock = true;
         rbPlayer.velocity = Vector2.zero;
-        animPlayer.SetTrigger("AtkF32");
+        animPlayer.SetTrigger("AtkF5");
         atkScript.currentAtk = 0;
 
         currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
         movementScript.lastDirection = currentAtkDirection;
-        StartCoroutine(FireAtk32Instatiate());
+        StartCoroutine(FireAtk5Instatiate());
     }
 
-    IEnumerator FireAtk32Instatiate() {
+    IEnumerator FireAtk5Instatiate() {
         yield return new WaitForSeconds(0.2f);
 
         atkScript.isAtking = false;
         movementScript.moveLock = false;
         animPlayer.SetBool("Moving", false);
-        GameObject meteorInstance = Instantiate(prefabFireAtk32, transform.position + new Vector3(0, 0.75f, 0), Quaternion.Euler(0, 0, 180));
-        if (Vector2.Distance(transform.position, mousePos) >= rangeFireAtk32) meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(transform.position.x + currentAtkDirection.x * rangeFireAtk32, transform.position.y + currentAtkDirection.y * rangeFireAtk32, 0);
+        GameObject meteorInstance = Instantiate(prefabFireAtk5, transform.position + new Vector3(0, 0.75f, 0), Quaternion.Euler(0, 0, 180));
+        if (Vector2.Distance(transform.position, mousePos) >= rangeFireAtk5) meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(transform.position.x + currentAtkDirection.x * rangeFireAtk5, transform.position.y + currentAtkDirection.y * rangeFireAtk5, 0);
         else meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(mousePos.x, mousePos.y, 0);
     }
 
