@@ -13,7 +13,7 @@ public class SkillTreeCanvas : MonoBehaviour {
     public Image[] skillImage;
     private int currentButtonSelected = 0;
 
-    public Image[] skillSlotImage;
+    public Image[] skillSlotImage; //multiply for each skilltree
     private int[] currentSkill = { 0, 0, 0 };
 
     private void Start() {

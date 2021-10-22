@@ -42,22 +42,20 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void Inputs() {
-        if (!isAtking) {
-            if (Input.GetButtonDown("Fire1")) {
-                currentAtk = 1;
-                atkRemember = totalAtkRemember;
-            }
-            if (Input.GetButtonDown("Fire2")) {
-                currentAtk = 2;
-                atkRemember = totalAtkRemember;
-            }
-            if (Input.GetKeyDown(KeyCode.E)) {
-                currentAtk = 3;
-                atkRemember = totalAtkRemember;
-            }
-            if (Input.GetKeyDown(KeyCode.F)) {
-                animPlayer.SetBool("Consuming", true);
-            }
+        if (Input.GetButtonDown("Fire1")) {
+            currentAtk = 1;
+            atkRemember = totalAtkRemember;
+        }
+        if (Input.GetButtonDown("Fire2")) {
+            currentAtk = 2;
+            atkRemember = totalAtkRemember;
+        }
+        if (Input.GetKeyDown(KeyCode.E)) {
+            currentAtk = 3;
+            atkRemember = totalAtkRemember;
+        }
+        if (Input.GetKeyDown(KeyCode.F)) {
+            animPlayer.SetBool("Consuming", true);
         }
     }
 
@@ -69,31 +67,33 @@ public class PlayerAttack : MonoBehaviour {
     private void Attack() {
         if (atkRemember > 0) {
             atkRemember -= Time.fixedDeltaTime;
-            switch (currentAtk) {
-                case 0:
-                    atkRemember = 0;
-                    return;
-                case 1:
-                    if (atk0CDown <= 0) {
-                        isAtking = true;
-                        atk0();
-                        atk0CDown = atk0TotalCDown;
-                    }
-                    return;
-                case 2:
-                    if (atk1CDown <= 0) {
-                        isAtking = true;
-                        atk1();
-                        atk1CDown = atk1TotalCDown;
-                    }
-                    return;
-                case 3:
-                    if (atk2CDown <= 0) {
-                        isAtking = true;
-                        atk2();
-                        atk2CDown = atk2TotalCDown;
-                    }
-                    return;
+            if (!isAtking) {
+                switch (currentAtk) {
+                    case 0:
+                        atkRemember = 0;
+                        return;
+                    case 1:
+                        if (atk0CDown <= 0) {
+                            isAtking = true;
+                            atk0();
+                            atk0CDown = atk0TotalCDown;
+                        }
+                        return;
+                    case 2:
+                        if (atk1CDown <= 0) {
+                            isAtking = true;
+                            atk1();
+                            atk1CDown = atk1TotalCDown;
+                        }
+                        return;
+                    case 3:
+                        if (atk2CDown <= 0) {
+                            isAtking = true;
+                            atk2();
+                            atk2CDown = atk2TotalCDown;
+                        }
+                        return;
+                }
             }
         }
     }
