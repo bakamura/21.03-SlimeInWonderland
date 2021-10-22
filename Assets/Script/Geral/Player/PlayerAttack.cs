@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour {
     public float[] xpToGet = { 0, 0, 0, 0, 0, 0 };
 
     [Header("Atk General")]
+    public bool canInput = true;
     [System.NonSerialized] public bool isAtking = false;
     [System.NonSerialized] public int currentAtk = 0;
     private float atkRemember;
@@ -42,20 +43,22 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void Inputs() {
-        if (Input.GetButtonDown("Fire1")) {
-            currentAtk = 1;
-            atkRemember = totalAtkRemember;
-        }
-        if (Input.GetButtonDown("Fire2")) {
-            currentAtk = 2;
-            atkRemember = totalAtkRemember;
-        }
-        if (Input.GetKeyDown(KeyCode.E)) {
-            currentAtk = 3;
-            atkRemember = totalAtkRemember;
-        }
-        if (Input.GetKeyDown(KeyCode.F)) {
-            animPlayer.SetBool("Consuming", true);
+        if (canInput) {
+            if (Input.GetButtonDown("Fire1")) {
+                currentAtk = 1;
+                atkRemember = totalAtkRemember;
+            }
+            if (Input.GetButtonDown("Fire2")) {
+                currentAtk = 2;
+                atkRemember = totalAtkRemember;
+            }
+            if (Input.GetKeyDown(KeyCode.E)) {
+                currentAtk = 3;
+                atkRemember = totalAtkRemember;
+            }
+            if (Input.GetKeyDown(KeyCode.F)) {  
+                animPlayer.SetBool("Consuming", true);
+            }
         }
     }
 

@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class PlayerHUD : MonoBehaviour {
 
     private PlayerData dataScript;
+    private PlayerAttack atkScript;
+
     public Image healthBar;
 
-    private PlayerAttack atkScript;
-    public Image atk0ImageCDown;
-    public Image atk1ImageCDown;
-    public Image atk2ImageCDown;
+    public Image[] atkIcon;
+    public Image[] atkImageCDown;
 
     private void Start() {
         dataScript = GetComponent<PlayerData>();
@@ -28,9 +28,9 @@ public class PlayerHUD : MonoBehaviour {
     }
 
     private void AtkUI() {
-        atk0ImageCDown.fillAmount = atkScript.atk0CDown / atkScript.atk0TotalCDown;
-        atk1ImageCDown.fillAmount = atkScript.atk1CDown / atkScript.atk1TotalCDown;
-        atk2ImageCDown.fillAmount = atkScript.atk2CDown / atkScript.atk2TotalCDown;
+        atkImageCDown[0].fillAmount = atkScript.atk0CDown / atkScript.atk0TotalCDown;
+        atkImageCDown[1].fillAmount = atkScript.atk1CDown / atkScript.atk1TotalCDown;
+        atkImageCDown[2].fillAmount = atkScript.atk2CDown / atkScript.atk2TotalCDown;
     }
 
 }
