@@ -41,6 +41,33 @@ TextureImporter:
   - first:
       213: -7778287912206850953
     second: tile map cave buracp de agua -Sheet_12
+  - first:
+      213: 626021594243092002
+    second: tile map cave buracp de agua -Sheet_13
+  - first:
+      213: -3145970024950932797
+    second: tile map cave buracp de agua -Sheet_14
+  - first:
+      213: 7509799465765692699
+    second: tile map cave buracp de agua -Sheet_15
+  - first:
+      213: -6394511420719494978
+    second: tile map cave buracp de agua -Sheet_16
+  - first:
+      213: -1176087386334012354
+    second: tile map cave buracp de agua -Sheet_17
+  - first:
+      213: -573586347798176752
+    second: tile map cave buracp de agua -Sheet_18
+  - first:
+      213: -6772781390492212897
+    second: tile map cave buracp de agua -Sheet_19
+  - first:
+      213: 3611289151614655481
+    second: tile map cave buracp de agua -Sheet_20
+  - first:
+      213: -6501225888391685315
+    second: tile map cave buracp de agua -Sheet_21
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -306,8 +333,8 @@ TextureImporter:
       name: tile map cave buracp de agua -Sheet_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 160
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -327,8 +354,8 @@ TextureImporter:
       name: tile map cave buracp de agua -Sheet_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 192
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -348,8 +375,8 @@ TextureImporter:
       name: tile map cave buracp de agua -Sheet_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 224
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -369,7 +396,7 @@ TextureImporter:
       name: tile map cave buracp de agua -Sheet_8
       rect:
         serializedVersion: 2
-        x: 96
+        x: 0
         y: 32
         width: 32
         height: 32
@@ -390,7 +417,7 @@ TextureImporter:
       name: tile map cave buracp de agua -Sheet_9
       rect:
         serializedVersion: 2
-        x: 128
+        x: 32
         y: 32
         width: 32
         height: 32
@@ -411,8 +438,8 @@ TextureImporter:
       name: tile map cave buracp de agua -Sheet_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 64
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -432,8 +459,8 @@ TextureImporter:
       name: tile map cave buracp de agua -Sheet_11
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 96
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -453,8 +480,8 @@ TextureImporter:
       name: tile map cave buracp de agua -Sheet_12
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 128
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -466,6 +493,195 @@ TextureImporter:
       bones: []
       spriteID: 7742230ea58fd0490800000000000000
       internalID: -7778287912206850953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave buracp de agua -Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e459ab25310b800800000000000000
+      internalID: 626021594243092002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave buracp de agua -Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cad5cc2ee44754d0800000000000000
+      internalID: -3145970024950932797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave buracp de agua -Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b15e16353da283860800000000000000
+      internalID: 7509799465765692699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave buracp de agua -Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb806df0eb12247a0800000000000000
+      internalID: -6394511420719494978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave buracp de agua -Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3c5eb8d0c2bdafe0800000000000000
+      internalID: -1176087386334012354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave buracp de agua -Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01cd97371463a08f0800000000000000
+      internalID: -573586347798176752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave buracp de agua -Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f51e556853f3202a0800000000000000
+      internalID: -6772781390492212897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave buracp de agua -Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb96379950ed1230800000000000000
+      internalID: 3611289151614655481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile map cave buracp de agua -Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b17dddf7107c5a0800000000000000
+      internalID: -6501225888391685315
       vertices: []
       indices: 
       edges: []
