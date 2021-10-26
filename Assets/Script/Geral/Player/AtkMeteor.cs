@@ -48,9 +48,11 @@ public class AtkMeteor : MonoBehaviour {
     private void DamageInstance() {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, impactRadius, Vector2.zero);
         foreach (RaycastHit2D i in hits) {
-            Debug.Log("Collided with: " + i.transform.name);
             if (i.transform.tag == "Enemy") i.transform.GetComponent<EnemyBase>().TakeDamage(damage);
-            else if (i.transform.tag == "Litable") i.transform.GetComponent<Torch>().lit = true;
+            else if (i.transform.tag == "Litable") {
+                i.transform.GetComponent<Torch>().lit = true;
+                i.transform.GetComponent<Torch>().CheckState();
+            }
         }
         //If II, instantiate xxxxx
     }

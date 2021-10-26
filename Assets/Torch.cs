@@ -12,13 +12,10 @@ public class Torch : MonoBehaviour {
     private void Start() {
         animTorch = GetComponent<Animator>();
         light2D = GetComponent<Light2D>();
-    }
-
-    private void FixedUpdate() {
         CheckState();
     }
 
-    private void CheckState() {
+    public void CheckState() {
         light2D.enabled = lit;
         animTorch.SetBool("Lit", lit);
     }
