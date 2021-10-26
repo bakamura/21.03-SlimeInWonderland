@@ -17,26 +17,19 @@ public class PlayerAttack : MonoBehaviour {
     [System.NonSerialized] public int currentAtk = 0;
     private float atkRemember;
     public float totalAtkRemember;
-    delegate void AtkMethod();
 
     public float atk0TotalCDown;
     [System.NonSerialized] public float atk0CDown;
-    AtkMethod atk0;
     public float atk1TotalCDown;
     [System.NonSerialized] public float atk1CDown;
-    AtkMethod atk1;
     public float atk2TotalCDown;
     [System.NonSerialized] public float atk2CDown;
-    AtkMethod atk2;
 
     private void Start() {
         animPlayer = GetComponent<Animator>();
         dataScript = GetComponent<PlayerData>();
 
         atkList = GetComponent<PlayerAtkList>();
-        atk0 = atkList.BasicAtk;
-        atk1 = atkList.FireAtk1;
-        atk2 = atkList.FireAtk5;
     }
 
     private void Update() {
@@ -77,28 +70,28 @@ public class PlayerAttack : MonoBehaviour {
                 switch (currentAtk) {
                     case 0:
                         atkRemember = 0;
-                        return;
+                        break;
                     case 1:
                         if (atk0CDown <= 0) {
                             isAtking = true;
-                            atk0();
+                            atkList.atk0();
                             atk0CDown = atk0TotalCDown;
                         }
-                        return;
+                        break;
                     case 2:
                         if (atk1CDown <= 0) {
                             isAtking = true;
-                            atk1();
+                            atkList.atk1();
                             atk1CDown = atk1TotalCDown;
                         }
-                        return;
+                        break;
                     case 3:
                         if (atk2CDown <= 0) {
                             isAtking = true;
-                            atk2();
+                            atkList.atk2();
                             atk2CDown = atk2TotalCDown;
                         }
-                        return;
+                        break;
                 }
             }
         }
@@ -112,12 +105,6 @@ public class PlayerAttack : MonoBehaviour {
         if (atk2CDown > 0) atk2CDown -= Time.fixedDeltaTime;
         if (atk2CDown < 0) atk2CDown = 0;
     }
-
-    public void GetNewAtkSet() {
-        //atk0 = atkList.atkListFire[treeCanvasScript.currentSkill[0]]
-        Debug.Log(atk0.Method + " / " + atk1.Method + " / " + atk2.Method);
-    }
-
 
     //Animator
     public void GetXp() {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WipeTransition
   - Enemy
+  - Litable
   layers:
   - Default
   - TransparentFX

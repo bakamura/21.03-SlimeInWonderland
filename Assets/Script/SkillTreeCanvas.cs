@@ -22,29 +22,34 @@ public class SkillTreeCanvas : MonoBehaviour {
     public TreeClass[] skillImage; //skillN, treeN
     private int[] currentButtonSelected = { 0, 0 };
 
-    public Image[] skillSlotImage; 
-    public int[] currentSkill = { 0, 0, 0 };
-    public int[] currentTree = { 0, 0, 0 };
+    public Image[] skillSlotImage;
+    private int[] currentSkill = { -1, 0, 4 };
+    private int[] currentTree = { 0, 0, 0 };
 
     private void Start() {
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         movementScipt = playerGO.GetComponent<PlayerMovement>();
         atkScript = playerGO.GetComponent<PlayerAttack>();
+        atkListScript = playerGO.GetComponent<PlayerAtkList>();
         hudScript = playerGO.GetComponent<PlayerHUD>();
 
         treeCanvas = GetComponent<CanvasGroup>();
         AlternateCanvas(treeCanvas, false);
+
+        currentSkill = new int[3] { -1, 0, 4 };
+        currentTree = new int[3] { 0, 0, 0 };
     }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Tab)) {
             if (treeCanvas.interactable) {
                 AlternateCanvas(treeCanvas, false);
+
                 hudScript.atkIcon[0].sprite = skillSlotImage[0].sprite;
                 hudScript.atkIcon[1].sprite = skillSlotImage[1].sprite;
                 hudScript.atkIcon[2].sprite = skillSlotImage[2].sprite;
-                //Change player Skills
-                atkScript.GetNewAtkSet();
+
+                atkListScript.SkillUpdate(currentSkill[0], currentTree[0], currentSkill[1], currentTree[1], currentSkill[2], currentTree[2]); //
 
                 Time.timeScale = 1;
                 movementScipt.moveLock = false;
@@ -54,7 +59,7 @@ public class SkillTreeCanvas : MonoBehaviour {
             }
             else {
                 AlternateCanvas(treeCanvas, true);
-                Time.timeScale = 0;
+                Time.timeScale = 0.01f;
                 movementScipt.moveLock = true;
                 atkScript.canInput = false;
                 AlternateCanvas(hudCanvas, false);
@@ -63,17 +68,17 @@ public class SkillTreeCanvas : MonoBehaviour {
     }
 
     private void AlternateCanvas(CanvasGroup canvas, bool on) {
-        canvas.alpha = on? 1 : 0;
+        canvas.alpha = on ? 1 : 0;
         canvas.interactable = on;
         canvas.blocksRaycasts = on;
     }
 
-    public void SkillButton(int skillN  ) {
+    public void SkillButton(int skillN) {
         currentButtonSelected[0] = (currentButtonSelected[0] != skillN) ? skillN : 0;
         FocusOnClick();
 
 
-        if (currentButtonSelected[0] != 0) Debug.Log("Botao pressioando " + currentButtonSelected);
+        if (currentButtonSelected[0] != 0) Debug.Log("Botao pressioando " + currentButtonSelected[0] + "-" + currentButtonSelected[1]);
         else Debug.Log("Botao desselecionado");
     }
 
@@ -82,11 +87,11 @@ public class SkillTreeCanvas : MonoBehaviour {
     }
 
     public void SKillSlotButton(int slotN) {
-        if (currentButtonSelected[0] == 0) Debug.Log("Sem botão pressionado, nada acontece");
+        if (currentButtonSelected[0] == 0) Debug.Log("Skill Atual: " + currentSkill[slotN] + "-" + currentTree[slotN]);
         else if (currentButtonSelected[0] == currentSkill[slotN]) Debug.Log("Esta ja era a habilidade no slot");
-        else Debug.Log("Nova Skill = " + currentButtonSelected + ", substituindo " + currentSkill[slotN]);
+        else Debug.Log("Nova Skill = " + currentButtonSelected[0] + "-" + currentButtonSelected[1] + ", substituindo " + currentSkill[slotN] + "-" + currentTree[slotN]);
 
-        if (currentButtonSelected[0] != 0 && currentSkill[slotN] != currentButtonSelected[0]) {
+        if (currentButtonSelected[0] != 0 && (currentSkill[slotN] != currentButtonSelected[0] || currentTree[slotN] != currentButtonSelected[1])) {
             currentSkill[slotN] = currentButtonSelected[0] - 1;
             currentTree[slotN] = currentButtonSelected[1];
             skillSlotImage[slotN].sprite = skillImage[currentButtonSelected[1]].skillImage[currentButtonSelected[0] - 1].sprite;

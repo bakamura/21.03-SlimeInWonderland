@@ -37,7 +37,8 @@ public class AtkMeteor : MonoBehaviour {
             transform.position = currentWorldPos;
             transform.rotation = Quaternion.Euler(0, 0, currentAngle);
         }
-        else if (currentPos >= 1 && currentPos < 2) {
+        else if (currentPos >= .975f && currentPos < 2) {
+            transform.position = finalPos;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             DamageInstance();
             currentPos = 2;
@@ -46,7 +47,11 @@ public class AtkMeteor : MonoBehaviour {
 
     private void DamageInstance() {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, impactRadius, Vector2.zero);
-        for (int i = 0; i < hits.Length; i++) if (hits[i].transform.tag == "Enemy") hits[i].transform.GetComponent<EnemyBase>().TakeDamage(damage);
+        foreach (RaycastHit2D i in hits) {
+            Debug.Log("Collided with: " + i.transform.name);
+            if (i.transform.tag == "Enemy") i.transform.GetComponent<EnemyBase>().TakeDamage(damage);
+            else if (i.transform.tag == "Litable") i.transform.GetComponent<Torch>().lit = true;
+        }
         //If II, instantiate xxxxx
     }
 

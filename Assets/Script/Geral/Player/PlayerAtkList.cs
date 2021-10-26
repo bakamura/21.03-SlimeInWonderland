@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+
 public class PlayerAtkList : MonoBehaviour {
 
     [Header("Components")]
@@ -14,14 +16,11 @@ public class PlayerAtkList : MonoBehaviour {
     private Vector2 currentAtkDirection;
 
     [Header("AttackList")]
-    private int aa;
-    public delegate void AtkList();
-    public AtkList[] atkListFire;
-    public AtkList[] atkListWater;
-    public AtkList[] atkListPlant;
-    public AtkList[] atkListElectric;
-    public AtkList[] atkListEarth;
-    public AtkList[] atkListPoison;
+    public int idk = 69420;
+    public delegate void AtkMethod();
+    public AtkMethod atk0;
+    public AtkMethod atk1;
+    public AtkMethod atk2;
 
     [Header("Basic Atk")]
     public float damageBasicAtk;
@@ -42,12 +41,111 @@ public class PlayerAtkList : MonoBehaviour {
         atkScript = GetComponent<PlayerAttack>();
         movementScript = GetComponent<PlayerMovement>();
 
-        AssignAtkList();
+        atk0 = BasicAtk;
+        atk1 = AssociateSkill(0, 0);
+        atk2 = AssociateSkill(4, 0);
     }
 
-    private void AssignAtkList() {
-        atkListFire[0] = FireAtk1;
+    public void SkillUpdate(int skill0, int tree0, int skill1, int tree1, int skill2, int tree2) {
+        Debug.Log(skill0 + "-" + tree0 + " / " + skill1 + "-" + tree1 + " / " + skill2 + "-" + tree2);
+        atk0 = null;
+        atk1 = null;
+        atk2 = null;
+
+        atk0 = AssociateSkill(skill0, tree0);
+        atk1 = AssociateSkill(skill1, tree1);
+        atk2 = AssociateSkill(skill2, tree2);
+
+        Debug.Log(atk0.Method + " / " + atk1.Method + " / " + atk2.Method);
     }
+
+    public AtkMethod AssociateSkill(int skill, int tree) {
+        if (skill < 0) return BasicAtk;
+        switch (tree) {
+            case 0:
+                switch (skill) {
+                    case 0: return FireAtk1;
+                    case 1: return FireAtk1;
+                    case 2: return FireAtk1;
+                    case 3: return FireAtk1;
+                    case 4: return FireAtk5;
+                    case 5: return FireAtk1;
+                    case 6: return FireAtk1;
+                    case 7: return FireAtk1;
+                    case 8: return FireAtk1;
+                }
+                break;
+            case 1:
+                switch (skill) {
+                    case 0: return FireAtk1;
+                    case 1: return FireAtk1;
+                    case 2: return FireAtk1;
+                    case 3: return FireAtk1;
+                    case 4: return FireAtk5;
+                    case 5: return FireAtk1;
+                    case 6: return FireAtk1;
+                    case 7: return FireAtk1;
+                    case 8: return FireAtk1;
+                }
+                break;
+            case 2:
+                switch (skill) {
+                    case 0: return FireAtk1;
+                    case 1: return FireAtk1;
+                    case 2: return FireAtk1;
+                    case 3: return FireAtk1;
+                    case 4: return FireAtk5;
+                    case 5: return FireAtk1;
+                    case 6: return FireAtk1;
+                    case 7: return FireAtk1;
+                    case 8: return FireAtk1;
+                }
+                break;
+            case 3:
+                switch (skill) {
+                    case 0: return FireAtk1;
+                    case 1: return FireAtk1;
+                    case 2: return FireAtk1;
+                    case 3: return FireAtk1;
+                    case 4: return FireAtk5;
+                    case 5: return FireAtk1;
+                    case 6: return FireAtk1;
+                    case 7: return FireAtk1;
+                    case 8: return FireAtk1;
+                }
+                break;
+            case 4:
+                switch (skill) {
+                    case 0: return FireAtk1;
+                    case 1: return FireAtk1;
+                    case 2: return FireAtk1;
+                    case 3: return FireAtk1;
+                    case 4: return FireAtk5;
+                    case 5: return FireAtk1;
+                    case 6: return FireAtk1;
+                    case 7: return FireAtk1;
+                    case 8: return FireAtk1;
+                }
+                break;
+            case 5:
+                switch (skill) {
+                    case 0: return FireAtk1;
+                    case 1: return FireAtk1;
+                    case 2: return FireAtk1;
+                    case 3: return FireAtk1;
+                    case 4: return FireAtk5;
+                    case 5: return FireAtk1;
+                    case 6: return FireAtk1;
+                    case 7: return FireAtk1;
+                    case 8: return FireAtk1;
+                }
+                break;
+
+        }
+
+        return FireAtk1;
+    }
+
 
     private void Update() {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -68,14 +166,17 @@ public class PlayerAtkList : MonoBehaviour {
     IEnumerator BasicAtkNum() {
         yield return new WaitForSeconds(0.1f);
 
+        Debug.Log("Movimento começado");
         rbPlayer.velocity = currentAtkDirection * strenghBasicAtkDash;
 
         yield return new WaitForSeconds(0.4f);
 
+        Debug.Log("Movimento interrompido");
         rbPlayer.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(0.3f);
 
+        Debug.Log("Reganhou controle ");
         atkScript.isAtking = false;
         movementScript.moveLock = false;
         animPlayer.SetBool("Moving", false);
@@ -110,8 +211,8 @@ public class PlayerAtkList : MonoBehaviour {
         animPlayer.SetTrigger("AtkF5");
         atkScript.currentAtk = 0;
 
-        currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        movementScript.lastDirection = currentAtkDirection;
+        currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y));
+        movementScript.lastDirection = currentAtkDirection.normalized;
         StartCoroutine(FireAtk5Instatiate());
     }
 
@@ -122,8 +223,8 @@ public class PlayerAtkList : MonoBehaviour {
         movementScript.moveLock = false;
         animPlayer.SetBool("Moving", false);
         GameObject meteorInstance = Instantiate(prefabFireAtk5, transform.position + new Vector3(0, 0.75f, 0), Quaternion.Euler(0, 0, 180));
-        if (Vector2.Distance(transform.position, mousePos) >= rangeFireAtk5) meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(transform.position.x + currentAtkDirection.x * rangeFireAtk5, transform.position.y + currentAtkDirection.y * rangeFireAtk5, 0);
-        else meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(mousePos.x, mousePos.y, 0);
+        if (Vector2.Distance(transform.position, new Vector2(transform.position.x, transform.position.y) + currentAtkDirection) >= rangeFireAtk5) meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(transform.position.x + currentAtkDirection.normalized.x * rangeFireAtk5, transform.position.y + currentAtkDirection.normalized.y * rangeFireAtk5, 0);
+        else meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(currentAtkDirection.x + transform.position.x, currentAtkDirection.y + transform.position.y, 0);
     }
 
 
