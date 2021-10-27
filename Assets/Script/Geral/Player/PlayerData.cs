@@ -25,6 +25,7 @@ public class PlayerData : MonoBehaviour {
     private int currentColor = 0;
 
     private void Start() {
+        animPlayer = GetComponent<Animator>();
         currentHealth = maxHealth;
     }
 
@@ -33,7 +34,7 @@ public class PlayerData : MonoBehaviour {
     }
 
     public void TakeDamage(float damage) {
-        if (blockState) ;
+        if (blockState) currentHealth = currentHealth;
         else currentHealth -= damage;
         animPlayer.SetBool("Consuming", false);
     }

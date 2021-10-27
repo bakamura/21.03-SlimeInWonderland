@@ -39120,8 +39120,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1782340690, guid: ed32581dab8f09549bbed0bccda4d66a, type: 3}
+      propertyPath: atkRange
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782340690, guid: ed32581dab8f09549bbed0bccda4d66a, type: 3}
       propertyPath: followGap
-      value: 1.2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 1782340690, guid: ed32581dab8f09549bbed0bccda4d66a, type: 3}
       propertyPath: ratDamage

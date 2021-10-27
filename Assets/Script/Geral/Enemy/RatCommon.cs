@@ -43,21 +43,27 @@ public class RatCommon : MonoBehaviour {
             if (Vector2.Distance(transform.position, playerGObject.transform.position) < followGap) {
                 resting = true;
                 animRat.SetTrigger("Atk");
+                StartCoroutine(AtkInstance());
             }
         }
         else rbRat.velocity = Vector2.zero;
     }
 
-    public void AtkInstance() {
-        Collider2D[] isInRange = Physics2D.OverlapCircleAll(transform.position, atkRange);
-        for (int i = 0; i < isInRange.Length; i++) if (isInRange[i].tag == "Player") playerGObject.GetComponent<PlayerData>().TakeDamage(ratDamage);
-        StartCoroutine(RestTime());
-    }
+    IEnumerator AtkInstance() {
+        yield return new WaitForSeconds(0.333f);
 
-    IEnumerator RestTime() {
+        Vector3 atkPos = transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0))/2;
+        Collider2D[] isInRange = Physics2D.OverlapCircleAll(atkPos, atkRange);
+        for (int i = 0; i < isInRange.Length; i++) if (isInRange[i].tag == "Player") playerGObject.GetComponent<PlayerData>().TakeDamage(ratDamage);
+
         yield return new WaitForSeconds(restingTime);
 
         resting = false;
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0)) / 2, atkRange);
     }
 
 }
