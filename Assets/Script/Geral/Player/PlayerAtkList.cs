@@ -183,29 +183,38 @@ public class PlayerAtkList : MonoBehaviour {
     }
 
     public void FireAtk1() {
+        StartCoroutine(FireAtk1Instantiate());
+    }
+
+    IEnumerator FireAtk1Instantiate() {
         movementScript.moveLock = true;
         rbPlayer.velocity = Vector2.zero;
         animPlayer.SetTrigger("AtkF1");
         atkScript.currentAtk = 0;
 
         movementScript.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        particlesFireAtk1.transform.rotation = Quaternion.Euler(movementScript.lastDirection.y * -90, movementScript.lastDirection.x * 90, 0);
-        StartCoroutine(FireAtk1Instantiate());
-    }
+        ParticleSystem particles = Instantiate(particlesFireAtk1, transform.position, Quaternion.Euler(movementScript.lastDirection.y * -90, movementScript.lastDirection.x * 90, 0));
 
-    IEnumerator FireAtk1Instantiate() {
         yield return new WaitForSeconds(0.4f);
 
-        particlesFireAtk1.Play();
+        particles.Play();
 
         yield return new WaitForSeconds(0.4f);
 
         atkScript.isAtking = false;
         movementScript.moveLock = false;
         animPlayer.SetBool("Moving", false);
+
+        yield return new WaitForSeconds(0.4f);
+
+        Destroy(particles);
     }
 
     public void FireAtk5() {
+        StartCoroutine(FireAtk5Instatiate());
+    }
+
+    IEnumerator FireAtk5Instatiate() {
         movementScript.moveLock = true;
         rbPlayer.velocity = Vector2.zero;
         animPlayer.SetTrigger("AtkF5");
@@ -213,10 +222,7 @@ public class PlayerAtkList : MonoBehaviour {
 
         currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y));
         movementScript.lastDirection = currentAtkDirection.normalized;
-        StartCoroutine(FireAtk5Instatiate());
-    }
 
-    IEnumerator FireAtk5Instatiate() {
         yield return new WaitForSeconds(0.2f);
 
         atkScript.isAtking = false;

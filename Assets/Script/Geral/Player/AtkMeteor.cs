@@ -51,7 +51,7 @@ public class AtkMeteor : MonoBehaviour {
             if (i.transform.tag == "Enemy") i.transform.GetComponent<EnemyBase>().TakeDamage(damage);
             else if (i.transform.tag == "Litable") {
                 i.transform.GetComponent<Torch>().lit = true;
-                i.transform.GetComponent<Torch>().CheckState();
+                i.transform.GetComponent<Torch>().ChangeState(true);
             }
         }
         //If II, instantiate xxxxx

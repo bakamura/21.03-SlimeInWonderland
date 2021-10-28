@@ -36082,6 +36082,12 @@ PrefabInstance:
       propertyPath: atkImageCDown.Array.data[2]
       value: 
       objectReference: {fileID: 1952989672}
+    - target: {fileID: 7550295575778167167, guid: f199120732281ac40b0708f5eaadb52f,
+        type: 3}
+      propertyPath: particlesFireAtk1
+      value: 
+      objectReference: {fileID: 2019251568237580284, guid: 82781f075d06aa943a86572e23795be9,
+        type: 3}
     - target: {fileID: 8411343562132329171, guid: f199120732281ac40b0708f5eaadb52f,
         type: 3}
       propertyPath: m_Name
