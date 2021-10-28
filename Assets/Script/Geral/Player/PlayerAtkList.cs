@@ -22,13 +22,15 @@ public class PlayerAtkList : MonoBehaviour {
     public AtkMethod atk1;
     public AtkMethod atk2;
 
+    public float[] CDowns; // Implement cooldowns
+
     [Header("Basic Atk")]
     public float damageBasicAtk;
     public float strenghBasicAtkDash;
 
     [Header("FireBreath")]
     public float damageFireAtk1;
-    public ParticleSystem particlesFireAtk1;
+    public GameObject prefabFireAtk1;
 
     [Header("Meteor I")]
     public float damageFireAtk5;
@@ -193,21 +195,18 @@ public class PlayerAtkList : MonoBehaviour {
         atkScript.currentAtk = 0;
 
         movementScript.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        ParticleSystem particles = Instantiate(particlesFireAtk1, transform.position, Quaternion.Euler(movementScript.lastDirection.y * -90, movementScript.lastDirection.x * 90, 0));
+        GameObject breathInstance = Instantiate(prefabFireAtk1, transform.position, Quaternion.Euler(0, 0, (Mathf.Atan2(movementScript.lastDirection.y, movementScript.lastDirection.x) * Mathf.Rad2Deg) + 90));
+        breathInstance.GetComponent<AtkFireBreath>().direction = new Vector3(movementScript.lastDirection.x, movementScript.lastDirection.y, 0);
 
         yield return new WaitForSeconds(0.4f);
 
-        particles.Play();
+        breathInstance.GetComponent<AtkFireBreath>().Play();
 
         yield return new WaitForSeconds(0.4f);
 
         atkScript.isAtking = false;
         movementScript.moveLock = false;
         animPlayer.SetBool("Moving", false);
-
-        yield return new WaitForSeconds(0.4f);
-
-        Destroy(particles);
     }
 
     public void FireAtk5() {
@@ -229,6 +228,7 @@ public class PlayerAtkList : MonoBehaviour {
         movementScript.moveLock = false;
         animPlayer.SetBool("Moving", false);
         GameObject meteorInstance = Instantiate(prefabFireAtk5, transform.position + new Vector3(0, 0.75f, 0), Quaternion.Euler(0, 0, 180));
+        meteorInstance.GetComponent<AtkMeteor>().damage = damageFireAtk5;
         if (Vector2.Distance(transform.position, new Vector2(transform.position.x, transform.position.y) + currentAtkDirection) >= rangeFireAtk5) meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(transform.position.x + currentAtkDirection.normalized.x * rangeFireAtk5, transform.position.y + currentAtkDirection.normalized.y * rangeFireAtk5, 0);
         else meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(currentAtkDirection.x + transform.position.x, currentAtkDirection.y + transform.position.y, 0);
     }

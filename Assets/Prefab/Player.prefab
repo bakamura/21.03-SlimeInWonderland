@@ -341,10 +341,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idk: 69420
+  CDowns: []
   damageBasicAtk: 2
   strenghBasicAtkDash: 8
   damageFireAtk1: 2
-  particlesFireAtk1: {fileID: 0}
+  prefabFireAtk1: {fileID: 497692694843780200, guid: 2de04921475702a418c603e47e6f09a9,
+    type: 3}
   damageFireAtk5: 1
   rangeFireAtk5: 5
   prefabFireAtk5: {fileID: 6132768654907618045, guid: 9ea9375bd02a6324e9998c383f967ceb,
