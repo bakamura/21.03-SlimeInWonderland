@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour {
     private float idleAnimationCooldown = 0;
     public float idleAnimationTotalCooldown;
 
+    [Header("Swim")]
+    private bool canDive = false;
+    private bool underWater = false;
+
     private void Start() {
         rbPlayer = GetComponent<Rigidbody2D>();
         animPlayer = GetComponent<Animator>();
@@ -26,10 +30,10 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Inputs() {
-        int x = (int) Input.GetAxisRaw("Horizontal");
-        int y = (int) Input.GetAxisRaw("Vertical");
+        int x = (int)Input.GetAxisRaw("Horizontal");
+        int y = (int)Input.GetAxisRaw("Vertical");
 
-        if ((x == 0 && y == 0 && !animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Atk0") && !moveLock) && direction.x != 0 || direction.y != 0 ) lastDirection = direction;
+        if ((x == 0 && y == 0 && !animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Atk0") && !moveLock) && direction.x != 0 || direction.y != 0) lastDirection = direction;
 
         direction = new Vector2(x, y).normalized;
 
@@ -38,8 +42,10 @@ public class PlayerMovement : MonoBehaviour {
             animPlayer.SetFloat("Vertical", y);
         }
         if (direction.magnitude > 0 && animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")) animPlayer.SetBool("Moving", true);
-            animPlayer.SetFloat("LastHorizontal", lastDirection.x);
-            animPlayer.SetFloat("LastVertical", lastDirection.y);
+        animPlayer.SetFloat("LastHorizontal", lastDirection.x);
+        animPlayer.SetFloat("LastVertical", lastDirection.y);
+
+        if (!moveLock && canDive && Input.GetKeyDown(KeyCode.Q)) SetDive(underWater);
     }
 
     private void FixedUpdate() {
@@ -56,10 +62,25 @@ public class PlayerMovement : MonoBehaviour {
                 idleAnimationCooldown = 0;
             }
         }
-        if(!animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle Tree")) idleAnimationCooldown = 0;
+        if (!animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle Tree")) idleAnimationCooldown = 0;
     }
 
     public void AtMoveEnd() {
-        if(direction.magnitude == 0) animPlayer.SetBool("Moving", false);
+        if (direction.magnitude == 0) animPlayer.SetBool("Moving", false);
+    }
+
+    public void OnWater(bool bol) {
+        animPlayer.SetBool("WaterSpot", bol);
+        canDive = bol;
+    }
+
+    public void SetDive(bool bol) {
+        underWater = !bol;
+        if (!bol) animPlayer.SetTrigger("Dive");
+        else animPlayer.SetTrigger("Emerge");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        //Use other voids   
     }
 }

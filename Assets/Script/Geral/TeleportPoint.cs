@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class TeleportPoint : MonoBehaviour {
 
+    public bool needInput = false;
     public Vector3 teleportPosition;
     [Range(0, 3)] public int transitionDirection;
+    public float delayStart;
     public float transitionDuration;
     private Animator animatorWipeTransition;
 
@@ -14,12 +16,34 @@ public class TeleportPoint : MonoBehaviour {
         animatorWipeTransition = GameObject.FindGameObjectWithTag("WipeTransition").GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.tag == "Player") StartCoroutine(teleportTransition(collision.transform));
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (collision.tag == "Player") {
+            if(needInput) collision.GetComponent<PlayerMovement>().OnWater(true);
+
+            if (!needInput || Input.GetKey(KeyCode.Q)) {
+                if(needInput) collision.GetComponent<PlayerMovement>().SetDive(true); //
+                StartCoroutine(TeleportTransition(collision.transform));
+            }
+
+            if (!needInput) StartCoroutine(TeleportTransition(collision.transform));
+            else if (Input.GetKey(KeyCode.Q)) {
+                collision.GetComponent<PlayerMovement>().SetDive(true); //
+                StartCoroutine(TeleportTransition(collision.transform));
+            }
+        }
+
+        //Invoke("teleportTransition", delayStart);
     }
 
-    IEnumerator teleportTransition(Transform playerTransform) {
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.tag == "Player" && needInput) collision.GetComponent<PlayerMovement>().OnWater(false);
+    }
+
+    IEnumerator TeleportTransition(Transform playerTransform) { //DEBUFGAR.LOG
         playerTransform.GetComponent<PlayerMovement>().moveLock = true;
+
+        yield return new WaitForSeconds(delayStart);
+
         animatorWipeTransition.SetInteger("Direction", transitionDirection);
         animatorWipeTransition.SetTrigger("WipeIn");
 

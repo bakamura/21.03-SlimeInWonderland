@@ -63,7 +63,7 @@ public class RatCommon : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0)) / 2, atkRange);
+        if(Application.isPlaying) Gizmos.DrawWireSphere(transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0)) / 2, atkRange); 
     }
 
 }
