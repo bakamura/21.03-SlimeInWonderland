@@ -50,8 +50,6 @@ public class RandomPatrol : MonoBehaviour {
         if (wasPatroling != patroling && patroling) GenerateTarget();
         wasPatroling = patroling;
         if (aggroSpan <= 0) Patrol();
-        if (aggroSpan <= 0) GetComponent<SpriteRenderer>().color = Color.blue;
-        else GetComponent<SpriteRenderer>().color = Color.red;
     }
 
     private void Patrol() {
