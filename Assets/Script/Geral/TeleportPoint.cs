@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TeleportPoint : MonoBehaviour {
 
+    private bool isTeleporting = false;
     public bool needInput = false;
     public Vector3 teleportPosition;
     [Range(0, 3)] public int transitionDirection;
@@ -28,7 +29,7 @@ public class TeleportPoint : MonoBehaviour {
             if (!needInput) StartCoroutine(TeleportTransition(collision.transform));
             else if (Input.GetKey(KeyCode.Q)) {
                 collision.GetComponent<PlayerMovement>().SetDive(true); //
-                StartCoroutine(TeleportTransition(collision.transform));
+                if(!isTeleporting) StartCoroutine(TeleportTransition(collision.transform));
             }
         }
 
@@ -40,6 +41,7 @@ public class TeleportPoint : MonoBehaviour {
     }
 
     IEnumerator TeleportTransition(Transform playerTransform) { //DEBUFGAR.LOG
+        isTeleporting = true;
         playerTransform.GetComponent<PlayerMovement>().moveLock = true;
 
         yield return new WaitForSeconds(delayStart);
@@ -57,6 +59,7 @@ public class TeleportPoint : MonoBehaviour {
 
         animatorWipeTransition.SetTrigger("WipeOut");
         playerTransform.GetComponent<PlayerMovement>().moveLock = false;
+        isTeleporting = false;
     }
 
     private void OnDrawGizmosSelected() {

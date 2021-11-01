@@ -34,7 +34,7 @@ public class PlayerData : MonoBehaviour {
     }
 
     public void TakeDamage(float damage) {
-        if (blockState) currentHealth = currentHealth;
+        if (blockState) currentHealth = currentHealth - 0;
         else currentHealth -= damage;
         animPlayer.SetBool("Consuming", false);
     }
