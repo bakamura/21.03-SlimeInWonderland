@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
@@ -40,12 +41,28 @@ public class MainMenu : MonoBehaviour {
         ActivateCanvas(savesCanvas, true);
     }
 
+    public void SaveButton(int i) {
+        switch (i) {
+            case 0:
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+        }
+    }
+
     public void ConfigsButton() {
         DeactivateAllCanvas();
         ActivateCanvas(configsCanvas, true);
     }
 
     public void QuitButton() {
+        mainCanvas.interactable = false;
+        mainCanvas.blocksRaycasts = false;
         ActivateCanvas(confirmQuitCanvas, true);
     }
 
