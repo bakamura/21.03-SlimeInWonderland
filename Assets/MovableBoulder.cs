@@ -10,6 +10,10 @@ public class MovableBoulder : MonoBehaviour {
     public Vector3 CorrectPos;
     private Vector3 targetPos;
 
+    private void Start() {
+        targetPos = transform.position;
+    }
+
     private void FixedUpdate() {
         MoveToPos();
     }

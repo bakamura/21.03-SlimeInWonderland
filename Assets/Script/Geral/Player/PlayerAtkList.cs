@@ -11,12 +11,13 @@ public class PlayerAtkList : MonoBehaviour {
     private Animator animPlayer;
     private PlayerAttack atkScript;
     private PlayerMovement movementScript;
+    public Collider2D triggerCol;
 
     private Vector2 mousePos;
     private Vector2 currentAtkDirection;
 
     [Header("AttackList")]
-    public int idk = 69420;
+    private int triggerState = 0;
     public delegate void AtkMethod();
     public AtkMethod atk0;
     public AtkMethod atk1;
@@ -148,24 +149,26 @@ public class PlayerAtkList : MonoBehaviour {
         return FireAtk1;
     }
 
-
     private void Update() {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
 
     public void BasicAtk() {
+        StartCoroutine(BasicAtkNum());
+    }
+
+    IEnumerator BasicAtkNum() {
         currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
         movementScript.moveLock = true;
         rbPlayer.velocity = Vector2.zero;
         animPlayer.SetTrigger("Atk0");
         atkScript.currentAtk = 0;
+        triggerCol.enabled = true;
+        triggerState = 1;
 
         movementScript.lastDirection = currentAtkDirection;
-        StartCoroutine(BasicAtkNum());
-    }
 
-    IEnumerator BasicAtkNum() {
         yield return new WaitForSeconds(0.1f);
 
         Debug.Log("Movimento começado");
@@ -175,6 +178,8 @@ public class PlayerAtkList : MonoBehaviour {
 
         Debug.Log("Movimento interrompido");
         rbPlayer.velocity = Vector2.zero;
+        triggerCol.enabled = false;
+        triggerState = 0;
 
         yield return new WaitForSeconds(0.3f);
 
@@ -233,5 +238,24 @@ public class PlayerAtkList : MonoBehaviour {
         else meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(currentAtkDirection.x + transform.position.x, currentAtkDirection.y + transform.position.y, 0);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision) {
+        switch (triggerState) {
+            case 0: break;
+            case 1:
+                if (collision.GetComponent<EnemyBase>() != null) collision.GetComponent<EnemyBase>().TakeDamage(damageBasicAtk);
+                if (collision.GetComponent<MovableBoulder>() != null) {
+                    int i = (int) (Mathf.Atan2(movementScript.lastDirection.y, movementScript.lastDirection.x) * Mathf.Rad2Deg);
+                    if (i <= 45 && i > -45) i = 0;
+                    else if (i <= -45 && i >= -135) i = 1;
+                    else if (i < -135 || i >= 135) i = 2;
+                    else if (i < 135 && i > 45) i = 3;
+                    collision.GetComponent<MovableBoulder>().SetTarget(i);
+                }
+                break;
+            case 2:
+
+                break;
+        }
+    }
 
 }

@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 311065201}
   - component: {fileID: 8411343562132329169}
   - component: {fileID: 431201073549885756}
+  - component: {fileID: 4770745486719997009}
   - component: {fileID: 3667573876355629924}
   - component: {fileID: 8411343562132329180}
   - component: {fileID: 8411343562132329178}
@@ -252,7 +253,7 @@ MonoBehaviour:
   - {x: -0.38211253, y: -0.025212273, z: 0}
   m_ShapePathHash: 581104624
   m_Mesh: {fileID: 0}
-  m_InstanceId: 27696
+  m_InstanceId: 30166
 --- !u!50 &8411343562132329169
 Rigidbody2D:
   serializedVersion: 4
@@ -290,6 +291,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.9, y: 0.45}
   m_Direction: 1
+--- !u!58 &4770745486719997009
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411343562132329171}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.1}
+  serializedVersion: 2
+  m_Radius: 0.55
 --- !u!114 &3667573876355629924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c467f48b6f7ce24f939513d79ecd028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idk: 69420
+  triggerCol: {fileID: 4770745486719997009}
   CDowns: []
   damageBasicAtk: 2
   strenghBasicAtkDash: 8
