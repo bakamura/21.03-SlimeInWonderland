@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Provisorio : MonoBehaviour {
+public class WayBlockingBoulder : MonoBehaviour {
 
-    public Torch[] torches;
+    public MovableBoulder[] boulders;
     public Vector3 targetPos;
     private Vector3 startPos;
     private float currentPos = 0;
@@ -20,7 +20,9 @@ public class Provisorio : MonoBehaviour {
     }
 
     private void CheckState() {
-        if (torches[0].lit && torches[1].lit) state = 1;
+        int i = boulders.Length;
+        foreach (MovableBoulder boulder in boulders) if(boulder.onPosition) i -= 1; 
+        if(i == 0) state = 1;
     }
 
     private void MoveAway() {
