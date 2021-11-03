@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6422206238384744077}
   - component: {fileID: 6422206238384744178}
   - component: {fileID: 6422206238384744076}
+  - component: {fileID: 211888526755464609}
   m_Layer: 0
   m_Name: FireBallBoss
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: -5102003457762969684, guid: 0bbdd46d7822e404197219a0f9facc91,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -136,3 +137,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotForce: 350
   damageShot: 1
+--- !u!95 &211888526755464609
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422206238384744177}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 62994f12b16a1c143859e55592c2bb92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

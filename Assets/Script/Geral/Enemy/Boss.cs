@@ -27,11 +27,13 @@ public class Boss : MonoBehaviour {
     public float shotingForce;
     public float shootingTimer;
     public float areaTimer;
+    private float lastHorizontal;
+    private float lastVertical;
 
     [Header("Components")]
     private EnemyBase statsScript;
     private Vector2 initialPos;
-    private Vector2 targetPos;
+    private Vector3 targetPos;
     public float relativeDistance;
     public float nearRelativeDistance;
     private float currentPos;
@@ -51,15 +53,24 @@ public class Boss : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        AtkBoss();
+        if (statsScript.currentHealth > 0) {
+            AtkBoss();
+            if (transform.position != targetPos) {
+                lastHorizontal = targetPos.x - transform.position.x;
+                lastVertical = targetPos.y - transform.position.y;
+            }
+        }
     }
 
     private void AtkBoss() {
         switch (state) {
             case 0:
+                rbBoss.velocity = Vector2.zero;
                 if (seePlayer) StartCoroutine(RestTime());
-                break;//detecta o player
-            case 1: break;//pausa
+                break;
+            case 1:
+                rbBoss.velocity = Vector2.zero;
+                break;
             case 2:
                 currentPos += Time.fixedDeltaTime / jumpDuration;
                 if (currentPos >= 1) {
@@ -69,8 +80,10 @@ public class Boss : MonoBehaviour {
                     StartCoroutine(InstantiateShots());
                 }
                 transform.position = Vector2.Lerp(initialPos, targetPos, currentPos);
-                break;//calcula e vai a uma pos ao player
-            case 3: break;//instancia 3 bolas de fogo
+                break;
+            case 3:
+                rbBoss.velocity = Vector2.zero;
+                break;
             case 4:
                 currentPos += Time.fixedDeltaTime / jumpDuration;
                 if (currentPos >= 1) {
@@ -80,8 +93,10 @@ public class Boss : MonoBehaviour {
                     StartCoroutine(AreaAtk());
                 }
                 transform.position = Vector2.Lerp(initialPos, targetPos, currentPos);
-                break;//se <50, chega perto do player caso seja preciso
-            case 5: break;//se <50, segundo ataque
+                break;
+            case 5:
+                rbBoss.velocity = Vector2.zero;
+                break;
         }
     }
 
@@ -106,9 +121,9 @@ public class Boss : MonoBehaviour {
     IEnumerator InstantiateShots() {
         yield return new WaitForSeconds(shootingDelay);
 
-        //iniciar animacao
+        animBoss.SetTrigger("Shot");
 
-        yield return new WaitForSeconds(0.1f);//calcular tempo quando as anim estiverem prontas
+        yield return new WaitForSeconds(0.6875f);
 
         float a = Mathf.Atan2(playerGObject.transform.position.y - transform.position.y, playerGObject.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 180;
         GameObject go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
@@ -116,9 +131,9 @@ public class Boss : MonoBehaviour {
 
         yield return new WaitForSeconds(shootingDelay);
 
-        //iniciar animacao
+        animBoss.SetTrigger("Shot");
 
-        yield return new WaitForSeconds(0.1f);//calcular tempo quando as anim estiverem prontas
+        yield return new WaitForSeconds(0.6875f);
 
         a = Mathf.Atan2(playerGObject.transform.position.y - transform.position.y, playerGObject.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 180;
         go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
@@ -127,9 +142,9 @@ public class Boss : MonoBehaviour {
 
         yield return new WaitForSeconds(shootingDelay);
 
-        //iniciar animacao
+        animBoss.SetTrigger("Shot");
 
-        yield return new WaitForSeconds(0.1f);//calcular tempo quando as anim estiverem prontas
+        yield return new WaitForSeconds(0.6875f);
 
         a = Mathf.Atan2(playerGObject.transform.position.y - transform.position.y, playerGObject.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 180;
         go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
@@ -149,11 +164,11 @@ public class Boss : MonoBehaviour {
     }
 
     IEnumerator AreaAtk() {
-        //iniciar animacao
+        animBoss.SetTrigger("Area");
 
-        yield return new WaitForSeconds(areaAtkDelay);
+        yield return new WaitForSeconds(0.6f);
 
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, areaRange, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.CapsuleCastAll(transform.position + new Vector3(0, -0.5f, 0), new Vector2 (areaRange, areaRange / 2), 0, 0, Vector2.zero);
         foreach (RaycastHit2D hit in hits) if (hit.collider.GetComponent<PlayerData>() != null) hit.collider.GetComponent<PlayerData>().TakeDamage(areaDamage);
 
         yield return new WaitForSeconds(areaAtkDelay);
@@ -164,6 +179,7 @@ public class Boss : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, areaRange);
+        Gizmos.DrawWireSphere(transform.position + new Vector3(1.5f, -0.5f , 0), areaRange);
+        Gizmos.DrawWireSphere(transform.position + new Vector3(-1.5f, -0.5f, 0), areaRange);
     }
 }

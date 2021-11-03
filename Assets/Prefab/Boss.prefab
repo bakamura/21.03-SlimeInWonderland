@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
   m_Sprite: {fileID: 2034766859185888223, guid: a8f3a1b209cfe9241bec506c599d90af,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744a60a7c22bdaa4690a1878f77041e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  currentHealth: 200
+  maxHealth: 20
+  currentHealth: 1
   xpType: 1
   xpAmount: 10
 --- !u!114 &8733364928138893067
@@ -178,7 +178,7 @@ MonoBehaviour:
   seePlayer: 1
   shotGObject: {fileID: 6422206238384744177, guid: 3c0e5ea142d968c49afd9d0b35736f47,
     type: 3}
-  areaRange: 3
+  areaRange: 1
   areaDamage: 1
   restTime: 2
   shootingDelay: 1.5
