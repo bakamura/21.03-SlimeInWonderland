@@ -8,6 +8,7 @@ public class RandomPatrol : MonoBehaviour {
     private Rigidbody2D rbRat;
     private Collider2D colliderRat;
     private Animator animRat;
+    private EnemyBase dataScript;
 
     [Header("Stats")]
     public float speed;
@@ -36,6 +37,8 @@ public class RandomPatrol : MonoBehaviour {
         colliderRat = GetComponent<Collider2D>();
         animRat = GetComponent<Animator>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        dataScript = GetComponent<EnemyBase>();
+       
 
         startPos = transform.position;
 
@@ -46,10 +49,12 @@ public class RandomPatrol : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        FOVCheck();
-        if (wasPatroling != patroling && patroling) GenerateTarget();
-        wasPatroling = patroling;
-        if (aggroSpan <= 0) Patrol();
+        if (dataScript.currentHealth > 0) {
+            FOVCheck();
+            if (wasPatroling != patroling && patroling) GenerateTarget();
+            wasPatroling = patroling;
+            if (aggroSpan <= 0) Patrol();
+        }
     }
 
     private void Patrol() {
