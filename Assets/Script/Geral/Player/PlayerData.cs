@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PlayerData : MonoBehaviour {
 
     [Header("Components")]
@@ -37,6 +36,8 @@ public class PlayerData : MonoBehaviour {
         if (blockState) currentHealth = currentHealth - 0;
         else currentHealth -= damage;
         animPlayer.SetBool("Consuming", false);
+
+        if (currentHealth <= 0) Application.LoadLevel(Application.loadedLevel);
     }
 
     public void ChangeColor() {
