@@ -120,8 +120,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0043416023, y: -0.112876356}
-  m_Size: {x: 0.9913168, y: 0.99131715}
+  m_Offset: {x: 0, y: -0.1}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!50 &557232797982443207
 Rigidbody2D:
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  currentHealth: 5
   xpType: 0
   xpAmount: 0
 --- !u!114 &557232797982443211
@@ -175,7 +176,7 @@ MonoBehaviour:
   patroling: 1
   aggroDuration: 0
   aggroSpan: 0
-  squareRange: {x: 5, y: 5}
+  squareRange: {x: 3, y: 3.5}
   maxDist: 3
   maxRest: 3
   currentTarget: {x: 0, y: 0}
@@ -196,6 +197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   followGap: 0.5
-  atkRange: 2
+  atkRange: 0.75
   restingTime: 1
   ratDamage: 0
