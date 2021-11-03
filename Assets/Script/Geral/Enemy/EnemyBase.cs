@@ -10,7 +10,7 @@ public class EnemyBase : MonoBehaviour {
 
     [Header("Stats")]
     public float maxHealth;
-    private float currentHealth;
+    public float currentHealth;
     public int xpType;
     public float xpAmount;
 
