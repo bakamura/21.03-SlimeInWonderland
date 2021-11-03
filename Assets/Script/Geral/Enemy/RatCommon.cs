@@ -8,6 +8,7 @@ public class RatCommon : MonoBehaviour {
     private Rigidbody2D rbRat;
     private Animator animRat;
     private GameObject playerGObject;
+    private EnemyBase baseScript;
 
     [Header("Stats")]
     public float speed;
@@ -22,10 +23,11 @@ public class RatCommon : MonoBehaviour {
         rbRat = GetComponent<Rigidbody2D>();
         animRat = GetComponent<Animator>();
         playerGObject = GameObject.FindGameObjectWithTag("Player");
+        baseScript = GetComponent<EnemyBase>();
     }
 
     private void FixedUpdate() {
-        if (patrolScript.aggroSpan > 0) AtkPatern();
+        if (patrolScript.aggroSpan > 0 && baseScript.currentHealth > 0) AtkPatern();
     }
 
     private void AtkPatern() {

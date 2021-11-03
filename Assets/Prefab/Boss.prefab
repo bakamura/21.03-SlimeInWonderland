@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 200
-  currentHealth: 0
+  currentHealth: 200
   xpType: 1
   xpAmount: 10
 --- !u!114 &8733364928138893067
@@ -178,15 +178,14 @@ MonoBehaviour:
   seePlayer: 1
   shotGObject: {fileID: 6422206238384744177, guid: 3c0e5ea142d968c49afd9d0b35736f47,
     type: 3}
-  areaAtkGObject: {fileID: 7668587040618372451, guid: da3c05a9422c5e14ea967954bbce4d38,
-    type: 3}
-  areaRange: 0
+  areaRange: 3
+  areaDamage: 1
   restTime: 2
-  shootingDelay: 1
-  areaAtkDelay: 0
+  shootingDelay: 1.5
+  areaAtkDelay: 2
   shotingForce: 3
   shootingTimer: 5
-  areaTimer: 0
+  areaTimer: 5
   relativeDistance: 3
   nearRelativeDistance: 1
   jumpDuration: 1

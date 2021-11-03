@@ -18,14 +18,12 @@ public class Boss : MonoBehaviour {
     private int state = 0;
 
     public GameObject shotGObject;
-    public GameObject areaAtkGObject;
-    [Range(0, 360)]
+    [Range(0, 10)]
     public float areaRange;
+    public float areaDamage;
     public float restTime;
     public float shootingDelay;
     public float areaAtkDelay;
-    private float shotcoolDown;
-    private float areacoolDown;
     public float shotingForce;
     public float shootingTimer;
     public float areaTimer;
@@ -49,8 +47,6 @@ public class Boss : MonoBehaviour {
         animBoss = GetComponent<Animator>();
         statsScript = GetComponent<EnemyBase>();
         playerGObject = GameObject.FindGameObjectWithTag("Player");
-        shotcoolDown = shootingTimer;
-        areacoolDown = areaTimer;
         seePlayer = true;//
     }
 
@@ -81,13 +77,11 @@ public class Boss : MonoBehaviour {
                     currentPos = 1;
                     state = 5;
                     collBoss.enabled = true;
+                    StartCoroutine(AreaAtk());
                 }
                 transform.position = Vector2.Lerp(initialPos, targetPos, currentPos);
                 break;//se <50, chega perto do player caso seja preciso
-            case 5:
-                state = 2;
-                JumpPos(relativeDistance);
-                break;//se <50, segundo ataque
+            case 5: break;//se <50, segundo ataque
         }
     }
 
@@ -116,8 +110,9 @@ public class Boss : MonoBehaviour {
 
         yield return new WaitForSeconds(0.1f);//calcular tempo quando as anim estiverem prontas
 
-        float a = Mathf.Atan2(playerGObject.transform.position.y - transform.position.y, playerGObject.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 90;
-        Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
+        float a = Mathf.Atan2(playerGObject.transform.position.y - transform.position.y, playerGObject.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 180;
+        GameObject go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
+        go.transform.localScale = new Vector3(4, 4, 1);
 
         yield return new WaitForSeconds(shootingDelay);
 
@@ -125,8 +120,10 @@ public class Boss : MonoBehaviour {
 
         yield return new WaitForSeconds(0.1f);//calcular tempo quando as anim estiverem prontas
 
-        a = Mathf.Atan2(playerGObject.transform.position.y - transform.position.y, playerGObject.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 90;
-        Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
+        a = Mathf.Atan2(playerGObject.transform.position.y - transform.position.y, playerGObject.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 180;
+        go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
+        go.transform.localScale = new Vector3(4, 4, 1);
+
 
         yield return new WaitForSeconds(shootingDelay);
 
@@ -134,10 +131,12 @@ public class Boss : MonoBehaviour {
 
         yield return new WaitForSeconds(0.1f);//calcular tempo quando as anim estiverem prontas
 
-        a = Mathf.Atan2(playerGObject.transform.position.y - transform.position.y, playerGObject.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 90;
-        Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
+        a = Mathf.Atan2(playerGObject.transform.position.y - transform.position.y, playerGObject.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 180;
+        go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
+        go.transform.localScale = new Vector3(4, 4, 1);
 
-        yield return new WaitForSeconds(shootingDelay);
+
+        yield return new WaitForSeconds(shootingDelay * 3);
 
         if (statsScript.currentHealth < statsScript.maxHealth / 2) {
             state = 4;
@@ -146,14 +145,25 @@ public class Boss : MonoBehaviour {
         else {
             state = 2;
             JumpPos(relativeDistance);
-        }
+        }  
+    }
 
-        IEnumerator InstantiateAreaAtk() {
-            yield return new WaitForSeconds(areaAtkDelay);
+    IEnumerator AreaAtk() {
+        //iniciar animacao
 
-            //iniciar animacao
+        yield return new WaitForSeconds(areaAtkDelay);
 
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, areaRange, Vector2.zero);
+        foreach (RaycastHit2D hit in hits) if (hit.collider.GetComponent<PlayerData>() != null) hit.collider.GetComponent<PlayerData>().TakeDamage(areaDamage);
 
-        }
+        yield return new WaitForSeconds(areaAtkDelay);
+
+        state = 2;
+        JumpPos(relativeDistance);
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, areaRange);
     }
 }

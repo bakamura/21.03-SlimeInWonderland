@@ -8,7 +8,7 @@ public class FireBallBoss : MonoBehaviour {
     public float damageShot;
 
     private void Start() {
-        GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.down * shotForce);
+        GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left * shotForce);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
