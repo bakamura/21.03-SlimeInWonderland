@@ -21,9 +21,4 @@ public class FireBallBoss : MonoBehaviour {
         if (collision.tag == "Player") collision.GetComponent<PlayerData>().TakeDamage(damageShot);
         if (collision.tag == "Wall") Destroy(gameObject);
     }
-
-
-
-
-
 }

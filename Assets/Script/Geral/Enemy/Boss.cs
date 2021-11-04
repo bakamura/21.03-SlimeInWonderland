@@ -14,10 +14,10 @@ public class Boss : MonoBehaviour {
     public float followGap;
     public float atkRange;
     public float bossDamage;
-    [SerializeField] private bool seePlayer = false;
     private int state = 0;
 
     public GameObject shotGObject;
+    private Vector3 startPos;
     [Range(0, 10)]
     public float areaRange;
     public float areaDamage;
@@ -38,10 +38,7 @@ public class Boss : MonoBehaviour {
     public float nearRelativeDistance;
     private float currentPos;
     public float jumpDuration;
-
-
-
-
+    public Vector2 arenaRange;
 
     private void Start() {
         rbBoss = GetComponent<Rigidbody2D>();
@@ -49,7 +46,8 @@ public class Boss : MonoBehaviour {
         animBoss = GetComponent<Animator>();
         statsScript = GetComponent<EnemyBase>();
         playerGObject = GameObject.FindGameObjectWithTag("Player");
-        seePlayer = true;//
+
+        startPos = transform.position;
     }
 
     private void FixedUpdate() {
@@ -65,8 +63,9 @@ public class Boss : MonoBehaviour {
     private void AtkBoss() {
         switch (state) {
             case 0:
+                RaycastHit2D[] hits = Physics2D.BoxCastAll(initialPos, arenaRange, 0, Vector2.zero);
+                foreach (RaycastHit2D hit in hits) if (hit.collider.tag == "Player") StartCoroutine(RestTime());
                 rbBoss.velocity = Vector2.zero;
-                if (seePlayer) StartCoroutine(RestTime());
                 break;
             case 1:
                 rbBoss.velocity = Vector2.zero;
@@ -98,6 +97,7 @@ public class Boss : MonoBehaviour {
                 rbBoss.velocity = Vector2.zero;
                 break;
         }
+
     }
 
     IEnumerator RestTime() {
@@ -168,7 +168,7 @@ public class Boss : MonoBehaviour {
 
         yield return new WaitForSeconds(0.6f);
 
-        RaycastHit2D[] hits = Physics2D.CapsuleCastAll(transform.position + new Vector3(0, -0.5f, 0), new Vector2 (areaRange, areaRange / 2), 0, 0, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.CapsuleCastAll(transform.position + new Vector3(0, -0.5f, 0), new Vector2 (areaRange, areaRange / 2), 0, 0, Vector2.zero); //precisa debugar
         foreach (RaycastHit2D hit in hits) if (hit.collider.GetComponent<PlayerData>() != null) hit.collider.GetComponent<PlayerData>().TakeDamage(areaDamage);
 
         yield return new WaitForSeconds(areaAtkDelay);
@@ -181,5 +181,7 @@ public class Boss : MonoBehaviour {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + new Vector3(1.5f, -0.5f , 0), areaRange);
         Gizmos.DrawWireSphere(transform.position + new Vector3(-1.5f, -0.5f, 0), areaRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(startPos, arenaRange);
     }
 }
