@@ -30,6 +30,7 @@ public class EnemyBase : MonoBehaviour {
         if (currentHealth <= 0) {
             animatorEnemy.SetBool("Die", true);
             colliderEnemy.isTrigger = true;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             GetComponent<SpriteRenderer>().sortingOrder = 4;
         }
         if (currentHealth > maxHealth) currentHealth = maxHealth;

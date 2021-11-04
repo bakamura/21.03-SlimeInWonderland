@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 37dd7f3cc4a5e5547becf412979b4319
   - enabled: 1
-    path: Assets/Scenes/NakaTestScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/StartCave.unity
+    guid: e3cf8d6c8bf3dae4c822c21b20e65c1d
   m_configObjects: {}

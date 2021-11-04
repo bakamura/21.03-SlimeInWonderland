@@ -57,13 +57,24 @@ public class Boss : MonoBehaviour {
                 lastHorizontal = targetPos.x - transform.position.x;
                 lastVertical = targetPos.y - transform.position.y;
             }
+            else {
+                lastHorizontal = playerGObject.transform.position.x - transform.position.x;
+                lastVertical = playerGObject.transform.position.y - transform.position.y;
+            }
         }
+        else {
+            state = 0;
+            StopAllCoroutines();
+        }
+        animBoss.SetFloat("Horizontal", lastHorizontal);
+        animBoss.SetFloat("Vertical", lastVertical);
     }
 
     private void AtkBoss() {
         switch (state) {
             case 0:
-                RaycastHit2D[] hits = Physics2D.BoxCastAll(initialPos, arenaRange, 0, Vector2.zero);
+
+                RaycastHit2D[] hits = Physics2D.BoxCastAll(startPos, arenaRange, 0, Vector2.zero);
                 foreach (RaycastHit2D hit in hits) if (hit.collider.tag == "Player") StartCoroutine(RestTime());
                 rbBoss.velocity = Vector2.zero;
                 break;
@@ -182,6 +193,6 @@ public class Boss : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position + new Vector3(1.5f, -0.5f , 0), areaRange);
         Gizmos.DrawWireSphere(transform.position + new Vector3(-1.5f, -0.5f, 0), areaRange);
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(startPos, arenaRange);
+        if (Application.isPlaying) Gizmos.DrawWireCube(startPos, arenaRange);
     }
 }

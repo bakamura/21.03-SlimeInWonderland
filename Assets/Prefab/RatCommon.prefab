@@ -159,7 +159,7 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 5
   xpType: 0
-  xpAmount: 0
+  xpAmount: 1
 --- !u!114 &557232797982443211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,9 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   patroling: 1
-  aggroDuration: 0
+  aggroDuration: 5
   aggroSpan: 0
-  squareRange: {x: 3, y: 3.5}
+  squareRange: {x: 4, y: 2}
   maxDist: 3
   maxRest: 3
   currentTarget: {x: 0, y: 0}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  followGap: 0.5
+  followGap: 1.25
   atkRange: 0.75
-  restingTime: 1
-  ratDamage: 0
+  restingTime: 2
+  ratDamage: 1

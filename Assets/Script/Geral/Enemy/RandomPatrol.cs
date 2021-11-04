@@ -142,7 +142,7 @@ public class RandomPatrol : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(startPos, squareRange);
+        if (Application.isPlaying) Gizmos.DrawWireCube(startPos, squareRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
         Gizmos.color = Color.blue;

@@ -257,5 +257,4 @@ public class PlayerAtkList : MonoBehaviour {
                 break;
         }
     }
-
 }
