@@ -158,6 +158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   currentHealth: 5
+  knockBackable: 1
+  knockBackStrength: 10
   xpType: 0
   xpAmount: 1
 --- !u!114 &557232797982443211
@@ -173,16 +175,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  patroling: 1
-  aggroDuration: 5
-  aggroSpan: 0
-  squareRange: {x: 4, y: 2}
   maxDist: 3
   maxRest: 3
-  currentTarget: {x: 0, y: 0}
-  facing: {x: 0, y: 0}
+  squareRange: {x: 4, y: 2}
+  aggroDuration: 5
   radius: 3
-  angle: 90
+  angle: 135
 --- !u!114 &1782340690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,5 +196,5 @@ MonoBehaviour:
   speed: 2
   followGap: 1.25
   atkRange: 0.75
-  restingTime: 2
   ratDamage: 1
+  restingTime: 2

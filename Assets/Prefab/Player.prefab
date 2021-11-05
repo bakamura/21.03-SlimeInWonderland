@@ -253,7 +253,7 @@ MonoBehaviour:
   - {x: -0.38211253, y: -0.025212273, z: 0}
   m_ShapePathHash: 581104624
   m_Mesh: {fileID: 0}
-  m_InstanceId: -11424
+  m_InstanceId: -1230
 --- !u!50 &8411343562132329169
 Rigidbody2D:
   serializedVersion: 4
@@ -306,7 +306,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.5
 --- !u!114 &3667573876355629924
 MonoBehaviour:
   m_ObjectHideFlags: 0

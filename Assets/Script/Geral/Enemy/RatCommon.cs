@@ -4,51 +4,62 @@ using UnityEngine;
 
 public class RatCommon : MonoBehaviour {
 
-    private RandomPatrol patrolScript;
+    [Header("Components")]
     private Rigidbody2D rbRat;
     private Animator animRat;
-    private GameObject playerGObject;
     private EnemyBase baseScript;
+    private RandomPatrol patrolScript;
+    private Transform playerTransform;
 
     [Header("Stats")]
     public float speed;
     public float followGap;
+
     public float atkRange;
-    private bool resting;
-    public float restingTime;
     public float ratDamage;
 
+    private bool resting = false;
+    public float restingTime;
+
     private void Start() {
-        patrolScript = GetComponent<RandomPatrol>();
         rbRat = GetComponent<Rigidbody2D>();
         animRat = GetComponent<Animator>();
-        playerGObject = GameObject.FindGameObjectWithTag("Player");
         baseScript = GetComponent<EnemyBase>();
+        patrolScript = GetComponent<RandomPatrol>();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     private void FixedUpdate() {
         if (patrolScript.aggroSpan > 0 && baseScript.currentHealth > 0) AtkPatern();
+        if (baseScript.currentHealth <= 0) rbRat.velocity = Vector2.zero; //
     }
 
     private void AtkPatern() {
-        if (!resting) {
-            Vector2 direction = (playerGObject.transform.position - transform.position).normalized;
+        if (!resting && !baseScript.beingKb) {
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
+            rbRat.velocity = direction * speed;
+            patrolScript.facing = direction;
+
+            animRat.SetBool("Moving", true);
             animRat.SetFloat("Horizontal", direction.x);
             animRat.SetFloat("Vertical", direction.y);
-            rbRat.velocity = direction * speed;
-            float angle2Player = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            if (angle2Player <= 45 && angle2Player > -45) patrolScript.facing = new Vector2(1, 0);
-            else if (angle2Player > 45 && angle2Player < 135) patrolScript.facing = new Vector2(0, 1);
-            else if (angle2Player >= 135 || angle2Player < -135) patrolScript.facing = new Vector2(-1, 0);
-            else if (angle2Player >= -135 && angle2Player <= -45) patrolScript.facing = new Vector2(0, -1);
-
-            if (Vector2.Distance(transform.position, playerGObject.transform.position) < followGap) {
+            
+            if (Vector2.Distance(transform.position, playerTransform.position) < followGap) {
                 resting = true;
                 animRat.SetTrigger("Atk");
                 StartCoroutine(AtkInstance());
             }
         }
-        else rbRat.velocity = Vector2.zero;
+        else {
+            if (!baseScript.beingKb) rbRat.velocity = Vector2.zero;
+            animRat.SetBool("Moving", false);
+        }
+
+        if (baseScript.beingKb) {
+            StopAllCoroutines();
+            resting = false;
+            if(animRat.GetCurrentAnimatorStateInfo(0).IsName("Attacking")) animRat.SetTrigger("StopAtk");
+        }
     }
 
     IEnumerator AtkInstance() {
@@ -56,7 +67,7 @@ public class RatCommon : MonoBehaviour {
 
         Vector3 atkPos = transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0))/2;
         Collider2D[] isInRange = Physics2D.OverlapCircleAll(atkPos, atkRange);
-        for (int i = 0; i < isInRange.Length; i++) if (isInRange[i].tag == "Player") playerGObject.GetComponent<PlayerData>().TakeDamage(ratDamage);
+        foreach(Collider2D col in isInRange) if (col.tag == "Player") playerTransform.GetComponent<PlayerData>().TakeDamage(ratDamage);
 
         yield return new WaitForSeconds(restingTime);
 

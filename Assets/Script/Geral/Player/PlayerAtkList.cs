@@ -23,6 +23,9 @@ public class PlayerAtkList : MonoBehaviour {
     public AtkMethod atk1;
     public AtkMethod atk2;
 
+    private GameObject[] hitEnemies = new GameObject[64];
+    private int currentListPos = 0;
+
     public float[] CDowns; // Implement cooldowns
 
     [Header("Basic Atk")]
@@ -179,6 +182,8 @@ public class PlayerAtkList : MonoBehaviour {
         Debug.Log("Movimento interrompido");
         rbPlayer.velocity = Vector2.zero;
         triggerCol.enabled = false;
+        for(int i = 0; i < hitEnemies.Length; i++) hitEnemies[i] = null;
+        currentListPos = 0;
         triggerState = 0;
 
         yield return new WaitForSeconds(0.3f);
@@ -238,12 +243,19 @@ public class PlayerAtkList : MonoBehaviour {
         else meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(currentAtkDirection.x + transform.position.x, currentAtkDirection.y + transform.position.y, 0);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
         switch (triggerState) {
             case 0: break;
             case 1:
-                if (collision.GetComponent<EnemyBase>() != null) collision.GetComponent<EnemyBase>().TakeDamage(damageBasicAtk);
-                if (collision.GetComponent<MovableBoulder>() != null) {
+                bool bol = false;
+                foreach (GameObject go in hitEnemies) if(go == collision.gameObject.gameObject) bol = true;
+
+                if (collision.GetComponent<EnemyBase>() != null && !bol) {
+                    collision.GetComponent<EnemyBase>().TakeDamage(damageBasicAtk);
+                    hitEnemies[currentListPos] = collision.gameObject;
+                    currentListPos++;
+                }
+                else if (collision.GetComponent<MovableBoulder>() != null) {
                     int i = (int) (Mathf.Atan2(movementScript.lastDirection.y, movementScript.lastDirection.x) * Mathf.Rad2Deg);
                     if (i <= 45 && i > -45) i = 0;
                     else if (i <= -45 && i >= -135) i = 1;

@@ -6,25 +6,25 @@ public class RandomPatrol : MonoBehaviour {
 
     [Header("Components")]
     private Rigidbody2D rbRat;
-    private Collider2D colliderRat;
     private Animator animRat;
     private EnemyBase dataScript;
 
     [Header("Stats")]
     public float speed;
-    private bool wasPatroling;
-    public bool patroling = true;
-    public float aggroDuration;
-    public float aggroSpan;
-    public Vector2 squareRange;
-    private Vector2[] squarePoints = new Vector2[2];
     public int maxDist;
     public float maxRest;
-    [SerializeField] private Vector2 currentTarget;
+    public Vector2 squareRange;
+    private Vector2[] squarePoints = new Vector2[2];
     private bool isGenerating;
-    public Vector2 facing;
-    private int preventCrash = 0;
+    private Vector3 currentTarget;
     private Vector3 startPos;
+    [System.NonSerialized] public Vector2 facing;
+
+    public float aggroDuration;
+    [System.NonSerialized] public float aggroSpan;
+    private float lastAggroSpan;
+
+    private int preventCrash = 0;
 
     [Header("FOV")]
     public float radius;
@@ -34,14 +34,11 @@ public class RandomPatrol : MonoBehaviour {
 
     private void Start() {
         rbRat = GetComponent<Rigidbody2D>();
-        colliderRat = GetComponent<Collider2D>();
         animRat = GetComponent<Animator>();
-        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         dataScript = GetComponent<EnemyBase>();
-       
+        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         startPos = transform.position;
-
         squarePoints[0] = new Vector2(transform.position.x - squareRange.x / 2, transform.position.y - squareRange.y / 2);
         squarePoints[1] = new Vector2(transform.position.x + squareRange.x / 2, transform.position.y + squareRange.y / 2);
 
@@ -51,8 +48,10 @@ public class RandomPatrol : MonoBehaviour {
     private void FixedUpdate() {
         if (dataScript.currentHealth > 0) {
             FOVCheck();
-            if (wasPatroling != patroling && patroling) GenerateTarget();
-            wasPatroling = patroling;
+            if (lastAggroSpan != aggroSpan) {
+                if (aggroSpan > 0) GenerateTarget();
+                lastAggroSpan = aggroSpan;
+            }
             if (aggroSpan <= 0) Patrol();
         }
     }
@@ -65,8 +64,9 @@ public class RandomPatrol : MonoBehaviour {
         }
         else {
             if (currentTarget.x < squarePoints[0].x || currentTarget.x > squarePoints[1].x || currentTarget.y < squarePoints[0].y || currentTarget.y > squarePoints[1].y) currentTarget = startPos;
-            Vector2 direction = (currentTarget - new Vector2(transform.position.x, transform.position.y)).normalized;
-            rbRat.velocity = direction * speed;
+            Vector3 direction = (currentTarget - transform.position).normalized;
+            facing = direction;
+            if(!dataScript.beingKb) rbRat.velocity = direction * speed;
             animRat.SetBool("Moving", true);
             animRat.SetFloat("Horizontal", direction.x);
             animRat.SetFloat("Vertical", direction.y);
@@ -79,21 +79,17 @@ public class RandomPatrol : MonoBehaviour {
 
         switch (dir) {
             case 0:
-                facing = new Vector2(0, 1);
-                currentTarget = new Vector2(transform.position.x, transform.position.y + dist);
-                return;
+                currentTarget = new Vector3(transform.position.x, transform.position.y + dist, 0);
+                break;
             case 1:
-                facing = new Vector2(-1, 0);
-                currentTarget = new Vector2(transform.position.x - dist, transform.position.y);
-                return;
+                currentTarget = new Vector3(transform.position.x - dist, transform.position.y, 0);
+                break;
             case 2:
-                facing = new Vector2(1, 0);
-                currentTarget = new Vector2(transform.position.x + dist, transform.position.y);
-                return;
+                currentTarget = new Vector3(transform.position.x + dist, transform.position.y, 0);
+                break;
             case 3:
-                facing = new Vector2(0, -1);
-                currentTarget = new Vector2(transform.position.x, transform.position.y - dist);
-                return;
+                currentTarget = new Vector3(transform.position.x, transform.position.y - dist, 0);
+                break;
         }
     }
 
@@ -118,17 +114,13 @@ public class RandomPatrol : MonoBehaviour {
         Collider2D[] rangeChecks = Physics2D.OverlapCircleAll(transform.position, radius);
 
         if (rangeChecks.Length != 0) {
-            bool isInRadius = false;
-            for (int i = 0; i < rangeChecks.Length; i++) if (rangeChecks[i].tag == "Player") isInRadius = true;
-            if (isInRadius) {
+            foreach(Collider2D col in rangeChecks) if (col.tag == "Player") {
                 Vector2 directionToTarget = (playerPos.position - transform.position).normalized;
 
-
                 if (Vector2.Angle(facing, directionToTarget) < angle / 2) {
-                    float distanceToTarget = Vector2.Distance(transform.position, playerPos.position);
-                    RaycastHit2D[] obstruction = Physics2D.RaycastAll(transform.position, directionToTarget, distanceToTarget);
-                    bool hitWall = false;
-                    for (int i = 0; i < obstruction.Length; i++) if (obstruction[0].transform.tag == "Wall") hitWall = true;
+                    RaycastHit2D[] obstruction = Physics2D.RaycastAll(transform.position, directionToTarget, Vector2.Distance(transform.position, playerPos.position));
+                    bool hitWall = false; //
+                    foreach(RaycastHit2D obstruct in obstruction) if (obstruct.transform.tag == "Wall") hitWall = true;
                     if (!hitWall) aggroSpan = aggroDuration;
                 }
             }

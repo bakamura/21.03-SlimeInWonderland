@@ -156,7 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
-  currentHealth: 1
+  currentHealth: 20
+  knockBackable: 0
+  knockBackStrength: 0
   xpType: 1
   xpAmount: 10
 --- !u!114 &8733364928138893067
@@ -171,21 +173,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1b9500993d02349bdd59966ddcaed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  followGap: 5
-  atkRange: 10
-  bossDamage: 5
+  speed: 7
+  arenaRange: {x: 22, y: 23}
   shotGObject: {fileID: 6422206238384744177, guid: 3c0e5ea142d968c49afd9d0b35736f47,
     type: 3}
+  shotDamage: 2
+  shotDelay: 0.75
+  shotForce: 350
+  relativeDistance: 3.5
   areaRange: 1
-  areaDamage: 1
-  restTime: 2
-  shootingDelay: 1.5
   areaAtkDelay: 2
-  shotingForce: 3
-  shootingTimer: 5
-  areaTimer: 5
-  relativeDistance: 3
+  areaDamage: 3.5
   nearRelativeDistance: 1
-  jumpDuration: 1
-  arenaRange: {x: 18, y: 5}
+  restTime: 2
