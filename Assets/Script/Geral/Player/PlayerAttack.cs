@@ -18,12 +18,8 @@ public class PlayerAttack : MonoBehaviour {
     private float atkRemember;
     public float totalAtkRemember;
 
-    public float atk0TotalCDown;
-    [System.NonSerialized] public float atk0CDown;
-    public float atk1TotalCDown;
-    [System.NonSerialized] public float atk1CDown;
-    public float atk2TotalCDown;
-    [System.NonSerialized] public float atk2CDown;
+    public float[] atkTotalCDown = new float[3];
+    [System.NonSerialized] public float[] atkCDown = new float[3];
 
     private void Start() {
         animPlayer = GetComponent<Animator>();
@@ -72,24 +68,24 @@ public class PlayerAttack : MonoBehaviour {
                         atkRemember = 0;
                         break;
                     case 1:
-                        if (atk0CDown <= 0) {
+                        if (atkCDown[0] <= 0) {
                             isAtking = true;
-                            atkList.atk0();
-                            atk0CDown = atk0TotalCDown;
+                            atkList.CastSkill(0);
+                            atkCDown[0] = atkTotalCDown[0];
                         }
                         break;
                     case 2:
-                        if (atk1CDown <= 0) {
+                        if (atkCDown[1] <= 0) {
                             isAtking = true;
-                            atkList.atk1();
-                            atk1CDown = atk1TotalCDown;
+                            atkList.CastSkill(1);
+                            atkCDown[1] = atkTotalCDown[1];
                         }
                         break;
                     case 3:
-                        if (atk2CDown <= 0) {
+                        if (atkCDown[2] <= 0) {
                             isAtking = true;
-                            atkList.atk2();
-                            atk2CDown = atk2TotalCDown;
+                            atkList.CastSkill(2);
+                            atkCDown[2] = atkTotalCDown[2];
                         }
                         break;
                 }
@@ -98,12 +94,12 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void CoolDown() {
-        if (atk0CDown > 0) atk0CDown -= Time.fixedDeltaTime;
-        if (atk0CDown < 0) atk0CDown = 0;
-        if (atk1CDown > 0) atk1CDown -= Time.fixedDeltaTime;
-        if (atk1CDown < 0) atk1CDown = 0;
-        if (atk2CDown > 0) atk2CDown -= Time.fixedDeltaTime;
-        if (atk2CDown < 0) atk2CDown = 0;
+        if (atkCDown[0] > 0) atkCDown[0] -= Time.fixedDeltaTime;
+        if (atkCDown[0] < 0) atkCDown[0] = 0;
+        if (atkCDown[1] > 0) atkCDown[1] -= Time.fixedDeltaTime;
+        if (atkCDown[1] < 0) atkCDown[1] = 0;
+        if (atkCDown[2] > 0) atkCDown[2] -= Time.fixedDeltaTime;
+        if (atkCDown[2] < 0) atkCDown[2] = 0;
     }
 
     //Animator

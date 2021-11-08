@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; //
+
 public class PlayerData : MonoBehaviour {
 
     [Header("Components")]
@@ -28,26 +30,15 @@ public class PlayerData : MonoBehaviour {
         currentHealth = maxHealth;
     }
 
-    private void Update() {
-        ChangeColor();
-    }
-
     public void TakeDamage(float damage) {
         if (blockState) currentHealth = currentHealth - 0;
         else currentHealth -= damage;
         animPlayer.SetBool("Consuming", false);
 
-        if (currentHealth <= 0) Application.LoadLevel(Application.loadedLevel);
+        if (currentHealth <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void ChangeColor() {
-        if (Input.GetKeyDown(KeyCode.C)) {
-            if (currentColor < colorMaterial.Length - 1) currentColor++;
-            else currentColor = 0;
-
-            GetComponent<SpriteRenderer>().material = colorMaterial[currentColor];
-        }
+    public void ChangeColor(int color) {
+        GetComponent<SpriteRenderer>().material = colorMaterial[color];
     }
-
-
 }

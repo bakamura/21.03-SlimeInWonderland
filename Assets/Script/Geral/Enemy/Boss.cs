@@ -195,9 +195,6 @@ public class Boss : MonoBehaviour {
     }
 
     private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + new Vector3(1.5f, -0.5f, 0), areaRange);
-        Gizmos.DrawWireSphere(transform.position + new Vector3(-1.5f, -0.5f, 0), areaRange);
         Gizmos.color = Color.green;
         if (Application.isPlaying) Gizmos.DrawWireCube(startPos, arenaRange);
     }

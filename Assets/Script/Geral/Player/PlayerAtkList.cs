@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using System;
+[System.Serializable]
+public class CoolDown {
+    public float[] coolDown;
+}
 
 public class PlayerAtkList : MonoBehaviour {
 
@@ -17,16 +20,15 @@ public class PlayerAtkList : MonoBehaviour {
     private Vector2 currentAtkDirection;
 
     [Header("AttackList")]
-    private int triggerState = 0;
-    public delegate void AtkMethod();
-    public AtkMethod atk0;
-    public AtkMethod atk1;
-    public AtkMethod atk2;
+    public int[] skill = new int[3];
+    public int[] tree = new int[3];
+    public CoolDown[] treeCoolDowns;
 
-    private GameObject[] hitEnemies = new GameObject[64];
+    [Header("Trigger")]
+    private int triggerState = 0;
+    private GameObject[] hitEntities = new GameObject[64];
     private int currentListPos = 0;
 
-    public float[] CDowns; // Implement cooldowns
 
     [Header("Basic Atk")]
     public float damageBasicAtk;
@@ -47,121 +49,305 @@ public class PlayerAtkList : MonoBehaviour {
         atkScript = GetComponent<PlayerAttack>();
         movementScript = GetComponent<PlayerMovement>();
 
-        atk0 = BasicAtk;
-        atk1 = AssociateSkill(0, 0);
-        atk2 = AssociateSkill(4, 0);
-    }
-
-    public void SkillUpdate(int skill0, int tree0, int skill1, int tree1, int skill2, int tree2) {
-        Debug.Log(skill0 + "-" + tree0 + " / " + skill1 + "-" + tree1 + " / " + skill2 + "-" + tree2);
-        atk0 = null;
-        atk1 = null;
-        atk2 = null;
-
-        atk0 = AssociateSkill(skill0, tree0);
-        atk1 = AssociateSkill(skill1, tree1);
-        atk2 = AssociateSkill(skill2, tree2);
-
-        Debug.Log(atk0.Method + " / " + atk1.Method + " / " + atk2.Method);
-    }
-
-    public AtkMethod AssociateSkill(int skill, int tree) {
-        if (skill < 0) return BasicAtk;
-        switch (tree) {
-            case 0:
-                switch (skill) {
-                    case 0: return FireAtk1;
-                    case 1: return FireAtk1;
-                    case 2: return FireAtk1;
-                    case 3: return FireAtk1;
-                    case 4: return FireAtk5;
-                    case 5: return FireAtk1;
-                    case 6: return FireAtk1;
-                    case 7: return FireAtk1;
-                    case 8: return FireAtk1;
-                }
-                break;
-            case 1:
-                switch (skill) {
-                    case 0: return FireAtk1;
-                    case 1: return FireAtk1;
-                    case 2: return FireAtk1;
-                    case 3: return FireAtk1;
-                    case 4: return FireAtk5;
-                    case 5: return FireAtk1;
-                    case 6: return FireAtk1;
-                    case 7: return FireAtk1;
-                    case 8: return FireAtk1;
-                }
-                break;
-            case 2:
-                switch (skill) {
-                    case 0: return FireAtk1;
-                    case 1: return FireAtk1;
-                    case 2: return FireAtk1;
-                    case 3: return FireAtk1;
-                    case 4: return FireAtk5;
-                    case 5: return FireAtk1;
-                    case 6: return FireAtk1;
-                    case 7: return FireAtk1;
-                    case 8: return FireAtk1;
-                }
-                break;
-            case 3:
-                switch (skill) {
-                    case 0: return FireAtk1;
-                    case 1: return FireAtk1;
-                    case 2: return FireAtk1;
-                    case 3: return FireAtk1;
-                    case 4: return FireAtk5;
-                    case 5: return FireAtk1;
-                    case 6: return FireAtk1;
-                    case 7: return FireAtk1;
-                    case 8: return FireAtk1;
-                }
-                break;
-            case 4:
-                switch (skill) {
-                    case 0: return FireAtk1;
-                    case 1: return FireAtk1;
-                    case 2: return FireAtk1;
-                    case 3: return FireAtk1;
-                    case 4: return FireAtk5;
-                    case 5: return FireAtk1;
-                    case 6: return FireAtk1;
-                    case 7: return FireAtk1;
-                    case 8: return FireAtk1;
-                }
-                break;
-            case 5:
-                switch (skill) {
-                    case 0: return FireAtk1;
-                    case 1: return FireAtk1;
-                    case 2: return FireAtk1;
-                    case 3: return FireAtk1;
-                    case 4: return FireAtk5;
-                    case 5: return FireAtk1;
-                    case 6: return FireAtk1;
-                    case 7: return FireAtk1;
-                    case 8: return FireAtk1;
-                }
-                break;
-
-        }
-
-        return FireAtk1;
+        skill[0] = 0;
+        skill[1] = -1;
+        skill[2] = -1;
+        tree[0] = 0;
+        tree[1] = -1; //null
+        tree[2] = -1; //null
     }
 
     private void Update() {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
-
-    public void BasicAtk() {
-        StartCoroutine(BasicAtkNum());
+    public void CastSkill(int skillSlot) {
+        FindTree(tree[skillSlot], skill[skillSlot]);
     }
 
-    IEnumerator BasicAtkNum() {
+    private void FindTree(int tree, int skill) {
+        switch (tree) {
+            case 0:
+                BasicAtk(skill);
+                break;
+            case 1:
+                FireAtks(skill);
+                break;
+            case 2:
+                WaterAtk(skill);
+                break;
+            case 3:
+                PlantAtk(skill);
+                break;
+            case 4:
+                ElectricAtk(skill);
+                break;
+            case 5:
+                EarthAtk(skill);
+                break;
+            case 6:
+                PoisonAtk(skill);
+                break;
+            case -1:
+                StartCoroutine(DoNothingAtk());
+                break;
+        }
+    }
+
+    private void BasicAtk(int atk) {
+        switch (atk) {
+            case 0:
+                StartCoroutine(BasicAtk1Instantiate());
+                break;
+            case 1:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 2:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 3:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 4:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 5:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 6:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 7:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 8:
+                StartCoroutine(DoNothingAtk());
+                break;
+            default:
+                StartCoroutine(DoNothingAtk());
+                break;
+        }
+    }
+
+    private void FireAtks(int atk) {
+        switch (atk) {
+            case 0:
+                StartCoroutine(FireAtk1Instantiate());
+                break;
+            case 1:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 2:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 3:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 4:
+                StartCoroutine(FireAtk5Instatiate());
+                break;
+            case 5:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 6:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 7:
+                StartCoroutine(DoNothingAtk());
+                break;
+            case 8:
+                StartCoroutine(DoNothingAtk());
+                break;
+            default:
+                StartCoroutine(DoNothingAtk());
+                break;
+        }
+    }
+
+    private void WaterAtk(int atk) {
+        switch (atk) {
+            case 0:
+                //StartCoroutine();
+                break;
+            case 1:
+                //StartCoroutine();
+                break;
+            case 2:
+                //StartCoroutine();
+                break;
+            case 3:
+                //StartCoroutine();
+                break;
+            case 4:
+                //StartCoroutine();
+                break;
+            case 5:
+                //StartCoroutine();
+                break;
+            case 6:
+                //StartCoroutine();
+                break;
+            case 7:
+                //StartCoroutine();
+                break;
+            case 8:
+                //StartCoroutine();
+                break;
+            default:
+                StartCoroutine(DoNothingAtk());
+                break;
+        }
+    }
+
+    private void PlantAtk(int atk) {
+        switch (atk) {
+            case 0:
+                //StartCoroutine();
+                break;
+            case 1:
+                //StartCoroutine();
+                break;
+            case 2:
+                //StartCoroutine();
+                break;
+            case 3:
+                //StartCoroutine();
+                break;
+            case 4:
+                //StartCoroutine();
+                break;
+            case 5:
+                //StartCoroutine();
+                break;
+            case 6:
+                //StartCoroutine();
+                break;
+            case 7:
+                //StartCoroutine();
+                break;
+            case 8:
+                //StartCoroutine();
+                break;
+            default:
+                StartCoroutine(DoNothingAtk());
+                break;
+        }
+    }
+
+    private void ElectricAtk(int atk) {
+        switch (atk) {
+            case 0:
+                //StartCoroutine();
+                break;
+            case 1:
+                //StartCoroutine();
+                break;
+            case 2:
+                //StartCoroutine();
+                break;
+            case 3:
+                //StartCoroutine();
+                break;
+            case 4:
+                //StartCoroutine();
+                break;
+            case 5:
+                //StartCoroutine();
+                break;
+            case 6:
+                //StartCoroutine();
+                break;
+            case 7:
+                //StartCoroutine();
+                break;
+            case 8:
+                //StartCoroutine();
+                break;
+            default:
+                StartCoroutine(DoNothingAtk());
+                break;
+        }
+    }
+
+    private void EarthAtk(int atk) {
+        switch (atk) {
+            case 0:
+                //StartCoroutine();
+                break;
+            case 1:
+                //StartCoroutine();
+                break;
+            case 2:
+                //StartCoroutine();
+                break;
+            case 3:
+                //StartCoroutine();
+                break;
+            case 4:
+                //StartCoroutine();
+                break;
+            case 5:
+                //StartCoroutine();
+                break;
+            case 6:
+                //StartCoroutine();
+                break;
+            case 7:
+                //StartCoroutine();
+                break;
+            case 8:
+                //StartCoroutine();
+                break;
+            default:
+                StartCoroutine(DoNothingAtk());
+                break;
+        }
+    }
+
+    private void PoisonAtk(int atk) {
+        switch (atk) {
+            case 0:
+                //StartCoroutine();
+                break;
+            case 1:
+                //StartCoroutine();
+                break;
+            case 2:
+                //StartCoroutine();
+                break;
+            case 3:
+                //StartCoroutine();
+                break;
+            case 4:
+                //StartCoroutine();
+                break;
+            case 5:
+                //StartCoroutine();
+                break;
+            case 6:
+                //StartCoroutine();
+                break;
+            case 7:
+                //StartCoroutine();
+                break;
+            case 8:
+                //StartCoroutine();
+                break;
+            default:
+                StartCoroutine(DoNothingAtk());
+                break;
+        }
+    }
+
+    //Basic
+    IEnumerator DoNothingAtk() {
+        yield return new WaitForEndOfFrame();
+        atkScript.isAtking = false;
+        movementScript.moveLock = false;
+        animPlayer.SetBool("Moving", false);
+    }
+
+    IEnumerator BasicAtk1Instantiate() {
         currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
         movementScript.moveLock = true;
         rbPlayer.velocity = Vector2.zero;
@@ -182,7 +368,7 @@ public class PlayerAtkList : MonoBehaviour {
         Debug.Log("Movimento interrompido");
         rbPlayer.velocity = Vector2.zero;
         triggerCol.enabled = false;
-        for(int i = 0; i < hitEnemies.Length; i++) hitEnemies[i] = null;
+        for (int i = 0; i < hitEntities.Length; i++) hitEntities[i] = null;
         currentListPos = 0;
         triggerState = 0;
 
@@ -194,10 +380,7 @@ public class PlayerAtkList : MonoBehaviour {
         animPlayer.SetBool("Moving", false);
     }
 
-    public void FireAtk1() {
-        StartCoroutine(FireAtk1Instantiate());
-    }
-
+    //Fire
     IEnumerator FireAtk1Instantiate() {
         movementScript.moveLock = true;
         rbPlayer.velocity = Vector2.zero;
@@ -207,6 +390,7 @@ public class PlayerAtkList : MonoBehaviour {
         movementScript.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
         GameObject breathInstance = Instantiate(prefabFireAtk1, transform.position, Quaternion.Euler(0, 0, (Mathf.Atan2(movementScript.lastDirection.y, movementScript.lastDirection.x) * Mathf.Rad2Deg) + 90));
         breathInstance.GetComponent<AtkFireBreath>().direction = new Vector3(movementScript.lastDirection.x, movementScript.lastDirection.y, 0);
+        breathInstance.GetComponent<AtkFireBreath>().damage = damageFireAtk1;
 
         yield return new WaitForSeconds(0.4f);
 
@@ -217,10 +401,6 @@ public class PlayerAtkList : MonoBehaviour {
         atkScript.isAtking = false;
         movementScript.moveLock = false;
         animPlayer.SetBool("Moving", false);
-    }
-
-    public void FireAtk5() {
-        StartCoroutine(FireAtk5Instatiate());
     }
 
     IEnumerator FireAtk5Instatiate() {
@@ -248,20 +428,22 @@ public class PlayerAtkList : MonoBehaviour {
             case 0: break;
             case 1:
                 bool bol = false;
-                foreach (GameObject go in hitEnemies) if(go == collision.gameObject.gameObject) bol = true;
+                foreach (GameObject go in hitEntities) if (go == collision.gameObject.gameObject) bol = true;
 
                 if (collision.GetComponent<EnemyBase>() != null && !bol) {
                     collision.GetComponent<EnemyBase>().TakeDamage(damageBasicAtk);
-                    hitEnemies[currentListPos] = collision.gameObject;
+                    hitEntities[currentListPos] = collision.gameObject;
                     currentListPos++;
                 }
-                else if (collision.GetComponent<MovableBoulder>() != null) {
-                    int i = (int) (Mathf.Atan2(movementScript.lastDirection.y, movementScript.lastDirection.x) * Mathf.Rad2Deg);
+                else if (collision.GetComponent<MovableBoulder>() != null && !bol) {
+                    int i = (int)(Mathf.Atan2(movementScript.lastDirection.y, movementScript.lastDirection.x) * Mathf.Rad2Deg);
                     if (i <= 45 && i > -45) i = 0;
                     else if (i <= -45 && i >= -135) i = 1;
                     else if (i < -135 || i >= 135) i = 2;
                     else if (i < 135 && i > 45) i = 3;
                     collision.GetComponent<MovableBoulder>().SetTarget(i);
+                    hitEntities[currentListPos] = collision.gameObject;
+                    currentListPos++;
                 }
                 break;
             case 2:
@@ -269,4 +451,5 @@ public class PlayerAtkList : MonoBehaviour {
                 break;
         }
     }
+
 }

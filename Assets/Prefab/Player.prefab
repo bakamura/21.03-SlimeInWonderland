@@ -253,7 +253,7 @@ MonoBehaviour:
   - {x: -0.38211253, y: -0.025212273, z: 0}
   m_ShapePathHash: 581104624
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1230
+  m_InstanceId: 40086
 --- !u!50 &8411343562132329169
 Rigidbody2D:
   serializedVersion: 4
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 0
+  currentHealth: 10
   fireXP: 0
   waterXP: 0
   plantXP: 0
@@ -371,9 +371,10 @@ MonoBehaviour:
   - 0
   canInput: 1
   totalAtkRemember: 0.2
-  atk0TotalCDown: 2.5
-  atk1TotalCDown: 1
-  atk2TotalCDown: 4
+  atkTotalCDown:
+  - 1.75
+  - 0
+  - 0
 --- !u!114 &7550295575778167167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,13 +388,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerCol: {fileID: 2618869538723213319}
-  CDowns: []
+  skill: 000000000000000000000000
+  tree: 000000000000000000000000
+  treeCoolDowns:
+  - coolDown:
+    - 1.75
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+  - coolDown:
+    - 2.25
+    - 0
+    - 0
+    - 0
+    - 3.25
+    - 0
+    - 0
+    - 0
+    - 0
+  - coolDown:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   damageBasicAtk: 2
   strenghBasicAtkDash: 8
-  damageFireAtk1: 2
+  damageFireAtk1: 1.5
   prefabFireAtk1: {fileID: 497692694843780200, guid: 2de04921475702a418c603e47e6f09a9,
     type: 3}
-  damageFireAtk5: 1
+  damageFireAtk5: 3
   rangeFireAtk5: 5
   prefabFireAtk5: {fileID: 6132768654907618045, guid: 9ea9375bd02a6324e9998c383f967ceb,
     type: 3}

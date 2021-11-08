@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  arenaRange: {x: 22, y: 23}
+  arenaRange: {x: 15, y: 15}
   shotGObject: {fileID: 6422206238384744177, guid: 3c0e5ea142d968c49afd9d0b35736f47,
     type: 3}
   shotDamage: 2
@@ -185,4 +185,4 @@ MonoBehaviour:
   areaAtkDelay: 2
   areaDamage: 3.5
   nearRelativeDistance: 1
-  restTime: 2
+  restTime: 3
