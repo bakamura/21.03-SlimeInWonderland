@@ -1,43 +1,43 @@
 fileFormatVersion: 2
-guid: 275e4f5cc3bb4114b81e5f339047fd3b
+guid: 9f05c14a21877434a8d518f5298e0336
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3659641833508418352
-    second: boulder puzzle-Sheet_0
+      213: -6939919796409463410
+    second: boulder puzzle normal_0
   - first:
-      213: 4071672403638780699
-    second: boulder puzzle-Sheet_1
+      213: 4738295670499517230
+    second: boulder puzzle normal_1
   - first:
-      213: 4819724288474739908
-    second: boulder puzzle-Sheet_2
+      213: 297514974678572137
+    second: boulder puzzle normal_2
   - first:
-      213: 8186083742657603379
-    second: boulder puzzle-Sheet_3
+      213: -2817865528685383836
+    second: boulder puzzle normal_3
   - first:
-      213: -6893812327613603678
-    second: boulder puzzle-Sheet_4
+      213: -7615198585567473880
+    second: boulder puzzle normal_4
   - first:
-      213: 994165290127753436
-    second: boulder puzzle-Sheet_5
+      213: 4270031028083643272
+    second: boulder puzzle normal_5
   - first:
-      213: -459218196031193173
-    second: boulder puzzle-Sheet_6
+      213: 2480336627517552880
+    second: boulder puzzle normal_6
   - first:
-      213: -7743391907377105019
-    second: boulder puzzle-Sheet_7
+      213: -3688736541668363259
+    second: boulder puzzle normal_7
   - first:
-      213: 6062223227901884199
-    second: boulder puzzle-Sheet_8
+      213: 8734846375713176309
+    second: boulder puzzle normal_8
   - first:
-      213: -992824864253788748
-    second: boulder puzzle-Sheet_9
+      213: -5763407543234737967
+    second: boulder puzzle normal_9
   - first:
-      213: -4653575349899623163
-    second: boulder puzzle-Sheet_10
+      213: 3859969008863398755
+    second: boulder puzzle normal_10
   - first:
-      213: 5108223727227166641
-    second: boulder puzzle-Sheet_11
+      213: 4906740481426344822
+    second: boulder puzzle normal_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -195,7 +195,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_0
+      name: boulder puzzle normal_0
       rect:
         serializedVersion: 2
         x: 0
@@ -203,20 +203,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dc429c5427563dc0800000000000000
-      internalID: -3659641833508418352
+      spriteID: e8d0055e6b370bf90800000000000000
+      internalID: -6939919796409463410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_1
+      name: boulder puzzle normal_1
       rect:
         serializedVersion: 2
         x: 32
@@ -224,20 +224,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1386ac7a7c718830800000000000000
-      internalID: 4071672403638780699
+      spriteID: e2325e8cecec1c140800000000000000
+      internalID: 4738295670499517230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_2
+      name: boulder puzzle normal_2
       rect:
         serializedVersion: 2
         x: 64
@@ -245,20 +245,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c4fbd154b913e240800000000000000
-      internalID: 4819724288474739908
+      spriteID: 96c531d0b4cf02400800000000000000
+      internalID: 297514974678572137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_3
+      name: boulder puzzle normal_3
       rect:
         serializedVersion: 2
         x: 96
@@ -266,20 +266,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 337e4becacfca9170800000000000000
-      internalID: 8186083742657603379
+      spriteID: 46fa3e93b3ee4e8d0800000000000000
+      internalID: -2817865528685383836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_4
+      name: boulder puzzle normal_4
       rect:
         serializedVersion: 2
         x: 0
@@ -287,20 +287,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a0e16886324450a0800000000000000
-      internalID: -6893812327613603678
+      spriteID: 82f8135cb31615690800000000000000
+      internalID: -7615198585567473880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_5
+      name: boulder puzzle normal_5
       rect:
         serializedVersion: 2
         x: 32
@@ -308,20 +308,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd08616601cfbcd00800000000000000
-      internalID: 994165290127753436
+      spriteID: 88352d0b892324b30800000000000000
+      internalID: 4270031028083643272
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_6
+      name: boulder puzzle normal_6
       rect:
         serializedVersion: 2
         x: 64
@@ -329,20 +329,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baf3a27db7780a9f0800000000000000
-      internalID: -459218196031193173
+      spriteID: 0f8f296750deb6220800000000000000
+      internalID: 2480336627517552880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_7
+      name: boulder puzzle normal_7
       rect:
         serializedVersion: 2
         x: 96
@@ -350,20 +350,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58737242612f98490800000000000000
-      internalID: -7743391907377105019
+      spriteID: 504badbb8a9feccc0800000000000000
+      internalID: -3688736541668363259
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_8
+      name: boulder puzzle normal_8
       rect:
         serializedVersion: 2
         x: 0
@@ -371,20 +371,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 727b63028e7512450800000000000000
-      internalID: 6062223227901884199
+      spriteID: 5fafdffdf78683970800000000000000
+      internalID: 8734846375713176309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_9
+      name: boulder puzzle normal_9
       rect:
         serializedVersion: 2
         x: 32
@@ -392,20 +392,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bd3af1db07c832f0800000000000000
-      internalID: -992824864253788748
+      spriteID: 1d8cfa110634400b0800000000000000
+      internalID: -5763407543234737967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_10
+      name: boulder puzzle normal_10
       rect:
         serializedVersion: 2
         x: 64
@@ -413,20 +413,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50508bdffdd2b6fb0800000000000000
-      internalID: -4653575349899623163
+      spriteID: 36bc151dc5d519530800000000000000
+      internalID: 3859969008863398755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boulder puzzle-Sheet_11
+      name: boulder puzzle normal_11
       rect:
         serializedVersion: 2
         x: 96
@@ -434,14 +434,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bfd8965a6e04e640800000000000000
-      internalID: 5108223727227166641
+      spriteID: 67b4278887e381440800000000000000
+      internalID: 4906740481426344822
       vertices: []
       indices: 
       edges: []
@@ -455,9 +455,7 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 9f05c14a21877434a8d518f5298e0336, type: 3}
-      name: _NormalMap
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
