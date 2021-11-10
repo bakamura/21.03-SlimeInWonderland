@@ -24,7 +24,6 @@ public class PlayerAttack : MonoBehaviour {
     private void Start() {
         animPlayer = GetComponent<Animator>();
         dataScript = GetComponent<PlayerData>();
-
         atkList = GetComponent<PlayerAtkList>();
     }
 
@@ -48,8 +47,9 @@ public class PlayerAttack : MonoBehaviour {
                 currentAtk = 3;
                 atkRemember = totalAtkRemember;
             }
-            if (Input.GetKeyDown(KeyCode.F)) {  
-                animPlayer.SetBool("Consuming", true);
+            if (Input.GetKeyDown(KeyCode.F)) {  //Consume
+                currentAtk = 4;
+                atkRemember = totalAtkRemember;
             }
         }
     }
@@ -88,6 +88,8 @@ public class PlayerAttack : MonoBehaviour {
                             atkCDown[2] = atkTotalCDown[2];
                         }
                         break;
+                    case 4:
+                        break;
                 }
             }
         }
@@ -102,17 +104,50 @@ public class PlayerAttack : MonoBehaviour {
         if (atkCDown[2] < 0) atkCDown[2] = 0;
     }
 
-    //Animator
-    public void GetXp() {
-        dataScript.fireXP += xpToGet[0];
-        dataScript.waterXP += xpToGet[1];
-        dataScript.plantXP += xpToGet[2];
-        dataScript.electricXP += xpToGet[3];
-        dataScript.earthXP += xpToGet[4];
-        dataScript.poisonXP += xpToGet[5];
+    IEnumerator Consume(EnemyBase consumed) {
+        animPlayer.SetBool("Consuming", true);
 
-        for (int i = 0; i < xpToGet.Length; i++) xpToGet[i] = 0;
-        animPlayer.SetBool("Consuming", false);
+        yield return new WaitForSeconds(0.75f);
+
+        GetXP(consumed.xpType, consumed.xpAmount);
+        Destroy(consumed.gameObject);
+    }
+
+    private void GetXP(int type, float amount) {
+        switch (type) {
+            case 0:
+                dataScript.normalXP += amount;
+                dataScript.normalLv = CheckLvUp(dataScript.normalXP);
+                break;
+            case 1:
+                dataScript.fireXP += amount;
+                dataScript.fireLv = CheckLvUp(dataScript.fireXP);
+                break;
+            case 2:
+                dataScript.waterXP += amount;
+                dataScript.waterLv = CheckLvUp(dataScript.waterXP);
+                break;
+            case 3:
+                dataScript.plantXP += amount;
+                dataScript.plantLv = CheckLvUp(dataScript.plantXP);
+                break;
+            case 4:
+                dataScript.electricXP += amount;
+                dataScript.electricLv = CheckLvUp(dataScript.electricXP);
+                break;
+            case 5:
+                dataScript.earthXP += amount;
+                dataScript.earthLv = CheckLvUp(dataScript.earthXP);
+                break;
+            case 6:
+                dataScript.poisonXP += amount;
+                dataScript.poisonLv = CheckLvUp(dataScript.poisonXP);
+                break;
+        }
+    }
+
+    private int CheckLvUp(float totalAmount) {
+        return (int)totalAmount / 10;
     }
 
 }

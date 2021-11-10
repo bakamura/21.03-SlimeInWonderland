@@ -253,7 +253,7 @@ MonoBehaviour:
   - {x: -0.38211253, y: -0.025212273, z: 0}
   m_ShapePathHash: 581104624
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40086
+  m_InstanceId: -2402
 --- !u!50 &8411343562132329169
 Rigidbody2D:
   serializedVersion: 4
@@ -327,6 +327,13 @@ MonoBehaviour:
   electricXP: 0
   earthXP: 0
   poisonXP: 0
+  normalSkills: 010000000000000000
+  fireSkills: 000000000000000000
+  waterSkills: 000000000000000000
+  plantSkills: 000000000000000000
+  electricSkills: 000000000000000000
+  earthSkills: 000000000000000000
+  poisonSkills: 000000000000000000
   colorMaterial:
   - {fileID: 2100000, guid: 937c63bbb22d7e841bfc185794b7dad3, type: 2}
   - {fileID: 2100000, guid: af21e8643321a8a49be5f5fd29770178, type: 2}
