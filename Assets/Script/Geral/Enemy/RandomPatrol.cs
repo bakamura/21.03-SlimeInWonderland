@@ -6,7 +6,9 @@ public class RandomPatrol : MonoBehaviour {
 
     [Header("Components")]
     private Rigidbody2D rbRat;
+    private Rigidbody2D rbCarvao;
     private Animator animRat;
+    private Animator animCarvao;
     private EnemyBase dataScript;
 
     [Header("Stats")]
@@ -34,7 +36,9 @@ public class RandomPatrol : MonoBehaviour {
 
     private void Start() {
         rbRat = GetComponent<Rigidbody2D>();
+        rbCarvao = GetComponent<Rigidbody2D>();
         animRat = GetComponent<Animator>();
+        animCarvao = GetComponent<Animator>();
         dataScript = GetComponent<EnemyBase>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
