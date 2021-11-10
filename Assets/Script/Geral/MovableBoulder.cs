@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class MovableBoulder : MonoBehaviour {
 
     private Rigidbody2D rbBoulder;
+    private Animator animBoulder;
+    private Light2D lightBoulder;
 
     public bool onPosition = false;
     public float moveDuration;
@@ -15,12 +18,15 @@ public class MovableBoulder : MonoBehaviour {
 
     private void Start() {
         rbBoulder = GetComponent<Rigidbody2D>();
+        animBoulder = GetComponent<Animator>();
+        lightBoulder = GetComponent<Light2D>();
+        lightBoulder.enabled = false;
 
         targetPos = transform.position;
     }
 
     private void FixedUpdate() {
-        MoveToPos();
+        if (!onPosition) MoveToPos();
     }
 
     private void MoveToPos() {
@@ -31,6 +37,11 @@ public class MovableBoulder : MonoBehaviour {
             if (Mathf.Abs((targetPos - transform.position).x) < correctionMargin && Mathf.Abs((targetPos - transform.position).y) < correctionMargin) setRBody(false);
         }
         onPosition = transform.position == CorrectPos;
+        if (onPosition) {
+            lightBoulder.enabled = true;
+            animBoulder.SetTrigger("Positioned");
+            setRBody(false);
+        }
     }
 
     public void SetTarget(int i) {
@@ -62,7 +73,7 @@ public class MovableBoulder : MonoBehaviour {
     private void setRBody(bool bol) { //true = dynamic
         if (bol) {
             rbBoulder.bodyType = RigidbodyType2D.Dynamic;
-            rbBoulder.mass = 100; //
+            rbBoulder.mass = 100;
             rbBoulder.gravityScale = 0;
             rbBoulder.freezeRotation = true;
         }

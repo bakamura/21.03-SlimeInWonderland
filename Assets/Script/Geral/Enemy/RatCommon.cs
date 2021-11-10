@@ -31,7 +31,7 @@ public class RatCommon : MonoBehaviour {
 
     private void FixedUpdate() {
         if (patrolScript.aggroSpan > 0 && baseScript.currentHealth > 0) AtkPatern();
-        if (baseScript.currentHealth <= 0) rbRat.velocity = Vector2.zero; //
+        if (baseScript.currentHealth <= 0) StartCoroutine(StopEverything());
     }
 
     private void AtkPatern() {
@@ -43,7 +43,7 @@ public class RatCommon : MonoBehaviour {
             animRat.SetBool("Moving", true);
             animRat.SetFloat("Horizontal", direction.x);
             animRat.SetFloat("Vertical", direction.y);
-            
+
             if (Vector2.Distance(transform.position, playerTransform.position) < followGap) {
                 resting = true;
                 animRat.SetTrigger("Atk");
@@ -58,25 +58,46 @@ public class RatCommon : MonoBehaviour {
         if (baseScript.beingKb) {
             StopAllCoroutines();
             resting = false;
-            if(animRat.GetCurrentAnimatorStateInfo(0).IsName("Attacking")) animRat.SetTrigger("StopAtk");
+            if (animRat.GetCurrentAnimatorStateInfo(0).IsName("Attacking")) animRat.SetTrigger("StopAtk");
         }
     }
 
     IEnumerator AtkInstance() {
         yield return new WaitForSeconds(0.333f);
 
-        Vector3 atkPos = transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0))/2;
+        Vector3 atkPos = transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0)) / 2;
         Collider2D[] isInRange = Physics2D.OverlapCircleAll(atkPos, atkRange);
-        foreach(Collider2D col in isInRange) if (col.tag == "Player") playerTransform.GetComponent<PlayerData>().TakeDamage(ratDamage);
+        foreach (Collider2D col in isInRange) if (col.tag == "Player") playerTransform.GetComponent<PlayerData>().TakeDamage(ratDamage);
 
         yield return new WaitForSeconds(restingTime);
 
         resting = false;
     }
 
+    IEnumerator StopEverything() {
+        rbRat.velocity = Vector2.zero; //
+        StopAllCoroutines(); //
+
+        yield return new WaitForEndOfFrame();
+
+        rbRat.velocity = Vector2.zero; //
+        StopAllCoroutines(); //
+
+        yield return new WaitForEndOfFrame();
+
+        rbRat.velocity = Vector2.zero; //
+        StopAllCoroutines(); //
+
+        yield return new WaitForEndOfFrame();
+
+        rbRat.velocity = Vector2.zero; //
+        StopAllCoroutines(); //
+        GetComponent<RatCommon>().enabled = false;
+    }
+
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        if(Application.isPlaying) Gizmos.DrawWireSphere(transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0)) / 2, atkRange); 
+        if (Application.isPlaying) Gizmos.DrawWireSphere(transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0)) / 2, atkRange);
     }
 
 }

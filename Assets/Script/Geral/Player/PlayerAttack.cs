@@ -31,8 +31,6 @@ public class PlayerAttack : MonoBehaviour {
         Inputs();
     }
 
-
-
     private void Inputs() {
         if (canInput) {
             if (Input.GetButtonDown("Fire1")) {
@@ -89,6 +87,22 @@ public class PlayerAttack : MonoBehaviour {
                         }
                         break;
                     case 4:
+                        if (!animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Consume")) {
+                            RaycastHit2D[] corpses = Physics2D.CircleCastAll(transform.position, 0.5f, Vector2.zero);
+                            GameObject nearest = null;
+                            float minDist = 5;
+                            foreach (RaycastHit2D corpse in corpses) if (Vector2.Distance(transform.position, corpse.transform.position) < minDist && corpse.collider.tag == "Enemy") {
+                                    if (corpse.collider.GetComponent<EnemyBase>().currentHealth < 0) {
+                                        nearest = corpse.transform.GetComponent<GameObject>();
+                                        minDist = Vector2.Distance(transform.position, corpse.transform.position);
+                                    }
+                            }
+                            Debug.Log(nearest.name);
+                            if (nearest != null) {
+                                animPlayer.SetBool("Consuming", true);
+                                StartCoroutine(Consume(nearest.GetComponent<EnemyBase>()));
+                            }
+                        }
                         break;
                 }
             }
@@ -110,6 +124,7 @@ public class PlayerAttack : MonoBehaviour {
         yield return new WaitForSeconds(0.75f);
 
         GetXP(consumed.xpType, consumed.xpAmount);
+        dataScript.takeHealing(consumed.maxHealth / 5);
         Destroy(consumed.gameObject);
     }
 
@@ -147,7 +162,7 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private int CheckLvUp(float totalAmount) {
-        return (int)totalAmount / 10;
+        return (int)Mathf.Pow((totalAmount / 3), 1 / 3);
     }
 
 }

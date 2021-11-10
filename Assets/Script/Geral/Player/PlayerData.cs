@@ -7,6 +7,7 @@ public class PlayerData : MonoBehaviour {
 
     [Header("Components")]
     private Animator animPlayer;
+    private PlayerAttack atkScript;
 
     [Header("Stats")]
     public float maxHealth;
@@ -41,6 +42,7 @@ public class PlayerData : MonoBehaviour {
 
     private void Start() {
         animPlayer = GetComponent<Animator>();
+        atkScript = GetComponent<PlayerAttack>();
         currentHealth = maxHealth;
     }
 
@@ -48,19 +50,25 @@ public class PlayerData : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.L)) unlockAll();
     }
 
-    private void FixedUpdate() {
-        if (currentHealth < maxHealth) { //TO REMOVE
-            currentHealth += maxHealth * Time.fixedDeltaTime / 60;
-            if (currentHealth > maxHealth) currentHealth = maxHealth;
-        }
-    }
+    //private void FixedUpdate() {
+    //    if (currentHealth < maxHealth) { //TO REMOVE
+    //        currentHealth += maxHealth * Time.fixedDeltaTime / 60;
+    //        if (currentHealth > maxHealth) currentHealth = maxHealth;
+    //    }
+    //}
 
     public void TakeDamage(float damage) {
         if (blockState) currentHealth = currentHealth - 0;
         else currentHealth -= damage;
         animPlayer.SetBool("Consuming", false);
+        atkScript.StopAllCoroutines();
 
         if (currentHealth <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void takeHealing(float heal) {
+        currentHealth += heal;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
     void unlockAll() {
