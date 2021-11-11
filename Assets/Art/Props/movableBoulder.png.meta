@@ -1,34 +1,19 @@
 fileFormatVersion: 2
-guid: 15a7916fa5f25c34ebc6e23c0a80d864
+guid: 236227662d2f9d847be164bc00cd4d81
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3924270961327824509
-    second: torch-Sheet_0
+      213: 4034937555257976512
+    second: movableBoulder_0
   - first:
-      213: 2270167383099144066
-    second: torch-Sheet_1
+      213: 558235986819602267
+    second: movableBoulder_1
   - first:
-      213: -5761421149536445635
-    second: torch-Sheet_2
+      213: -5599771758707106159
+    second: movableBoulder_2
   - first:
-      213: 608870526272484499
-    second: torch-Sheet_3
-  - first:
-      213: -6607130584295726281
-    second: torch-Sheet_4
-  - first:
-      213: -6688038687065565720
-    second: torch-Sheet_5
-  - first:
-      213: 6523846408786943809
-    second: torch-Sheet_6
-  - first:
-      213: 6338282375355073584
-    second: torch-Sheet_7
-  - first:
-      213: -1057515476557669167
-    second: torch-Sheet_8
+      213: -7195236472642040063
+    second: movableBoulder_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -186,190 +171,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: torch-Sheet_0
+      name: movableBoulder_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 381aca33a503a89c0800000000000000
-      internalID: -3924270961327824509
+      spriteID: 0c6e808145afef730800000000000000
+      internalID: 4034937555257976512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: torch-Sheet_1
+      name: movableBoulder_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2877d420531418f10800000000000000
-      internalID: 2270167383099144066
+      spriteID: b57d83f1ca04fb700800000000000000
+      internalID: 558235986819602267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: torch-Sheet_2
+      name: movableBoulder_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3b15746df15b00b0800000000000000
-      internalID: -5761421149536445635
+      spriteID: 19e9ffa114d9942b0800000000000000
+      internalID: -5599771758707106159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: torch-Sheet_3
+      name: movableBoulder_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3943da88484237800800000000000000
-      internalID: 608870526272484499
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: torch-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7332f6a5db1ce44a0800000000000000
-      internalID: -6607130584295726281
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: torch-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e51365bf305f23a0800000000000000
-      internalID: -6688038687065565720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: torch-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14f14f47ebb598a50800000000000000
-      internalID: 6523846408786943809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: torch-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 034882d1d3a16f750800000000000000
-      internalID: 6338282375355073584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: torch-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1dc5d4be643f251f0800000000000000
-      internalID: -1057515476557669167
+      spriteID: 10f8c35dc82652c90800000000000000
+      internalID: -7195236472642040063
       vertices: []
       indices: 
       edges: []
@@ -383,7 +263,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: c79c7aa55522d074fa224a52a6fd6f55, type: 3}
+      name: _NormalMap
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

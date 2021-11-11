@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
 
+    private Rigidbody2D rbPlayer;
     private Animator animPlayer;
     private PlayerData dataScript;
+    private PlayerMovement movementScript;
     private PlayerAtkList atkList;
     public SkillTreeCanvas treeCanvasScript;
 
@@ -22,8 +24,10 @@ public class PlayerAttack : MonoBehaviour {
     [System.NonSerialized] public float[] atkCDown = new float[3];
 
     private void Start() {
+        rbPlayer = GetComponent<Rigidbody2D>();
         animPlayer = GetComponent<Animator>();
         dataScript = GetComponent<PlayerData>();
+        movementScript = GetComponent<PlayerMovement>();
         atkList = GetComponent<PlayerAtkList>();
     }
 
@@ -93,7 +97,7 @@ public class PlayerAttack : MonoBehaviour {
                             float minDist = 5;
                             foreach (RaycastHit2D corpse in corpses) if (Vector2.Distance(transform.position, corpse.transform.position) < minDist && corpse.collider.tag == "Enemy") {
                                     if (corpse.collider.GetComponent<EnemyBase>().currentHealth < 0) {
-                                        nearest = corpse.transform.GetComponent<GameObject>();
+                                        nearest = corpse.collider.gameObject;
                                         minDist = Vector2.Distance(transform.position, corpse.transform.position);
                                     }
                             }
@@ -120,12 +124,17 @@ public class PlayerAttack : MonoBehaviour {
 
     IEnumerator Consume(EnemyBase consumed) {
         animPlayer.SetBool("Consuming", true);
+        movementScript.moveLock = true;
+        rbPlayer.velocity = Vector2.zero;
 
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(1.25f);
 
         GetXP(consumed.xpType, consumed.xpAmount);
         dataScript.takeHealing(consumed.maxHealth / 5);
         Destroy(consumed.gameObject);
+
+        animPlayer.SetBool("Consuming", false);
+        movementScript.moveLock = false;
     }
 
     private void GetXP(int type, float amount) {
@@ -162,7 +171,7 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private int CheckLvUp(float totalAmount) {
-        return (int)Mathf.Pow((totalAmount / 3), 1 / 3);
+        return (int) Mathf.Pow((totalAmount / 3), 1 / 3);
     }
 
 }

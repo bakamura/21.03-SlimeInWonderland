@@ -36,12 +36,18 @@ public class MovableBoulder : MonoBehaviour {
             if (Mathf.Abs((targetPos - transform.position).y) < correctionMargin) transform.position = new Vector3(transform.position.x, targetPos.y, 0);
             if (Mathf.Abs((targetPos - transform.position).x) < correctionMargin && Mathf.Abs((targetPos - transform.position).y) < correctionMargin) setRBody(false);
         }
-        onPosition = transform.position == CorrectPos;
-        if (onPosition) {
-            lightBoulder.enabled = true;
-            animBoulder.SetTrigger("Positioned");
-            setRBody(false);
-        }
+        if (transform.position == CorrectPos) StartCoroutine(Drop());
+    }
+
+    IEnumerator Drop() {
+        animBoulder.SetTrigger("Positioned");
+        setRBody(false);
+
+        yield return new WaitForSeconds(0.25f);
+
+        onPosition = true;
+        lightBoulder.enabled = true;
+        GetComponent<Collider2D>().enabled = false;
     }
 
     public void SetTarget(int i) {

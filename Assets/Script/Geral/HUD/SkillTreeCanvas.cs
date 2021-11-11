@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class TreeClass {
@@ -23,6 +24,7 @@ public class SkillTreeCanvas : MonoBehaviour {
     private CanvasGroup treeCanvas;
     public ScrollRect scrollRect;
     public TreeClass[] skillImage; //skillN, treeN
+    public TextMeshProUGUI[] lvText;
 
     private int lastTree = -1;
     private int[] currentButtonSelected = { -1, -1 };
@@ -75,6 +77,15 @@ public class SkillTreeCanvas : MonoBehaviour {
                 Time.timeScale = 0.01f;
                 movementScipt.moveLock = true;
                 atkScript.canInput = false;
+
+                lvText[0].text = dataScript.normalLv.ToString();
+                lvText[1].text = dataScript.fireLv.ToString();
+                lvText[2].text = dataScript.waterLv.ToString();
+                lvText[3].text = dataScript.plantLv.ToString();
+                //lvText[4].text = dataScript.electricLv.ToString();
+                //lvText[5].text = dataScript.earthLv.ToString();
+                //lvText[6].text = dataScript.poisonLv.ToString();
+
                 AlternateCanvas(hudCanvas, false);
             }
         }
