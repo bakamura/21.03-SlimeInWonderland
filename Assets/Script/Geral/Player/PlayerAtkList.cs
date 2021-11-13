@@ -344,7 +344,6 @@ public class PlayerAtkList : MonoBehaviour {
         yield return new WaitForEndOfFrame();
         atkScript.isAtking = false;
         movementScript.moveLock = false;
-        animPlayer.SetBool("Moving", false);
     }
 
     IEnumerator BasicAtk1Instantiate() {
