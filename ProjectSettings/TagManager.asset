@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Litable
   - Wall
+  - AudioManager
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2906954345
+    locked: 0
+  - name: Objects
+    uniqueID: 1451652733
+    locked: 0
+  - name: Foreground
+    uniqueID: 1119187279
     locked: 0

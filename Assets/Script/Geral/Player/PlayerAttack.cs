@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour {
     private PlayerMovement movementScript;
     private PlayerAtkList atkList;
     public SkillTreeCanvas treeCanvasScript;
+    private AudioManager audioManager;
 
     public float[] xpToGet = { 0, 0, 0, 0, 0, 0 };
 
@@ -29,6 +30,7 @@ public class PlayerAttack : MonoBehaviour {
         dataScript = GetComponent<PlayerData>();
         movementScript = GetComponent<PlayerMovement>();
         atkList = GetComponent<PlayerAtkList>();
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     private void Update() {
@@ -40,14 +42,17 @@ public class PlayerAttack : MonoBehaviour {
             if (Input.GetButtonDown("Fire1")) {
                 currentAtk = 1;
                 atkRemember = totalAtkRemember;
+                if (atkCDown[0] > totalAtkRemember) audioManager.Play("SkillCD");
             }
             if (Input.GetButtonDown("Fire2")) {
                 currentAtk = 2;
                 atkRemember = totalAtkRemember;
+                if (atkCDown[0] > totalAtkRemember) audioManager.Play("SkillCD");
             }
             if (Input.GetKeyDown(KeyCode.E)) {
                 currentAtk = 3;
                 atkRemember = totalAtkRemember;
+                if (atkCDown[0] > totalAtkRemember) audioManager.Play("SkillCD");
             }
             if (Input.GetKeyDown(KeyCode.F)) {  //Consume
                 currentAtk = 4;

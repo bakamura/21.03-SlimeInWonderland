@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-[SerializeField]
+[System.Serializable]
 public class Sound {
 
     public string name;
     public AudioClip clip;
 
-    public AudioSource source;
+    [HideInInspector] public AudioSource source;
 }
