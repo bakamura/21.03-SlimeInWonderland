@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.45
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000699a44ad7d7686564f71b542
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 1
   m_LightOrder: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   - {x: -0.38211253, y: -0.025212273, z: 0}
   m_ShapePathHash: 581104624
   m_Mesh: {fileID: 0}
-  m_InstanceId: 21936
+  m_InstanceId: 21542
 --- !u!50 &8411343562132329169
 Rigidbody2D:
   serializedVersion: 4
