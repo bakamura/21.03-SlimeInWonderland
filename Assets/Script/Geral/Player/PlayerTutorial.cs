@@ -34,9 +34,9 @@ public class PlayerTutorial : MonoBehaviour {
     }
 
     IEnumerator ShowWASD() {
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(0.75f);
 
-        if (counter < 0.75f) {
+        if (counter < 0.5f) {
             counter = 0;
             animHolder.SetInteger("State", 1);
         }

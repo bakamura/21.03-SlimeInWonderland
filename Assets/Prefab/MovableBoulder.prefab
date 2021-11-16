@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1020618680}
   - component: {fileID: 5257426057897896144}
   - component: {fileID: 5257426057897896145}
+  - component: {fileID: 3319399610726151877}
   - component: {fileID: 5257426057897896146}
   m_Layer: 0
   m_Name: MovableBoulder
@@ -194,6 +195,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &3319399610726151877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5257426057897895725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f004af776a62ab14d803b6706431e65c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5257426057897896146
 MonoBehaviour:
   m_ObjectHideFlags: 0

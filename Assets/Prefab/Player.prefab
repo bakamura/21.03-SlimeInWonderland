@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8411343562132329169}
   - component: {fileID: 431201073549885756}
   - component: {fileID: 2618869538723213319}
+  - component: {fileID: 7500314779881300911}
   - component: {fileID: 3667573876355629924}
   - component: {fileID: 8411343562132329180}
   - component: {fileID: 8411343562132329178}
@@ -180,7 +181,7 @@ MonoBehaviour:
   - {x: -0.38211253, y: -0.025212273, z: 0}
   m_ShapePathHash: 581104624
   m_Mesh: {fileID: 0}
-  m_InstanceId: 21542
+  m_InstanceId: 21538
 --- !u!50 &8411343562132329169
 Rigidbody2D:
   serializedVersion: 4
@@ -234,6 +235,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7500314779881300911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411343562132329171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f004af776a62ab14d803b6706431e65c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3667573876355629924
 MonoBehaviour:
   m_ObjectHideFlags: 0

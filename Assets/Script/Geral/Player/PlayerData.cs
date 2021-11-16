@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement; //
 
 public class PlayerData : MonoBehaviour {
 
+    public CanvasGroup deathCanvas;
+
     [Header("Components")]
     private Animator animPlayer;
     private PlayerAttack atkScript;
@@ -50,20 +52,15 @@ public class PlayerData : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.L)) unlockAll();
     }
 
-    //private void FixedUpdate() {
-    //    if (currentHealth < maxHealth) { //TO REMOVE
-    //        currentHealth += maxHealth * Time.fixedDeltaTime / 60;
-    //        if (currentHealth > maxHealth) currentHealth = maxHealth;
-    //    }
-    //}
-
     public void TakeDamage(float damage) {
         if (blockState) currentHealth = currentHealth - 0;
         else currentHealth -= damage;
         animPlayer.SetBool("Consuming", false);
         atkScript.StopAllCoroutines();
 
-        if (currentHealth <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (currentHealth <= 0) {
+            StartCoroutine(Death());
+        }
     }
 
     public void takeHealing(float heal) {
@@ -79,6 +76,27 @@ public class PlayerData : MonoBehaviour {
         for (int i = 0; i < 9; i++) electricSkills[i] = true;
         for (int i = 0; i < 9; i++) earthSkills[i] = true;
         for (int i = 0; i < 9; i++) poisonSkills[i] = true;
+    }
+
+    IEnumerator Death() {
+        animPlayer.SetTrigger("Death");
+        deathCanvas.blocksRaycasts = true;
+        deathCanvas.interactable = true;
+        foreach(Collider2D col in GetComponents<Collider2D>()) col.enabled = false;
+        atkScript.StopAllCoroutines();
+        GetComponent<PlayerAtkList>().StopAllCoroutines();
+        GetComponent<PlayerMovement>().moveLock = false;
+
+        yield return new WaitForSeconds(0.9f);
+
+        while (deathCanvas.alpha < 1) { //
+            deathCanvas.alpha += 0.01f;
+            yield return new WaitForSeconds(0.02f);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //
     }
 
     public void ChangeColor(int color) {

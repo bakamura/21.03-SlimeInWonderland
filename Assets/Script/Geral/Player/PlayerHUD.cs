@@ -28,9 +28,9 @@ public class PlayerHUD : MonoBehaviour {
     }
 
     private void AtkUI() {
-        atkImageCDown[0].fillAmount = atkScript.atkCDown[0] / atkScript.atkTotalCDown[0];
-        atkImageCDown[1].fillAmount = atkScript.atkCDown[1] / atkScript.atkTotalCDown[1];
-        atkImageCDown[2].fillAmount = atkScript.atkCDown[2] / atkScript.atkTotalCDown[2];
+        if(atkScript.atkCDown[0] < atkScript.atkTotalCDown[0]) atkImageCDown[0].fillAmount = atkScript.atkCDown[0] / atkScript.atkTotalCDown[0];
+        if (atkScript.atkCDown[1] < atkScript.atkTotalCDown[1]) atkImageCDown[1].fillAmount = atkScript.atkCDown[1] / atkScript.atkTotalCDown[1];
+        if (atkScript.atkCDown[2] < atkScript.atkTotalCDown[2]) atkImageCDown[2].fillAmount = atkScript.atkCDown[2] / atkScript.atkTotalCDown[2];
     }
 
 }
