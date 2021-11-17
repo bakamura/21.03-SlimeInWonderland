@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2629276754250861058}
   - component: {fileID: 2629276754250861061}
   - component: {fileID: 2629276754250861060}
+  - component: {fileID: 563209745}
   m_Layer: 0
   m_Name: Carvao
   m_TagString: Untagged
@@ -183,3 +184,22 @@ MonoBehaviour:
   shotDelay: 0.5
   shotForce: 175
   atkRange: 1
+--- !u!95 &563209745
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2629276754250861063}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aad0c451aa6d0bd46a4663377618544a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
