@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1451652733
+  m_SortingLayer: 2
   m_SortingOrder: 5
   m_Sprite: {fileID: 7970909259963184619, guid: 810e8a0db0318cb41872d79d9335a2eb,
     type: 3}
@@ -181,7 +181,7 @@ MonoBehaviour:
   - {x: -0.38211253, y: -0.025212273, z: 0}
   m_ShapePathHash: 581104624
   m_Mesh: {fileID: 0}
-  m_InstanceId: 21538
+  m_InstanceId: 35180
 --- !u!50 &8411343562132329169
 Rigidbody2D:
   serializedVersion: 4
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4233135a344b944ae642b5d024c3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCanvas: {fileID: 0}
   maxHealth: 10
   currentHealth: 10
   normalXP: 0

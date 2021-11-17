@@ -47,6 +47,7 @@ public class MovableBoulder : MonoBehaviour {
 
         onPosition = true;
         lightBoulder.enabled = true;
+        GetComponent<SpriteRenderer>().sortingLayerName = "Background";
         GetComponent<Collider2D>().enabled = false;
     }
 

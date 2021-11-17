@@ -26,7 +26,7 @@ public class RandomPatrol : MonoBehaviour {
     [System.NonSerialized] public float aggroSpan;
     private float lastAggroSpan;
 
-    private int preventCrash = 0;
+    private float preventCrash = 0;
 
     [Header("FOV")]
     public float radius;
@@ -71,6 +71,8 @@ public class RandomPatrol : MonoBehaviour {
             Vector3 direction = (currentTarget - transform.position).normalized;
             facing = direction;
             if(!dataScript.beingKb) rbRat.velocity = direction * speed;
+            if (preventCrash < 10) preventCrash += Time.fixedDeltaTime;
+            else currentTarget = transform.position;
             animRat.SetBool("Moving", true);
             animRat.SetFloat("Horizontal", direction.x);
             animRat.SetFloat("Vertical", direction.y);
@@ -104,11 +106,12 @@ public class RandomPatrol : MonoBehaviour {
 
         if (aggroSpan <= 0) {
             GenerateTarget();
+            preventCrash = 0;
             while ((currentTarget.x < squarePoints[0].x || currentTarget.x > squarePoints[1].x || currentTarget.y < squarePoints[0].y || currentTarget.y > squarePoints[1].y) && preventCrash < 10) {
                 GenerateTarget();
                 preventCrash++;
             }
-            if (preventCrash == 10) currentTarget = startPos;
+            if (preventCrash >= 10) currentTarget = startPos;
             preventCrash = 0;
         }
         isGenerating = false;

@@ -13,7 +13,7 @@ public class PlayerTutorial : MonoBehaviour {
     }
 
     private void Update() {
-        if (animHolder.GetInteger("State") <= 1 && (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0)) {
+        if (animHolder.GetInteger("State") <= 1 && (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0)) {
             counter += Time.deltaTime;
             if (counter >= 0.75f) animHolder.SetInteger("State", 2);
         }
