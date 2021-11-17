@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4628961895954651798}
   - component: {fileID: 4628961895954651799}
   - component: {fileID: 3895870957226489582}
+  - component: {fileID: 3580825913545667584}
   m_Layer: 0
   m_Name: CarvaoShot
   m_TagString: Untagged
@@ -136,3 +137,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotForce: 350
   damageShot: 1
+--- !u!95 &3580825913545667584
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4628961895954651792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 826f3e7c26a737d4b8749221a03f4ebb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
