@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class DoorPuzzle : MonoBehaviour {
 
@@ -25,6 +26,7 @@ public class DoorPuzzle : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
 
+        foreach (Light2D light in GetComponents<Light2D>()) light.enabled = true;
         deactivateCol.enabled = false;
     }
 

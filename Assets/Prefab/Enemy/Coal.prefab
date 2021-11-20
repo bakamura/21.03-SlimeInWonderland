@@ -190,7 +190,7 @@ MonoBehaviour:
   shotGObject: {fileID: 4628961895954651792, guid: 3180059552e8e9a49845e5b759fcd3e1,
     type: 3}
   speed: 2
-  followGap: 3.5
+  followGap: 2.75
   carvaoDamage: 1
   restingTime: 3
   shotDamage: 1

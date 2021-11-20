@@ -30,7 +30,7 @@ public class SkillTreeCanvas : MonoBehaviour {
     private int[] currentButtonSelected = { -1, -1 };
 
     public Image[] skillSlotImage;
-    public Image currentBtnImg;
+    private Image currentBtnImg;
 
     private void Start() {
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -104,7 +104,8 @@ public class SkillTreeCanvas : MonoBehaviour {
 
     public void SkillButton2(int skillN) {
         string str = "";
-        foreach(bool i in GetTree(currentButtonSelected[1])) str += i? "T " : "F ";
+        foreach (bool i in GetTree(currentButtonSelected[1])) str += i ? "T " : "F ";
+
         if (GetTree(currentButtonSelected[1])[skillN] == true) {
             if (currentButtonSelected[0] != skillN || currentButtonSelected[1] != lastTree) {
                 if (currentButtonSelected[0] != -1) {
@@ -127,8 +128,87 @@ public class SkillTreeCanvas : MonoBehaviour {
             }
         }
         else {
-            currentButtonSelected[1] = lastTree;
-            //Play sound
+            int spentPoints = 0;
+            foreach (bool bol in GetTree(currentButtonSelected[1])) spentPoints += bol ? 1 : 0;
+            switch (currentButtonSelected[1]) {
+                case 0:
+                    if (spentPoints < dataScript.normalLv) {
+                        GetTree(0)[skillN] = true;
+                        AudioManager.instance.Play("UnlockSkill");
+                        FocusOnClick(false);
+                    }
+                    else {
+                        AudioManager.instance.Play("DenyUnlock");
+                        currentButtonSelected[1] = lastTree;
+                    }
+                    break;
+                case 1:
+                    if (spentPoints < dataScript.fireLv) {
+                        GetTree(1)[skillN] = true;
+                        AudioManager.instance.Play("UnlockSkill");
+                        FocusOnClick(false);
+                    }
+                    else {
+                        AudioManager.instance.Play("DenyUnlock");
+                        currentButtonSelected[1] = lastTree;
+                    }
+                    break;
+                case 2:
+                    if (spentPoints < dataScript.waterLv) {
+                        GetTree(2)[skillN] = true;
+                        AudioManager.instance.Play("UnlockSkill");
+                        FocusOnClick(false);
+                    }
+                    else {
+                        AudioManager.instance.Play("DenyUnlock");
+                        currentButtonSelected[1] = lastTree;
+                    }
+                    break;
+                case 3:
+                    if (spentPoints < dataScript.plantLv) {
+                        GetTree(3)[skillN] = true;
+                        AudioManager.instance.Play("UnlockSkill");
+                        FocusOnClick(false);
+                    }
+                    else {
+                        AudioManager.instance.Play("DenyUnlock");
+                        currentButtonSelected[1] = lastTree;
+                    }
+                    break;
+                case 4:
+                    if (spentPoints < dataScript.electricLv) {
+                        GetTree(4)[skillN] = true;
+                        AudioManager.instance.Play("UnlockSkill");
+                        FocusOnClick(false);
+                    }
+                    else {
+                        AudioManager.instance.Play("DenyUnlock");
+                        currentButtonSelected[1] = lastTree;
+                    }
+                    break;
+                case 5:
+                    if (spentPoints < dataScript.earthLv) {
+                        GetTree(5)[skillN] = true;
+                        AudioManager.instance.Play("UnlockSkill");
+                        FocusOnClick(false);
+                    }
+                    else {
+                        AudioManager.instance.Play("DenyUnlock");
+                        currentButtonSelected[1] = lastTree;
+                    }
+                    break;
+                case 6:
+                    if (spentPoints < dataScript.poisonLv) {
+                        GetTree(6)[skillN] = true;
+                        AudioManager.instance.Play("UnlockSkill");
+                        FocusOnClick(false);
+                    }
+                    else {
+                        AudioManager.instance.Play("DenyUnlock");
+                        currentButtonSelected[1] = lastTree;
+                    }
+                    break;
+            }
         }
     }
 
@@ -191,7 +271,7 @@ public class SkillTreeCanvas : MonoBehaviour {
     }
 
     private void ChangeColor(Image img, float mtply) {
-        img.color = img.color * mtply;
+        img.color = Color.white * mtply;
         img.color = new Color(img.color.r, img.color.g, img.color.b, 1);
     }
 

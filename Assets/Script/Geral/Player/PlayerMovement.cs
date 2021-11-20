@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour {
         int x = (int)Input.GetAxisRaw("Horizontal");
         int y = (int)Input.GetAxisRaw("Vertical");
 
-        if ((x == 0 && y == 0 && !animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Atk0") && !moveLock) && direction.x != 0 || direction.y != 0) lastDirection = direction;
+        if ((x == 0 && y == 0 && !animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Atk0") && !moveLock) && (direction.x != 0 || direction.y != 0)) lastDirection = direction;
 
         direction = new Vector2(x, y).normalized;
 
@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour {
         if (direction.magnitude > 0 && animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")) animPlayer.SetBool("Moving", true);
         animPlayer.SetFloat("LastHorizontal", lastDirection.x);
         animPlayer.SetFloat("LastVertical", lastDirection.y);
-
         if (!moveLock && canDive && Input.GetKeyDown(KeyCode.Q)) SetDive(underWater);
     }
 
@@ -62,7 +61,7 @@ public class PlayerMovement : MonoBehaviour {
                 idleAnimationCooldown = 0;
             }
         }
-        if (!animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle Tree")) idleAnimationCooldown = 0;
+        if (!animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")) idleAnimationCooldown = 0;
     }
 
     public void AtMoveEnd() {

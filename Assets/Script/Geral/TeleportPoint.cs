@@ -21,15 +21,9 @@ public class TeleportPoint : MonoBehaviour {
         if (collision.tag == "Player") {
             if(needInput) collision.GetComponent<PlayerMovement>().OnWater(true);
 
-            if (!needInput || Input.GetKey(KeyCode.Q)) {
+            if ((!needInput || Input.GetKey(KeyCode.Q)) && !isTeleporting) {
                 if(needInput) collision.GetComponent<PlayerMovement>().SetDive(true); //
-                StartCoroutine(TeleportTransition(collision.transform));
-            }
-
-            if (!needInput) StartCoroutine(TeleportTransition(collision.transform));
-            else if (Input.GetKey(KeyCode.Q)) {
-                collision.GetComponent<PlayerMovement>().SetDive(true); //
-                if(!isTeleporting) StartCoroutine(TeleportTransition(collision.transform));
+                 StartCoroutine(TeleportTransition(collision.transform));
             }
         }
 

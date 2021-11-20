@@ -31,6 +31,8 @@ public class PlayerTutorial : MonoBehaviour {
                 animHolder.SetInteger("State", 4);
             }
         }
+
+        else if (animHolder.GetInteger("State") == 10) Destroy(gameObject);
     }
 
     IEnumerator ShowWASD() {

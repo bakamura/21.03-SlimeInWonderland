@@ -1057,14 +1057,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7137255, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8506124243437744364, guid: 83d59289b59553e4ba8b695ca261edba,
-    type: 3}
+  m_Sprite: {fileID: 571983493571926101, guid: 1dad42323a1d3a341a9e05fce962447d, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3927,13 +3926,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.101960786, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8506124243437744364, guid: 83d59289b59553e4ba8b695ca261edba,
+  m_Sprite: {fileID: -3211482053663353631, guid: 1dad42323a1d3a341a9e05fce962447d,
     type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -5553,13 +5552,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8506124243437744364, guid: 83d59289b59553e4ba8b695ca261edba,
+  m_Sprite: {fileID: 6298388043425717753, guid: 1dad42323a1d3a341a9e05fce962447d,
     type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -5703,13 +5702,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.18039216, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8506124243437744364, guid: 83d59289b59553e4ba8b695ca261edba,
+  m_Sprite: {fileID: -6338513835074869997, guid: 1dad42323a1d3a341a9e05fce962447d,
     type: 3}
   m_Type: 1
   m_PreserveAspect: 0

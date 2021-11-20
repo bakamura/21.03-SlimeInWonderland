@@ -1,37 +1,28 @@
 fileFormatVersion: 2
-guid: 83d59289b59553e4ba8b695ca261edba
+guid: 1dad42323a1d3a341a9e05fce962447d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7337605234108622473
-    second: Hud_0
+      213: 6298388043425717753
+    second: SkillTreeBG_0
   - first:
-      213: -3125244722504983289
-    second: Hud_1
+      213: -3211482053663353631
+    second: SkillTreeBG_1
   - first:
-      213: 837009245953788970
-    second: Hud_2
+      213: 571983493571926101
+    second: SkillTreeBG_2
   - first:
-      213: -1340662855974404966
-    second: Hud_3
+      213: -6338513835074869997
+    second: SkillTreeBG_3
   - first:
-      213: 6698074947916248846
-    second: Hud_4
+      213: -4818301218647359043
+    second: SkillTreeBG_4
   - first:
-      213: 8506124243437744364
-    second: Hud_5
+      213: -5656044747285167188
+    second: SkillTreeBG_5
   - first:
-      213: 208073894613925949
-    second: Hud_6
-  - first:
-      213: 7544834138881375305
-    second: Hud_7
-  - first:
-      213: -3948833424550202831
-    second: Hud_8
-  - first:
-      213: 7818119699687691340
-    second: Hud_9
+      213: -3946747897065867564
+    second: SkillTreeBG_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -189,70 +180,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hud_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77998e67ae69b2a90800000000000000
-      internalID: -7337605234108622473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hud_1
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 32
-        width: 84
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 70d1deeab76e0a4d0800000000000000
-      internalID: -3125244722504983289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hud_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e07bd7d5da754fc50800000000000000
-      internalID: 6698074947916248846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hud_5
+      name: SkillTreeBG_0
       rect:
         serializedVersion: 2
         x: 0
@@ -260,41 +188,83 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 11, y: 10, z: 11, w: 13}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce0f1799ee2db0670800000000000000
-      internalID: 8506124243437744364
+      spriteID: 9fd15f12e8e586750800000000000000
+      internalID: 6298388043425717753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hud_6
+      name: SkillTreeBG_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 96
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 11, y: 10, z: 11, w: 13}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d30ce7fca1a33e200800000000000000
-      internalID: 208073894613925949
+      spriteID: 1e49adc56168e63d0800000000000000
+      internalID: -3211482053663353631
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hud_9
+      name: SkillTreeBG_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 11, y: 10, z: 11, w: 13}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 558ddb7f4f710f700800000000000000
+      internalID: 571983493571926101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTreeBG_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 11, y: 10, z: 11, w: 13}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 315a678ff331908a0800000000000000
+      internalID: -6338513835074869997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTreeBG_4
       rect:
         serializedVersion: 2
         x: 128
@@ -302,14 +272,56 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 11, y: 10, z: 11, w: 13}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c445e57d17a8f7c60800000000000000
-      internalID: 7818119699687691340
+      spriteID: db141b1f194f12db0800000000000000
+      internalID: -4818301218647359043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTreeBG_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 11, y: 10, z: 11, w: 13}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca38a54f441b181b0800000000000000
+      internalID: -5656044747285167188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillTreeBG_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 11, y: 10, z: 11, w: 13}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d67e59c2b55a39c0800000000000000
+      internalID: -3946747897065867564
       vertices: []
       indices: 
       edges: []
