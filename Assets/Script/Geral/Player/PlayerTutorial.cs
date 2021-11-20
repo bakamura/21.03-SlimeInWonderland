@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerTutorial : MonoBehaviour {
 
+    public CanvasGroup hudCanvas;
     public Animator animHolder;
     private float counter = 0;
     public float circleRange;
@@ -20,8 +21,10 @@ public class PlayerTutorial : MonoBehaviour {
         else if (animHolder.GetInteger("State") == 2) {
             RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, circleRange, Vector2.zero);
             foreach (RaycastHit2D hit in hits) if (hit.collider.tag == "Enemy") {
+                    PlayerAttack.instance.isAtking = false;
+                    hudCanvas.alpha = 1;
                     animHolder.SetInteger("State", 3);
-                    Time.timeScale = 0.001f;
+                    Time.timeScale = 0.00001f;
                     break;
                 }
         }
@@ -36,6 +39,9 @@ public class PlayerTutorial : MonoBehaviour {
     }
 
     IEnumerator ShowWASD() {
+        PlayerAttack.instance.isAtking = true;
+        hudCanvas.alpha = 0;
+
         yield return new WaitForSeconds(0.75f);
 
         if (counter < 0.5f) {

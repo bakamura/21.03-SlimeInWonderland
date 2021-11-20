@@ -4381,7 +4381,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -4488,7 +4488,6 @@ MonoBehaviour:
   - {fileID: 8030930544159009624}
   - {fileID: 6244983353287247415}
   - {fileID: 7136722778300945238}
-  currentBtnImg: {fileID: 0}
 --- !u!1 &3774605619716445621
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement; //
 
 public class PlayerData : MonoBehaviour {
 
+    [HideInInspector] public static PlayerData instance;
+
     public CanvasGroup deathCanvas;
 
     [Header("Components")]
-    private Animator animPlayer;
+    public Rigidbody2D rbPlayer;
+    public Collider2D colPlayer; //
+    public Animator animPlayer;
     private PlayerAttack atkScript;
 
     [Header("Stats")]
@@ -41,8 +45,14 @@ public class PlayerData : MonoBehaviour {
     public bool[] poisonSkills = new bool[9];
 
     public Material[] colorMaterial;
+    
+    private void Awake() {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
+    }
 
     private void Start() {
+        rbPlayer = GetComponent<Rigidbody2D>();
         animPlayer = GetComponent<Animator>();
         atkScript = GetComponent<PlayerAttack>();
         currentHealth = maxHealth;
@@ -82,6 +92,7 @@ public class PlayerData : MonoBehaviour {
         animPlayer.SetTrigger("Death");
         deathCanvas.blocksRaycasts = true;
         deathCanvas.interactable = true;
+        tag = null;
         foreach(Collider2D col in GetComponents<Collider2D>()) col.enabled = false;
         atkScript.StopAllCoroutines();
         GetComponent<PlayerAtkList>().StopAllCoroutines();

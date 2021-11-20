@@ -9,11 +9,8 @@ public class CoolDown {
 
 public class PlayerAtkList : MonoBehaviour {
 
-    [Header("Components")]
-    private Rigidbody2D rbPlayer;
-    private Animator animPlayer;
-    private PlayerAttack atkScript;
-    private PlayerMovement movementScript;
+    [HideInInspector] public static PlayerAtkList instance;
+
     public Collider2D triggerCol;
 
     private Vector2 mousePos;
@@ -43,12 +40,12 @@ public class PlayerAtkList : MonoBehaviour {
     public float rangeFireAtk5;
     public GameObject prefabFireAtk5;
 
-    private void Start() {
-        rbPlayer = GetComponent<Rigidbody2D>();
-        animPlayer = GetComponent<Animator>();
-        atkScript = GetComponent<PlayerAttack>();
-        movementScript = GetComponent<PlayerMovement>();
+    private void Awake() {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
+    }
 
+    private void Start() {
         skill[0] = 0;
         skill[1] = -1;
         skill[2] = -1;
@@ -342,30 +339,30 @@ public class PlayerAtkList : MonoBehaviour {
     //Basic
     IEnumerator DoNothingAtk() {
         yield return new WaitForEndOfFrame();
-        atkScript.isAtking = false;
-        movementScript.moveLock = false;
+        PlayerAttack.instance.isAtking = false;
+        PlayerMovement.instance.moveLock = false;
     }
 
     IEnumerator BasicAtk1Instantiate() {
         currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        movementScript.moveLock = true;
-        rbPlayer.velocity = Vector2.zero;
-        animPlayer.SetTrigger("Atk0");
-        atkScript.currentAtk = 0;
+        PlayerMovement.instance.moveLock = true;
+        PlayerData.instance.rbPlayer.velocity = Vector2.zero;
+        PlayerData.instance.animPlayer.SetTrigger("Atk0");
+        PlayerAttack.instance.currentAtk = 0;
         triggerCol.enabled = true;
         triggerState = 1;
 
-        movementScript.lastDirection = currentAtkDirection;
+        PlayerMovement.instance.lastDirection = currentAtkDirection;
 
         yield return new WaitForSeconds(0.1f);
 
         Debug.Log("Movimento começado");
-        rbPlayer.velocity = currentAtkDirection * strenghBasicAtkDash;
+        PlayerData.instance.rbPlayer.velocity = currentAtkDirection * strenghBasicAtkDash;
 
         yield return new WaitForSeconds(0.4f);
 
         Debug.Log("Movimento interrompido");
-        rbPlayer.velocity = Vector2.zero;
+        PlayerData.instance.rbPlayer.velocity = Vector2.zero;
         triggerCol.enabled = false;
         for (int i = 0; i < hitEntities.Length; i++) hitEntities[i] = null;
         currentListPos = 0;
@@ -374,21 +371,21 @@ public class PlayerAtkList : MonoBehaviour {
         yield return new WaitForSeconds(0.3f);
 
         Debug.Log("Reganhou controle ");
-        atkScript.isAtking = false;
-        movementScript.moveLock = false;
-        animPlayer.SetBool("Moving", false);
+        PlayerAttack.instance.isAtking = false;
+        PlayerMovement.instance.moveLock = false;
+        PlayerData.instance.animPlayer.SetBool("Moving", false);
     }
 
     //Fire
     IEnumerator FireAtk1Instantiate() {
-        movementScript.moveLock = true;
-        rbPlayer.velocity = Vector2.zero;
-        animPlayer.SetTrigger("AtkF1");
-        atkScript.currentAtk = 0;
+        PlayerMovement.instance.moveLock = true;
+        PlayerData.instance.rbPlayer.velocity = Vector2.zero;
+        PlayerData.instance.animPlayer.SetTrigger("AtkF1");
+        PlayerAttack.instance.currentAtk = 0;
 
-        movementScript.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        GameObject breathInstance = Instantiate(prefabFireAtk1, transform.position, Quaternion.Euler(0, 0, (Mathf.Atan2(movementScript.lastDirection.y, movementScript.lastDirection.x) * Mathf.Rad2Deg) + 90));
-        breathInstance.GetComponent<AtkFireBreath>().direction = new Vector3(movementScript.lastDirection.x, movementScript.lastDirection.y, 0);
+        PlayerMovement.instance.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
+        GameObject breathInstance = Instantiate(prefabFireAtk1, transform.position, Quaternion.Euler(0, 0, (Mathf.Atan2(PlayerMovement.instance.lastDirection.y, PlayerMovement.instance.lastDirection.x) * Mathf.Rad2Deg) + 90));
+        breathInstance.GetComponent<AtkFireBreath>().direction = new Vector3(PlayerMovement.instance.lastDirection.x, PlayerMovement.instance.lastDirection.y, 0);
         breathInstance.GetComponent<AtkFireBreath>().damage = damageFireAtk1;
 
         yield return new WaitForSeconds(0.4f);
@@ -397,25 +394,25 @@ public class PlayerAtkList : MonoBehaviour {
 
         yield return new WaitForSeconds(0.4f);
 
-        atkScript.isAtking = false;
-        movementScript.moveLock = false;
-        animPlayer.SetBool("Moving", false);
+        PlayerAttack.instance.isAtking = false;
+        PlayerMovement.instance.moveLock = false;
+        PlayerData.instance.animPlayer.SetBool("Moving", false);
     }
 
     IEnumerator FireAtk5Instatiate() {
-        movementScript.moveLock = true;
-        rbPlayer.velocity = Vector2.zero;
-        animPlayer.SetTrigger("AtkF5");
-        atkScript.currentAtk = 0;
+        PlayerMovement.instance.moveLock = true;
+        PlayerData.instance.rbPlayer.velocity = Vector2.zero;
+        PlayerData.instance.animPlayer.SetTrigger("AtkF5");
+        PlayerAttack.instance.currentAtk = 0;
 
         currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y));
-        movementScript.lastDirection = currentAtkDirection.normalized;
+        PlayerMovement.instance.lastDirection = currentAtkDirection.normalized;
 
         yield return new WaitForSeconds(0.2f);
 
-        atkScript.isAtking = false;
-        movementScript.moveLock = false;
-        animPlayer.SetBool("Moving", false);
+        PlayerAttack.instance.isAtking = false;
+        PlayerMovement.instance.moveLock = false;
+        PlayerData.instance.animPlayer.SetBool("Moving", false);
         GameObject meteorInstance = Instantiate(prefabFireAtk5, transform.position + new Vector3(0, 0.75f, 0), Quaternion.Euler(0, 0, 180));
         meteorInstance.GetComponent<AtkMeteor>().damage = damageFireAtk5;
         if (Vector2.Distance(transform.position, new Vector2(transform.position.x, transform.position.y) + currentAtkDirection) >= rangeFireAtk5) meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(transform.position.x + currentAtkDirection.normalized.x * rangeFireAtk5, transform.position.y + currentAtkDirection.normalized.y * rangeFireAtk5, 0);
@@ -435,7 +432,7 @@ public class PlayerAtkList : MonoBehaviour {
                     currentListPos++;
                 }
                 else if (collision.GetComponent<MovableBoulder>() != null && !bol) {
-                    int i = (int)(Mathf.Atan2(movementScript.lastDirection.y, movementScript.lastDirection.x) * Mathf.Rad2Deg);
+                    int i = (int)(Mathf.Atan2(PlayerMovement.instance.lastDirection.y, PlayerMovement.instance.lastDirection.x) * Mathf.Rad2Deg);
                     if (i <= 45 && i > -45) i = 0;
                     else if (i <= -45 && i >= -135) i = 1;
                     else if (i < -135 || i >= 135) i = 2;

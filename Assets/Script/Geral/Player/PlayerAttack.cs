@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
 
-    private Rigidbody2D rbPlayer;
-    private Animator animPlayer;
-    private PlayerData dataScript;
-    private PlayerMovement movementScript;
-    private PlayerAtkList atkList;
-    public SkillTreeCanvas treeCanvasScript;
+    [HideInInspector] public static PlayerAttack instance;
 
-    public float[] xpToGet = { 0, 0, 0, 0, 0, 0 };
+    public SkillTreeCanvas treeCanvasScript;
 
     [Header("Atk General")]
     public bool canInput = true;
@@ -23,12 +18,9 @@ public class PlayerAttack : MonoBehaviour {
     public float[] atkTotalCDown = new float[3];
     [System.NonSerialized] public float[] atkCDown = new float[3];
 
-    private void Start() {
-        rbPlayer = GetComponent<Rigidbody2D>();
-        animPlayer = GetComponent<Animator>();
-        dataScript = GetComponent<PlayerData>();
-        movementScript = GetComponent<PlayerMovement>();
-        atkList = GetComponent<PlayerAtkList>();
+    private void Awake() {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
     }
 
     private void Update() {
@@ -75,26 +67,26 @@ public class PlayerAttack : MonoBehaviour {
                     case 1:
                         if (atkCDown[0] <= 0) {
                             isAtking = true;
-                            atkList.CastSkill(0);
+                            PlayerAtkList.instance.CastSkill(0);
                             atkCDown[0] = atkTotalCDown[0];
                         }
                         break;
                     case 2:
                         if (atkCDown[1] <= 0) {
                             isAtking = true;
-                            atkList.CastSkill(1);
+                            PlayerAtkList.instance.CastSkill(1);
                             atkCDown[1] = atkTotalCDown[1];
                         }
                         break;
                     case 3:
                         if (atkCDown[2] <= 0) {
                             isAtking = true;
-                            atkList.CastSkill(2);
+                            PlayerAtkList.instance.CastSkill(2);
                             atkCDown[2] = atkTotalCDown[2];
                         }
                         break;
                     case 4:
-                        if (!animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Consume")) {
+                        if (!PlayerData.instance.animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Consume")) {
                             RaycastHit2D[] corpses = Physics2D.CircleCastAll(transform.position, 0.5f, Vector2.zero);
                             GameObject nearest = null;
                             float minDist = 5;
@@ -106,7 +98,7 @@ public class PlayerAttack : MonoBehaviour {
                             }
                             Debug.Log(nearest.name);
                             if (nearest != null) {
-                                animPlayer.SetBool("Consuming", true);
+                                PlayerData.instance.animPlayer.SetBool("Consuming", true);
                                 StartCoroutine(Consume(nearest.GetComponent<EnemyBase>()));
                             }
                         }
@@ -126,49 +118,49 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     IEnumerator Consume(EnemyBase consumed) {
-        animPlayer.SetBool("Consuming", true);
-        movementScript.moveLock = true;
-        rbPlayer.velocity = Vector2.zero;
+        PlayerData.instance.animPlayer.SetBool("Consuming", true);
+        PlayerMovement.instance.moveLock = true;
+        PlayerData.instance.rbPlayer.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(1.25f);
 
         GetXP(consumed.xpType, consumed.xpAmount);
-        dataScript.takeHealing(consumed.maxHealth / 5);
+        PlayerData.instance.takeHealing(consumed.maxHealth / 5);
         Destroy(consumed.gameObject);
 
-        animPlayer.SetBool("Consuming", false);
-        movementScript.moveLock = false;
+        PlayerData.instance.animPlayer.SetBool("Consuming", false);
+        PlayerMovement.instance.moveLock = false;
     }
 
     private void GetXP(int type, float amount) {
         switch (type) {
             case 0:
-                dataScript.normalXP += amount;
-                dataScript.normalLv = CheckLvUp(dataScript.normalXP);
+                PlayerData.instance.normalXP += amount;
+                PlayerData.instance.normalLv = CheckLvUp(PlayerData.instance.normalXP);
                 break;
             case 1:
-                dataScript.fireXP += amount;
-                dataScript.fireLv = CheckLvUp(dataScript.fireXP);
+                PlayerData.instance.fireXP += amount;
+                PlayerData.instance.fireLv = CheckLvUp(PlayerData.instance.fireXP);
                 break;
             case 2:
-                dataScript.waterXP += amount;
-                dataScript.waterLv = CheckLvUp(dataScript.waterXP);
+                PlayerData.instance.waterXP += amount;
+                PlayerData.instance.waterLv = CheckLvUp(PlayerData.instance.waterXP);
                 break;
             case 3:
-                dataScript.plantXP += amount;
-                dataScript.plantLv = CheckLvUp(dataScript.plantXP);
+                PlayerData.instance.plantXP += amount;
+                PlayerData.instance.plantLv = CheckLvUp(PlayerData.instance.plantXP);
                 break;
             case 4:
-                dataScript.electricXP += amount;
-                dataScript.electricLv = CheckLvUp(dataScript.electricXP);
+                PlayerData.instance.electricXP += amount;
+                PlayerData.instance.electricLv = CheckLvUp(PlayerData.instance.electricXP);
                 break;
             case 5:
-                dataScript.earthXP += amount;
-                dataScript.earthLv = CheckLvUp(dataScript.earthXP);
+                PlayerData.instance.earthXP += amount;
+                PlayerData.instance.earthLv = CheckLvUp(PlayerData.instance.earthXP);
                 break;
             case 6:
-                dataScript.poisonXP += amount;
-                dataScript.poisonLv = CheckLvUp(dataScript.poisonXP);
+                PlayerData.instance.poisonXP += amount;
+                PlayerData.instance.poisonLv = CheckLvUp(PlayerData.instance.poisonXP);
                 break;
         }
     }

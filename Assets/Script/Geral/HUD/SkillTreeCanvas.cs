@@ -17,7 +17,7 @@ public class SkillTreeCanvas : MonoBehaviour {
     private PlayerAttack atkScript;
     private PlayerAtkList atkListScript;
     private PlayerHUD hudScript;
-    [SerializeField] private Image[] imgChild;
+    private List<Image> imgChild;
 
     public bool canOpenTab;
     public CanvasGroup hudCanvas;
@@ -30,7 +30,7 @@ public class SkillTreeCanvas : MonoBehaviour {
     private int[] currentButtonSelected = { -1, -1 };
 
     public Image[] skillSlotImage;
-    private Image currentBtnImg;
+    [SerializeField] private Image currentBtnImg;
 
     private void Start() {
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -39,15 +39,11 @@ public class SkillTreeCanvas : MonoBehaviour {
         atkScript = playerGO.GetComponent<PlayerAttack>();
         atkListScript = playerGO.GetComponent<PlayerAtkList>();
         hudScript = playerGO.GetComponent<PlayerHUD>();
-        imgChild = GetComponentsInChildren<Image>();
-
-        int[] x = new int[3];
-        int y = 0;
-        for (int i = 0; i < imgChild.Length; i++) foreach (Image img in skillSlotImage) if (imgChild[i] == img) {
-                    x[y] = i;
-                    y++;
-                    if (y == 3) i = imgChild.Length;
-                }
+        imgChild = new List<Image>(GetComponentsInChildren<Image>());
+        foreach (Image img in skillSlotImage) {
+            imgChild.Remove(img);
+            imgChild.Remove(img.transform.parent.GetComponent<Image>());
+        }
 
         treeCanvas = GetComponent<CanvasGroup>();
         AlternateCanvas(treeCanvas, false);
@@ -74,7 +70,7 @@ public class SkillTreeCanvas : MonoBehaviour {
             }
             else {
                 AlternateCanvas(treeCanvas, true);
-                Time.timeScale = 0.01f;
+                Time.timeScale = 0.00001f;
                 movementScipt.moveLock = true;
                 atkScript.canInput = false;
 
@@ -103,23 +99,10 @@ public class SkillTreeCanvas : MonoBehaviour {
     }
 
     public void SkillButton2(int skillN) {
-        string str = "";
-        foreach (bool i in GetTree(currentButtonSelected[1])) str += i ? "T " : "F ";
-
         if (GetTree(currentButtonSelected[1])[skillN] == true) {
             if (currentButtonSelected[0] != skillN || currentButtonSelected[1] != lastTree) {
-                if (currentButtonSelected[0] != -1) {
-                    ChangeColor(currentBtnImg, 0.5f);
-                    ChangeColor(currentBtnImg.transform.GetComponentInChildren<Image>(), 0.5f);
-                    currentBtnImg = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Image>();
-                    ChangeColor(currentBtnImg, 2);
-                    ChangeColor(currentBtnImg.transform.GetComponentInChildren<Image>(), 2);
-                }
-                if (currentButtonSelected[0] == -1) {
-                    currentBtnImg = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Image>();
-                    FocusOnClick(true);
-                }
-
+                currentBtnImg = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
+                FocusOnClick(true);
                 currentButtonSelected[0] = skillN;
             }
             else {
@@ -228,15 +211,22 @@ public class SkillTreeCanvas : MonoBehaviour {
     }
 
     public void SKillSlotButton(int slotN) {
-        //Make equiping skills that are already equiped in another slot, just swap
         if (currentButtonSelected[0] != -1) {
             if (atkListScript.skill[slotN] != currentButtonSelected[0] || atkListScript.tree[slotN] != currentButtonSelected[1]) {
+                int i = CheckOtherSlots(slotN);
+                if (i != -1) {
+                    atkListScript.skill[i] = atkListScript.skill[slotN];
+                    atkListScript.tree[i] = atkListScript.tree[slotN];
+                    skillSlotImage[i].sprite = skillSlotImage[slotN].sprite;
+                    atkScript.atkTotalCDown[i] = atkScript.atkTotalCDown[slotN];
+                }
                 atkListScript.skill[slotN] = currentButtonSelected[0];
                 atkListScript.tree[slotN] = currentButtonSelected[1];
                 skillSlotImage[slotN].sprite = skillImage[currentButtonSelected[1]].skillImage[currentButtonSelected[0]];
                 atkScript.atkTotalCDown[slotN] = atkListScript.treeCoolDowns[currentButtonSelected[1]].coolDown[currentButtonSelected[0]];
                 currentButtonSelected[0] = -1;
                 FocusOnClick(false);
+
             }
             else if (atkListScript.skill[slotN] == currentButtonSelected[0] && atkListScript.tree[slotN] == currentButtonSelected[1]) {
                 currentButtonSelected[0] = -1;
@@ -246,33 +236,26 @@ public class SkillTreeCanvas : MonoBehaviour {
     }
 
     private void FocusOnClick(bool bol) {
-        Debug.Log(bol ? "Focused" : "Unfocused");
-        scrollRect.enabled = bol;
+        scrollRect.enabled = !bol;
         if (bol) {
             foreach (Image img in imgChild) ChangeColor(img, 0.5f);
+            ChangeColor(currentBtnImg, 1);
+            ChangeColor(currentBtnImg.transform.GetChild(0).GetComponent<Image>(), 1);
 
-            foreach (Image img in skillSlotImage) {
-                ChangeColor(img.transform.parent.GetComponent<Image>(), 2);
-                ChangeColor(img, 2);
-            }
-            ChangeColor(currentBtnImg, 2);
-            ChangeColor(currentBtnImg.transform.GetComponentInChildren<Image>(), 2);
         }
-        else {
-            foreach (Image img in skillSlotImage) {
-                ChangeColor(img.transform.parent.GetComponent<Image>(), 2);
-                ChangeColor(img, 0.5f);
-            }
-            ChangeColor(currentBtnImg, 0.5f);
-            ChangeColor(currentBtnImg.transform.GetComponentInChildren<Image>(), 0.5f);
-
-            foreach (Image img in imgChild) ChangeColor(img, 2);
-        }
+        else foreach (Image img in imgChild) ChangeColor(img, 1);
     }
 
     private void ChangeColor(Image img, float mtply) {
         img.color = Color.white * mtply;
         img.color = new Color(img.color.r, img.color.g, img.color.b, 1);
+    }
+
+    private int CheckOtherSlots(int currentSlot) {
+        if (currentSlot != 0 && atkListScript.skill[0] == currentButtonSelected[0] && atkListScript.tree[0] == currentButtonSelected[1]) return 0;
+        else if (currentSlot != 1 && atkListScript.skill[1] == currentButtonSelected[0] && atkListScript.tree[1] == currentButtonSelected[1]) return 1;
+        else if (currentSlot != 2 && atkListScript.skill[2] == currentButtonSelected[0] && atkListScript.tree[2] == currentButtonSelected[1]) return 2;
+        else return -1;
     }
 
 }

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHUD : MonoBehaviour {
 
+    [HideInInspector] public static PlayerHUD instance;
+
     private PlayerData dataScript;
     private PlayerAttack atkScript;
 
@@ -12,6 +14,11 @@ public class PlayerHUD : MonoBehaviour {
 
     public Image[] atkIcon;
     public Image[] atkImageCDown;
+
+    private void Awake() {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
+    }
 
     private void Start() {
         dataScript = GetComponent<PlayerData>();
