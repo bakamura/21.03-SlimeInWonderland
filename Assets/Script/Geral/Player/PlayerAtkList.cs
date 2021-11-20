@@ -356,12 +356,12 @@ public class PlayerAtkList : MonoBehaviour {
 
         yield return new WaitForSeconds(0.1f);
 
-        Debug.Log("Movimento começado");
+        //Debug.Log("Movimento começado");
         PlayerData.instance.rbPlayer.velocity = currentAtkDirection * strenghBasicAtkDash;
 
         yield return new WaitForSeconds(0.4f);
 
-        Debug.Log("Movimento interrompido");
+        //Debug.Log("Movimento interrompido");
         PlayerData.instance.rbPlayer.velocity = Vector2.zero;
         triggerCol.enabled = false;
         for (int i = 0; i < hitEntities.Length; i++) hitEntities[i] = null;
@@ -370,7 +370,7 @@ public class PlayerAtkList : MonoBehaviour {
 
         yield return new WaitForSeconds(0.3f);
 
-        Debug.Log("Reganhou controle ");
+        //Debug.Log("Reganhou controle ");
         PlayerAttack.instance.isAtking = false;
         PlayerMovement.instance.moveLock = false;
         PlayerData.instance.animPlayer.SetBool("Moving", false);
