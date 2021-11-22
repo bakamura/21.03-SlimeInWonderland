@@ -24,6 +24,9 @@ public class EnemyBase : MonoBehaviour {
     [System.NonSerialized] public bool isSpecialCase = false;
     [System.NonSerialized] public bool specialCaseTrigger = false;
 
+    public GameObject consumeKeyShow;
+    private SpriteRenderer keyShowInstance;
+
     private void Start() {
         rbEnemy = GetComponent<Rigidbody2D>();
         animatorEnemy = GetComponent<Animator>();
@@ -32,6 +35,20 @@ public class EnemyBase : MonoBehaviour {
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         currentHealth = maxHealth;
+
+        keyShowInstance = Instantiate(consumeKeyShow, transform.position + new Vector3(0, 0.75f, 0), Quaternion.identity).GetComponent<SpriteRenderer>();
+        keyShowInstance.transform.parent = transform;
+    }
+
+    private void Update() {
+        Collider2D[] isInRange = Physics2D.OverlapCircleAll(transform.position, 4);
+        bool bol = false;
+        foreach (Collider2D col in isInRange) if (col.tag == "Player") bol = true;
+        if (bol && currentHealth <= 0) {
+            keyShowInstance.transform.position = transform.position + new Vector3(0, 0.75f, 0);
+            keyShowInstance.color = new Color(1, 1, 1, 1);
+        }
+        else keyShowInstance.color = new Color(1, 1, 1, 0);
     }
 
     public void TakeDamage(float damage) {
@@ -65,7 +82,4 @@ public class EnemyBase : MonoBehaviour {
         beingKb = false;
     }
 
-    private void OnTriggerStay2D(Collider2D collision) {
-        //
-    }
 }

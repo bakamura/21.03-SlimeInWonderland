@@ -156,6 +156,8 @@ MonoBehaviour:
   knockBackStrength: 10
   xpType: 1
   xpAmount: 2
+  consumeKeyShow: {fileID: 922240890206344333, guid: 8dc4371e718738048b91f14c68c74d12,
+    type: 3}
 --- !u!114 &2629276754250861061
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -72,7 +72,11 @@ public class MovableBoulder : MonoBehaviour {
             aimedPos += targetPos.y < 0 ? new Vector3(0, -0.5f, 0) : new Vector3(0, 0.5f, 0);
             bool isAccepted = false;
             foreach (Vector3 pos in AcceptedPos) if (aimedPos == pos) isAccepted = true;
-            targetPos = isAccepted ? aimedPos : transform.position; //
+            if (isAccepted) {
+                targetPos = aimedPos;
+                AudioManager.instance.Play("MoveBoulder");
+            }
+            else targetPos = transform.position;
             setRBody(true);
         }
     }

@@ -34,6 +34,11 @@ public class PlayerTutorial : MonoBehaviour {
                 animHolder.SetInteger("State", 4);
             }
         }
+        else if (animHolder.GetInteger("State") == 4) {
+            if (Input.GetKeyDown(KeyCode.F)) {
+
+            }
+        }
 
         else if (animHolder.GetInteger("State") == 10) Destroy(gameObject);
     }
@@ -42,7 +47,7 @@ public class PlayerTutorial : MonoBehaviour {
         PlayerAttack.instance.isAtking = true;
         hudCanvas.alpha = 0;
 
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.55f);
 
         if (counter < 0.5f) {
             counter = 0;
