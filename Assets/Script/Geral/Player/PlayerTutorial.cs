@@ -6,6 +6,7 @@ public class PlayerTutorial : MonoBehaviour {
 
     public CanvasGroup hudCanvas;
     public Animator animHolder;
+    private GameObject enemyToHit;
     private float counter = 0;
     public float circleRange;
 
@@ -21,24 +22,24 @@ public class PlayerTutorial : MonoBehaviour {
         else if (animHolder.GetInteger("State") == 2) {
             RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, circleRange, Vector2.zero);
             foreach (RaycastHit2D hit in hits) if (hit.collider.tag == "Enemy") {
-                    PlayerAttack.instance.isAtking = false;
+                    enemyToHit = hit.collider.gameObject;
                     hudCanvas.alpha = 1;
                     animHolder.SetInteger("State", 3);
-                    Time.timeScale = 0.00001f;
+                    Time.timeScale = 0;
                     break;
                 }
         }
         else if (animHolder.GetInteger("State") == 3) {
-            if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            Vector3 v3 = Camera.main.ScreenToWorldPoint(Input.mousePosition) - enemyToHit.transform.position + new Vector3(0, 0, 10);
+            if (Input.GetKeyDown(KeyCode.Mouse0) && v3.magnitude < 0.75f) {
+                PlayerAtkList.instance.CastSkill(0);
                 Time.timeScale = 1;
                 animHolder.SetInteger("State", 4);
+                PlayerAttack.instance.isAtking = false;
             }
         }
-        else if (animHolder.GetInteger("State") == 4) {
-            if (Input.GetKeyDown(KeyCode.F)) {
-
-            }
-        }
+        else if (animHolder.GetInteger("State") == 4 && PlayerData.instance.fireLv > 0) animHolder.SetInteger("State", 5);
+        else if (animHolder.GetInteger("State") == 5 && Input.GetKeyDown(KeyCode.Tab)) animHolder.SetInteger("State", 6);
 
         else if (animHolder.GetInteger("State") == 10) Destroy(gameObject);
     }

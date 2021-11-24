@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBallBoss : MonoBehaviour {
+public class FireBall : MonoBehaviour {
 
     public float shotForce;
     public float damageShot;
@@ -19,7 +19,7 @@ public class FireBallBoss : MonoBehaviour {
             StartCoroutine(ExplosionTime());
         }
         else if (collision.tag == "Litable") {
-            collision.GetComponent<Torch>().ChangeState(true);
+            collision.GetComponent<Burnable>().lit = true;
             StartCoroutine(ExplosionTime());
         }
         else if (collision.tag == "Wall") StartCoroutine(ExplosionTime());

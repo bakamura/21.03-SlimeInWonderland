@@ -27,7 +27,7 @@ public class AtkFireBreath : MonoBehaviour {
         if (hits != null) foreach (RaycastHit2D hit in hits) {
                 if (hit != false) {
                     if (hit.collider.GetComponent<EnemyBase>() != null) hit.collider.GetComponent<EnemyBase>().TakeDamage(damage);
-                    else if (hit.collider.GetComponent<Torch>() != null) hit.collider.GetComponent<Torch>().ChangeState(true);
+                    else if (hit.collider.tag == "Litable") hit.collider.GetComponent<Burnable>().lit = true;
                 }
             }
 

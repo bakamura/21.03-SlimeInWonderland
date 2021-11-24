@@ -10,10 +10,10 @@ public class PlayerData : MonoBehaviour {
     public CanvasGroup deathCanvas;
 
     [Header("Components")]
-    public Rigidbody2D rbPlayer;
-    public Collider2D colPlayer; //
-    public Animator animPlayer;
-    private PlayerAttack atkScript;
+    public static Rigidbody2D rbPlayer;
+    public static Collider2D colPlayer; //
+    public static Animator animPlayer;
+    public static SpriteRenderer srPlayer;
 
     [Header("Stats")]
     public float maxHealth;
@@ -45,7 +45,7 @@ public class PlayerData : MonoBehaviour {
     public bool[] poisonSkills = new bool[9];
 
     public Material[] colorMaterial;
-    
+
     private void Awake() {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
@@ -54,19 +54,20 @@ public class PlayerData : MonoBehaviour {
     private void Start() {
         rbPlayer = GetComponent<Rigidbody2D>();
         animPlayer = GetComponent<Animator>();
-        atkScript = GetComponent<PlayerAttack>();
+        srPlayer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.L)) unlockAll();
     }
 
     public void TakeDamage(float damage) {
         if (blockState) currentHealth = currentHealth - 0;
         else currentHealth -= damage;
+        if (animPlayer.GetBool("Consuming")) {
+            GetComponent<SpriteRendererUpdater>().enabled = true;
+            PlayerMovement.instance.moveLock = false;
+        }
         animPlayer.SetBool("Consuming", false);
-        atkScript.StopAllCoroutines();
+        PlayerAttack.instance.StopAllCoroutines();
+        PlayerHUD.instance.DataUI();
 
         if (currentHealth <= 0) {
             StartCoroutine(Death());
@@ -76,16 +77,7 @@ public class PlayerData : MonoBehaviour {
     public void takeHealing(float heal) {
         currentHealth += heal;
         if (currentHealth > maxHealth) currentHealth = maxHealth;
-    }
-
-    void unlockAll() {
-        for (int i = 0; i < 9; i++) normalSkills[i] = true;
-        for (int i = 0; i < 9; i++) fireSkills[i] = true;
-        for (int i = 0; i < 9; i++) waterSkills[i] = true;
-        for (int i = 0; i < 9; i++) plantSkills[i] = true;
-        for (int i = 0; i < 9; i++) electricSkills[i] = true;
-        for (int i = 0; i < 9; i++) earthSkills[i] = true;
-        for (int i = 0; i < 9; i++) poisonSkills[i] = true;
+        PlayerHUD.instance.DataUI();
     }
 
     IEnumerator Death() {
@@ -93,8 +85,8 @@ public class PlayerData : MonoBehaviour {
         deathCanvas.blocksRaycasts = true;
         deathCanvas.interactable = true;
         tag = null;
-        foreach(Collider2D col in GetComponents<Collider2D>()) col.enabled = false;
-        atkScript.StopAllCoroutines();
+        foreach (Collider2D col in GetComponents<Collider2D>()) col.enabled = false;
+        PlayerAttack.instance.StopAllCoroutines();
         GetComponent<PlayerAtkList>().StopAllCoroutines();
         GetComponent<PlayerMovement>().moveLock = false;
 

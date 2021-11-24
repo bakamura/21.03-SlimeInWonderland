@@ -5,10 +5,8 @@ using UnityEngine;
 public class RandomPatrol : MonoBehaviour {
 
     [Header("Components")]
-    private Rigidbody2D rbRat;
-    private Rigidbody2D rbCarvao;
-    private Animator animRat;
-    private Animator animCarvao;
+    private Rigidbody2D rbEnemy;
+    private Animator animEnemy;
     private EnemyBase dataScript;
 
     [Header("Stats")]
@@ -31,16 +29,12 @@ public class RandomPatrol : MonoBehaviour {
     [Header("FOV")]
     public float radius;
     [Range(0, 360)] public float angle;
-    private Transform playerPos;
 
 
     private void Start() {
-        rbRat = GetComponent<Rigidbody2D>();
-        rbCarvao = GetComponent<Rigidbody2D>();
-        animRat = GetComponent<Animator>();
-        animCarvao = GetComponent<Animator>();
+        rbEnemy = GetComponent<Rigidbody2D>();
+        animEnemy = GetComponent<Animator>();
         dataScript = GetComponent<EnemyBase>();
-        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         startPos = transform.position;
         squarePoints[0] = new Vector2(transform.position.x - squareRange.x / 2, transform.position.y - squareRange.y / 2);
@@ -64,18 +58,18 @@ public class RandomPatrol : MonoBehaviour {
         if (Mathf.Abs(currentTarget.x - transform.position.x) < 0.1f && Mathf.Abs(currentTarget.y - transform.position.y) < 0.1f) {
             if (!isGenerating) StartCoroutine(RestTime());
             transform.position = currentTarget;
-            animRat.SetBool("Moving", false);
+            animEnemy.SetBool("Moving", false);
         }
         else {
             if (currentTarget.x < squarePoints[0].x || currentTarget.x > squarePoints[1].x || currentTarget.y < squarePoints[0].y || currentTarget.y > squarePoints[1].y) currentTarget = startPos;
             Vector3 direction = (currentTarget - transform.position).normalized;
             facing = direction;
-            if(!dataScript.beingKb) rbRat.velocity = direction * speed;
+            if(!dataScript.beingKb) rbEnemy.velocity = direction * speed;
             if (preventCrash < 10) preventCrash += Time.fixedDeltaTime;
             else currentTarget = transform.position;
-            animRat.SetBool("Moving", true);
-            animRat.SetFloat("Horizontal", direction.x);
-            animRat.SetFloat("Vertical", direction.y);
+            animEnemy.SetBool("Moving", true);
+            animEnemy.SetFloat("Horizontal", direction.x);
+            animEnemy.SetFloat("Vertical", direction.y);
         }
     }
 
@@ -122,10 +116,10 @@ public class RandomPatrol : MonoBehaviour {
 
         if (rangeChecks.Length != 0) {
             foreach(Collider2D col in rangeChecks) if (col.tag == "Player") {
-                Vector2 directionToTarget = (playerPos.position - transform.position).normalized;
+                Vector2 directionToTarget = (PlayerData.instance.transform.position - transform.position).normalized;
 
                 if (Vector2.Angle(facing, directionToTarget) < angle / 2) {
-                    RaycastHit2D[] obstruction = Physics2D.RaycastAll(transform.position, directionToTarget, Vector2.Distance(transform.position, playerPos.position));
+                    RaycastHit2D[] obstruction = Physics2D.RaycastAll(transform.position, directionToTarget, Vector2.Distance(transform.position, PlayerData.instance.transform.position));
                     bool hitWall = false; //
                     foreach(RaycastHit2D obstruct in obstruction) if (obstruct.transform.tag == "Wall") hitWall = true;
                     if (!hitWall) aggroSpan = aggroDuration;

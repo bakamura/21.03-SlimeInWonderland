@@ -48,7 +48,8 @@ public class MovableBoulder : MonoBehaviour {
         onPosition = true;
         lightBoulder.enabled = true;
         GetComponent<SpriteRenderer>().sortingLayerName = "Background";
-        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRendererUpdater>().enabled = false;
+        GetComponent<SpriteRenderer>().sortingOrder = 5;
     }
 
     public void SetTarget(int i) {
@@ -75,6 +76,7 @@ public class MovableBoulder : MonoBehaviour {
             if (isAccepted) {
                 targetPos = aimedPos;
                 AudioManager.instance.Play("MoveBoulder");
+                if (targetPos == CorrectPos) GetComponent<Collider2D>().enabled = false;
             }
             else targetPos = transform.position;
             setRBody(true);

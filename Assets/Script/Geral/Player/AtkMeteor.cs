@@ -50,8 +50,7 @@ public class AtkMeteor : MonoBehaviour {
         foreach (RaycastHit2D i in hits) {
             if (i.transform.tag == "Enemy") i.transform.GetComponent<EnemyBase>().TakeDamage(damage);
             else if (i.transform.tag == "Litable") {
-                i.transform.GetComponent<Torch>().lit = true;
-                i.transform.GetComponent<Torch>().ChangeState(true);
+                i.transform.GetComponent<Burnable>().lit = true;
             }
         }
         //If II, instantiate xxxxx

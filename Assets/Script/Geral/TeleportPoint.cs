@@ -19,11 +19,11 @@ public class TeleportPoint : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.tag == "Player") {
-            if(needInput) collision.GetComponent<PlayerMovement>().OnWater(true);
+            if(needInput) PlayerMovement.instance.OnWater(true);
 
             if ((!needInput || Input.GetKey(KeyCode.Q)) && !isTeleporting) {
-                if(needInput) collision.GetComponent<PlayerMovement>().SetDive(true); //
-                 StartCoroutine(TeleportTransition(collision.transform));
+                if(needInput) PlayerMovement.instance.SetDive(true); //
+                 StartCoroutine(TeleportTransition());
             }
         }
 
@@ -31,12 +31,12 @@ public class TeleportPoint : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.tag == "Player" && needInput) collision.GetComponent<PlayerMovement>().OnWater(false);
+        if (collision.tag == "Player" && needInput) PlayerMovement.instance.OnWater(false);
     }
 
-    IEnumerator TeleportTransition(Transform playerTransform) { //DEBUFGAR.LOG
+    IEnumerator TeleportTransition() {
         isTeleporting = true;
-        playerTransform.GetComponent<PlayerMovement>().moveLock = true;
+        PlayerMovement.instance.moveLock = true;
 
         yield return new WaitForSeconds(delayStart);
 
@@ -45,14 +45,14 @@ public class TeleportPoint : MonoBehaviour {
 
         yield return new WaitForSeconds(transitionDuration / 2);
 
-        playerTransform.position = teleportPosition;
-        playerTransform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        PlayerData.instance.transform.position = teleportPosition;
+        PlayerData.rbPlayer.velocity = Vector2.zero;
 
 
         yield return new WaitForSeconds(transitionDuration / 2);
 
         animatorWipeTransition.SetTrigger("WipeOut");
-        playerTransform.GetComponent<PlayerMovement>().moveLock = false;
+        PlayerMovement.instance.moveLock = false;
         isTeleporting = false;
     }
 

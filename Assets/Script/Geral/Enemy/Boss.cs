@@ -125,7 +125,7 @@ public class Boss : MonoBehaviour {
         GameObject go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
         go.transform.localScale = new Vector3(4, 4, 1);
         go.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left * shotForce);
-        go.GetComponent<FireBallBoss>().damageShot = shotDamage;
+        go.GetComponent<FireBall>().damageShot = shotDamage;
 
         yield return new WaitForSeconds(shotDelay);
 
@@ -137,7 +137,7 @@ public class Boss : MonoBehaviour {
         go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
         go.transform.localScale = new Vector3(4, 4, 1);
         go.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left * shotForce);
-        go.GetComponent<FireBallBoss>().damageShot = shotDamage;
+        go.GetComponent<FireBall>().damageShot = shotDamage;
 
         yield return new WaitForSeconds(shotDelay);
 
@@ -149,7 +149,7 @@ public class Boss : MonoBehaviour {
         go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
         go.transform.localScale = new Vector3(4, 4, 1);
         go.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left * shotForce);
-        go.GetComponent<FireBallBoss>().damageShot = shotDamage;
+        go.GetComponent<FireBall>().damageShot = shotDamage;
 
         yield return new WaitForSeconds(restTime);
 

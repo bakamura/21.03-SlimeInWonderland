@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
-public class Carvao : MonoBehaviour {
+public class Coal : MonoBehaviour {
     [Header("Components")]
     private Rigidbody2D rbCarvao;
     private Animator animCarvao;
@@ -37,7 +38,10 @@ public class Carvao : MonoBehaviour {
 
     private void FixedUpdate() {
         if (patrolScript.aggroSpan > 0 && baseScript.currentHealth > 0) AtkPatern();
-        if (baseScript.currentHealth <= 0) rbCarvao.velocity = Vector2.zero;
+        if (baseScript.currentHealth <= 0) {
+            GetComponent<Light2D>().enabled = false;
+            rbCarvao.velocity = Vector2.zero;
+        }
     }
 
     private void AtkPatern() {
@@ -79,7 +83,7 @@ public class Carvao : MonoBehaviour {
         float a = Mathf.Atan2(playerTransform.transform.position.y - transform.position.y, playerTransform.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 180;
         GameObject go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
         go.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left * shotForce);
-        go.GetComponent<FireBallBoss>().damageShot = shotDamage;
+        go.GetComponent<FireBall>().damageShot = shotDamage;
 
         yield return new WaitForSeconds(restingTime);
 
@@ -93,10 +97,4 @@ public class Carvao : MonoBehaviour {
     private void OnCollisionExit2D(Collision2D collision) {
         if (collision.collider.tag == "Wall") inWall = false;
     }
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        if (Application.isPlaying) Gizmos.DrawWireSphere(transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0)) / 2, atkRange);
-    }
-
 }

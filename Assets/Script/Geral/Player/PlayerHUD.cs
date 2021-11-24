@@ -7,8 +7,6 @@ public class PlayerHUD : MonoBehaviour {
 
     [HideInInspector] public static PlayerHUD instance;
 
-    private PlayerData dataScript;
-    private PlayerAttack atkScript;
 
     public Image healthBar;
 
@@ -19,25 +17,18 @@ public class PlayerHUD : MonoBehaviour {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
     }
-
-    private void Start() {
-        dataScript = GetComponent<PlayerData>();
-        atkScript = GetComponent<PlayerAttack>();
-    }
-
     private void FixedUpdate() {
-        DataUI();
         AtkUI();
     }
 
-    private void DataUI() {
-        healthBar.fillAmount = dataScript.currentHealth / dataScript.maxHealth;
+    public void DataUI() {
+        healthBar.fillAmount = PlayerData.instance.currentHealth / PlayerData.instance.maxHealth;
     }
 
     private void AtkUI() {
-        if(atkScript.atkCDown[0] < atkScript.atkTotalCDown[0]) atkImageCDown[0].fillAmount = atkScript.atkCDown[0] / atkScript.atkTotalCDown[0];
-        if (atkScript.atkCDown[1] < atkScript.atkTotalCDown[1]) atkImageCDown[1].fillAmount = atkScript.atkCDown[1] / atkScript.atkTotalCDown[1];
-        if (atkScript.atkCDown[2] < atkScript.atkTotalCDown[2]) atkImageCDown[2].fillAmount = atkScript.atkCDown[2] / atkScript.atkTotalCDown[2];
+        if(PlayerAttack.instance.atkCDown[0] < PlayerAttack.instance.atkTotalCDown[0]) atkImageCDown[0].fillAmount = PlayerAttack.instance.atkCDown[0] / PlayerAttack.instance.atkTotalCDown[0];
+        if (PlayerAttack.instance.atkCDown[1] < PlayerAttack.instance.atkTotalCDown[1]) atkImageCDown[1].fillAmount = PlayerAttack.instance.atkCDown[1] / PlayerAttack.instance.atkTotalCDown[1];
+        if (PlayerAttack.instance.atkCDown[2] < PlayerAttack.instance.atkTotalCDown[2]) atkImageCDown[2].fillAmount = PlayerAttack.instance.atkCDown[2] / PlayerAttack.instance.atkTotalCDown[2];
     }
 
 }

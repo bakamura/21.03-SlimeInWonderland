@@ -5,19 +5,19 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Torch : MonoBehaviour {
 
+    private Burnable burnableScript;
     private Animator animTorch;
     private Light2D light2D;
-    public bool lit;
 
     private void Start() {
+        burnableScript = GetComponent<Burnable>();
         animTorch = GetComponent<Animator>();
         light2D = GetComponent<Light2D>();
-        ChangeState(lit);
+        GetComponent<SpriteRenderer>().sortingOrder = (int) (transform.position.y * -10);
     }
 
-    public void ChangeState(bool bol) {
-        lit = bol;
-        light2D.enabled = bol;
-        animTorch.SetBool("Lit", bol);
+    private void Update() {
+        light2D.enabled = burnableScript.lit;
+        animTorch.SetBool("Lit", burnableScript.lit);
     }
 }
