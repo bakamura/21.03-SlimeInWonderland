@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LightType: 3
-  m_BlendStyleIndex: 0
+  m_BlendStyleIndex: 1
   m_FalloffIntensity: 0.75
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.45
@@ -262,8 +262,8 @@ MonoBehaviour:
   deathCanvas: {fileID: 0}
   maxHealth: 10
   currentHealth: 10
-  normalXP: 0
-  normalLv: 0
+  normalXP: 3
+  normalLv: 1
   normalSkills: 010000000000000000
   fireXP: 0
   fireLv: 0
@@ -318,13 +318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treeCanvasScript: {fileID: 0}
-  xpToGet:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   canInput: 1
   totalAtkRemember: 0.2
   atkTotalCDown:

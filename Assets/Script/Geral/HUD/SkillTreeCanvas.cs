@@ -115,7 +115,7 @@ public class SkillTreeCanvas : MonoBehaviour {
             foreach (bool bol in GetTree(currentButtonSelected[1])) spentPoints += bol ? 1 : 0;
             switch (currentButtonSelected[1]) {
                 case 0:
-                    if (spentPoints < dataScript.normalLv) {
+                    if (spentPoints < dataScript.normalLv && CanUnlock(skillN)) {
                         GetTree(0)[skillN] = true;
                         AudioManager.instance.Play("UnlockSkill");
                         FocusOnClick(false);
@@ -126,7 +126,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                     }
                     break;
                 case 1:
-                    if (spentPoints < dataScript.fireLv) {
+                    if (spentPoints < dataScript.fireLv && CanUnlock(skillN)) {
                         GetTree(1)[skillN] = true;
                         AudioManager.instance.Play("UnlockSkill");
                         FocusOnClick(false);
@@ -137,7 +137,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                     }
                     break;
                 case 2:
-                    if (spentPoints < dataScript.waterLv) {
+                    if (spentPoints < dataScript.waterLv && CanUnlock(skillN)) {
                         GetTree(2)[skillN] = true;
                         AudioManager.instance.Play("UnlockSkill");
                         FocusOnClick(false);
@@ -148,7 +148,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                     }
                     break;
                 case 3:
-                    if (spentPoints < dataScript.plantLv) {
+                    if (spentPoints < dataScript.plantLv && CanUnlock(skillN)) {
                         GetTree(3)[skillN] = true;
                         AudioManager.instance.Play("UnlockSkill");
                         FocusOnClick(false);
@@ -159,7 +159,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                     }
                     break;
                 case 4:
-                    if (spentPoints < dataScript.electricLv) {
+                    if (spentPoints < dataScript.electricLv && CanUnlock(skillN)) {
                         GetTree(4)[skillN] = true;
                         AudioManager.instance.Play("UnlockSkill");
                         FocusOnClick(false);
@@ -170,7 +170,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                     }
                     break;
                 case 5:
-                    if (spentPoints < dataScript.earthLv) {
+                    if (spentPoints < dataScript.earthLv && CanUnlock(skillN)) {
                         GetTree(5)[skillN] = true;
                         AudioManager.instance.Play("UnlockSkill");
                         FocusOnClick(false);
@@ -181,7 +181,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                     }
                     break;
                 case 6:
-                    if (spentPoints < dataScript.poisonLv) {
+                    if (spentPoints < dataScript.poisonLv && CanUnlock(skillN)) {
                         GetTree(6)[skillN] = true;
                         AudioManager.instance.Play("UnlockSkill");
                         FocusOnClick(false);
@@ -192,6 +192,38 @@ public class SkillTreeCanvas : MonoBehaviour {
                     }
                     break;
             }
+        }
+    }
+
+    private bool CanUnlock(int i) {
+        switch (i) {
+            case 0: return true;
+            case 1:
+                if (GetTree(currentButtonSelected[1])[0]) return true;
+                else return false;
+            case 2:
+                if (GetTree(currentButtonSelected[1])[0]) return true;
+                else return false;
+            case 3:
+                if (GetTree(currentButtonSelected[1])[1]) return true;
+                else return false;
+            case 4:
+                if (GetTree(currentButtonSelected[1])[1]) return true;
+                else return false;
+            case 5:
+                if (GetTree(currentButtonSelected[1])[2]) return true;
+                else return false;
+            case 6:
+                if (GetTree(currentButtonSelected[1])[4]) return true;
+                else return false;
+            case 7:
+                if (GetTree(currentButtonSelected[1])[5]) return true;
+                else return false;
+            case 8:
+                if (GetTree(currentButtonSelected[1])[7]) return true;
+                else return false;
+            default: Debug.LogWarning("ErrorChecking for unlock skill");
+                return false;
         }
     }
 

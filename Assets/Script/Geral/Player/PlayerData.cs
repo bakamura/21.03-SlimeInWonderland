@@ -84,7 +84,7 @@ public class PlayerData : MonoBehaviour {
         animPlayer.SetTrigger("Death");
         deathCanvas.blocksRaycasts = true;
         deathCanvas.interactable = true;
-        tag = null;
+        tag = "Untagged";
         foreach (Collider2D col in GetComponents<Collider2D>()) col.enabled = false;
         PlayerAttack.instance.StopAllCoroutines();
         GetComponent<PlayerAtkList>().StopAllCoroutines();

@@ -21,23 +21,34 @@ public class Jellyfish : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (baseScript.currentHealth <= 0) {
-            if (patrolScript.aggroSpan > 0) if (!wasAtking) StartCoroutine(Approach());
-            else if (wasAtking) StopAllCoroutines();
+        if (baseScript.currentHealth > 0) {
+            if (patrolScript.aggroSpan > 0) {
+                if (!wasAtking) {
+                    wasAtking = true;
+                    StartCoroutine(Approach());
+                }
+            }
+            else if (wasAtking) {
+                wasAtking = false;
+                StopAllCoroutines();
+            }
         }
         if (!baseScript.beingKb) rbJelly.velocity = Vector2.zero;
     }
 
     private IEnumerator Approach() {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.75f);
 
         Vector3 v3 = (PlayerData.instance.transform.position - transform.position).normalized * movementDistance;
-        for (int i = 0; i < 40; i++) {
-            transform.position += v3 / 40;
+        for (int i = 0; i < 75; i++) {
+            transform.position += v3 / 75;
 
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.005f);
         }
-        if (state < 2 && Vector2.Distance(PlayerData.instance.transform.position, transform.position) < atkRange) StartCoroutine(AtkInstantiate());
+
+        yield return new WaitForSeconds(0.125f);
+
+        if (state > 1 && Vector2.Distance(PlayerData.instance.transform.position, transform.position) < atkRange) StartCoroutine(AtkInstantiate());
         else {
             state = state < 2 ? ++state : 0;
             StartCoroutine(Approach());
@@ -65,4 +76,8 @@ public class Jellyfish : MonoBehaviour {
         StartCoroutine(Approach());
     }
 
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, atkRange);
+    }
 }
