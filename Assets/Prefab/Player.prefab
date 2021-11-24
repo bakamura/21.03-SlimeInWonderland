@@ -262,6 +262,31 @@ MonoBehaviour:
   deathCanvas: {fileID: 0}
   maxHealth: 10
   currentHealth: 10
+  leveling:
+  - name: Fire
+    lv: 0
+    xp: 1
+    unlockedSkill: 
+  - name: Water
+    lv: 0
+    xp: 0
+    unlockedSkill: 
+  - name: Plant
+    lv: 0
+    xp: 0
+    unlockedSkill: 
+  - name: Electric
+    lv: 0
+    xp: 0
+    unlockedSkill: 
+  - name: Earth
+    lv: 0
+    xp: 0
+    unlockedSkill: 
+  - name: Poison
+    lv: 0
+    xp: 0
+    unlockedSkill: 
   normalXP: 3
   normalLv: 1
   normalSkills: 010000000000000000

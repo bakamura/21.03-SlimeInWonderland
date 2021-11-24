@@ -28,11 +28,9 @@ public class Jellyfish : MonoBehaviour {
                     StartCoroutine(Approach());
                 }
             }
-            else if (wasAtking) {
-                wasAtking = false;
-                StopAllCoroutines();
-            }
+            else if (wasAtking) wasAtking = false;
         }
+        else StopAllCoroutines();
         if (!baseScript.beingKb) rbJelly.velocity = Vector2.zero;
     }
 
@@ -40,17 +38,17 @@ public class Jellyfish : MonoBehaviour {
         yield return new WaitForSeconds(0.75f);
 
         Vector3 v3 = (PlayerData.instance.transform.position - transform.position).normalized * movementDistance;
-        for (int i = 0; i < 75; i++) {
-            transform.position += v3 / 75;
+        for (int i = 0; i < 15; i++) {
+            transform.position += v3 / 15;
 
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.025f);
         }
 
         yield return new WaitForSeconds(0.125f);
 
-        if (state > 1 && Vector2.Distance(PlayerData.instance.transform.position, transform.position) < atkRange) StartCoroutine(AtkInstantiate());
+        if (state > 0 && Vector2.Distance(PlayerData.instance.transform.position, transform.position) < atkRange) StartCoroutine(AtkInstantiate());
         else {
-            state = state < 2 ? ++state : 0;
+            state = state < 1 ? ++state : 0;
             StartCoroutine(Approach());
         }
     }
@@ -69,8 +67,6 @@ public class Jellyfish : MonoBehaviour {
 
             yield return new WaitForSeconds(0.1f);
         }
-
-        yield return new WaitForSeconds(0.3f);
 
         state = 0;
         StartCoroutine(Approach());

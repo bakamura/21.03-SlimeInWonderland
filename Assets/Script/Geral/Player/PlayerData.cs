@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; //
 
+[System.Serializable]
+public class Leveling {
+    public string name;
+    public int lv;
+    public float xp;
+    public bool[] unlockedSkill;
+}
+
 public class PlayerData : MonoBehaviour {
 
     [HideInInspector] public static PlayerData instance;
@@ -22,6 +30,7 @@ public class PlayerData : MonoBehaviour {
     [System.NonSerialized] public bool blockState;
 
     [Header("Progression")]
+    public Leveling[] leveling;
     public float normalXP;
     public int normalLv;
     public bool[] normalSkills = new bool[9];
