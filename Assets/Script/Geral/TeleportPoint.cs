@@ -19,26 +19,23 @@ public class TeleportPoint : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.tag == "Player") {
-            if(needInput) PlayerMovement.instance.OnWater(true);
+            if(needInput) PlayerData.animPlayer.SetBool("OnWater", true);
 
-            if ((!needInput || Input.GetKey(KeyCode.Q)) && !isTeleporting) {
-                if(needInput) PlayerMovement.instance.SetDive(true); //
-                 StartCoroutine(TeleportTransition());
-            }
+            if ((!needInput || Input.GetKey(KeyCode.Q)) && !isTeleporting && !PlayerMovement.instance.moveLock) StartCoroutine(TeleportTransition());
         }
 
         //Invoke("teleportTransition", delayStart);
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.tag == "Player" && needInput) PlayerMovement.instance.OnWater(false);
+        if (collision.tag == "Player" && needInput) PlayerData.animPlayer.SetBool("OnWater", false);
     }
 
     IEnumerator TeleportTransition() {
         isTeleporting = true;
         PlayerMovement.instance.moveLock = true;
 
-        yield return new WaitForSeconds(delayStart);
+        //yield return new WaitForSeconds(delayStart);
 
         animatorWipeTransition.SetInteger("Direction", transitionDirection);
         animatorWipeTransition.SetTrigger("WipeIn");

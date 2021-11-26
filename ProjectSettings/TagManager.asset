@@ -9,6 +9,8 @@ TagManager:
   - Litable
   - Wall
   - AudioManager
+  - WaterManager
+  - TextCanvas
   layers:
   - Default
   - TransparentFX

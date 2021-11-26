@@ -15,10 +15,6 @@ public class PlayerMovement : MonoBehaviour {
     private float idleAnimationCooldown = 0;
     public float idleAnimationTotalCooldown;
 
-    [Header("Swim")]
-    private bool canDive = false;
-    private bool underWater = false;
-
     private void Awake() {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
@@ -43,7 +39,6 @@ public class PlayerMovement : MonoBehaviour {
         if (direction.magnitude > 0 && PlayerData.animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")) PlayerData.animPlayer.SetBool("Moving", true);
         PlayerData.animPlayer.SetFloat("LastHorizontal", lastDirection.x);
         PlayerData.animPlayer.SetFloat("LastVertical", lastDirection.y);
-        if (!moveLock && canDive && Input.GetKeyDown(KeyCode.Q)) SetDive(underWater);
     }
 
     private void FixedUpdate() {
@@ -65,16 +60,5 @@ public class PlayerMovement : MonoBehaviour {
 
     public void AtMoveEnd() {
         if (direction.magnitude == 0) PlayerData.animPlayer.SetBool("Moving", false);
-    }
-
-    public void OnWater(bool bol) {
-        PlayerData.animPlayer.SetBool("WaterSpot", bol);
-        canDive = bol;
-    }
-
-    public void SetDive(bool bol) {
-        underWater = !bol;
-        if (!bol) PlayerData.animPlayer.SetTrigger("Dive");
-        else PlayerData.animPlayer.SetTrigger("Emerge");
     }
 }

@@ -16,6 +16,8 @@ public class PlayerAtkList : MonoBehaviour {
     private Vector2 mousePos;
     private Vector2 currentAtkDirection;
 
+    private TriggerWater waterManager;
+
     [Header("AttackList")]
     public int[] skill = new int[3];
     public int[] tree = new int[3];
@@ -46,6 +48,7 @@ public class PlayerAtkList : MonoBehaviour {
     }
 
     private void Start() {
+        waterManager = GameObject.FindGameObjectWithTag("WaterManager").GetComponent<TriggerWater>();
         skill[0] = 0;
         skill[1] = -1;
         skill[2] = -1;
@@ -63,33 +66,32 @@ public class PlayerAtkList : MonoBehaviour {
     }
 
     private void FindTree(int tree, int skill) {
+        PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[tree];
+        if (tree == 2) waterManager.transformCollider(true);
+        else if (!PlayerData.animPlayer.GetBool("OnWater")) waterManager.transformCollider(false);
+        else {
+            //Fazer nao trocar e nem sair skill enquanto na agua
+        }
         switch (tree) {
             case 0:
-                PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[0];
                 BasicAtk(skill);
                 break;
             case 1:
-                PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[1];
                 FireAtks(skill);
                 break;
             case 2:
-                PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[2];
                 WaterAtk(skill);
                 break;
             case 3:
-                PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[3];
                 PlantAtk(skill);
                 break;
             case 4:
-                PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[4];
                 ElectricAtk(skill);
                 break;
             case 5:
-                PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[5];
                 EarthAtk(skill);
                 break;
             case 6:
-                PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[6];
                 PoisonAtk(skill);
                 break;
             case -1:

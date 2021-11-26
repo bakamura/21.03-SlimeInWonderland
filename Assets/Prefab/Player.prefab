@@ -262,6 +262,8 @@ MonoBehaviour:
   deathCanvas: {fileID: 0}
   maxHealth: 10
   currentHealth: 10
+  floatingText: {fileID: 2166998212443812732, guid: 8527cb31e7ef8c74083487cd464d1eb3,
+    type: 3}
   leveling:
   - name: Fire
     lv: 0

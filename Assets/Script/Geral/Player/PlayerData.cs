@@ -28,6 +28,8 @@ public class PlayerData : MonoBehaviour {
     //[System.NonSerialized]
     public float currentHealth;
     [System.NonSerialized] public bool blockState;
+    private Transform textParent;
+    public GameObject floatingText;
 
     [Header("Progression")]
     public Leveling[] leveling;
@@ -64,6 +66,8 @@ public class PlayerData : MonoBehaviour {
         rbPlayer = GetComponent<Rigidbody2D>();
         animPlayer = GetComponent<Animator>();
         srPlayer = GetComponent<SpriteRenderer>();
+        textParent = GameObject.FindGameObjectWithTag("TextCanvas").GetComponent<Transform>();
+
         currentHealth = maxHealth;
     }
 
@@ -87,6 +91,10 @@ public class PlayerData : MonoBehaviour {
         currentHealth += heal;
         if (currentHealth > maxHealth) currentHealth = maxHealth;
         PlayerHUD.instance.DataUI();
+        FloatingText go = Instantiate(floatingText, transform.position + new Vector3(Random.Range(-0.45f, 0.45f), -0.25f, 0), Quaternion.identity).GetComponent<FloatingText>();
+        go.transform.SetParent(textParent);
+        go.type = 1;
+        go.text = "+" + heal.ToString("F1");
     }
 
     IEnumerator Death() {
