@@ -38,7 +38,7 @@ public class PlayerTutorial : MonoBehaviour {
                 PlayerAttack.instance.isAtking = false;
             }
         }
-        else if (animHolder.GetInteger("State") == 4 && PlayerData.instance.fireLv > 0) animHolder.SetInteger("State", 5);
+        else if (animHolder.GetInteger("State") == 4 && PlayerData.instance.leveling[1].lv > 0) animHolder.SetInteger("State", 5);
         else if (animHolder.GetInteger("State") == 5 && Input.GetKeyDown(KeyCode.Tab)) animHolder.SetInteger("State", 6);
 
         else if (animHolder.GetInteger("State") == 10) Destroy(gameObject);

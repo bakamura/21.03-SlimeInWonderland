@@ -262,54 +262,38 @@ MonoBehaviour:
   deathCanvas: {fileID: 0}
   maxHealth: 10
   currentHealth: 10
+  textParent: {fileID: 0}
   floatingText: {fileID: 2166998212443812732, guid: 8527cb31e7ef8c74083487cd464d1eb3,
     type: 3}
   leveling:
+  - name: Normal
+    lv: 1
+    xp: 3
+    unlockedSkill: 010000000000000000
   - name: Fire
     lv: 0
     xp: 1
-    unlockedSkill: 
+    unlockedSkill: 000000000000000000
   - name: Water
     lv: 0
     xp: 0
-    unlockedSkill: 
+    unlockedSkill: 000000000000000000
   - name: Plant
     lv: 0
     xp: 0
-    unlockedSkill: 
+    unlockedSkill: 000000000000000000
   - name: Electric
     lv: 0
     xp: 0
-    unlockedSkill: 
+    unlockedSkill: 000000000000000000
   - name: Earth
     lv: 0
     xp: 0
-    unlockedSkill: 
+    unlockedSkill: 000000000000000000
   - name: Poison
     lv: 0
     xp: 0
-    unlockedSkill: 
-  normalXP: 3
-  normalLv: 1
-  normalSkills: 010000000000000000
-  fireXP: 0
-  fireLv: 0
-  fireSkills: 000000000000000000
-  waterXP: 0
-  waterLv: 0
-  waterSkills: 000000000000000000
-  plantXP: 0
-  plantLv: 0
-  plantSkills: 000000000000000000
-  electricXP: 0
-  electricLv: 0
-  electricSkills: 000000000000000000
-  earthXP: 0
-  earthLv: 0
-  earthSkills: 000000000000000000
-  poisonXP: 0
-  poisonLv: 0
-  poisonSkills: 000000000000000000
+    unlockedSkill: 000000000000000000
   colorMaterial:
   - {fileID: 2100000, guid: 937c63bbb22d7e841bfc185794b7dad3, type: 2}
   - {fileID: 2100000, guid: af21e8643321a8a49be5f5fd29770178, type: 2}

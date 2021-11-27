@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TriggerWater : MonoBehaviour {
 
-    public Collider2D[] colWater;
+    public CompositeCollider2D[] colWater;
 
     public void transformCollider(bool bol) {
-        foreach (Collider2D col in colWater) col.isTrigger = bol;
+        foreach(CompositeCollider2D col in colWater) col.isTrigger = bol;
     }
 
 }

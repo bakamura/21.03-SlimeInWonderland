@@ -8,7 +8,7 @@ public class Leveling {
     public string name;
     public int lv;
     public float xp;
-    public bool[] unlockedSkill;
+    public bool[] unlockedSkill = new bool[9];
 }
 
 public class PlayerData : MonoBehaviour {
@@ -28,32 +28,11 @@ public class PlayerData : MonoBehaviour {
     //[System.NonSerialized]
     public float currentHealth;
     [System.NonSerialized] public bool blockState;
-    private Transform textParent;
+    [HideInInspector] public Transform textParent;
     public GameObject floatingText;
 
     [Header("Progression")]
     public Leveling[] leveling;
-    public float normalXP;
-    public int normalLv;
-    public bool[] normalSkills = new bool[9];
-    public float fireXP;
-    public int fireLv;
-    public bool[] fireSkills = new bool[9];
-    public float waterXP;
-    public int waterLv;
-    public bool[] waterSkills = new bool[9];
-    public float plantXP;
-    public int plantLv;
-    public bool[] plantSkills = new bool[9];
-    public float electricXP;
-    public int electricLv;
-    public bool[] electricSkills = new bool[9];
-    public float earthXP;
-    public int earthLv;
-    public bool[] earthSkills = new bool[9];
-    public float poisonXP;
-    public int poisonLv;
-    public bool[] poisonSkills = new bool[9];
 
     public Material[] colorMaterial;
 
@@ -94,7 +73,7 @@ public class PlayerData : MonoBehaviour {
         FloatingText go = Instantiate(floatingText, transform.position + new Vector3(Random.Range(-0.45f, 0.45f), -0.25f, 0), Quaternion.identity).GetComponent<FloatingText>();
         go.transform.SetParent(textParent);
         go.type = 1;
-        go.text = "+" + heal.ToString("F1");
+        go.text = "+" + heal.ToString("F0");
     }
 
     IEnumerator Death() {

@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TeleportPoint : MonoBehaviour {
 
-    private bool isTeleporting = false;
+    private bool isTeleporting = false, onThis;
     public bool needInput = false;
     public Vector3 teleportPosition;
     [Range(0, 3)] public int transitionDirection;
@@ -17,18 +16,25 @@ public class TeleportPoint : MonoBehaviour {
         animatorWipeTransition = GameObject.FindGameObjectWithTag("WipeTransition").GetComponent<Animator>();
     }
 
+    private void FixedUpdate() {
+        if (onThis && Input.GetKey(KeyCode.E) && !isTeleporting && !PlayerMovement.instance.moveLock) StartCoroutine(TeleportTransition());
+    }
+
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.tag == "Player") {
-            if(needInput) PlayerData.animPlayer.SetBool("OnWater", true);
-
-            if ((!needInput || Input.GetKey(KeyCode.Q)) && !isTeleporting && !PlayerMovement.instance.moveLock) StartCoroutine(TeleportTransition());
+            if (needInput) {
+                onThis = true;
+                PlayerData.animPlayer.SetBool("OnWater", true);
+            }
+            else if (Input.GetKey(KeyCode.Q) && !isTeleporting) StartCoroutine(TeleportTransition());
         }
-
-        //Invoke("teleportTransition", delayStart);
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.tag == "Player" && needInput) PlayerData.animPlayer.SetBool("OnWater", false);
+        if (collision.tag == "Player" && needInput) {
+            onThis = false;
+            PlayerData.animPlayer.SetBool("OnWater", false);
+        }
     }
 
     IEnumerator TeleportTransition() {

@@ -12,11 +12,6 @@ public class TreeClass {
 
 public class SkillTreeCanvas : MonoBehaviour {
 
-    private PlayerData dataScript;
-    private PlayerMovement movementScipt;
-    private PlayerAttack atkScript;
-    private PlayerAtkList atkListScript;
-    private PlayerHUD hudScript;
     private List<Image> imgChild;
 
     public bool canOpenTab;
@@ -33,12 +28,6 @@ public class SkillTreeCanvas : MonoBehaviour {
     [SerializeField] private Image currentBtnImg;
 
     private void Start() {
-        GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
-        dataScript = playerGO.GetComponent<PlayerData>();
-        movementScipt = playerGO.GetComponent<PlayerMovement>();
-        atkScript = playerGO.GetComponent<PlayerAttack>();
-        atkListScript = playerGO.GetComponent<PlayerAtkList>();
-        hudScript = playerGO.GetComponent<PlayerHUD>();
         imgChild = new List<Image>(GetComponentsInChildren<Image>());
         foreach (Image img in skillSlotImage) {
             imgChild.Remove(img);
@@ -54,13 +43,13 @@ public class SkillTreeCanvas : MonoBehaviour {
             if (treeCanvas.interactable) {
                 AlternateCanvas(treeCanvas, false);
 
-                hudScript.atkIcon[0].sprite = skillSlotImage[0].sprite;
-                hudScript.atkIcon[1].sprite = skillSlotImage[1].sprite;
-                hudScript.atkIcon[2].sprite = skillSlotImage[2].sprite;
+                PlayerHUD.instance.atkIcon[0].sprite = skillSlotImage[0].sprite;
+                PlayerHUD.instance.atkIcon[1].sprite = skillSlotImage[1].sprite;
+                PlayerHUD.instance.atkIcon[2].sprite = skillSlotImage[2].sprite;
 
                 Time.timeScale = 1;
-                movementScipt.moveLock = false;
-                atkScript.canInput = true;
+                PlayerMovement.instance.moveLock = false;
+                PlayerAttack.instance.canInput = true;
                 AlternateCanvas(hudCanvas, true);
 
                 if (currentButtonSelected[0] != -1) {
@@ -71,16 +60,16 @@ public class SkillTreeCanvas : MonoBehaviour {
             else {
                 AlternateCanvas(treeCanvas, true);
                 Time.timeScale = 0.00001f;
-                movementScipt.moveLock = true;
-                atkScript.canInput = false;
+                PlayerMovement.instance.moveLock = true;
+                PlayerAttack.instance.canInput = false;
 
-                lvText[0].text = dataScript.normalLv.ToString();
-                lvText[1].text = dataScript.fireLv.ToString();
-                lvText[2].text = dataScript.waterLv.ToString();
-                lvText[3].text = dataScript.plantLv.ToString();
-                //lvText[4].text = dataScript.electricLv.ToString();
-                //lvText[5].text = dataScript.earthLv.ToString();
-                //lvText[6].text = dataScript.poisonLv.ToString();
+                lvText[0].text = PlayerData.instance.leveling[0].lv.ToString();
+                lvText[1].text = PlayerData.instance.leveling[1].lv.ToString();
+                lvText[2].text = PlayerData.instance.leveling[2].lv.ToString();
+                lvText[3].text = PlayerData.instance.leveling[3].lv.ToString();
+                //lvText[4].text = PlayerData.instance.leveling[4].lv.ToString();
+                //lvText[5].text = PlayerData.instance.leveling[5].lv.ToString();
+                //lvText[6].text = PlayerData.instance.leveling[6].lv.ToString();
 
                 AlternateCanvas(hudCanvas, false);
             }
@@ -99,7 +88,7 @@ public class SkillTreeCanvas : MonoBehaviour {
     }
 
     public void SkillButton2(int skillN) {
-        if (GetTree(currentButtonSelected[1])[skillN] == true) {
+        if (PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[skillN] == true) {
             if (currentButtonSelected[0] != skillN || currentButtonSelected[1] != lastTree) {
                 currentBtnImg = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
                 FocusOnClick(true);
@@ -112,85 +101,16 @@ public class SkillTreeCanvas : MonoBehaviour {
         }
         else {
             int spentPoints = 0;
-            foreach (bool bol in GetTree(currentButtonSelected[1])) spentPoints += bol ? 1 : 0;
-            switch (currentButtonSelected[1]) {
-                case 0:
-                    if (spentPoints < dataScript.normalLv && CanUnlock(skillN)) {
-                        GetTree(0)[skillN] = true;
-                        AudioManager.instance.Play("UnlockSkill");
-                        FocusOnClick(false);
-                    }
-                    else {
-                        AudioManager.instance.Play("DenyUnlock");
-                        currentButtonSelected[1] = lastTree;
-                    }
-                    break;
-                case 1:
-                    if (spentPoints < dataScript.fireLv && CanUnlock(skillN)) {
-                        GetTree(1)[skillN] = true;
-                        AudioManager.instance.Play("UnlockSkill");
-                        FocusOnClick(false);
-                    }
-                    else {
-                        AudioManager.instance.Play("DenyUnlock");
-                        currentButtonSelected[1] = lastTree;
-                    }
-                    break;
-                case 2:
-                    if (spentPoints < dataScript.waterLv && CanUnlock(skillN)) {
-                        GetTree(2)[skillN] = true;
-                        AudioManager.instance.Play("UnlockSkill");
-                        FocusOnClick(false);
-                    }
-                    else {
-                        AudioManager.instance.Play("DenyUnlock");
-                        currentButtonSelected[1] = lastTree;
-                    }
-                    break;
-                case 3:
-                    if (spentPoints < dataScript.plantLv && CanUnlock(skillN)) {
-                        GetTree(3)[skillN] = true;
-                        AudioManager.instance.Play("UnlockSkill");
-                        FocusOnClick(false);
-                    }
-                    else {
-                        AudioManager.instance.Play("DenyUnlock");
-                        currentButtonSelected[1] = lastTree;
-                    }
-                    break;
-                case 4:
-                    if (spentPoints < dataScript.electricLv && CanUnlock(skillN)) {
-                        GetTree(4)[skillN] = true;
-                        AudioManager.instance.Play("UnlockSkill");
-                        FocusOnClick(false);
-                    }
-                    else {
-                        AudioManager.instance.Play("DenyUnlock");
-                        currentButtonSelected[1] = lastTree;
-                    }
-                    break;
-                case 5:
-                    if (spentPoints < dataScript.earthLv && CanUnlock(skillN)) {
-                        GetTree(5)[skillN] = true;
-                        AudioManager.instance.Play("UnlockSkill");
-                        FocusOnClick(false);
-                    }
-                    else {
-                        AudioManager.instance.Play("DenyUnlock");
-                        currentButtonSelected[1] = lastTree;
-                    }
-                    break;
-                case 6:
-                    if (spentPoints < dataScript.poisonLv && CanUnlock(skillN)) {
-                        GetTree(6)[skillN] = true;
-                        AudioManager.instance.Play("UnlockSkill");
-                        FocusOnClick(false);
-                    }
-                    else {
-                        AudioManager.instance.Play("DenyUnlock");
-                        currentButtonSelected[1] = lastTree;
-                    }
-                    break;
+            foreach (bool bol in PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill) spentPoints += bol ? 1 : 0;
+
+            if (spentPoints < PlayerData.instance.leveling[currentButtonSelected[1]].lv && CanUnlock(skillN)) {
+                PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[skillN] = true;
+                AudioManager.instance.Play("UnlockSkill");
+                FocusOnClick(false);
+            }
+            else {
+                AudioManager.instance.Play("DenyUnlock");
+                currentButtonSelected[1] = lastTree;
             }
         }
     }
@@ -199,68 +119,54 @@ public class SkillTreeCanvas : MonoBehaviour {
         switch (i) {
             case 0: return true;
             case 1:
-                if (GetTree(currentButtonSelected[1])[0]) return true;
+                if (PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[0]) return true;
                 else return false;
             case 2:
-                if (GetTree(currentButtonSelected[1])[0]) return true;
+                if (PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[0]) return true;
                 else return false;
             case 3:
-                if (GetTree(currentButtonSelected[1])[1]) return true;
+                if (PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[1]) return true;
                 else return false;
             case 4:
-                if (GetTree(currentButtonSelected[1])[1]) return true;
+                if (PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[1]) return true;
                 else return false;
             case 5:
-                if (GetTree(currentButtonSelected[1])[2]) return true;
+                if (PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[2]) return true;
                 else return false;
             case 6:
-                if (GetTree(currentButtonSelected[1])[4]) return true;
+                if (PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[4]) return true;
                 else return false;
             case 7:
-                if (GetTree(currentButtonSelected[1])[5]) return true;
+                if (PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[5]) return true;
                 else return false;
             case 8:
-                if (GetTree(currentButtonSelected[1])[7]) return true;
+                if (PlayerData.instance.leveling[currentButtonSelected[1]].unlockedSkill[7]) return true;
                 else return false;
-            default: Debug.LogWarning("ErrorChecking for unlock skill");
-                return false;
-        }
-    }
-
-    private bool[] GetTree(int i) {
-        switch (i) {
-            case 0: return dataScript.normalSkills;
-            case 1: return dataScript.fireSkills;
-            case 2: return dataScript.waterSkills;
-            case 3: return dataScript.plantSkills;
-            case 4: return dataScript.electricSkills;
-            case 5: return dataScript.earthSkills;
-            case 6: return dataScript.poisonSkills;
             default:
-                Debug.Log("treeGet Error");
-                return null;
+                Debug.LogWarning("ErrorChecking for unlock skill");
+                return false;
         }
     }
 
     public void SKillSlotButton(int slotN) {
         if (currentButtonSelected[0] != -1) {
-            if (atkListScript.skill[slotN] != currentButtonSelected[0] || atkListScript.tree[slotN] != currentButtonSelected[1]) {
+            if (PlayerAtkList.instance.skill[slotN] != currentButtonSelected[0] || PlayerAtkList.instance.tree[slotN] != currentButtonSelected[1]) {
                 int i = CheckOtherSlots(slotN);
                 if (i != -1) {
-                    atkListScript.skill[i] = atkListScript.skill[slotN];
-                    atkListScript.tree[i] = atkListScript.tree[slotN];
+                    PlayerAtkList.instance.skill[i] = PlayerAtkList.instance.skill[slotN];
+                    PlayerAtkList.instance.tree[i] = PlayerAtkList.instance.tree[slotN];
                     skillSlotImage[i].sprite = skillSlotImage[slotN].sprite;
-                    atkScript.atkTotalCDown[i] = atkScript.atkTotalCDown[slotN];
+                    PlayerAttack.instance.atkTotalCDown[i] = PlayerAttack.instance.atkTotalCDown[slotN];
                 }
-                atkListScript.skill[slotN] = currentButtonSelected[0];
-                atkListScript.tree[slotN] = currentButtonSelected[1];
+                PlayerAtkList.instance.skill[slotN] = currentButtonSelected[0];
+                PlayerAtkList.instance.tree[slotN] = currentButtonSelected[1];
                 skillSlotImage[slotN].sprite = skillImage[currentButtonSelected[1]].skillImage[currentButtonSelected[0]];
-                atkScript.atkTotalCDown[slotN] = atkListScript.treeCoolDowns[currentButtonSelected[1]].coolDown[currentButtonSelected[0]];
+                PlayerAttack.instance.atkTotalCDown[slotN] = PlayerAtkList.instance.treeCoolDowns[currentButtonSelected[1]].coolDown[currentButtonSelected[0]];
                 currentButtonSelected[0] = -1;
                 FocusOnClick(false);
 
             }
-            else if (atkListScript.skill[slotN] == currentButtonSelected[0] && atkListScript.tree[slotN] == currentButtonSelected[1]) {
+            else if (PlayerAtkList.instance.skill[slotN] == currentButtonSelected[0] && PlayerAtkList.instance.tree[slotN] == currentButtonSelected[1]) {
                 currentButtonSelected[0] = -1;
                 FocusOnClick(false);
             }
@@ -284,9 +190,9 @@ public class SkillTreeCanvas : MonoBehaviour {
     }
 
     private int CheckOtherSlots(int currentSlot) {
-        if (currentSlot != 0 && atkListScript.skill[0] == currentButtonSelected[0] && atkListScript.tree[0] == currentButtonSelected[1]) return 0;
-        else if (currentSlot != 1 && atkListScript.skill[1] == currentButtonSelected[0] && atkListScript.tree[1] == currentButtonSelected[1]) return 1;
-        else if (currentSlot != 2 && atkListScript.skill[2] == currentButtonSelected[0] && atkListScript.tree[2] == currentButtonSelected[1]) return 2;
+        if (currentSlot != 0 && PlayerAtkList.instance.skill[0] == currentButtonSelected[0] && PlayerAtkList.instance.tree[0] == currentButtonSelected[1]) return 0;
+        else if (currentSlot != 1 && PlayerAtkList.instance.skill[1] == currentButtonSelected[0] && PlayerAtkList.instance.tree[1] == currentButtonSelected[1]) return 1;
+        else if (currentSlot != 2 && PlayerAtkList.instance.skill[2] == currentButtonSelected[0] && PlayerAtkList.instance.tree[2] == currentButtonSelected[1]) return 2;
         else return -1;
     }
 

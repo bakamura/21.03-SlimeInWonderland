@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
             PlayerData.animPlayer.SetFloat("Horizontal", x);
             PlayerData.animPlayer.SetFloat("Vertical", y);
         }
-        if (direction.magnitude > 0 && PlayerData.animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")) PlayerData.animPlayer.SetBool("Moving", true);
+        if (direction.magnitude > 0 && (PlayerData.animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle") || PlayerData.animPlayer.GetCurrentAnimatorStateInfo(0).IsName("IdleAnimation"))) PlayerData.animPlayer.SetBool("Moving", true);
         PlayerData.animPlayer.SetFloat("LastHorizontal", lastDirection.x);
         PlayerData.animPlayer.SetFloat("LastVertical", lastDirection.y);
     }

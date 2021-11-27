@@ -53,8 +53,8 @@ public class PlayerAtkList : MonoBehaviour {
         skill[1] = -1;
         skill[2] = -1;
         tree[0] = 0;
-        tree[1] = -1; //null
-        tree[2] = -1; //null
+        tree[1] = 0; //null
+        tree[2] = 0; //null
     }
 
     private void Update() {
@@ -62,42 +62,46 @@ public class PlayerAtkList : MonoBehaviour {
     }
 
     public void CastSkill(int skillSlot) {
+        PlayerAttack.instance.atkCDown[skillSlot] = PlayerAttack.instance.atkTotalCDown[skillSlot];
+        PlayerAttack.instance.isAtking = true;
         FindTree(tree[skillSlot], skill[skillSlot]);
     }
 
     private void FindTree(int tree, int skill) {
-        PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[tree];
+        bool bol = true;
         if (tree == 2) waterManager.transformCollider(true);
         else if (!PlayerData.animPlayer.GetBool("OnWater")) waterManager.transformCollider(false);
-        else {
-            //Fazer nao trocar e nem sair skill enquanto na agua
+        else bol = false;
+        if (bol) {
+            PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[tree];
+            switch (tree) {
+                case 0:
+                    BasicAtk(skill);
+                    break;
+                case 1:
+                    FireAtks(skill);
+                    break;
+                case 2:
+                    WaterAtk(skill);
+                    break;
+                case 3:
+                    PlantAtk(skill);
+                    break;
+                case 4:
+                    ElectricAtk(skill);
+                    break;
+                case 5:
+                    EarthAtk(skill);
+                    break;
+                case 6:
+                    PoisonAtk(skill);
+                    break;
+                case -1:
+                    StartCoroutine(DoNothingAtk());
+                    break;
+            }
         }
-        switch (tree) {
-            case 0:
-                BasicAtk(skill);
-                break;
-            case 1:
-                FireAtks(skill);
-                break;
-            case 2:
-                WaterAtk(skill);
-                break;
-            case 3:
-                PlantAtk(skill);
-                break;
-            case 4:
-                ElectricAtk(skill);
-                break;
-            case 5:
-                EarthAtk(skill);
-                break;
-            case 6:
-                PoisonAtk(skill);
-                break;
-            case -1:
-                StartCoroutine(DoNothingAtk());
-                break;
-        }
+        else StartCoroutine(DoNothingAtk());
     }
 
     private void BasicAtk(int atk) {
@@ -173,31 +177,31 @@ public class PlayerAtkList : MonoBehaviour {
     private void WaterAtk(int atk) {
         switch (atk) {
             case 0:
-                //StartCoroutine();
+                StartCoroutine(DoNothingAtk()); //
                 break;
             case 1:
-                //StartCoroutine();
+                StartCoroutine(DoNothingAtk());
                 break;
             case 2:
-                //StartCoroutine();
+                StartCoroutine(DoNothingAtk());
                 break;
             case 3:
-                //StartCoroutine();
+                StartCoroutine(DoNothingAtk());
                 break;
             case 4:
-                //StartCoroutine();
+                StartCoroutine(DoNothingAtk());
                 break;
             case 5:
-                //StartCoroutine();
+                StartCoroutine(DoNothingAtk());
                 break;
             case 6:
-                //StartCoroutine();
+                StartCoroutine(DoNothingAtk());
                 break;
             case 7:
-                //StartCoroutine();
+                StartCoroutine(DoNothingAtk());
                 break;
             case 8:
-                //StartCoroutine();
+                StartCoroutine(DoNothingAtk());
                 break;
             default:
                 StartCoroutine(DoNothingAtk());

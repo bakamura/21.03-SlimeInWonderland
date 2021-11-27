@@ -4412,7 +4412,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3774605619467163522}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -4428,7 +4428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45f5f3d12ae61d4b9483638065d2031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imgChild: []
   canOpenTab: 0
   hudCanvas: {fileID: 0}
   scrollRect: {fileID: 1119745127}
@@ -4488,6 +4487,7 @@ MonoBehaviour:
   - {fileID: 8030930544159009624}
   - {fileID: 6244983353287247415}
   - {fileID: 7136722778300945238}
+  currentBtnImg: {fileID: 0}
 --- !u!1 &3774605619716445621
 GameObject:
   m_ObjectHideFlags: 0

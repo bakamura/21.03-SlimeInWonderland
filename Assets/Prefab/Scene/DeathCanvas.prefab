@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MORREU
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 806770e547e1f6f458a34671d6e43dcf, type: 2}
-  m_sharedMaterial: {fileID: 8306494561695363579, guid: 806770e547e1f6f458a34671d6e43dcf,
+  m_fontAsset: {fileID: 11400000, guid: 562054eb2d905074ea0d13b87c493410, type: 2}
+  m_sharedMaterial: {fileID: 2309705268259353167, guid: 562054eb2d905074ea0d13b87c493410,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

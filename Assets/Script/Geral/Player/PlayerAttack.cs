@@ -65,44 +65,16 @@ public class PlayerAttack : MonoBehaviour {
                         atkRemember = 0;
                         break;
                     case 1:
-                        if (atkCDown[0] <= 0) {
-                            isAtking = true;
-                            PlayerAtkList.instance.CastSkill(0);
-                            atkCDown[0] = atkTotalCDown[0];
-                        }
+                        if (atkCDown[0] <= 0) PlayerAtkList.instance.CastSkill(0);
                         break;
                     case 2:
-                        if (atkCDown[1] <= 0) {
-                            isAtking = true;
-                            PlayerAtkList.instance.CastSkill(1);
-                            atkCDown[1] = atkTotalCDown[1];
-                        }
+                        if (atkCDown[1] <= 0) PlayerAtkList.instance.CastSkill(1);
                         break;
                     case 3:
-                        if (atkCDown[2] <= 0) {
-                            isAtking = true;
-                            PlayerAtkList.instance.CastSkill(2);
-                            atkCDown[2] = atkTotalCDown[2];
-                        }
+                        if (atkCDown[2] <= 0) PlayerAtkList.instance.CastSkill(2);
                         break;
                     case 4:
-                        if (!PlayerData.animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Consume")) {
-                            RaycastHit2D[] corpses = Physics2D.CircleCastAll(transform.position, 0.45f, Vector2.zero);
-                            GameObject nearest = null;
-                            float minDist = 1;
-                            foreach (RaycastHit2D corpse in corpses) if (Vector2.Distance(transform.position, corpse.transform.position) < minDist && corpse.collider.tag == "Enemy") {
-                                    if (corpse.collider.GetComponent<EnemyBase>().currentHealth <= 0) {
-                                        nearest = corpse.collider.gameObject;
-                                        minDist = Vector2.Distance(transform.position, corpse.transform.position);
-                                    }
-                            }
-                            if (nearest != null) {
-                                PlayerData.animPlayer.SetBool("Consuming", true);
-                                GetComponent<SpriteRendererUpdater>().enabled = false;
-                                PlayerData.srPlayer.sortingOrder += 2;
-                                StartCoroutine(Consume(nearest.GetComponent<EnemyBase>()));
-                            }
-                        }
+                        CheckConsume();
                         break;
                 }
             }
@@ -118,7 +90,27 @@ public class PlayerAttack : MonoBehaviour {
         else if (atkCDown[2] < 0) atkCDown[2] = 0;
     }
 
-    IEnumerator Consume(EnemyBase consumed) {
+    private void CheckConsume() {
+        if (!PlayerData.animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Consume")) {
+            RaycastHit2D[] corpses = Physics2D.CircleCastAll(transform.position, 0.45f, Vector2.zero);
+            GameObject nearest = null;
+            float minDist = 1;
+            foreach (RaycastHit2D corpse in corpses) if (Vector2.Distance(transform.position, corpse.transform.position) < minDist && corpse.collider.tag == "Enemy") {
+                    if (corpse.collider.GetComponent<EnemyBase>().currentHealth <= 0) {
+                        nearest = corpse.collider.gameObject;
+                        minDist = Vector2.Distance(transform.position, corpse.transform.position);
+                    }
+                }
+            if (nearest != null) {
+                PlayerData.animPlayer.SetBool("Consuming", true);
+                GetComponent<SpriteRendererUpdater>().enabled = false;
+                PlayerData.srPlayer.sortingOrder += 2;
+                StartCoroutine(Consume(nearest.GetComponent<EnemyBase>()));
+            }
+        }
+    }
+
+    private IEnumerator Consume(EnemyBase consumed) {
         PlayerData.animPlayer.SetBool("Consuming", true);
         PlayerMovement.instance.moveLock = true;
         PlayerData.rbPlayer.velocity = Vector2.zero;
@@ -132,39 +124,17 @@ public class PlayerAttack : MonoBehaviour {
         PlayerData.animPlayer.SetBool("Consuming", false);
         GetComponent<SpriteRendererUpdater>().enabled = true;
         PlayerMovement.instance.moveLock = false;
+
+        FloatingText go = Instantiate(PlayerData.instance.floatingText, transform.position + new Vector3(Random.Range(-0.45f, 0.45f), Random.Range(-0.35f, 0.35f), 0), Quaternion.identity).GetComponent<FloatingText>();
+        go.transform.SetParent(PlayerData.instance.textParent);
+        go.transform.localScale *= 0.75f;
+        go.type = 0;
+        go.text = consumed.xpAmount.ToString("F1") + "xp";
     }
 
     private void GetXP(int type, float amount) {
-        switch (type) {
-            case 0:
-                PlayerData.instance.normalXP += amount;
-                PlayerData.instance.normalLv = CheckLvUp(PlayerData.instance.normalXP);
-                break;
-            case 1:
-                PlayerData.instance.fireXP += amount;
-                PlayerData.instance.fireLv = CheckLvUp(PlayerData.instance.fireXP);
-                break;
-            case 2:
-                PlayerData.instance.waterXP += amount;
-                PlayerData.instance.waterLv = CheckLvUp(PlayerData.instance.waterXP);
-                break;
-            case 3:
-                PlayerData.instance.plantXP += amount;
-                PlayerData.instance.plantLv = CheckLvUp(PlayerData.instance.plantXP);
-                break;
-            case 4:
-                PlayerData.instance.electricXP += amount;
-                PlayerData.instance.electricLv = CheckLvUp(PlayerData.instance.electricXP);
-                break;
-            case 5:
-                PlayerData.instance.earthXP += amount;
-                PlayerData.instance.earthLv = CheckLvUp(PlayerData.instance.earthXP);
-                break;
-            case 6:
-                PlayerData.instance.poisonXP += amount;
-                PlayerData.instance.poisonLv = CheckLvUp(PlayerData.instance.poisonXP);
-                break;
-        }
+        PlayerData.instance.leveling[type].xp += amount;
+        PlayerData.instance.leveling[type].lv = CheckLvUp(PlayerData.instance.leveling[type].xp);
     }
 
     private int CheckLvUp(float totalAmount) {
