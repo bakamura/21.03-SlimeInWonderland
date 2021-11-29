@@ -34,7 +34,13 @@ public class EnemyBase : MonoBehaviour {
         colliderEnemy = GetComponent<Collider2D>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;
+        if (currentHealth == 0) {
+            animatorEnemy.SetBool("Die", true);
+            colliderEnemy.isTrigger = true;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<SpriteRenderer>().sortingOrder = 4;
+        }
 
         keyShowInstance = Instantiate(consumeKeyShow, transform.position + new Vector3(0, 0.75f, 0), Quaternion.identity).GetComponent<SpriteRenderer>();
         keyShowInstance.transform.parent = transform;

@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour {
         foreach (Sound sound in sounds) {
             sound.source = gameObject.AddComponent<AudioSource>();
             sound.source.clip = sound.clip;
+            sound.source.volume = sound.volume;
+            sound.source.outputAudioMixerGroup = sound.audioGroup;
         }
     }
 

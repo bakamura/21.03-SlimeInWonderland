@@ -8,6 +8,7 @@ public class FloatingText : MonoBehaviour {
     public int type;
     //[HideInInspector]
     public string text;
+    public int color = 0;
 
     private RectTransform rectTransform;
     [HideInInspector] public TextMeshProUGUI textComponent;
@@ -28,6 +29,7 @@ public class FloatingText : MonoBehaviour {
         yFinalHeight = rectTransform.position.y + 1;
         rectTransform.localScale = Vector3.zero;
         textComponent.text = text;
+        textComponent.color = GetColor(color);
 
         switch (type) {
             case 0: //Xp
@@ -71,5 +73,18 @@ public class FloatingText : MonoBehaviour {
         }
 
         Destroy(gameObject);
+    }
+
+    private Color32 GetColor(int i) {
+        switch (i) {
+            case 0: return new Color32(255, 255, 255, 255);
+            case 1: return new Color32(255, 0, 0, 255);
+            case 2: return new Color32(0, 0, 255, 255);
+            case 3: return new Color32(0, 255, 0, 255);
+            case 4: return new Color32(255, 255, 0, 255);
+            case 5: return new Color32(100, 65, 35, 255);
+            case 6: return new Color32(100, 50, 155, 255);
+            default: return new Color32(0, 0, 0, 255);
+        }
     }
 }

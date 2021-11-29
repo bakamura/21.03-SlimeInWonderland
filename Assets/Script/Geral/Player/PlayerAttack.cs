@@ -74,7 +74,7 @@ public class PlayerAttack : MonoBehaviour {
                         if (atkCDown[2] <= 0) PlayerAtkList.instance.CastSkill(2);
                         break;
                     case 4:
-                        CheckConsume();
+                        if (!PlayerData.animPlayer.GetBool("Consuming")) CheckConsume();
                         break;
                 }
             }
@@ -91,22 +91,20 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void CheckConsume() {
-        if (!PlayerData.animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Consume")) {
-            RaycastHit2D[] corpses = Physics2D.CircleCastAll(transform.position, 0.45f, Vector2.zero);
-            GameObject nearest = null;
-            float minDist = 1;
-            foreach (RaycastHit2D corpse in corpses) if (Vector2.Distance(transform.position, corpse.transform.position) < minDist && corpse.collider.tag == "Enemy") {
-                    if (corpse.collider.GetComponent<EnemyBase>().currentHealth <= 0) {
-                        nearest = corpse.collider.gameObject;
-                        minDist = Vector2.Distance(transform.position, corpse.transform.position);
-                    }
+        RaycastHit2D[] corpses = Physics2D.CircleCastAll(transform.position, 0.45f, Vector2.zero);
+        GameObject nearest = null;
+        float minDist = 1;
+        foreach (RaycastHit2D corpse in corpses) if (Vector2.Distance(transform.position, corpse.transform.position) < minDist && corpse.collider.tag == "Enemy") {
+                if (corpse.collider.GetComponent<EnemyBase>().currentHealth <= 0) {
+                    nearest = corpse.collider.gameObject;
+                    minDist = Vector2.Distance(transform.position, corpse.transform.position);
                 }
-            if (nearest != null) {
-                PlayerData.animPlayer.SetBool("Consuming", true);
-                GetComponent<SpriteRendererUpdater>().enabled = false;
-                PlayerData.srPlayer.sortingOrder += 2;
-                StartCoroutine(Consume(nearest.GetComponent<EnemyBase>()));
             }
+        if (nearest != null) {
+            PlayerData.animPlayer.SetBool("Consuming", true);
+            GetComponent<SpriteRendererUpdater>().enabled = false;
+            PlayerData.srPlayer.sortingOrder += 2;
+            StartCoroutine(Consume(nearest.GetComponent<EnemyBase>()));
         }
     }
 
@@ -119,26 +117,30 @@ public class PlayerAttack : MonoBehaviour {
 
         GetXP(consumed.xpType, consumed.xpAmount);
         PlayerData.instance.takeHealing(consumed.maxHealth / 5);
-        Destroy(consumed.gameObject);
 
         PlayerData.animPlayer.SetBool("Consuming", false);
         GetComponent<SpriteRendererUpdater>().enabled = true;
         PlayerMovement.instance.moveLock = false;
 
-        FloatingText go = Instantiate(PlayerData.instance.floatingText, transform.position + new Vector3(Random.Range(-0.45f, 0.45f), Random.Range(-0.35f, 0.35f), 0), Quaternion.identity).GetComponent<FloatingText>();
-        go.transform.SetParent(PlayerData.instance.textParent);
-        go.transform.localScale *= 0.75f;
-        go.type = 0;
-        go.text = consumed.xpAmount.ToString("F1") + "xp";
+        Destroy(consumed.gameObject);
     }
 
     private void GetXP(int type, float amount) {
         PlayerData.instance.leveling[type].xp += amount;
+
+        FloatingText go = Instantiate(PlayerData.instance.floatingText, transform.position + new Vector3(Random.Range(-0.45f, 0.45f), Random.Range(-0.35f, 0.35f), 0), Quaternion.identity).GetComponent<FloatingText>();
+        go.transform.SetParent(PlayerData.instance.textParent);
+        go.color = type;
+        go.type = 0;
+        go.transform.localScale *= PlayerData.instance.leveling[type].lv == CheckLvUp(PlayerData.instance.leveling[type].xp)? 0.75f : 1.5f;
+        go.text = PlayerData.instance.leveling[type].lv == CheckLvUp(PlayerData.instance.leveling[type].xp) ? amount.ToString("F1") + "xp" : "Lv Up!";
+
         PlayerData.instance.leveling[type].lv = CheckLvUp(PlayerData.instance.leveling[type].xp);
     }
 
+
     private int CheckLvUp(float totalAmount) {
-        return (int) Mathf.Pow((totalAmount / 3), 1 / 3);
+        return (int)Mathf.Pow((totalAmount / 3), 1 / 3);
     }
 
 }
