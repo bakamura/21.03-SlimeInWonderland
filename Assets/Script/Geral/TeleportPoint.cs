@@ -17,7 +17,7 @@ public class TeleportPoint : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (onThis && Input.GetKey(KeyCode.E) && !isTeleporting && !PlayerMovement.instance.moveLock) StartCoroutine(TeleportTransition());
+        if (onThis && Input.GetKey(KeyCode.Q) && !isTeleporting && !PlayerMovement.instance.moveLock) StartCoroutine(TeleportTransition());
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
@@ -26,7 +26,7 @@ public class TeleportPoint : MonoBehaviour {
                 onThis = true;
                 PlayerData.animPlayer.SetBool("OnWater", true);
             }
-            else if (Input.GetKey(KeyCode.Q) && !isTeleporting) StartCoroutine(TeleportTransition());
+            else if (!isTeleporting) StartCoroutine(TeleportTransition());
         }
     }
 

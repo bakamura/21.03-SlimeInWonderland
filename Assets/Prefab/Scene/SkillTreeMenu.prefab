@@ -6475,7 +6475,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 15
   m_TargetDisplay: 0
@@ -6544,6 +6544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canOpenTab: 0
   hudCanvas: {fileID: 0}
+  pauseCanvas: {fileID: 0}
   scrollRect: {fileID: 1119745127}
   skillImage:
   - skillImage:

@@ -15,7 +15,7 @@ public class SkillTreeCanvas : MonoBehaviour {
     private List<Image> imgChild;
 
     public bool canOpenTab;
-    public CanvasGroup hudCanvas;
+    public CanvasGroup hudCanvas, pauseCanvas;
     private CanvasGroup treeCanvas;
     public ScrollRect scrollRect;
     public TreeClass[] skillImage; //skillN, treeN
@@ -42,15 +42,15 @@ public class SkillTreeCanvas : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Tab)) {
             if (treeCanvas.interactable) {
                 AlternateCanvas(treeCanvas, false);
-
-                PlayerHUD.instance.atkIcon[0].sprite = skillSlotImage[0].sprite;
-                PlayerHUD.instance.atkIcon[1].sprite = skillSlotImage[1].sprite;
-                PlayerHUD.instance.atkIcon[2].sprite = skillSlotImage[2].sprite;
+                AlternateCanvas(hudCanvas, true);
 
                 Time.timeScale = 1;
                 PlayerMovement.instance.moveLock = false;
                 PlayerAttack.instance.canInput = true;
-                AlternateCanvas(hudCanvas, true);
+
+                PlayerHUD.instance.atkIcon[0].sprite = skillSlotImage[0].sprite;
+                PlayerHUD.instance.atkIcon[1].sprite = skillSlotImage[1].sprite;
+                PlayerHUD.instance.atkIcon[2].sprite = skillSlotImage[2].sprite;
 
                 if (currentButtonSelected[0] != -1) {
                     FocusOnClick(false);
@@ -59,19 +59,14 @@ public class SkillTreeCanvas : MonoBehaviour {
             }
             else {
                 AlternateCanvas(treeCanvas, true);
-                Time.timeScale = 0.00001f;
+                AlternateCanvas(pauseCanvas, false);
+                AlternateCanvas(hudCanvas, false);
+
+                Time.timeScale = 0;
                 PlayerMovement.instance.moveLock = true;
                 PlayerAttack.instance.canInput = false;
 
-                lvText[0].text = PlayerData.instance.leveling[0].lv.ToString();
-                lvText[1].text = PlayerData.instance.leveling[1].lv.ToString();
-                lvText[2].text = PlayerData.instance.leveling[2].lv.ToString();
-                lvText[3].text = PlayerData.instance.leveling[3].lv.ToString();
-                //lvText[4].text = PlayerData.instance.leveling[4].lv.ToString();
-                //lvText[5].text = PlayerData.instance.leveling[5].lv.ToString();
-                //lvText[6].text = PlayerData.instance.leveling[6].lv.ToString();
-
-                AlternateCanvas(hudCanvas, false);
+                for(int i = 0; i < 7; i++) lvText[i].text = PlayerData.instance.leveling[i].lv.ToString();
             }
         }
     }

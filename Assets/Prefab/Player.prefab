@@ -269,7 +269,7 @@ MonoBehaviour:
   - name: Normal
     lv: 1
     xp: 3
-    unlockedSkill: 010000000000000000
+    unlockedSkill: 0100000000
   - name: Fire
     lv: 0
     xp: 1
