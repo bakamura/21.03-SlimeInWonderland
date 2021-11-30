@@ -21,8 +21,6 @@ public class PlayerAttack : MonoBehaviour {
     private void Awake() {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
-
-        for(int i = 0; i < 100; i++) Debug.Log(CheckLvUp(i));
     }
 
     private void Update() {

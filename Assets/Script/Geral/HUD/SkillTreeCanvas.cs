@@ -20,7 +20,7 @@ public class SkillTreeCanvas : MonoBehaviour {
     public ScrollRect scrollRect;
     public TreeClass[] skillImage; //skillN, treeN
     public TextMeshProUGUI[] lvText;
-
+    public GameObject hoverBox;
     private int lastTree = -1;
     private int[] currentButtonSelected = { -1, -1 };
 
@@ -66,8 +66,22 @@ public class SkillTreeCanvas : MonoBehaviour {
                 PlayerMovement.instance.moveLock = true;
                 PlayerAttack.instance.canInput = false;
 
-                for(int i = 0; i < 7; i++) lvText[i].text = PlayerData.instance.leveling[i].lv.ToString();
+                for (int i = 0; i < 7; i++) lvText[i].text = PlayerData.instance.leveling[i].lv.ToString();
             }
+        }
+        if (treeCanvas.interactable) {
+            PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+            pointerEventData.position = Input.mousePosition;
+            List<RaycastResult> hits = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerEventData, hits);
+            bool hitButton = false;
+            foreach (RaycastResult hit in hits) if (hit.gameObject.GetComponent<SkillData>() != null) {
+                    hoverBox.GetComponentsInChildren<TextMeshProUGUI>()[0].text = hit.gameObject.GetComponent<SkillData>().skillName;
+                    hoverBox.GetComponentsInChildren<TextMeshProUGUI>()[1].text = hit.gameObject.GetComponent<SkillData>().description;
+                    hitButton = true;
+                }
+
+            hoverBox.transform.position = hitButton? (Input.mousePosition + new Vector3(Input.mousePosition.x > 960 ? -157.5f : 157.5f, 0, 0)) : new Vector3(-500, 500, 0);
         }
     }
 
