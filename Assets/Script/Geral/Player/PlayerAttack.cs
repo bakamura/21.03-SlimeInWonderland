@@ -21,6 +21,8 @@ public class PlayerAttack : MonoBehaviour {
     private void Awake() {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
+
+        for(int i = 0; i < 100; i++) Debug.Log(CheckLvUp(i));
     }
 
     private void Update() {
@@ -140,7 +142,7 @@ public class PlayerAttack : MonoBehaviour {
 
 
     private int CheckLvUp(float totalAmount) {
-        return (int)Mathf.Pow((totalAmount / 3), 1 / 3);
+        return (int) (Mathf.Pow((totalAmount / 3), 1f / 3f));
     }
 
 }

@@ -39,6 +39,7 @@ public class Coal : MonoBehaviour {
     private void FixedUpdate() {
         if (patrolScript.aggroSpan > 0 && baseScript.currentHealth > 0) AtkPatern();
         if (baseScript.currentHealth <= 0) {
+            StopAllCoroutines();
             GetComponent<Light2D>().enabled = false;
             rbCarvao.velocity = Vector2.zero;
         }
