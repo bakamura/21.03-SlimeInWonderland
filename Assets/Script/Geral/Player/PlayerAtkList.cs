@@ -24,23 +24,24 @@ public class PlayerAtkList : MonoBehaviour {
     public CoolDown[] treeCoolDowns;
 
     [Header("Trigger")]
-    private int triggerState = 0;
+    private int triggerState = 0, currentListPos = 0;
     private GameObject[] hitEntities = new GameObject[64];
-    private int currentListPos = 0;
 
 
     [Header("Basic Atk")]
-    public float damageBasicAtk;
-    public float strenghBasicAtkDash;
+    public float damageBasicAtk, strenghBasicAtkDash;
 
     [Header("FireBreath")]
     public float damageFireAtk1;
     public GameObject prefabFireAtk1;
 
     [Header("Meteor I")]
-    public float damageFireAtk5;
-    public float rangeFireAtk5;
+    public float damageFireAtk5, rangeFireAtk5;
     public GameObject prefabFireAtk5;
+
+    [Header("Splash")]
+    public float damageWaterAtk1;
+    public GameObject prefabWaterAtk1;
 
     private void Awake() {
         if (instance == null) instance = this;
@@ -121,18 +122,6 @@ public class PlayerAtkList : MonoBehaviour {
             case 4:
                 StartCoroutine(DoNothingAtk());
                 break;
-            case 5:
-                StartCoroutine(DoNothingAtk());
-                break;
-            case 6:
-                StartCoroutine(DoNothingAtk());
-                break;
-            case 7:
-                StartCoroutine(DoNothingAtk());
-                break;
-            case 8:
-                StartCoroutine(DoNothingAtk());
-                break;
             default:
                 StartCoroutine(DoNothingAtk());
                 break;
@@ -177,7 +166,7 @@ public class PlayerAtkList : MonoBehaviour {
     private void WaterAtk(int atk) {
         switch (atk) {
             case 0:
-                StartCoroutine(DoNothingAtk()); //
+                StartCoroutine(WaterAtk1Instantiate()); //
                 break;
             case 1:
                 StartCoroutine(DoNothingAtk());
@@ -397,9 +386,9 @@ public class PlayerAtkList : MonoBehaviour {
         PlayerAttack.instance.currentAtk = 0;
 
         PlayerMovement.instance.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        GameObject breathInstance = Instantiate(prefabFireAtk1, transform.position, Quaternion.Euler(0, 0, (Mathf.Atan2(PlayerMovement.instance.lastDirection.y, PlayerMovement.instance.lastDirection.x) * Mathf.Rad2Deg) + 90));
-        breathInstance.GetComponent<AtkFireBreath>().direction = new Vector3(PlayerMovement.instance.lastDirection.x, PlayerMovement.instance.lastDirection.y, 0);
-        breathInstance.GetComponent<AtkFireBreath>().damage = damageFireAtk1;
+        AtkFireBreath breathInstance = Instantiate(prefabFireAtk1, transform.position, Quaternion.Euler(0, 0, (Mathf.Atan2(PlayerMovement.instance.lastDirection.y, PlayerMovement.instance.lastDirection.x) * Mathf.Rad2Deg) + 90)).GetComponent<AtkFireBreath>();
+        breathInstance.direction = new Vector3(PlayerMovement.instance.lastDirection.x, PlayerMovement.instance.lastDirection.y, 0);
+        breathInstance.damage = damageFireAtk1;
 
         yield return new WaitForSeconds(0.4f);
 
@@ -426,10 +415,27 @@ public class PlayerAtkList : MonoBehaviour {
         PlayerAttack.instance.isAtking = false;
         PlayerMovement.instance.moveLock = false;
         PlayerData.animPlayer.SetBool("Moving", false);
-        GameObject meteorInstance = Instantiate(prefabFireAtk5, transform.position + new Vector3(0, 0.75f, 0), Quaternion.Euler(0, 0, 180));
-        meteorInstance.GetComponent<AtkMeteor>().damage = damageFireAtk5;
-        if (Vector2.Distance(transform.position, new Vector2(transform.position.x, transform.position.y) + currentAtkDirection) >= rangeFireAtk5) meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(transform.position.x + currentAtkDirection.normalized.x * rangeFireAtk5, transform.position.y + currentAtkDirection.normalized.y * rangeFireAtk5, 0);
-        else meteorInstance.GetComponent<AtkMeteor>().finalPos = new Vector3(currentAtkDirection.x + transform.position.x, currentAtkDirection.y + transform.position.y, 0);
+        AtkMeteor meteorInstance = Instantiate(prefabFireAtk5, transform.position + new Vector3(0, 0.75f, 0), Quaternion.Euler(0, 0, 180)).GetComponent<AtkMeteor>();
+        meteorInstance.damage = damageFireAtk5;
+        if (Vector2.Distance(transform.position, new Vector2(transform.position.x, transform.position.y) + currentAtkDirection) >= rangeFireAtk5) meteorInstance.finalPos = new Vector3(transform.position.x + currentAtkDirection.normalized.x * rangeFireAtk5, transform.position.y + currentAtkDirection.normalized.y * rangeFireAtk5, 0);
+        else meteorInstance.finalPos = new Vector3(currentAtkDirection.x + transform.position.x, currentAtkDirection.y + transform.position.y, 0);
+    }
+
+    //Water
+    private IEnumerator WaterAtk1Instantiate() {
+        PlayerMovement.instance.moveLock = true;
+        PlayerData.rbPlayer.velocity = Vector2.zero;
+        PlayerData.animPlayer.SetTrigger("AtkW1");
+        PlayerAttack.instance.currentAtk = 0;
+
+        AtkSplash go = Instantiate(prefabWaterAtk1, transform.position, Quaternion.identity).GetComponent<AtkSplash>();
+        go.damage = damageWaterAtk1;
+        
+        yield return new WaitForSeconds(0.1f);
+
+        PlayerAttack.instance.isAtking = false;
+        PlayerMovement.instance.moveLock = false;
+
     }
 
     private void OnTriggerStay2D(Collider2D collision) {

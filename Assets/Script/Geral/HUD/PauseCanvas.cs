@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.Experimental.Rendering.Universal;
 using TMPro;
 
 public class PauseCanvas : MonoBehaviour {
 
     private CanvasGroup pauseCanvas;
     public CanvasGroup hudCanvas, treeCanvas, mainGroup, settingsGroup;
+
+    public AudioMixer masterMixer;
+    public Light2D globalLight;
     public TMP_Dropdown resSelector;
     private bool fullscreen = false;
 
@@ -52,6 +57,14 @@ public class PauseCanvas : MonoBehaviour {
     public void QuitButton() {
         Time.timeScale = 1;
         SceneManager.LoadScene(0); //Load Main Menu
+    }
+
+    public void ChangeVolume(float f) {
+        masterMixer.SetFloat("MasterVolume", Mathf.Log10(f) * 20);
+    }
+
+    public void ChangeBrightness(float f) {
+        globalLight.intensity = f;
     }
 
     public void ChangeResolution() {

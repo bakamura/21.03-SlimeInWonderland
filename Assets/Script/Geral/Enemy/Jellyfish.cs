@@ -8,8 +8,7 @@ public class Jellyfish : MonoBehaviour {
     private DoNothingPatrol patrolScript;
     private Rigidbody2D rbJelly;
     private Animator animJelly;
-    private bool wasAtking = false;
-    private int state = 0;
+    private bool wasAtking = false, hasMoved = false;
 
     public float movementDistance, atkDamage, atkRange;
 
@@ -28,7 +27,10 @@ public class Jellyfish : MonoBehaviour {
                     StartCoroutine(Approach());
                 }
             }
-            else if (wasAtking) wasAtking = false;
+            else if (wasAtking) {
+                wasAtking = false;
+                StopAllCoroutines();
+            }
         }
         else StopAllCoroutines();
         if (!baseScript.beingKb) rbJelly.velocity = Vector2.zero;
@@ -46,9 +48,9 @@ public class Jellyfish : MonoBehaviour {
 
         yield return new WaitForSeconds(0.125f);
 
-        if (state > 0 && Vector2.Distance(PlayerData.instance.transform.position, transform.position) < atkRange) StartCoroutine(AtkInstantiate());
+        if (hasMoved && Vector2.Distance(PlayerData.instance.transform.position, transform.position) < atkRange) StartCoroutine(AtkInstantiate());
         else {
-            state = state < 1 ? ++state : 0;
+            hasMoved = !hasMoved;
             StartCoroutine(Approach());
         }
     }
@@ -68,7 +70,7 @@ public class Jellyfish : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
 
-        state = 0;
+        hasMoved = true;
         StartCoroutine(Approach());
     }
 
