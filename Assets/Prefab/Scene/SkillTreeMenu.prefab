@@ -2426,8 +2426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: WaterSkill
-  description: tba
+  skillName: Whirlpool
+  description: Creates a whirlpool that sucks enemies towards it's center, dealing
+    damage periodicaly.
 --- !u!1 &958758193942535591
 GameObject:
   m_ObjectHideFlags: 0
@@ -14494,8 +14495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: WaterSkill
-  description: tba
+  skillName: Storm
+  description: Requires electric 5. Summons a storm,healin
 --- !u!1 &7661545975003932737
 GameObject:
   m_ObjectHideFlags: 0
@@ -15377,8 +15378,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: WaterSkill
-  description: tba
+  skillName: Binding
+  description: Binds to an enemy for 5 seconds, periodicaly draining his health.
+    If the enemy dies while binded, the slime recovers health equivalent to the remaining
+    time of the binding. If the enemy stands too far from the slime, the binding
+    is broken.
 --- !u!1 &8237190095016774043
 GameObject:
   m_ObjectHideFlags: 0
