@@ -64,6 +64,13 @@ public class EnemyBase : MonoBehaviour {
                 srEnemy.color = Color.red;
                 beingKb = true;
                 StartCoroutine(stopKB());
+
+                FloatingText go = Instantiate(PlayerData.instance.floatingText, transform.position + new Vector3(Random.Range(-0.45f, 0.45f), Random.Range(-0.35f, 0.35f), 0), Quaternion.identity).GetComponent<FloatingText>();
+                go.transform.SetParent(PlayerData.instance.textParent);
+                go.color = 1;
+                go.type = 2;
+                go.transform.localScale *= 1.1f;
+                go.text = damage.ToString("F0");
             }
             else specialCaseTrigger = true;
             if (currentHealth <= 0) {

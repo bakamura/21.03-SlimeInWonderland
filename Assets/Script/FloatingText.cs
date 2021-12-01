@@ -53,6 +53,7 @@ public class FloatingText : MonoBehaviour {
                 }
                 break;
             case 2: //Damage
+                textComponent.color = new Color32(155, 0, 0, 255);
                 while (rectTransform.localScale.x < baseScale.x * 1.5f) {
                     rectTransform.localScale += baseScale * 0.075f;
 
@@ -63,7 +64,7 @@ public class FloatingText : MonoBehaviour {
 
                     yield return new WaitForSeconds(0.01f);
                 }
-                yield return new WaitForSeconds(0.4f);
+                yield return new WaitForSeconds(0.9f);
                 while (textComponent.alpha > 0) {
                     textComponent.color = new Color(0, 0, 0, -0.05f);
 

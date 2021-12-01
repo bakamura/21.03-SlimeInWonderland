@@ -83,8 +83,8 @@ public class PlayerData : MonoBehaviour {
         tag = "Untagged";
         foreach (Collider2D col in GetComponents<Collider2D>()) col.enabled = false;
         PlayerAttack.instance.StopAllCoroutines();
-        GetComponent<PlayerAtkList>().StopAllCoroutines();
-        GetComponent<PlayerMovement>().moveLock = false;
+        PlayerAtkList.instance.StopAllCoroutines();
+        PlayerMovement.instance.moveLock = false;
 
         yield return new WaitForSeconds(0.9f);
 

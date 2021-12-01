@@ -38,6 +38,42 @@ TextureImporter:
   - first:
       213: 6991141704272629662
     second: bolhas-Sheet_11
+  - first:
+      213: 4078796110908485188
+    second: Bubbles_0
+  - first:
+      213: -7938878928584171511
+    second: Bubbles_1
+  - first:
+      213: -5417141958962910980
+    second: Bubbles_2
+  - first:
+      213: 5179279333322180978
+    second: Bubbles_3
+  - first:
+      213: -6963593870422336085
+    second: Bubbles_4
+  - first:
+      213: 5028680128492604440
+    second: Bubbles_5
+  - first:
+      213: 2638978548525320615
+    second: Bubbles_6
+  - first:
+      213: -1112529114769193714
+    second: Bubbles_7
+  - first:
+      213: -6200647851499984236
+    second: Bubbles_8
+  - first:
+      213: 5880212346708678647
+    second: Bubbles_9
+  - first:
+      213: 7172371060719296514
+    second: Bubbles_10
+  - first:
+      213: -6632398389021297335
+    second: Bubbles_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -195,7 +231,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bolhas-Sheet_0
+      name: Bubbles_0
       rect:
         serializedVersion: 2
         x: 0
@@ -209,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9066a5ddb897ac720800000000000000
-      internalID: 2867237754395846153
+      spriteID: 44ee1f5d37bca9830800000000000000
+      internalID: 4078796110908485188
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_1
+      name: Bubbles_1
       rect:
         serializedVersion: 2
         x: 32
@@ -230,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d68d54a81ba656dd0800000000000000
-      internalID: -2493469507918112659
+      spriteID: 90028ea2daf63d190800000000000000
+      internalID: -7938878928584171511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_2
+      name: Bubbles_2
       rect:
         serializedVersion: 2
         x: 64
@@ -251,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6199c535c885c74b0800000000000000
-      internalID: -5441376890053158634
+      spriteID: cf8e62ee61272d4b0800000000000000
+      internalID: -5417141958962910980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_3
+      name: Bubbles_3
       rect:
         serializedVersion: 2
         x: 96
@@ -272,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad31b43549ccfac00800000000000000
-      internalID: 914174186804155354
+      spriteID: 279c037dc1f70e740800000000000000
+      internalID: 5179279333322180978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_4
+      name: Bubbles_4
       rect:
         serializedVersion: 2
         x: 128
@@ -293,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1f7005dcf86b04b0800000000000000
-      internalID: -5473165487024079075
+      spriteID: bad936105485c5f90800000000000000
+      internalID: -6963593870422336085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_5
+      name: Bubbles_5
       rect:
         serializedVersion: 2
         x: 160
@@ -314,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ad7399476a1b39f0800000000000000
-      internalID: -487767103721210463
+      spriteID: 81c0edb0fe579c540800000000000000
+      internalID: 5028680128492604440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_6
+      name: Bubbles_6
       rect:
         serializedVersion: 2
         x: 192
@@ -335,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3834ebe243d3dd200800000000000000
-      internalID: 206388452260725635
+      spriteID: 7a94aba02098f9420800000000000000
+      internalID: 2638978548525320615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_7
+      name: Bubbles_7
       rect:
         serializedVersion: 2
         x: 224
@@ -356,14 +392,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4e505a82c47f0ac0800000000000000
-      internalID: -3886759574504448437
+      spriteID: e0507ef1aa08f80f0800000000000000
+      internalID: -1112529114769193714
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_8
+      name: Bubbles_8
       rect:
         serializedVersion: 2
         x: 256
@@ -377,14 +413,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97d5c3dca88f3e2a0800000000000000
-      internalID: -6709245744819446407
+      spriteID: 49aed0aa1afd2f9a0800000000000000
+      internalID: -6200647851499984236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_9
+      name: Bubbles_9
       rect:
         serializedVersion: 2
         x: 288
@@ -398,14 +434,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11026523ee5f1c700800000000000000
-      internalID: 558998232166178833
+      spriteID: 7f7df6189f5ba9150800000000000000
+      internalID: 5880212346708678647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_10
+      name: Bubbles_10
       rect:
         serializedVersion: 2
         x: 320
@@ -419,14 +455,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c88adf2cf9e22a50800000000000000
-      internalID: 6495010881965557952
+      spriteID: 20027779a71698360800000000000000
+      internalID: 7172371060719296514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bolhas-Sheet_11
+      name: Bubbles_11
       rect:
         serializedVersion: 2
         x: 352
@@ -440,8 +476,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9fc691e656850160800000000000000
-      internalID: 6991141704272629662
+      spriteID: 945338d1eccf4f3a0800000000000000
+      internalID: -6632398389021297335
       vertices: []
       indices: 
       edges: []
