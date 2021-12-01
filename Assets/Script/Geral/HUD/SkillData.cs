@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SkillData : MonoBehaviour {
 
-    public string skillName, description;
+    public string skillName;
+    [TextArea(1, 3)] public string description;
 
 }

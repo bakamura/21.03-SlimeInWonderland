@@ -73,7 +73,7 @@ public class PauseCanvas : MonoBehaviour {
                 Screen.SetResolution(640, 360, fullscreen);
                 break;
             case 1:
-                Screen.SetResolution(720, 480, fullscreen);
+                Screen.SetResolution(854, 480, fullscreen);
                 break;
             case 2:
                 Screen.SetResolution(1280, 720, fullscreen);

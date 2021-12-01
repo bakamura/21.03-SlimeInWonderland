@@ -321,8 +321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: F
-  description: 
+  skillName: Eruption
+  description: Briefly casts, summoning an explosion in medium range, dealing damage
+    to all enemies within it's area.
 --- !u!1 &121613879858184039
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +336,7 @@ GameObject:
   - component: {fileID: 8931747153549830056}
   - component: {fileID: 3417035969050569299}
   - component: {fileID: 7777678461452745576}
+  - component: {fileID: 2998147716763512789}
   m_Layer: 5
   m_Name: Skill2 (2)
   m_TagString: Untagged
@@ -465,6 +467,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2998147716763512789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121613879858184039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Stream Shield
+  description: Surrounds itself with a shield, blocking damage up to a cap. After
+    some time, if the shield didn't worn out, it explodes deadling damage in a small
+    area.
 --- !u!1 &172961753562518639
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,8 +922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: N
-  description: 
+  skillName: CopyCatSkill
+  description: Not added yet
 --- !u!1 &306112471392239066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,6 +1282,7 @@ GameObject:
   - component: {fileID: 3391659242514548104}
   - component: {fileID: 7001459781056342713}
   - component: {fileID: 8394297648562028158}
+  - component: {fileID: 5923412453232720670}
   m_Layer: 5
   m_Name: Skill3 (3)
   m_TagString: Untagged
@@ -1394,6 +1413,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5923412453232720670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541386171215573997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Rain
+  description: Summons a rain, periodicaly dealing damage to enemies and healing
+    itself.
 --- !u!1 &550276948223500568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,6 +2283,7 @@ GameObject:
   - component: {fileID: 4119246192116703809}
   - component: {fileID: 4146010635649321550}
   - component: {fileID: 656831151252360763}
+  - component: {fileID: 8758836456765510522}
   m_Layer: 5
   m_Name: Skill3 (2)
   m_TagString: Untagged
@@ -2379,6 +2414,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8758836456765510522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935981444258103020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: WaterSkill
+  description: tba
 --- !u!1 &958758193942535591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,6 +2591,7 @@ GameObject:
   - component: {fileID: 8649017091349709962}
   - component: {fileID: 7930012164539839618}
   - component: {fileID: 3526634603309029180}
+  - component: {fileID: 651971420937908949}
   m_Layer: 5
   m_Name: Skill4 (1)
   m_TagString: Untagged
@@ -2672,6 +2722,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &651971420937908949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092973541056685017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: WaterSkill
+  description: tba
 --- !u!1 &1136983250503053795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3836,7 +3900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Cross-Cut
-  description: Performs two cuts, damaging enemies in a small area
+  description: Performs two cuts, damaging enemies in a small area.
 --- !u!1 &1913640863482179422
 GameObject:
   m_ObjectHideFlags: 0
@@ -5219,8 +5283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: F
-  description: 
+  skillName: Flame Thrower
+  description: Inhales briefly, then spits flames in a long cone in the direction
+    facing, periodicaly dealing damage to enemies within it's area.
 --- !u!1 &2651929569101349160
 GameObject:
   m_ObjectHideFlags: 0
@@ -5451,8 +5516,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: F
-  description: 
+  skillName: Flaming Barrage
+  description: Spits multiple fire balls in a cone in the direction facing, exploding
+    on contact and dealing damage in a small area.
 --- !u!1 &2911424861462744498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5465,6 +5531,7 @@ GameObject:
   - component: {fileID: 3691099170095851307}
   - component: {fileID: 3592776217073109508}
   - component: {fileID: 6378607076071574867}
+  - component: {fileID: 4975012842504656919}
   m_Layer: 5
   m_Name: Skill2 (1)
   m_TagString: Untagged
@@ -5595,6 +5662,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4975012842504656919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2911424861462744498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Refreshing Waters
+  description: Spits water, that bounces to the nearest enemy , up to 4 times, dealing
+    damage and slowing, then bounces back to the slime, healing based on the amount
+    of damage dealt.
 --- !u!1 &2926484171652440332
 GameObject:
   m_ObjectHideFlags: 0
@@ -7062,8 +7145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: N
-  description: 
+  skillName: CopyCatSkill
+  description: Not added yet
 --- !u!1 &3897302800776581916
 GameObject:
   m_ObjectHideFlags: 0
@@ -7219,8 +7302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: F
-  description: 
+  skillName: Fire Ball
+  description: Spits a ball of pure fire in the direction facing, exploding on contact
+    and dealing damage in a small area.
 --- !u!1 &3947828108848878245
 GameObject:
   m_ObjectHideFlags: 0
@@ -8871,8 +8955,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: F
-  description: 
+  skillName: Blazing Bolide
+  description: Spits a mega concentrated fire ball that goes through a parable to
+    the designated location, dealing damage to all enemies in it's area and leaving
+    behind a mark on the ground, periodicaly damage to enemies within it's area.
 --- !u!1 &4896080295306963017
 GameObject:
   m_ObjectHideFlags: 0
@@ -9329,7 +9415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Fire Breath
-  description: Inhales briefly, then spits flames in the direction facing
+  description: Inhales briefly, then spits flames in a small cone in the direction
+    facing, dealing damage to enemies within it's area.
 --- !u!1 &5018171196055090859
 GameObject:
   m_ObjectHideFlags: 0
@@ -9701,6 +9788,7 @@ GameObject:
   - component: {fileID: 5447342857889739108}
   - component: {fileID: 9123242227900168796}
   - component: {fileID: 3173644039084999876}
+  - component: {fileID: 3974995339446646824}
   m_Layer: 5
   m_Name: Skill1
   m_TagString: Untagged
@@ -9831,6 +9919,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3974995339446646824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5080251886700209051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Splash
+  description: Splashes water, dealing damage to enemies within it's area.
 --- !u!1 &5108036532331932486
 GameObject:
   m_ObjectHideFlags: 0
@@ -10689,8 +10791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: N
-  description: 
+  skillName: CopyCatSkill
+  description: Not added yet
 --- !u!1 &5557931662547247056
 GameObject:
   m_ObjectHideFlags: 0
@@ -10846,8 +10948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: F
-  description: 
+  skillName: Blazing Aura
+  description: 'Passive: While in fire mode, deals damage periodicaly to near enemies.'
 --- !u!1 &5761013160032176855
 GameObject:
   m_ObjectHideFlags: 0
@@ -13647,8 +13749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: F
-  description: 
+  skillName: Meteor
+  description: Spits a concentrated fire ball that goes through a parable to the
+    designated location, dealing damage to all enemies in it's area.
 --- !u!1 &7348211647946739145
 GameObject:
   m_ObjectHideFlags: 0
@@ -14105,7 +14208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Jumpy Jump
-  description: Jumps toward the facing direction, damaging enemies in the path
+  description: Jumps toward the facing direction, damaging enemies in the path.
 --- !u!1 &7520163435103056424
 GameObject:
   m_ObjectHideFlags: 0
@@ -14248,6 +14351,7 @@ GameObject:
   - component: {fileID: 1695455847830856066}
   - component: {fileID: 3676490469725311089}
   - component: {fileID: 6412494161416533723}
+  - component: {fileID: 7820220789103224128}
   m_Layer: 5
   m_Name: Skill5
   m_TagString: Untagged
@@ -14378,6 +14482,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7820220789103224128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7657795818823797810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: WaterSkill
+  description: tba
 --- !u!1 &7661545975003932737
 GameObject:
   m_ObjectHideFlags: 0
@@ -14884,8 +15002,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: F
-  description: 
+  skillName: Raging Vortex
+  description: Casts for a moment, sucking near enemies and dealing damage periodicaly,
+    then explodes, dealing damage and knocking back enemies.
 --- !u!1 &7921773732453225740
 GameObject:
   m_ObjectHideFlags: 0
@@ -15115,6 +15234,7 @@ GameObject:
   - component: {fileID: 1273760911783781057}
   - component: {fileID: 1588566899037436367}
   - component: {fileID: 7832075102131968498}
+  - component: {fileID: 7490495244350522646}
   m_Layer: 5
   m_Name: Skill4 (2)
   m_TagString: Untagged
@@ -15245,6 +15365,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7490495244350522646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087367851475091455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: WaterSkill
+  description: tba
 --- !u!1 &8237190095016774043
 GameObject:
   m_ObjectHideFlags: 0
@@ -15759,6 +15893,7 @@ GameObject:
   - component: {fileID: 6872271499741695968}
   - component: {fileID: 2631110785232072146}
   - component: {fileID: 16049084002292070}
+  - component: {fileID: 4184254612101426579}
   m_Layer: 5
   m_Name: Skill3 (1)
   m_TagString: Untagged
@@ -15889,6 +16024,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4184254612101426579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415225744867344702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0df0271a60fc4eaa3487a59e2a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Hydro Pump
+  description: Pumps a load of water in line in the direction facing, periodicaly
+    dedaling damage to enemies within it's area.
 --- !u!1 &8500075519159342725
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,8 +19,7 @@ public class PlayerAtkList : MonoBehaviour {
     private TriggerWater waterManager;
 
     [Header("AttackList")]
-    public int[] skill = new int[3];
-    public int[] tree = new int[3];
+    [HideInInspector] public int[] skill = new int[3], tree = new int[3];
     public CoolDown[] treeCoolDowns;
 
     [Header("Trigger")]
