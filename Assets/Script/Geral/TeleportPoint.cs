@@ -5,7 +5,7 @@ using UnityEngine;
 public class TeleportPoint : MonoBehaviour {
 
     private bool isTeleporting = false, onThis;
-    public bool needInput = false;
+    public bool needInput = false, underWater = false;
     public Vector3 teleportPosition;
     [Range(0, 3)] public int transitionDirection;
     public float delayStart;
@@ -24,7 +24,7 @@ public class TeleportPoint : MonoBehaviour {
         if (collision.tag == "Player") {
             if (needInput) {
                 onThis = true;
-                PlayerData.animPlayer.SetBool("OnWater", true);
+                if(!underWater) PlayerData.animPlayer.SetBool("OnWater", true);
             }
             else if (!isTeleporting) StartCoroutine(TeleportTransition());
         }
