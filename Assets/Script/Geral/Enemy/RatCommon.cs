@@ -18,7 +18,7 @@ public class RatCommon : MonoBehaviour {
     public float atkRange;
     public float ratDamage;
 
-    private bool resting = false;
+    private bool resting = false, alive = true;
     public float restingTime;
 
     private void Start() {
@@ -31,7 +31,11 @@ public class RatCommon : MonoBehaviour {
 
     private void FixedUpdate() {
         if (patrolScript.aggroSpan > 0 && baseScript.currentHealth > 0) AtkPatern();
-        if (baseScript.currentHealth <= 0) StartCoroutine(StopEverything());
+        if (baseScript.currentHealth <= 0 && alive) {
+            AudioManager.instance.Play("RatDeath");
+            StartCoroutine(StopEverything());
+            alive = false;
+        }
     }
 
     private void AtkPatern() {

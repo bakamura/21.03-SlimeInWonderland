@@ -53,6 +53,7 @@ public class AtkMeteor : MonoBehaviour {
                 i.transform.GetComponent<Burnable>().lit = true;
             }
         }
+        AudioManager.instance.Play("PlayerAtkF5");
         //If II, instantiate xxxxx
     }
 

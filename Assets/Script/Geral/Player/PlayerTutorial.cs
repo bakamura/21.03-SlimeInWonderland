@@ -59,7 +59,7 @@ public class PlayerTutorial : MonoBehaviour {
         }
         else if (animHolder.GetInteger("State") == 9) {
             if (Input.GetKeyDown(KeyCode.T)) {
-                Destroy(animHolder);
+                Destroy(animHolder.gameObject);
                 Destroy(this);
             }
             else if (!PlayerData.animPlayer.GetBool("OnWater")) animHolder.SetInteger("State", 7);

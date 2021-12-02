@@ -25,7 +25,7 @@ public class Coal : MonoBehaviour {
     public float shotForce;
     public float atkRange;
 
-    private bool inWall;
+    private bool inWall, alive = true;
 
     private void Start() {
         rbCarvao = GetComponent<Rigidbody2D>();
@@ -36,10 +36,12 @@ public class Coal : MonoBehaviour {
 
     private void FixedUpdate() {
         if (patrolScript.aggroSpan > 0 && baseScript.currentHealth > 0) AtkPatern();
-        if (baseScript.currentHealth <= 0) {
+        if (baseScript.currentHealth <= 0 && alive) {
+            AudioManager.instance.Play("CoalDeath");
             StopAllCoroutines();
             GetComponent<Light2D>().enabled = false;
             rbCarvao.velocity = Vector2.zero;
+            alive = false;
         }
     }
 

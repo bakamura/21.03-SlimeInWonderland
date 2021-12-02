@@ -392,6 +392,7 @@ public class PlayerAtkList : MonoBehaviour {
 
         yield return new WaitForSeconds(0.4f);
 
+        AudioManager.instance.Play("PlayerAtkF1");
         breathInstance.GetComponent<AtkFireBreath>().Play();
 
         yield return new WaitForSeconds(0.4f);
@@ -427,6 +428,7 @@ public class PlayerAtkList : MonoBehaviour {
         PlayerData.rbPlayer.velocity = Vector2.zero;
         PlayerData.animPlayer.SetTrigger("AtkW1");
         PlayerAttack.instance.currentAtk = 0;
+        AudioManager.instance.Play("PlayerAtkW1");
 
         AtkSplash go = Instantiate(prefabWaterAtk1, transform.position, Quaternion.identity).GetComponent<AtkSplash>();
         go.damage = damageWaterAtk1;

@@ -134,6 +134,7 @@ public class PlayerAttack : MonoBehaviour {
         go.type = 0;
         go.transform.localScale *= PlayerData.instance.leveling[type].lv == CheckLvUp(PlayerData.instance.leveling[type].xp)? 0.75f : 1.5f;
         go.text = PlayerData.instance.leveling[type].lv == CheckLvUp(PlayerData.instance.leveling[type].xp) ? amount.ToString("F1") + "xp" : "Lv Up!";
+        if (PlayerData.instance.leveling[type].lv != CheckLvUp(PlayerData.instance.leveling[type].xp)) AudioManager.instance.Play("LevelUp");
 
         PlayerData.instance.leveling[type].lv = CheckLvUp(PlayerData.instance.leveling[type].xp);
     }

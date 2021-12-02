@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &271514285668800278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 271514285668800277}
+  - component: {fileID: 271514285668800276}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: AudioManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &271514285668800277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271514285668800278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &271514285668800276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271514285668800278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2fd10279a03c5468739310a6bb267b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: SkillCD
+    clip: {fileID: 8300000, guid: 5d36264cbd2fdfd46829a6ee78b9cc33, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: DenyUnlock
+    clip: {fileID: 8300000, guid: 9c5912d1ebd4b4e4f83042ae91502e98, type: 3}
+    volume: 0.9
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: UnlockSkill
+    clip: {fileID: 8300000, guid: 49bda54f1ea3483419a8e9fa2af1cecc, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: MoveBoulder
+    clip: {fileID: 8300000, guid: dbd5c0cd3f2ad874182a99fa60871030, type: 3}
+    volume: 0.9
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: RatSlash
+    clip: {fileID: 8300000, guid: 946f8529a9387d048bb9df15be5b6259, type: 3}
+    volume: 0.9
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: CoalShot
+    clip: {fileID: 8300000, guid: bbd9ff4502ee98b49a9eb1a5081a737b, type: 3}
+    volume: 0.8
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: JellySpark
+    clip: {fileID: 8300000, guid: 5951add850803e74894dbc566c814435, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: RatDeath
+    clip: {fileID: 8300000, guid: 8f7700cd342029245b7b66e019a536b6, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: CoalDeath
+    clip: {fileID: 8300000, guid: 85017d71a25b6f24da5e840c4413b138, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: JellyDeath
+    clip: {fileID: 8300000, guid: 5951add850803e74894dbc566c814435, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: PlayerAtkF1
+    clip: {fileID: 8300000, guid: a64b44d35a5b96a4db562ea3f7ff2ebe, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: PlayerAtkF5
+    clip: {fileID: 8300000, guid: 0050b9c09f10b614b9a3f7e61bd3e3a9, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: PlayerAtkW1
+    clip: {fileID: 8300000, guid: e79a8a31ea9b8f84fb6901e1049b36c7, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
+  - name: LevelUp
+    clip: {fileID: 8300000, guid: abdfea6231688034790f2055786772c3, type: 3}
+    volume: 1
+    audioGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+    source: {fileID: 0}
