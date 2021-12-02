@@ -73,6 +73,7 @@ public class PlayerAtkList : MonoBehaviour {
         else if (!PlayerData.animPlayer.GetBool("OnWater")) waterManager.transformCollider(false);
         else bol = false;
         if (bol) {
+            if (tree != 0) PlayerData.instance.currentMaterial = tree;
             PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[tree];
             switch (tree) {
                 case 0:

@@ -34,7 +34,9 @@ public class PlayerData : MonoBehaviour {
     [Header("Progression")]
     public Leveling[] leveling;
 
+    [HideInInspector] public int currentMaterial = 0;
     public Material[] colorMaterial;
+    public Material damageMaterial;
 
     private void Awake() {
         if (instance == null) instance = this;
@@ -52,15 +54,18 @@ public class PlayerData : MonoBehaviour {
 
     public void TakeDamage(float damage) {
         if (blockState) currentHealth = currentHealth - 0;
-        else currentHealth -= damage;
-        if (animPlayer.GetBool("Consuming")) {
-            GetComponent<SpriteRendererUpdater>().enabled = true;
-            PlayerMovement.instance.moveLock = false;
-        }
-        animPlayer.SetBool("Consuming", false);
-        PlayerAttack.instance.StopAllCoroutines();
-        PlayerHUD.instance.DataUI();
+        else {
+            currentHealth -= damage;
+            StartCoroutine(DamageFlash());
 
+            if (animPlayer.GetBool("Consuming")) {
+                GetComponent<SpriteRendererUpdater>().enabled = true;
+                PlayerMovement.instance.moveLock = false;
+            }
+            animPlayer.SetBool("Consuming", false);
+            PlayerAttack.instance.StopAllCoroutines();
+            PlayerHUD.instance.DataUI();
+        }
         if (currentHealth <= 0 && !animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Die")) {
             StartCoroutine(Death());
         }
@@ -76,7 +81,15 @@ public class PlayerData : MonoBehaviour {
         go.text = "+" + heal.ToString("F0");
     }
 
-    IEnumerator Death() {
+    private IEnumerator DamageFlash() {
+        srPlayer.material = damageMaterial;
+
+        yield return new WaitForSeconds(0.2f);
+
+        srPlayer.material = colorMaterial[currentMaterial];
+    }
+
+    private IEnumerator Death() {
         animPlayer.SetTrigger("Death");
         deathCanvas.blocksRaycasts = true;
         deathCanvas.interactable = true;
