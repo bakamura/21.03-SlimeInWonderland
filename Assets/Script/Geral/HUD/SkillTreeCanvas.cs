@@ -49,7 +49,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                 PlayerAttack.instance.canInput = true;
                 HUDIconUpdate();
             }
-            else {
+            else if (PlayerData.instance.currentHealth > 0) {
                 AlternateCanvas(treeCanvas, true);
                 AlternateCanvas(pauseCanvas, false);
                 AlternateCanvas(hudCanvas, false);

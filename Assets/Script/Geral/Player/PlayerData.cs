@@ -61,7 +61,7 @@ public class PlayerData : MonoBehaviour {
         PlayerAttack.instance.StopAllCoroutines();
         PlayerHUD.instance.DataUI();
 
-        if (currentHealth <= 0) {
+        if (currentHealth <= 0 && !animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Die")) {
             StartCoroutine(Death());
         }
     }
@@ -84,7 +84,8 @@ public class PlayerData : MonoBehaviour {
         foreach (Collider2D col in GetComponents<Collider2D>()) col.enabled = false;
         PlayerAttack.instance.StopAllCoroutines();
         PlayerAtkList.instance.StopAllCoroutines();
-        PlayerMovement.instance.moveLock = false;
+        PlayerMovement.instance.moveLock = true;
+        PlayerAttack.instance.canInput = false;
 
         yield return new WaitForSeconds(0.9f);
 

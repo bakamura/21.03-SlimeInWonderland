@@ -24,7 +24,7 @@ public class PauseCanvas : MonoBehaviour {
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (pauseCanvas.interactable) ContinueButton();
-            else {
+            else if (PlayerData.instance.currentHealth > 0) { 
                 AlternateCanvas(pauseCanvas, true);
                 AlternateCanvas(mainGroup, true);
                 AlternateCanvas(settingsGroup, false);

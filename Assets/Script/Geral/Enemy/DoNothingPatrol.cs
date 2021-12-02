@@ -14,7 +14,7 @@ public class DoNothingPatrol : MonoBehaviour {
 
     private void FixedUpdate() {
 
-        if (baseScript.currentHealth > 0) {
+        if (baseScript.currentHealth > 0 && PlayerData.instance.currentHealth > 0) {
             if (Vector2.Distance(PlayerData.instance.transform.position, transform.position) < aggroRadius) aggroSpan = aggroDuration;
             else if (aggroSpan > 0) aggroSpan -= Time.fixedDeltaTime;
         }

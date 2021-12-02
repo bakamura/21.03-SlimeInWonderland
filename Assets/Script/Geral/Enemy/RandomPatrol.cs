@@ -45,7 +45,8 @@ public class RandomPatrol : MonoBehaviour {
 
     private void FixedUpdate() {
         if (dataScript.currentHealth > 0) {
-            FOVCheck();
+            if (PlayerData.instance.currentHealth > 0) FOVCheck();
+            else aggroSpan = 0;
             if (lastAggroSpan != aggroSpan) {
                 if (aggroSpan > 0) GenerateTarget();
                 lastAggroSpan = aggroSpan;
