@@ -47,15 +47,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                 Time.timeScale = 1;
                 PlayerMovement.instance.moveLock = false;
                 PlayerAttack.instance.canInput = true;
-
-                PlayerHUD.instance.atkIcon[0].sprite = skillSlotImage[0].sprite;
-                PlayerHUD.instance.atkIcon[1].sprite = skillSlotImage[1].sprite;
-                PlayerHUD.instance.atkIcon[2].sprite = skillSlotImage[2].sprite;
-
-                if (currentButtonSelected[0] != -1) {
-                    FocusOnClick(false);
-                    currentButtonSelected = new int[] { -1, -1 };
-                }
+                HUDIconUpdate();
             }
             else {
                 AlternateCanvas(treeCanvas, true);
@@ -81,7 +73,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                     hitButton = true;
                 }
 
-            hoverBox.transform.position = hitButton? (Input.mousePosition + new Vector3(Input.mousePosition.x > 960 ? -157.5f : 157.5f, 0, 0)) : new Vector3(-500, 500, 0);
+            hoverBox.transform.position = hitButton ? (Input.mousePosition + new Vector3(Input.mousePosition.x > 960 ? -157.5f : 157.5f, 0, 0)) : new Vector3(-500, 500, 0);
         }
     }
 
@@ -89,6 +81,17 @@ public class SkillTreeCanvas : MonoBehaviour {
         canvas.alpha = on ? 1 : 0;
         canvas.interactable = on;
         canvas.blocksRaycasts = on;
+    }
+
+    public void HUDIconUpdate() {
+        PlayerHUD.instance.atkIcon[0].sprite = skillSlotImage[0].sprite;
+        PlayerHUD.instance.atkIcon[1].sprite = skillSlotImage[1].sprite;
+        PlayerHUD.instance.atkIcon[2].sprite = skillSlotImage[2].sprite;
+
+        if (currentButtonSelected[0] != -1) {
+            FocusOnClick(false);
+            currentButtonSelected = new int[] { -1, -1 };
+        }
     }
 
     public void SkillButton(int treeN) {

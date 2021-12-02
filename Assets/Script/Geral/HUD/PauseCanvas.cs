@@ -28,8 +28,10 @@ public class PauseCanvas : MonoBehaviour {
                 AlternateCanvas(pauseCanvas, true);
                 AlternateCanvas(mainGroup, true);
                 AlternateCanvas(settingsGroup, false);
-
-                AlternateCanvas(treeCanvas, false);
+                if (treeCanvas.interactable) {
+                    AlternateCanvas(treeCanvas, false);
+                    treeCanvas.GetComponent<SkillTreeCanvas>().HUDIconUpdate();
+                }
                 AlternateCanvas(hudCanvas, false);
 
                 Time.timeScale = 0;
