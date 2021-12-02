@@ -17,7 +17,7 @@ public class TeleportPoint : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (onThis && Input.GetKey(KeyCode.Q) && !isTeleporting && !PlayerMovement.instance.moveLock) StartCoroutine(TeleportTransition());
+        if (onThis && Input.GetKey(KeyCode.T) && !isTeleporting && !PlayerMovement.instance.moveLock) StartCoroutine(TeleportTransition());
     }
 
     private void OnTriggerStay2D(Collider2D collision) {

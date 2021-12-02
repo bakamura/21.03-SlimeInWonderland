@@ -58,7 +58,7 @@ public class SkillTreeCanvas : MonoBehaviour {
                 PlayerMovement.instance.moveLock = true;
                 PlayerAttack.instance.canInput = false;
 
-                for (int i = 0; i < 7; i++) lvText[i].text = PlayerData.instance.leveling[i].lv.ToString();
+                for (int i = 1; i < 7; i++) lvText[i].text = PlayerData.instance.leveling[i].lv.ToString();
             }
         }
         if (treeCanvas.interactable) {
