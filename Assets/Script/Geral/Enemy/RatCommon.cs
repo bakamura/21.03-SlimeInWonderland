@@ -65,6 +65,7 @@ public class RatCommon : MonoBehaviour {
     IEnumerator AtkInstance() {
         yield return new WaitForSeconds(0.333f);
 
+        AudioManager.instance.Play("RatSlash");
         Vector3 atkPos = transform.position + (new Vector3(patrolScript.facing.x, patrolScript.facing.y, 0)) / 2;
         Collider2D[] isInRange = Physics2D.OverlapCircleAll(atkPos, atkRange);
         foreach (Collider2D col in isInRange) if (col.tag == "Player") playerTransform.GetComponent<PlayerData>().TakeDamage(ratDamage);

@@ -79,6 +79,7 @@ public class Coal : MonoBehaviour {
 
         yield return new WaitForSeconds(0.6875f);
 
+        AudioManager.instance.Play("CoalShot");
         float a = Mathf.Atan2(PlayerData.instance.transform.transform.position.y - transform.position.y, PlayerData.instance.transform.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 180;
         GameObject go = Instantiate(shotGObject, transform.position, Quaternion.Euler(0, 0, a));
         go.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left * shotForce);

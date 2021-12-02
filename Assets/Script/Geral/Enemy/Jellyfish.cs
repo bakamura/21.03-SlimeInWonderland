@@ -60,6 +60,7 @@ public class Jellyfish : MonoBehaviour {
 
         yield return new WaitForSeconds(1.3f);
 
+        AudioManager.instance.Play("JellySpark");
         bool bol = false;
         for (int i = 0; i < 6; i++) {
             if (!bol && Vector2.Distance(PlayerData.instance.transform.position, transform.position) < atkRange) {
