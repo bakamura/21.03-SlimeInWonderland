@@ -94,7 +94,7 @@ public class PlayerAttack : MonoBehaviour {
         RaycastHit2D[] corpses = Physics2D.CircleCastAll(transform.position, 0.45f, Vector2.zero);
         GameObject nearest = null;
         float minDist = 1;
-        foreach (RaycastHit2D corpse in corpses) if (Vector2.Distance(transform.position, corpse.transform.position) < minDist && corpse.collider.tag == "Enemy") {
+        foreach (RaycastHit2D corpse in corpses) if (Vector2.Distance(transform.position, corpse.transform.position) < minDist && corpse.collider.GetComponent<EnemyBase>() != null) {
                 if (corpse.collider.GetComponent<EnemyBase>().currentHealth <= 0) {
                     nearest = corpse.collider.gameObject;
                     minDist = Vector2.Distance(transform.position, corpse.transform.position);

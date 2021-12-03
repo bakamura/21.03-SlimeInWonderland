@@ -14,7 +14,7 @@ public class PlayerAtkList : MonoBehaviour {
     public Collider2D triggerCol;
 
     private Vector2 mousePos;
-    private Vector2 currentAtkDirection;
+    private Vector3 currentAtkDirection;
 
     private TriggerWater waterManager;
 
@@ -34,9 +34,20 @@ public class PlayerAtkList : MonoBehaviour {
     public float damageFireAtk1;
     public GameObject prefabFireAtk1;
 
+    [Header("Fireball")]
+    public float damageFireAtk2;
+    public GameObject prefabFireAtk2;
+    public float speedFireAtk2;
+
+    [Header("Eruption")]
+    public float damageFireAtk3;
+    public GameObject prefabFireAtk3;
+    public float rangeFireAtk3;
+
     [Header("Meteor I")]
-    public float damageFireAtk5, rangeFireAtk5;
+    public float damageFireAtk5;
     public GameObject prefabFireAtk5;
+    public float rangeFireAtk5;
 
     [Header("Splash")]
     public float damageWaterAtk1;
@@ -62,42 +73,39 @@ public class PlayerAtkList : MonoBehaviour {
     }
 
     public void CastSkill(int skillSlot) {
-        PlayerAttack.instance.atkCDown[skillSlot] = PlayerAttack.instance.atkTotalCDown[skillSlot];
-        PlayerAttack.instance.isAtking = true;
-        FindTree(tree[skillSlot], skill[skillSlot]);
+        FindTree(skillSlot);
     }
 
-    private void FindTree(int tree, int skill) {
-        bool bol = true;
-        if (tree == 2) waterManager.transformCollider(true);
-        else if (!PlayerData.animPlayer.GetBool("OnWater")) waterManager.transformCollider(false);
-        else bol = false;
-        if (bol) {
-            if (tree != 0) {
-                PlayerData.instance.currentMaterial = tree;
-                PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[tree];
+    private void FindTree(int skillSlot) {
+        if (PlayerData.instance.currentMaterial == 2 || !PlayerData.animPlayer.GetBool("OnWater")) {
+            PlayerAttack.instance.atkCDown[skillSlot] = PlayerAttack.instance.atkTotalCDown[skillSlot];
+            PlayerAttack.instance.isAtking = true;
+            if (tree[skillSlot] != 0) {
+                waterManager.transformCollider(tree[skillSlot] == 2);
+                PlayerData.instance.currentMaterial = tree[skillSlot];
+                PlayerData.srPlayer.material = PlayerData.instance.colorMaterial[tree[skillSlot]];
             }
-            switch (tree) {
+            switch (tree[skillSlot]) {
                 case 0:
-                    BasicAtk(skill);
+                    BasicAtk(skill[skillSlot]);
                     break;
                 case 1:
-                    FireAtks(skill);
+                    FireAtks(skill[skillSlot]);
                     break;
                 case 2:
-                    WaterAtk(skill);
+                    WaterAtk(skill[skillSlot]);
                     break;
                 case 3:
-                    PlantAtk(skill);
+                    PlantAtk(skill[skillSlot]);
                     break;
                 case 4:
-                    ElectricAtk(skill);
+                    ElectricAtk(skill[skillSlot]);
                     break;
                 case 5:
-                    EarthAtk(skill);
+                    EarthAtk(skill[skillSlot]);
                     break;
                 case 6:
-                    PoisonAtk(skill);
+                    PoisonAtk(skill[skillSlot]);
                     break;
                 case -1:
                     StartCoroutine(DoNothingAtk());
@@ -105,6 +113,19 @@ public class PlayerAtkList : MonoBehaviour {
             }
         }
         else StartCoroutine(DoNothingAtk());
+    }
+
+    private void Cast(bool bol) {
+        if (bol) {
+            PlayerAttack.instance.currentAtk = 0;
+            PlayerMovement.instance.moveLock = true;
+            PlayerData.rbPlayer.velocity = Vector2.zero;
+        }
+        else {
+            PlayerAttack.instance.isAtking = false;
+            PlayerMovement.instance.moveLock = false;
+            PlayerData.animPlayer.SetBool("Moving", false);
+        }
     }
 
     private void BasicAtk(int atk) {
@@ -136,10 +157,10 @@ public class PlayerAtkList : MonoBehaviour {
                 StartCoroutine(FireAtk1Instantiate());
                 break;
             case 1:
-                StartCoroutine(DoNothingAtk());
+                StartCoroutine(FireAtk2Instantiate());
                 break;
             case 2:
-                StartCoroutine(DoNothingAtk());
+                StartCoroutine(FireAtk3Instantiate());
                 break;
             case 3:
                 StartCoroutine(DoNothingAtk());
@@ -341,18 +362,16 @@ public class PlayerAtkList : MonoBehaviour {
     }
 
     //Basic
-    IEnumerator DoNothingAtk() {
+    private IEnumerator DoNothingAtk() {
         yield return new WaitForEndOfFrame();
         PlayerAttack.instance.isAtking = false;
         PlayerMovement.instance.moveLock = false;
     }
 
-    IEnumerator BasicAtk1Instantiate() {
+    private IEnumerator BasicAtk1Instantiate() {
+        Cast(true);
         currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        PlayerMovement.instance.moveLock = true;
-        PlayerData.rbPlayer.velocity = Vector2.zero;
         PlayerData.animPlayer.SetTrigger("Atk0");
-        PlayerAttack.instance.currentAtk = 0;
         triggerCol.enabled = true;
         triggerState = 1;
 
@@ -375,19 +394,15 @@ public class PlayerAtkList : MonoBehaviour {
         yield return new WaitForSeconds(0.3f);
 
         //Debug.Log("Reganhou controle ");
-        PlayerAttack.instance.isAtking = false;
-        PlayerMovement.instance.moveLock = false;
-        PlayerData.animPlayer.SetBool("Moving", false);
+        Cast(false);
     }
 
     //Fire
-    IEnumerator FireAtk1Instantiate() {
-        PlayerMovement.instance.moveLock = true;
-        PlayerData.rbPlayer.velocity = Vector2.zero;
-        PlayerData.animPlayer.SetTrigger("AtkF1");
-        PlayerAttack.instance.currentAtk = 0;
-
+    private IEnumerator FireAtk1Instantiate() {
+        Cast(true);
         PlayerMovement.instance.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
+        PlayerData.animPlayer.SetTrigger("AtkF1");
+
         AtkFireBreath breathInstance = Instantiate(prefabFireAtk1, transform.position, Quaternion.Euler(0, 0, (Mathf.Atan2(PlayerMovement.instance.lastDirection.y, PlayerMovement.instance.lastDirection.x) * Mathf.Rad2Deg) + 90)).GetComponent<AtkFireBreath>();
         breathInstance.direction = new Vector3(PlayerMovement.instance.lastDirection.x, PlayerMovement.instance.lastDirection.y, 0);
         breathInstance.damage = damageFireAtk1;
@@ -399,37 +414,59 @@ public class PlayerAtkList : MonoBehaviour {
 
         yield return new WaitForSeconds(0.4f);
 
-        PlayerAttack.instance.isAtking = false;
-        PlayerMovement.instance.moveLock = false;
-        PlayerData.animPlayer.SetBool("Moving", false);
+        Cast(false);
     }
 
-    IEnumerator FireAtk5Instatiate() {
-        PlayerMovement.instance.moveLock = true;
-        PlayerData.rbPlayer.velocity = Vector2.zero;
+    private IEnumerator FireAtk2Instantiate() {
+        Cast(true);
+        PlayerMovement.instance.lastDirection = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
+        PlayerData.animPlayer.SetTrigger("AtkF2");
+
+        yield return new WaitForSeconds(0.2f);
+
+        AtkFireBall go = Instantiate(prefabFireAtk2, transform.position, Quaternion.Euler(0, 0, (Mathf.Atan2(PlayerMovement.instance.lastDirection.y, PlayerMovement.instance.lastDirection.x) * Mathf.Rad2Deg) + 180)).GetComponent<AtkFireBall>();
+        go.damage = damageFireAtk2;
+        go.GetComponent<Rigidbody2D>().velocity = PlayerMovement.instance.lastDirection * speedFireAtk2;
+        Cast(false);
+    }
+
+    private IEnumerator FireAtk3Instantiate() {
+        Cast(true);
+        PlayerData.animPlayer.SetTrigger("AtkF3"); //
+        currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y));
+
+        yield return new WaitForSeconds(0.3f);
+
+        AtkEruption go = Instantiate(prefabFireAtk3, Vector2.Distance(transform.position, transform.position + currentAtkDirection) >= rangeFireAtk3 ? (transform.position + currentAtkDirection.normalized * rangeFireAtk3) : (transform.position + currentAtkDirection), Quaternion.Euler(0, 0, 90)).GetComponent<AtkEruption>();
+        go.damage = damageFireAtk3;
+
+        yield return new WaitForSeconds(0.05f);
+
+        Cast(false);
+
+    }
+
+    private IEnumerator FireAtk5Instatiate() {
+        Cast(true);
         PlayerData.animPlayer.SetTrigger("AtkF5");
-        PlayerAttack.instance.currentAtk = 0;
 
         currentAtkDirection = (mousePos - new Vector2(transform.position.x, transform.position.y));
         PlayerMovement.instance.lastDirection = currentAtkDirection.normalized;
 
         yield return new WaitForSeconds(0.2f);
 
-        PlayerAttack.instance.isAtking = false;
-        PlayerMovement.instance.moveLock = false;
-        PlayerData.animPlayer.SetBool("Moving", false);
         AtkMeteor meteorInstance = Instantiate(prefabFireAtk5, transform.position + new Vector3(0, 0.75f, 0), Quaternion.Euler(0, 0, 180)).GetComponent<AtkMeteor>();
         meteorInstance.damage = damageFireAtk5;
-        if (Vector2.Distance(transform.position, new Vector2(transform.position.x, transform.position.y) + currentAtkDirection) >= rangeFireAtk5) meteorInstance.finalPos = new Vector3(transform.position.x + currentAtkDirection.normalized.x * rangeFireAtk5, transform.position.y + currentAtkDirection.normalized.y * rangeFireAtk5, 0);
+        if (Vector2.Distance(transform.position, transform.position + currentAtkDirection) >= rangeFireAtk5) meteorInstance.finalPos = new Vector3(transform.position.x + currentAtkDirection.normalized.x * rangeFireAtk5, transform.position.y + currentAtkDirection.normalized.y * rangeFireAtk5, 0);
         else meteorInstance.finalPos = new Vector3(currentAtkDirection.x + transform.position.x, currentAtkDirection.y + transform.position.y, 0);
+
+        Cast(false);
     }
 
     //Water
     private IEnumerator WaterAtk1Instantiate() {
-        PlayerMovement.instance.moveLock = true;
-        PlayerData.rbPlayer.velocity = Vector2.zero;
+        Cast(true);
         PlayerData.animPlayer.SetTrigger("AtkW1");
-        PlayerAttack.instance.currentAtk = 0;
         AudioManager.instance.Play("PlayerAtkW1");
 
         AtkSplash go = Instantiate(prefabWaterAtk1, transform.position, Quaternion.identity).GetComponent<AtkSplash>();
@@ -437,8 +474,7 @@ public class PlayerAtkList : MonoBehaviour {
         
         yield return new WaitForSeconds(0.1f);
 
-        PlayerAttack.instance.isAtking = false;
-        PlayerMovement.instance.moveLock = false;
+        Cast(false);
 
     }
 

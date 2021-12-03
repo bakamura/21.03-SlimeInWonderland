@@ -34,7 +34,7 @@ public class PlayerData : MonoBehaviour {
     [Header("Progression")]
     public Leveling[] leveling;
 
-    [HideInInspector] public int currentMaterial = 0;
+    public int currentMaterial = 0;
     public Material[] colorMaterial;
     public Material damageMaterial;
 

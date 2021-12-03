@@ -34,7 +34,6 @@ public class EnemyBase : MonoBehaviour {
         colliderEnemy = GetComponent<Collider2D>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-        //currentHealth = maxHealth;
         if (currentHealth == 0) {
             animatorEnemy.SetBool("Die", true);
             colliderEnemy.isTrigger = true;
@@ -47,9 +46,13 @@ public class EnemyBase : MonoBehaviour {
     }
 
     private void Update() {
-        Collider2D[] isInRange = Physics2D.OverlapCircleAll(transform.position, 4);
         bool bol = false;
+        Collider2D[] isInRange = Physics2D.OverlapCircleAll(transform.position, 4);
         foreach (Collider2D col in isInRange) if (col.tag == "Player") bol = true;
+        if (currentHealth <= 0) {
+            tag = "Untagged";
+            rbEnemy.velocity = Vector2.zero;
+        }
         if (bol && currentHealth <= 0) {
             keyShowInstance.transform.position = transform.position + new Vector3(0, 0.75f, 0);
             keyShowInstance.color = new Color(1, 1, 1, 1);

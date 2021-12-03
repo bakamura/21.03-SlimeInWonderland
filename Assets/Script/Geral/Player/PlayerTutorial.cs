@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerTutorial : MonoBehaviour {
 
@@ -9,7 +10,7 @@ public class PlayerTutorial : MonoBehaviour {
     private GameObject enemyToHit;
     private float counter = 0;
     public float circleRange;
-    public GameObject tutorialPond;
+    public GameObject btnToHightlight, tutorialPond;
     public Vector3 arrowPos;
 
     private void Start() {
@@ -42,10 +43,16 @@ public class PlayerTutorial : MonoBehaviour {
                 PlayerMovement.instance.enabled = true; //
             }
         }
-        else if (animHolder.GetInteger("State") == 4 && PlayerData.instance.leveling[1].lv > 0) animHolder.SetInteger("State", 5);
-        else if (animHolder.GetInteger("State") == 5) for (int i = 0; i < 3; i++) {
-                if (PlayerAtkList.instance.skill[i] == 0 && PlayerAtkList.instance.tree[i] == 1) animHolder.SetInteger("State", 6);
+        else if (animHolder.GetInteger("State") == 4 && PlayerData.instance.leveling[1].lv > 0) {
+            btnToHightlight.GetComponent<Image>().color = Color.yellow;
+            animHolder.SetInteger("State", 5);
         }
+        else if (animHolder.GetInteger("State") == 5) for (int i = 0; i < 3; i++) {
+                if (PlayerAtkList.instance.skill[i] == 0 && PlayerAtkList.instance.tree[i] == 1) {
+                    btnToHightlight.GetComponent<Image>().color = Color.white;
+                    animHolder.SetInteger("State", 6);
+                }
+            }
         else if (animHolder.GetInteger("State") == 6 && PlayerData.instance.leveling[2].lv > 0) animHolder.SetInteger("State", 7);
         else if (animHolder.GetInteger("State") == 7 && PlayerData.instance.leveling[2].unlockedSkill[0]) {
             animHolder.transform.parent = tutorialPond.transform;

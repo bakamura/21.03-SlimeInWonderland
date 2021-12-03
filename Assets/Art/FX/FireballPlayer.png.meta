@@ -38,6 +38,42 @@ TextureImporter:
   - first:
       213: -1876177057819695376
     second: fx bola de fogo -Sheet_11
+  - first:
+      213: -1713858685427987733
+    second: FireballPlayer_0
+  - first:
+      213: 8754089092238664906
+    second: FireballPlayer_1
+  - first:
+      213: -4519996136617624233
+    second: FireballPlayer_2
+  - first:
+      213: 6267916751970914102
+    second: FireballPlayer_3
+  - first:
+      213: 8144566425769799752
+    second: FireballPlayer_4
+  - first:
+      213: 908954903154232102
+    second: FireballPlayer_5
+  - first:
+      213: 7964788739089733535
+    second: FireballPlayer_6
+  - first:
+      213: -7446690261415845363
+    second: FireballPlayer_7
+  - first:
+      213: 544502699928443246
+    second: FireballPlayer_8
+  - first:
+      213: 2143667838940484958
+    second: FireballPlayer_9
+  - first:
+      213: -6615427565536869213
+    second: FireballPlayer_10
+  - first:
+      213: 624213622369214118
+    second: FireballPlayer_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -83,7 +119,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -195,253 +231,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_0
+      name: FireballPlayer_0
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fcc48a9803accb70800000000000000
-      internalID: 8920684219261570295
+      spriteID: beac8d32b962738e0800000000000000
+      internalID: -1713858685427987733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_1
+      name: FireballPlayer_1
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43db0e7e30397cd20800000000000000
-      internalID: 3298766897056628020
+      spriteID: ac4e103f5a5cc7970800000000000000
+      internalID: 8754089092238664906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_2
+      name: FireballPlayer_2
       rect:
         serializedVersion: 2
         x: 64
         y: 32
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05f9cbbaeccfea8e0800000000000000
-      internalID: -1680127646387888304
+      spriteID: 75db4c2367fb541c0800000000000000
+      internalID: -4519996136617624233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_3
+      name: FireballPlayer_3
       rect:
         serializedVersion: 2
         x: 96
         y: 32
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e305799bb5f20c20800000000000000
-      internalID: 3171367273704522721
+      spriteID: 63f42fab31d1cf650800000000000000
+      internalID: 6267916751970914102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_4
+      name: FireballPlayer_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cc07dfab07209240800000000000000
-      internalID: 4796376534297808069
+      spriteID: 840f4913300570170800000000000000
+      internalID: 8144566425769799752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_5
+      name: FireballPlayer_5
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbd215ef697643ff0800000000000000
-      internalID: -57306997039485507
+      spriteID: 62b8b572ba14d9c00800000000000000
+      internalID: 908954903154232102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_6
+      name: FireballPlayer_6
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67689622f90df21e0800000000000000
-      internalID: -2220326709374646666
+      spriteID: f979970b82d988e60800000000000000
+      internalID: 7964788739089733535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_7
+      name: FireballPlayer_7
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7edf01c349b3aeb60800000000000000
-      internalID: 7776093214457527783
+      spriteID: d02a2f759aa08a890800000000000000
+      internalID: -7446690261415845363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_8
+      name: FireballPlayer_8
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7856d6e9582f546b0800000000000000
-      internalID: -5312573529711090297
+      spriteID: e69d97812567e8700800000000000000
+      internalID: 544502699928443246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_9
+      name: FireballPlayer_9
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a081134ef30055940800000000000000
-      internalID: 5284130012200507402
+      spriteID: e551a78ba86dfbd10800000000000000
+      internalID: 2143667838940484958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_10
+      name: FireballPlayer_10
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7a23b60e1afad8d0800000000000000
-      internalID: -2820667209725826437
+      spriteID: 3a409dedda74134a0800000000000000
+      internalID: -6615427565536869213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fx bola de fogo -Sheet_11
+      name: FireballPlayer_11
       rect:
         serializedVersion: 2
         x: 224
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f66be408ea76f5e0800000000000000
-      internalID: -1876177057819695376
+      spriteID: 6aed6497bf6a9a800800000000000000
+      internalID: 624213622369214118
       vertices: []
       indices: 
       edges: []
