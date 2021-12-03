@@ -389,9 +389,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Stream Shield
-  description: Surrounds itself with a shield, blocking damage up to a cap. After
-    some time, if the shield didn't worn out, it explodes deadling damage in a small
-    area.
+  description: '[TBA] Surrounds itself with a shield, blocking damage up to a cap.
+    After some time, if the shield didn''t worn out, it explodes deadling damage
+    in a small area.'
 --- !u!1 &172961753562518639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,8 +1335,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Rain
-  description: Summons a rain, periodicaly dealing damage to enemies and healing
-    itself.
+  description: '[TBA] Summons a rain, periodicaly dealing damage to enemies and healing
+    itself.'
 --- !u!1 &550276948223500568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,8 +2336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Whirlpool
-  description: Creates a whirlpool that sucks enemies towards it's center, dealing
-    damage periodicaly.
+  description: '[TBA] Creates a whirlpool that sucks enemies towards it''s center,
+    dealing damage periodicaly.'
 --- !u!1 &958758193942535591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: WaterSkill
-  description: tba
+  description: '[TBA] '
 --- !u!1 &1136983250503053795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,8 +5194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Flame Thrower
-  description: Inhales briefly, then spits flames in a long cone in the direction
-    facing, periodicaly dealing damage to enemies within it's area.
+  description: '[TBA] Inhales briefly, then spits flames in a long cone in the direction
+    facing, periodicaly dealing damage to enemies within it''s area.'
 --- !u!1 &2651929569101349160
 GameObject:
   m_ObjectHideFlags: 0
@@ -5427,8 +5427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Flaming Barrage
-  description: Spits multiple fire balls in a cone in the direction facing, exploding
-    on contact and dealing damage in a small area.
+  description: '[TBA] Spits multiple fire balls in a cone in the direction facing,
+    exploding on contact and dealing damage in a small area.'
 --- !u!1 &2911424861462744498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5585,9 +5585,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Refreshing Waters
-  description: Spits water, that bounces to the nearest enemy , up to 4 times, dealing
-    damage and slowing, then bounces back to the slime, healing based on the amount
-    of damage dealt.
+  description: '[TBA] Spits water, that bounces to the nearest enemy , up to 4 times,
+    dealing damage and slowing, then bounces back to the slime, healing based on
+    the amount of damage dealt.'
 --- !u!1 &2926484171652440332
 GameObject:
   m_ObjectHideFlags: 0
@@ -8866,9 +8866,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Blazing Bolide
-  description: Spits a mega concentrated fire ball that goes through a parable to
-    the designated location, dealing damage to all enemies in it's area and leaving
-    behind a mark on the ground, periodicaly damage to enemies within it's area.
+  description: '[TBA] Spits a mega concentrated fire ball that goes through a parable
+    to the designated location, dealing damage to all enemies in it''s area and leaving
+    behind a mark on the ground, periodicaly damage to enemies within it''s area.'
 --- !u!1 &4896080295306963017
 GameObject:
   m_ObjectHideFlags: 0
@@ -10858,7 +10858,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Blazing Aura
-  description: 'Passive: While in fire mode, deals damage periodicaly to near enemies.'
+  description: '[TBA] Passive: While in fire mode, deals damage periodicaly to near
+    enemies.'
 --- !u!1 &5761013160032176855
 GameObject:
   m_ObjectHideFlags: 0
@@ -14404,7 +14405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Storm
-  description: Requires electric 5. Summons a storm,healin
+  description: '[TBA] Requires electric 5. Summons a storm, healing the slime and
+    slowing enemies. Periodicaly, lightning strikes, damaging enemies and giving
+    movement speed to the slime, within it''s area.'
 --- !u!1 &7720813660273774024
 GameObject:
   m_ObjectHideFlags: 0
@@ -14778,8 +14781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Raging Vortex
-  description: Casts for a moment, sucking near enemies and dealing damage periodicaly,
-    then explodes, dealing damage and knocking back enemies.
+  description: '[TBA] Casts for a moment, sucking near enemies and dealing damage
+    periodicaly, then explodes, dealing damage and knocking back enemies.'
 --- !u!1 &7921773732453225740
 GameObject:
   m_ObjectHideFlags: 0
@@ -15815,8 +15818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Hydro Pump
-  description: Pumps a load of water in line in the direction facing, periodicaly
-    dedaling damage to enemies within it's area.
+  description: '[TBA] Pumps a load of water in line in the direction facing, periodicaly
+    dedaling damage to enemies within it''s area.'
 --- !u!1 &8500075519159342725
 GameObject:
   m_ObjectHideFlags: 0

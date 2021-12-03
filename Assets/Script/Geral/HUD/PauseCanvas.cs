@@ -19,6 +19,7 @@ public class PauseCanvas : MonoBehaviour {
 
     private void Start() {
         pauseCanvas = GetComponent<CanvasGroup>();
+        masterMixer.SetFloat("MasterVolume", SettingsSave.volume);
     }
 
     private void Update() {
@@ -62,6 +63,7 @@ public class PauseCanvas : MonoBehaviour {
     }
 
     public void ChangeVolume(float f) {
+        SettingsSave.volume = Mathf.Log10(f) * 20;
         masterMixer.SetFloat("MasterVolume", Mathf.Log10(f) * 20);
     }
 

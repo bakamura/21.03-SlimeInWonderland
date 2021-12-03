@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour {
 
-    public CanvasGroup mainCanvas;
-    public CanvasGroup savesCanvas;
-    public CanvasGroup configsCanvas;
-    public CanvasGroup confirmQuitCanvas;
+    public CanvasGroup mainCanvas, savesCanvas, configsCanvas, confirmQuitCanvas;
+    public AudioMixer masterMixer;
+    public TMP_Dropdown resSelector;
+    public bool fullscreen;
 
     private void Start() {
         DeactivateAllCanvas();
@@ -58,6 +60,33 @@ public class MainMenu : MonoBehaviour {
     public void ConfigsButton() {
         DeactivateAllCanvas();
         ActivateCanvas(configsCanvas, true);
+    }
+
+    public void ChangeVolume(float f) {
+        SettingsSave.volume = Mathf.Log10(f) * 20;
+        masterMixer.SetFloat("MasterVolume", Mathf.Log10(f) * 20);
+    }
+
+    public void ChangeResolution() {
+        switch (resSelector.value) {
+            case 0:
+                Screen.SetResolution(640, 360, fullscreen);
+                break;
+            case 1:
+                Screen.SetResolution(854, 480, fullscreen);
+                break;
+            case 2:
+                Screen.SetResolution(1280, 720, fullscreen);
+                break;
+            case 3:
+                Screen.SetResolution(1920, 1080, fullscreen);
+                break;
+        }
+    }
+
+    public void ChangeFullScreen() {
+        fullscreen = !fullscreen;
+        ChangeResolution();
     }
 
     public void QuitButton() {
