@@ -99,6 +99,7 @@ public class PlayerData : MonoBehaviour {
         PlayerAtkList.instance.StopAllCoroutines();
         PlayerMovement.instance.moveLock = true;
         PlayerAttack.instance.canInput = false;
+        rbPlayer.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(0.9f);
 

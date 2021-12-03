@@ -28,6 +28,7 @@ public class PlayerTutorial : MonoBehaviour {
                     hudCanvas.alpha = 1;
                     animHolder.SetInteger("State", 3);
                     Time.timeScale = 0;
+                    PlayerMovement.instance.enabled = false; //
                     break;
                 }
         }
@@ -38,6 +39,7 @@ public class PlayerTutorial : MonoBehaviour {
                 Time.timeScale = 1;
                 animHolder.SetInteger("State", 4);
                 PlayerAttack.instance.isAtking = false;
+                PlayerMovement.instance.enabled = true; //
             }
         }
         else if (animHolder.GetInteger("State") == 4 && PlayerData.instance.leveling[1].lv > 0) animHolder.SetInteger("State", 5);

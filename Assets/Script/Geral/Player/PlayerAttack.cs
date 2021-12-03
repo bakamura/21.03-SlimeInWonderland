@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void Inputs() {
-        if (canInput) {
+        if (canInput && !PlayerData.animPlayer.GetBool("Consuming")) {
             if (Input.GetButtonDown("Fire1")) {
                 currentAtk = 1;
                 atkRemember = totalAtkRemember;
