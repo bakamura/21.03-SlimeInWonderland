@@ -1018,7 +1018,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3198263519754084053}
-        m_MethodName: ChangeVolume
+        m_MethodName: ChangeVolumeMaster
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1288,7 +1288,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3198263519754084053}
-        m_MethodName: ChangeVolume
+        m_MethodName: ChangeVolumeSfx
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2182,7 +2182,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3198263519754084053}
-        m_MethodName: ChangeVolume
+        m_MethodName: ChangeVolumeMusic
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3499,7 +3499,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 2
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -3538,8 +3538,8 @@ MonoBehaviour:
   treeCanvas: {fileID: 0}
   mainGroup: {fileID: 212068764}
   settingsGroup: {fileID: 3199147626709897540}
-  musicMixer: {fileID: 0}
-  sfxMixer: {fileID: 0}
+  musicMixer: {fileID: 24100000, guid: 019c92201e5691949ab904e4c9a6e21b, type: 2}
+  sfxMixer: {fileID: 24100000, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
   globalLight: {fileID: 0}
   resSelector: {fileID: 2783124089391806868}
 --- !u!225 &5410625665289725529
