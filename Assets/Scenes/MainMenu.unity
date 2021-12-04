@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2364,10 +2364,10 @@ MonoBehaviour:
   savesCanvas: {fileID: 1340033251}
   configsCanvas: {fileID: 349589515}
   confirmQuitCanvas: {fileID: 1048195532}
-  musicMixer: {fileID: 0}
-  sfxMixer: {fileID: 0}
-  resSelector: {fileID: 0}
-  fullscreen: 0
+  musicMixer: {fileID: 24100000, guid: 019c92201e5691949ab904e4c9a6e21b, type: 2}
+  sfxMixer: {fileID: 24100000, guid: e9291431d1a8bb148bb3bc42a501267e, type: 2}
+  resSelector: {fileID: 2081423931}
+  fullscreen: 1
 --- !u!82 &414609197
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2377,7 +2377,7 @@ AudioSource:
   m_GameObject: {fileID: 414609191}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: e9291431d1a8bb148bb3bc42a501267e,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 019c92201e5691949ab904e4c9a6e21b,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a405debe5d9621547807bfb48d4d25b4, type: 3}
   m_PlayOnAwake: 1
