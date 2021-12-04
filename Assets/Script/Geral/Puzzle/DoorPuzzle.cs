@@ -20,8 +20,9 @@ public class DoorPuzzle : MonoBehaviour {
         if (i == 0) state = 1;
     }
 
-    IEnumerator Open() {
+    private IEnumerator Open() {
         GetComponent<Animator>().SetTrigger("Open");
+        AudioManager.instance.Play("OpenDoorPuzzle");
         state = 2;
 
         yield return new WaitForSeconds(0.5f);

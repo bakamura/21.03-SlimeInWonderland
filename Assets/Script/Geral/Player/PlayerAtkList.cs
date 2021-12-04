@@ -77,7 +77,7 @@ public class PlayerAtkList : MonoBehaviour {
     }
 
     private void FindTree(int skillSlot) {
-        if (PlayerData.instance.currentMaterial == 2 || !PlayerData.animPlayer.GetBool("OnWater")) {
+        if (tree[skillSlot] == 2 || !PlayerData.animPlayer.GetBool("OnWater")) {
             PlayerAttack.instance.atkCDown[skillSlot] = PlayerAttack.instance.atkTotalCDown[skillSlot];
             PlayerAttack.instance.isAtking = true;
             if (tree[skillSlot] != 0) {
@@ -112,7 +112,12 @@ public class PlayerAtkList : MonoBehaviour {
                     break;
             }
         }
-        else StartCoroutine(DoNothingAtk());
+        else {
+            PlayerAttack.instance.atkCDown[skillSlot] = 0.05f;
+            PlayerAttack.instance.atkRemember = 0;
+            AudioManager.instance.Play("DenyCastingSkill");
+            StartCoroutine(DoNothingAtk());
+        }
     }
 
     private void Cast(bool bol) {

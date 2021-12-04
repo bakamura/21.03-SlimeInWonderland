@@ -21,9 +21,12 @@ public class Roots : MonoBehaviour {
         animRoot.SetTrigger("Burn");
         burned = true;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         GetComponent<Collider2D>().enabled = false;
+
+        yield return new WaitForSeconds(0.5f);
+
         GetComponent<SpriteRenderer>().enabled = false;
     }
 

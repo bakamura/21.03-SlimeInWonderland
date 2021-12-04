@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour {
     public bool canInput = true;
     [System.NonSerialized] public bool isAtking = false;
     [System.NonSerialized] public int currentAtk = 0;
-    private float atkRemember;
+    [HideInInspector] public float atkRemember;
     public float totalAtkRemember;
 
     public float[] atkTotalCDown = new float[3];

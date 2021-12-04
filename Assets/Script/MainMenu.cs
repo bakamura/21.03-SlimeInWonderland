@@ -9,7 +9,7 @@ using UnityEngine.Audio;
 public class MainMenu : MonoBehaviour {
 
     public CanvasGroup mainCanvas, savesCanvas, configsCanvas, confirmQuitCanvas;
-    public AudioMixer masterMixer;
+    public AudioMixer musicMixer, sfxMixer;
     public TMP_Dropdown resSelector;
     public bool fullscreen;
 
@@ -62,9 +62,19 @@ public class MainMenu : MonoBehaviour {
         ActivateCanvas(configsCanvas, true);
     }
 
-    public void ChangeVolume(float f) {
-        SettingsSave.volume = Mathf.Log10(f) * 20;
-        masterMixer.SetFloat("MasterVolume", Mathf.Log10(f) * 20);
+    public void ChangeVolumeMaster(float f) {
+        SettingsSave.volumeMaster = f;
+        musicMixer.SetFloat("MusicVolume", Mathf.Log10(SettingsSave.volumeMusic * f) * 20);
+        sfxMixer.SetFloat("SfxVolume", Mathf.Log10(SettingsSave.volumeSfx * f) * 20);
+    }
+
+    public void ChangeVolumeMusic(float f) {
+        SettingsSave.volumeMusic = f;
+        musicMixer.SetFloat("MusicVolume", Mathf.Log10(f * SettingsSave.volumeMaster) * 20);
+    }
+    public void ChangeVolumeSfx(float f) {
+        SettingsSave.volumeSfx = f;
+        sfxMixer.SetFloat("SfxVolume", Mathf.Log10(f * SettingsSave.volumeMaster) * 20);
     }
 
     public void ChangeResolution() {
